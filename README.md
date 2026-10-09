@@ -1,56 +1,46 @@
 # Rastreador de oportunidades en SECOP II
 
-Skeleton agent for the **Reto Agente 2026** challenge. The final agent will track public
-procurement opportunities in Colombia's SECOP II (datos.gov.co, Socrata API), filter them
-against a company profile and summarize them. For now this is only a working skeleton based
-on the [LangChain JS quickstart](https://docs.langchain.com/oss/javascript/langchain/quickstart).
+Esqueleto funcional de un agente para el desafío **Reto Agente 2026**. El agente final rastreará oportunidades de contratación pública en el SECOP II de Colombia (datos abiertos de datos.gov.co mediante la API Socrata), las filtrará según el perfil de una empresa y generará resúmenes. Por ahora, este repositorio contiene la base funcional inicial adaptada a partir de la [guía de inicio rápido de LangChain JS](https://docs.langchain.com/oss/javascript/langchain/quickstart).
 
-- Reasoning model: **Grok**, through the challenge's OpenAI-compatible gateway
-  (`https://api.reto.pltk.mx/v1`).
-- Stack: TypeScript (ESM), pnpm, LangChain JS (`createAgent`), Docker.
+- Modelo de razonamiento: **Grok**, accesible a través del gateway compatible con OpenAI del reto (`https://api.reto.pltk.mx/v1`).
+- Stack tecnológico: TypeScript (ESM), pnpm, LangChain JS (`createAgent`), Docker.
 
-## Setup
+## Configuración inicial
 
-Requires Node.js 22+ and corepack (bundled with Node 22/24).
+Requiere Node.js 22+ y corepack (incluido en Node 22/24).
 
 ```powershell
 corepack enable
 pnpm install
-Copy-Item .env.example .env   # then add your RETO_KEY to .env (never commit it)
+Copy-Item .env.example .env   # luego agrega tu RETO_KEY en .env (nunca lo subas al repositorio)
 ```
 
-Set the Grok model name in [`src/llm.ts`](src/llm.ts) (`MODEL_NAME`) and the prices in
-[`src/cost.ts`](src/cost.ts) (`PRECIOS`).
+Define el nombre exacto del modelo Grok en [`src/llm.ts`](src/llm.ts) (`MODEL_NAME`) y los precios por millón de tokens en [`src/cost.ts`](src/cost.ts) (`PRECIOS`).
 
-## Run locally
+## Ejecución local
 
 ```powershell
-pnpm exec tsx src/test-grok.ts   # gateway check: plain response, tool call, structured output
-pnpm exec tsx src/index.ts       # basic agent (get_weather tool)
+pnpm exec tsx src/test-grok.ts   # prueba del gateway: respuesta simple, llamada a herramienta y salida estructurada
+pnpm exec tsx src/index.ts       # agente básico (herramienta get_weather)
 ```
 
-Every model call appends a line to `logs/costos.jsonl`
-(date, task, model, input/output tokens, cost in USD).
+Cada invocación al modelo registra una línea en `logs/costos.jsonl` con: fecha, tarea, modelo, tokens de entrada/salida y costo estimado en USD.
 
-## Run with Docker
+## Ejecución con Docker
 
-The image contains no secrets: `.env` is excluded by `.dockerignore`, and `RETO_KEY` is
-injected only at runtime through `env_file` in `docker-compose.yml`.
+La imagen Docker no contiene secretos: el archivo `.env` está excluido mediante `.dockerignore`, y la variable `RETO_KEY` se inyecta en tiempo de ejecución a través de `env_file` en `docker-compose.yml`.
 
 ```powershell
 docker compose build
-docker compose run --rm agent pnpm exec tsx src/test-grok.ts   # gateway check
-docker compose run --rm agent                                  # basic agent (default command)
+docker compose run --rm agent pnpm exec tsx src/test-grok.ts   # prueba del gateway dentro del contenedor
+docker compose run --rm agent                                  # agente básico (comando por defecto)
 ```
 
-- `./logs` is mounted at `/app/logs`, so `logs/costos.jsonl` stays on your machine.
-- `node_modules` is installed inside the image; it is never mounted from the host.
-- No ports are exposed and there is no restart policy: the script runs once and exits.
-  `restart: unless-stopped` is left commented in `docker-compose.yml` for a future
-  long-running mode (enabling it now would re-run the script forever and spend credits).
+- La carpeta `./logs` se monta en `/app/logs`, por lo que el archivo `logs/costos.jsonl` se almacena directamente en tu máquina local.
+- `node_modules` se instala internamente en la imagen; nunca se monta desde Windows.
+- No se exponen puertos y no se establece una política de reinicio automático: el script se ejecuta una sola vez y finaliza. La línea `restart: unless-stopped` se encuentra comentada en `docker-compose.yml` para ejecuciones continuas futuras (activarla ahora reintentaría la ejecución indefinidamente, consumiendo créditos).
 
-## Notes
+## Notas adicionales
 
-- LangSmith tracing is disabled (`LANGSMITH_TRACING=false`).
-- pnpm blocks dependency build scripts by default; `pnpm-workspace.yaml` allows only
-  `esbuild` (required by `tsx`) through `allowBuilds`.
+- El rastreo con LangSmith está desactivado (`LANGSMITH_TRACING=false`).
+- Por defecto, pnpm bloquea la ejecución de scripts de construcción en dependencias; el archivo `pnpm-workspace.yaml` aprueba de forma explícita únicamente a `esbuild` (requerido por `tsx`) mediante `allowBuilds`.
