@@ -1,0 +1,36 @@
+{
+  "name": "rastreador-secop-ii",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Skeleton agent for Reto Agente 2026 (SECOP II opportunity tracker)",
+  "type": "module",
+  "scripts": {
+    "start": "tsx src/index.ts",
+    "test:grok": "tsx src/test-grok.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "license": "ISC",
+  "engines": {
+    "node": ">=22"
+  },
+  "devEngines": {
+    "packageManager": {
+      "name": "pnpm",
+      "version": "12.10.1",
+      "onFail": "download"
+    }
+  },
+  "packageManager": "pnpm@12.10.1",
+  "dependencies": {
+    "@langchain/core": "^1.2.17",
+    "@langchain/openai": "^1.6.2",
+    "dotenv": "^18.0.6",
+    "langchain": "^1.5.15",
+    "zod": "^4.6.5"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.4",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2"
+  }
+}

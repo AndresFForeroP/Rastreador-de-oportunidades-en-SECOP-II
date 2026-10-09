@@ -4,3 +4,22 @@
 
 # LangGraph
 .langgraph_api/
+
+# Dependencies
+node_modules/
+
+# Secrets
+.env
+.env.*
+!.env.example
+
+# Logs (cost log, runtime logs)
+logs/
+*.log
+npm-debug.log*
+pnpm-debug.log*
+
+# Build output / tooling
+dist/
+.DS_Store
+Thumbs.db

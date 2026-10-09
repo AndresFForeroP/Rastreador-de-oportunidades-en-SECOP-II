@@ -1,0 +1,6 @@
+# pnpm settings (pnpm >= 11). Not a monorepo: this file only holds settings.
+# pnpm blocks dependency build scripts by default (strictDepBuilds=true).
+# esbuild (required by tsx) needs its postinstall to set up its native binary.
+# Docs: https://pnpm.io/settings/build#allowbuilds
+allowBuilds:
+  esbuild: true

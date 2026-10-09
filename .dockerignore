@@ -1,0 +1,24 @@
+# Secrets: never send to the build context
+.env
+.env.*
+
+# Installed inside the image instead (never from Windows)
+node_modules
+
+# Runtime output (bind-mounted at run time)
+logs
+*.log
+
+# VCS and local artifacts
+.git
+.gitignore
+.vscode
+.idea
+dist
+.langgraph_api
+Dockerfile
+docker-compose.yml
+.dockerignore
+README.md
+Thumbs.db
+.DS_Store
