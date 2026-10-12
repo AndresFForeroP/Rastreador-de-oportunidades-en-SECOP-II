@@ -12,7 +12,7 @@ export const RETO_BASE_URL = "https://api.reto.pltk.mx/v1";
  * Grok model name exactly as shown in the Reto dashboard.
  * TODO: pending confirmation from the project owner. Do not guess it.
  */
-export const MODEL_NAME = "";
+export const MODEL_NAME = "grok-4.6";
 
 if (!MODEL_NAME) {
   throw new Error(
