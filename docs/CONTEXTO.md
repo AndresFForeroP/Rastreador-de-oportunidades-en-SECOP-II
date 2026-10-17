@@ -1,157 +1,195 @@
 # CONTEXTO — Rastreador de oportunidades en SECOP II
 
-> Documento de arranque. Cada etapa nueva debe empezar leyendo este archivo.
-> Reto: "Reto Agente 2026". Objetivo: rastrear oportunidades de SECOP II para pymes colombianas.
+> **DOCUMENTO CENTRAL DE CONTEXTO**: Cualquier agente de programación que trabaje en este repositorio **DEBE leer este archivo primero** antes de realizar análisis, planear o modificar código.
+>
+> - **Proyecto**: "Reto Agente 2026"
+> - **Objetivo**: Rastrear oportunidades de contratación pública en SECOP II viables para pymes colombianas.
+> - **Stack**: TypeScript (strict, ESM con `.js`), LangChain / LangGraph, Grok (gateway OpenAI-compatible), LangSmith (trazabilidad).
 
-## 1. Arquitectura
+---
 
-Sistema multi-agente en TypeScript con LangChain / LangGraph. El modelo de razonamiento
-**debe seguir siendo Grok** (gateway del Reto, `src/llm.ts`).
+## 1. Arquitectura General del Sistema
 
-### Flujo diario (SOLO procesos publicados HOY)
+El sistema opera bajo un flujo diario multi-agente en 5 etapas secuenciales:
 
 ```text
-código:  descargar procesos de hoy            (src/datos/socrata.ts   -> descargarHoy)
-código:  pre-filtro básico                    (src/filtro/prefiltro.ts -> prefiltrar)
-Agente 1 "filtrador"   (tool filtro_basico)
-Agente 2 "resumidor"   (tool leer_pliego)
-Agente 3 "documentos"  (tool armar_lista_documentos)
-código:  reporte final
+[Descarga SECOP II (Hoy)]  -->  [Pre-filtro básico (Código)]  -->  [Agente 1 "filtrador"]
+                                                                         │
+                                                                   (aptos.json)
+                                                                         │
+[Reporte Final (Código)]  <--  [Agente 3 "documentos"]  <--  [Agente 2 "resumidor"]
 ```
 
-Cada agente tiene su propio system prompt, salida estructurada con zod y nombre de traza.
-No hay otra fecha en el código de producción.
+1. **Código (descarga)**: Descarga exclusivamente los procesos competitivos de SECOP II publicados **HOY** (hora Colombia, UTC-5).
+2. **Código (pre-filtro básico)**: Descarta por reglas deterministas (modalidad no competitiva, estado cerrado, tipos excluidos como seguros/concesiones, valor > $5.000M COP, duplicados).
+3. **Agente 1 "filtrador" (`agente_filtrador`)**: Evalúa candidatos pre-filtrados en páginas de 25 mediante la tool `filtro_basico` y clasifica `aptoPyme: "si" | "no" | "dudoso"`. Genera `data/entregas/<fecha>/aptos.json`.
+4. **Agente 2 "resumidor" (Etapa 3 - Pendiente)**: Recibe los procesos `aptoPyme: "si"`, consulta los pliegos mediante la tool `leer_pliego` y genera un resumen ejecutivo claro para una pyme.
+5. **Agente 3 "documentos" (Etapa 4 - Pendiente)**: Identifica requisitos habilitantes y arma la lista de documentos exigidos mediante la tool `armar_lista_documentos`.
+6. **Código (reporte final - Etapa 5 - Pendiente)**: Consolida la entrega diaria lista para consumo.
 
-### Archivos existentes / clave
+---
 
-| Archivo | Rol |
-|---|---|
-| `src/llm.ts` | `ChatOpenAI` apuntando al gateway Grok del Reto. |
-| `src/cost.ts` | `registrarCosto` -> `logs/tokens.jsonl` (tokens por llamada). |
-| `src/config/entorno.ts` | Carga `.env`; lee `SECOP_FECHA_PRUEBA`; `modoEjecucion()`. |
-| `src/config/secop.ts` | Dataset, endpoint, paginación, modalidades competitivas. |
-| `src/config/prefiltro.ts` | Parámetros editables del pre-filtro. |
-| `src/datos/socrata.ts` | `fechaHoy()`, `descargarHoy()`. |
-| `src/filtro/prefiltro.ts` | `prefiltrar()` -> `{ total, descartadosPorRegla, candidatos }`. |
-| `src/herramientas/filtro-basico.ts` | Tool `filtro_basico` (25 candidatos/página, memoizado). |
-| `src/agentes/prompts/filtrador.ts` | System prompt constante del Agente 1 (filtrador). |
-| `src/agentes/filtrador.ts` | Agente 1 `agente_filtrador` (`createAgent` + Grok + `ResultadoPagina`). |
-| `src/pipeline/filtrar-pymes.ts` | Runner: validación de IDs, concurrencia 2, reintentos y tokens. |
-| `src/tools/correr-filtrador.ts` | CLI del Agente 1 (`pnpm filtrar`, flags `--max` y `--completo`). |
-| `src/trazas.ts` | `iniciarTrazas`, `configEjecucion`, `opcionesTraceable`, `cerrarTrazas`. |
-| `src/tools/probar-datos.ts` | Prueba de datos sin LLM (`pnpm probar:datos`). |
-| `src/index.ts`, `src/test-grok.ts` | Esqueleto y prueba del gateway. |
-| `Dockerfile`, `docker-compose.yml` | Ejecución en contenedor (`logs/` montado). |
+## 2. Reglas Globales Inmutables
 
-### Trazas (LangSmith)
+1. **Seguridad y Secretos**: NUNCA leer, imprimir, modificar ni commitear `.env`. Los secretos jamás se hardcodean.
+2. **Docs-First**: No confiar en memoria para APIs de LangChain / LangGraph / LangSmith. Revisar la documentación oficial (https://docs.langchain.com/oss/javascript/) y los archivos de tipos instalados (`.d.ts`).
+3. **TypeScript Estricto & ESM**: Imports relativos con sufijo obligatorio `.js`. Comentarios explicativos en español. Cero errores en `pnpm typecheck`.
+4. **Trazabilidad 100%**: Toda llamada a modelo o pipeline debe quedar registrada en LangSmith (proyecto `secop-rastreador`) y registrar tokens en `logs/tokens.jsonl` a través de `src/cost.ts`.
+5. **GUARDA DE CRÉDITOS (Estricta)**: Los créditos de Grok son limitados.
+   - Cualquier comando que invoque LLM **debe operar por defecto en un lote pequeño** (máx. 1 página / 25 procesos).
+   - Solo procesa el día completo si se especifica explícitamente la bandera `--completo`.
+   - Prohibido realizar bucles sin tope duro.
+6. **Regla de Fecha (Solo HOY)**:
+   - Producción procesa **ÚNICAMENTE** procesos con `fecha_de_publicacion_del` del día de hoy en hora Colombia (UTC-5).
+   - `descargarHoy()` no recibe parámetro de fecha. Si hoy hay 0 procesos, devuelve lista vacía y mensaje claro; **NUNCA recurre a otra fecha**.
+   - **Única excepción de desarrollo**: La variable de entorno `SECOP_FECHA_PRUEBA=YYYY-MM-DD` (apagada por defecto). Si está activa, emite una advertencia ruidosa en consola, marca `modo: "prueba"` en las trazas y utiliza la caché local en `data/dias/<fecha>.json`.
 
-- Variables: `LANGSMITH_TRACING=true`, `LANGSMITH_API_KEY`, `LANGSMITH_PROJECT=secop-rastreador`.
-- Si las trazas están activas pero la clave falta o es inválida: UNA advertencia y se sigue sin trazas.
-- Pasos de código: `traceable(fn, opcionesTraceable({...}))` (registran resúmenes, no todas las filas).
-- Llamadas LangChain/LangGraph: pasar `configEjecucion({ runName, tags, metadata })` como config.
-- Metadata común: `modo` (`"produccion"` | `"prueba"`) y `fecha_prueba` si aplica.
-- Llamar `iniciarTrazas()` al inicio y `cerrarTrazas()` antes de salir.
+---
 
-## 2. Reglas globales (válidas para todas las etapas)
+## 3. Estado de Avance por Etapas
 
-- Nunca leer, imprimir, modificar ni commitear `.env`. Nunca hardcodear secretos.
-- No confiar en la memoria para APIs de LangChain / LangGraph / LangSmith: leer la documentación
-  oficial (https://docs.langchain.com/oss/javascript/) y revisar los tipos de la versión instalada.
-  Si la realidad difiere del pedido, avisar en vez de adivinar.
-- Pasos pequeños, ejecutar cada uno, corregir errores. Nunca dejar código que falle.
-- TypeScript strict, ESM (imports relativos con sufijo `.js`). Comentarios en español.
-- Toda llamada al LLM debe ser trazable en LangSmith y registrar tokens con `src/cost.ts`.
-- **GUARDA DE CRÉDITOS**: los créditos de Grok son limitados. Todo comando que llame al LLM
-  procesa por defecto una corrida PEQUEÑA (máx. 10 procesos) y requiere la bandera explícita
-  `--completo` para procesar el día entero. Nunca iterar llamadas al LLM sin un tope duro.
-- Preguntar cuando un secreto, un nombre de modelo o una decisión de producto no esté claro.
-- Al final de cada etapa: listar archivos creados/cambiados, comandos ejecutados con su salida
-  y lo que NO se pudo verificar.
+| Etapa | Estado | Componentes Implementados |
+|---|:---:|---|
+| **Etapa 1** | **COMPLETA** | Capa de datos Socrata, pre-filtro determinista, setup de trazas LangSmith, script `probar-datos.ts`. |
+| **Etapa 2** | **COMPLETA** | Tool `filtro_basico`, Agente 1 `agente_filtrador` (`ResultadoPagina`), runner `filtrar-pymes.ts`, CLI `correr-filtrador.ts`, entrega `aptos.json`. |
+| **Etapa 3** | *Pendiente* | Agente 2 "resumidor", herramienta `leer_pliego`. |
+| **Etapa 4** | *Pendiente* | Agente 3 "documentos", herramienta `armar_lista_documentos`. |
+| **Etapa 5** | *Pendiente* | Pipeline integral orquestado y generación de reporte final. |
 
-### Regla de fecha
+---
 
-- Producción procesa SOLO los procesos con `fecha_de_publicacion_del` en
-  `[hoy 00:00:00, mañana 00:00:00)`, hora de Colombia (UTC-5 fijo).
-- `descargarHoy()` no recibe fecha. Si hoy no hay procesos: lista vacía + mensaje claro.
-  **Nunca** se recurre a otra fecha.
-- Única excepción de desarrollo: `SECOP_FECHA_PRUEBA=YYYY-MM-DD` (apagada por defecto).
-  Imprime una advertencia visible y marca `modo: "prueba"` en las trazas. Solo en este modo
-  se usa caché en `data/dias/<fecha>.json` (nunca para la fecha de hoy).
+## 4. Mapa del Código Fuente
 
-## 3. Diccionario de datos
+```text
+├── docs/
+│   └── CONTEXTO.md                      # Este archivo de referencia general
+├── src/
+│   ├── config/
+│   │   ├── entorno.ts                   # Carga centralizada de .env y validación de SECOP_FECHA_PRUEBA
+│   │   ├── secop.ts                     # Constantes de dataset p6dx-8zbt y modalidades competitivas
+│   │   └── prefiltro.ts                 # Umbrales editables del pre-filtro (VALOR_MAXIMO = 5.000M COP, etc.)
+│   ├── datos/
+│   │   └── socrata.ts                   # Descarga exclusiva de HOY (UTC-5), paginación, reintentos y caché de prueba
+│   ├── filtro/
+│   │   └── prefiltro.ts                 # Pre-filtro por código: descarte countable por regla y formato Candidato
+│   ├── herramientas/
+│   │   └── filtro-basico.ts             # Tool LangChain 'filtro_basico' (páginas de 25, memoizado, orden por id)
+│   ├── agentes/
+│   │   ├── prompts/
+│   │   │   └── filtrador.ts             # PROMPT_SISTEMA_FILTRADOR constante en español
+│   │   └── filtrador.ts                 # Agente 1 (createAgent + Grok + ResultadoPagina zod)
+│   ├── pipeline/
+│   │   └── filtrar-pymes.ts             # Orquestador Agente 1: concurrencia 2, reintentos, validación de IDs, tokens
+│   ├── tools/
+│   │   ├── probar-datos.ts              # CLI para probar descarga + prefiltro sin LLM (pnpm probar:datos)
+│   │   └── correr-filtrador.ts          # CLI para correr Agente 1 (pnpm filtrar [--max=N] [--completo])
+│   ├── llm.ts                           # Instancia compartida ChatOpenAI apuntando a Grok (Reto Gateway)
+│   ├── cost.ts                          # registrarCosto -> logs/tokens.jsonl
+│   └── trazas.ts                        # Helpers de LangSmith (iniciarTrazas, configEjecucion, opcionesTraceable)
+```
 
-### Dataset
+---
 
-- Nombre: "SECOP II - Procesos de Contratación"
-- Id: `p6dx-8zbt`
-- Endpoint: `https://www.datos.gov.co/resource/p6dx-8zbt.json`
-- SoQL: `$where`, `$order`, `$limit`, `$offset`. Paginación de 1000 filas,
-  `$order=id_del_proceso, :id` (`:id` = id interno de fila, desempata ids repetidos).
-- 3 reintentos con backoff (1 s, 2 s, 4 s) ante errores de red, 5xx y 429.
-- Socrata devuelve todos los valores como texto y **omite los campos nulos**.
+## 5. Contratos de Datos y Esquemas
 
-### Campos usados (verificados contra el dataset)
-
-| Campo Socrata | Tipo real | Uso | Notas |
-|---|---|---|---|
-| `id_del_proceso` | texto | `Candidato.id` | Ej. `CO1.REQ.11205497`. Puede repetirse. |
-| `nombre_del_procedimiento` | texto | `nombre` | |
-| `descripci_n_del_procedimiento` | texto | `descripcion` | Recortada a 2000 caracteres. |
-| `entidad` | texto | `entidad` | |
-| `departamento_entidad` | texto | `departamento` | |
-| `ciudad_entidad` | texto | `ciudad` | A veces `"No Definido"`. |
-| `tipo_de_contrato` | texto | `tipoDeContrato`, regla 3 | Ver valores abajo. |
-| `modalidad_de_contratacion` | texto | `modalidad`, consulta, regla 1 | Ver modalidades competitivas. |
-| `fase` | texto | `fase` | Existe en el esquema pero suele venir vacío (nulo). |
-| `estado_de_apertura_del_proceso` | texto | regla 2 | Valores: `Abierto`, `Cerrado`. |
-| `precio_base` | número como texto | `valor`, regla 4 | 0 / vacío / no numérico = desconocido. |
-| `fecha_de_publicacion_del` | fecha `YYYY-MM-DDT00:00:00.000` | consulta, `fechaPublicacion` | Solo fecha (hora 00:00). |
-| `urlproceso` | objeto `{ url }` | `url` | Con frecuencia es la URL genérica de login de SECOP. |
-
-Otros campos disponibles (no usados aún): `nit_entidad`, `ordenentidad`, `referencia_del_proceso`,
-`fecha_de_recepcion_de`, `fecha_de_apertura_de_respuesta`, `duracion`, `unidad_de_duracion`,
-`estado_del_procedimiento`, `adjudicado`, `codigo_principal_de_categoria` (UNSPSC, ej. `V1.50301501`),
-`subtipo_de_contrato`, `justificaci_n_modalidad_de`, `estado_resumen`.
-
-### Modalidades competitivas (cadenas exactas)
-
-- `Mínima cuantía`
-- `Selección Abreviada de Menor Cuantía`
-- `Selección abreviada subasta inversa`
-- `Concurso de méritos abierto`
-- `Licitación pública`
-- `Licitación pública Obra Publica`
-
-No incluidas (existen en el dataset): `Contratación directa`, `Contratación Directa (con ofertas)`,
-`Contratación régimen especial`, `Contratación régimen especial (con ofertas)`,
-`Seleccion Abreviada Menor Cuantia Sin Manifestacion Interes`, `Licitación Pública Acuerdo Marco de Precios`,
-`Solicitud de información a los Proveedores`, `Enajenación de bienes ...`, `Subasta de prueba`.
-
-### Valores observados de `tipo_de_contrato`
-
-`Compraventa`, `Suministros`, `Prestación de servicios`, `Obra`, `Consultoría`, `Interventoría`,
-`Arrendamiento de muebles`, `Negocio fiduciario`, `Servicios financieros`, `Seguros`, `Concesión`, `Otro`.
-
-### Pre-filtro básico (primera regla que aplica, cada una contada)
-
-1. `modalidad_no_competitiva` — modalidad fuera del conjunto competitivo (red de seguridad).
-2. `estado_cerrado` — `estado_de_apertura_del_proceso` = `Cerrado`.
-3. `tipo_contrato_excluido` — `tipo_de_contrato` en `["Seguros", "Concesión"]` (criterio editable).
-4. `valor_supera_maximo` — `precio_base` > `VALOR_MAXIMO` (5 000 000 000 COP, editable).
-5. `id_duplicado` — `id_del_proceso` ya visto.
-
-### Candidato (objeto compacto para los agentes)
-
-```ts
-{
-  id: string; nombre: string; descripcion: string /* máx 2000 */;
-  entidad: string; departamento: string; ciudad: string;
-  tipoDeContrato: string; modalidad: string; fase: string | null;
-  valor: number | null; fechaPublicacion: string | null /* YYYY-MM-DD */; url: string | null;
+### A. Candidato (Salida del Pre-filtro -> Entrada interna)
+```typescript
+interface Candidato {
+  id: string;                  // id_del_proceso (ej: "CO1.REQ.11205497")
+  nombre: string;              // nombre_del_procedimiento
+  descripcion: string;         // descripci_n_del_procedimiento (máx 2000 chars)
+  entidad: string;             // entidad compradora
+  departamento: string;        // departamento_entidad
+  ciudad: string;              // ciudad_entidad
+  tipoDeContrato: string;      // Compraventa, Prestación de servicios, etc.
+  modalidad: string;           // Mínima cuantía, Licitación pública, etc.
+  fase: string | null;         // Fase contractual
+  valor: number | null;        // precio_base numérico en COP (null si es 0 o desconocido)
+  fechaPublicacion: string;    // YYYY-MM-DD
+  url: string | null;          // Enlace al proceso en SECOP
 }
 ```
 
-### Observación operativa
+### B. Salida de `filtro_basico` (Para el Agente 1)
+Devuelve un string JSON:
+```json
+{
+  "pagina": 1,
+  "totalPaginas": 17,
+  "totalCandidatos": 423,
+  "estadisticasPrefiltro": { ... },
+  "candidatos": [
+    {
+      "id": "CO1.REQ.11205497",
+      "nombre": "...",
+      "descripcion": "... (máx 600 caracteres)",
+      "entidad": "...",
+      "departamento": "...",
+      "tipoDeContrato": "...",
+      "modalidad": "...",
+      "valor": 1309000,
+      "fase": "..."
+    }
+  ]
+}
+```
 
-El dataset se publica con retraso: el 2026-10-17 a media mañana, el día 16 no tenía procesos
-competitivos y el 17 ninguno. Con la regla "solo hoy" es esperable que muchas corridas den 0 filas.
+### C. Salida Estructurada de Agente 1 (`ResultadoPagina` Zod)
+```typescript
+{
+  pagina: number,
+  resultados: Array<{
+    id: string,
+    aptoPyme: "si" | "no" | "dudoso",
+    categoriaObjeto: string,     // 2 a 4 palabras (ej: "evaluación psicosocial")
+    razon: string,               // Máximo 20 palabras
+    senales: string[]            // Frases cortas de respaldo
+  }>
+}
+```
+
+### D. Archivo de Entrega de Etapa 2 (`data/entregas/<fecha>/aptos.json`)
+Base para el Agente 2 de la Etapa 3:
+```json
+{
+  "fecha": "YYYY-MM-DD",
+  "modo": "produccion | prueba",
+  "totalCandidatos": 423,
+  "paginasProcesadas": 1,
+  "totalPaginasDisponibles": 17,
+  "estadisticasClasificacion": { "si": 20, "no": 5, "dudoso": 0, "total": 25 },
+  "tokens": { "entrada": 7564, "salida": 2598, "total": 15280 },
+  "resultados": [
+    {
+      "id": "CO1.REQ.11205497",
+      "aptoPyme": "si",
+      "categoriaObjeto": "evaluación psicosocial",
+      "razon": "Mínima cuantía de bajo valor que una pyme puede prestar.",
+      "senales": ["mínima cuantía", "valor 1.3 millones"],
+      "proceso": { ...datos completos del candidato... }
+    }
+  ]
+}
+```
+
+---
+
+## 6. Comandos de Terminal para Pruebas y Operación
+
+```powershell
+# 1. Verificación estricta de TypeScript (siempre debe dar 0 errores)
+pnpm typecheck
+
+# 2. Probar capa de datos + prefiltro sin consumir LLM
+pnpm probar:datos                                    # Ejecución para el día de hoy
+$env:SECOP_FECHA_PRUEBA="2026-10-15"; pnpm probar:datos # Ejecución con fecha histórica de prueba
+
+# 3. Ejecutar Agente 1 (filtrador) con guarda de créditos
+pnpm filtrar                                         # Procesa 1 página (máx 25 candidatos) para hoy
+pnpm filtrar --max=50                                # Procesa hasta 2 páginas (50 candidatos)
+$env:SECOP_FECHA_PRUEBA="2026-10-15"; pnpm filtrar  # Procesa 1 página sobre la fecha de prueba
+$env:SECOP_FECHA_PRUEBA="2026-10-15"; pnpm filtrar --completo # Procesa TODO el día de prueba
+
+# 4. Abrir dashboard de LangSmith
+Start-Process "https://smith.langchain.com"
+```
