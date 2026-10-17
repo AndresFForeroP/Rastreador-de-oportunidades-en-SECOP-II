@@ -33,8 +33,13 @@ No hay otra fecha en el código de producción.
 | `src/config/prefiltro.ts` | Parámetros editables del pre-filtro. |
 | `src/datos/socrata.ts` | `fechaHoy()`, `descargarHoy()`. |
 | `src/filtro/prefiltro.ts` | `prefiltrar()` -> `{ total, descartadosPorRegla, candidatos }`. |
+| `src/herramientas/filtro-basico.ts` | Tool `filtro_basico` (25 candidatos/página, memoizado). |
+| `src/agentes/prompts/filtrador.ts` | System prompt constante del Agente 1 (filtrador). |
+| `src/agentes/filtrador.ts` | Agente 1 `agente_filtrador` (`createAgent` + Grok + `ResultadoPagina`). |
+| `src/pipeline/filtrar-pymes.ts` | Runner: validación de IDs, concurrencia 2, reintentos y tokens. |
+| `src/tools/correr-filtrador.ts` | CLI del Agente 1 (`pnpm filtrar`, flags `--max` y `--completo`). |
 | `src/trazas.ts` | `iniciarTrazas`, `configEjecucion`, `opcionesTraceable`, `cerrarTrazas`. |
-| `src/tools/probar-datos.ts` | Prueba sin LLM (`pnpm probar:datos`). |
+| `src/tools/probar-datos.ts` | Prueba de datos sin LLM (`pnpm probar:datos`). |
 | `src/index.ts`, `src/test-grok.ts` | Esqueleto y prueba del gateway. |
 | `Dockerfile`, `docker-compose.yml` | Ejecución en contenedor (`logs/` montado). |
 

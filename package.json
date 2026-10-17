@@ -9,6 +9,7 @@
     "dev": "tsx src/tools/probar-datos.ts",
     "test:grok": "tsx src/test-grok.ts",
     "probar:datos": "tsx src/tools/probar-datos.ts",
+    "filtrar": "tsx src/tools/correr-filtrador.ts",
     "typecheck": "tsc --noEmit"
   },
   "license": "ISC",
