@@ -19,6 +19,11 @@ logs/
 npm-debug.log*
 pnpm-debug.log*
 
+# Generated data (test-date cache, deliveries, reports)
+data/dias/
+data/entregas/
+data/reportes/
+
 # Build output / tooling
 dist/
 .DS_Store

@@ -6,7 +6,9 @@
   "type": "module",
   "scripts": {
     "start": "tsx src/index.ts",
+    "dev": "tsx src/tools/probar-datos.ts",
     "test:grok": "tsx src/test-grok.ts",
+    "probar:datos": "tsx src/tools/probar-datos.ts",
     "typecheck": "tsc --noEmit"
   },
   "license": "ISC",
@@ -26,6 +28,7 @@
     "@langchain/openai": "^1.6.2",
     "dotenv": "^18.0.6",
     "langchain": "^1.5.15",
+    "langsmith": "^0.10.8",
     "zod": "^4.6.5"
   },
   "devDependencies": {
