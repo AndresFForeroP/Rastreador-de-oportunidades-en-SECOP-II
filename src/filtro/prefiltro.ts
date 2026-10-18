@@ -18,7 +18,9 @@
  * Todo lo demás pasa como candidato para el agente "filtrador".
  */
 import { traceable } from "langsmith/traceable";
+import { leerFechaPrueba } from "../config/entorno.js";
 import {
+  DESCARTAR_OFERTA_VENCIDA,
   ESTADOS_DESCARTADOS,
   LARGO_MAX_DESCRIPCION,
   TIPOS_CONTRATO_EXCLUIDOS,
@@ -33,12 +35,13 @@ export const REGLAS_DESCARTE = [
   "estado_cerrado",
   "tipo_contrato_excluido",
   "valor_supera_maximo",
+  "oferta_vencida",
   "id_duplicado",
 ] as const;
 
 export type ReglaDescarte = (typeof REGLAS_DESCARTE)[number];
 
-/** Proceso compacto que se entrega a los agentes. */
+/** Proceso compacto enriquecido con campos reales de p6dx-8zbt. */
 export interface Candidato {
   id: string;
   nombre: string;
@@ -55,6 +58,22 @@ export interface Candidato {
   /** YYYY-MM-DD */
   fechaPublicacion: string | null;
   url: string | null;
+  /** fecha_de_recepcion_de (plazo máximo para presentar propuestas) */
+  fechaLimiteOfertas: string | null;
+  /** duracion numérica estimada del contrato */
+  duracion: number | null;
+  /** unidad_de_duracion (ej: Mes(es), día(s), Hora(s)) */
+  unidadDuracion: string | null;
+  /** numero_de_lotes (0 = sin lotes, >0 = número de lotes) */
+  numeroLotes: number | null;
+  /** justificaci_n_modalidad_de */
+  justificacionModalidad: string | null;
+  /** nombre_de_la_unidad_de */
+  unidadContratante: string | null;
+  /** ciudad_de_la_unidad_de */
+  ciudadUnidad: string | null;
+  /** id_del_portafolio (clave para consultar anexos en dmgg-8hin) */
+  idPortafolio: string | null;
 }
 
 export interface ResultadoPrefiltro {
@@ -77,8 +96,48 @@ export function parsearValor(v: unknown): number | null {
   return Number.isFinite(n) && n > 0 ? n : null;
 }
 
+/** Convierte cadenas numéricas generales a number o null si no es finito. */
+export function parsearNumero(v: unknown): number | null {
+  const s = texto(v);
+  if (!s) return null;
+  const n = Number(s);
+  return Number.isFinite(n) ? n : null;
+}
+
 function recortar(s: string, max: number): string {
   return s.length <= max ? s : `${s.slice(0, max - 1)}…`;
+}
+
+/**
+ * Obtiene el instante de referencia para evaluar vigencia en hora Colombia (UTC-5).
+ * En modo prueba con SECOP_FECHA_PRUEBA, evalúa contra el final de ese día de prueba (23:59:59.999).
+ */
+export function obtenerInstanteReferencia(referencia?: Date | string): Date {
+  if (referencia instanceof Date) return referencia;
+  if (typeof referencia === "string" && referencia.trim()) {
+    return new Date(`${referencia.slice(0, 10)}T23:59:59.999-05:00`);
+  }
+  const fechaPrueba = leerFechaPrueba();
+  if (fechaPrueba) {
+    return new Date(`${fechaPrueba}T23:59:59.999-05:00`);
+  }
+  return new Date();
+}
+
+/**
+ * Evalúa si la fecha límite de ofertas ya venció respecto al instante de referencia.
+ * Si el campo falta (null, undefined, vacío), se CONSERVA (retorna false).
+ */
+export function estaOfertaVencida(
+  fechaRecepcion: unknown,
+  instanteReferencia: Date = obtenerInstanteReferencia(),
+): boolean {
+  const s = texto(fechaRecepcion);
+  if (!s) return false; // Falta la fecha => se conserva
+  const isoNormalizado = s.length >= 19 ? s.slice(0, 19) : s;
+  const fechaMs = new Date(`${isoNormalizado}-05:00`).getTime();
+  if (Number.isNaN(fechaMs)) return false;
+  return fechaMs < instanteReferencia.getTime();
 }
 
 /** Devuelve la regla que descarta la fila, o null si se conserva. */
@@ -92,6 +151,7 @@ function reglaQueDescarta(fila: FilaSecop, idsVistos: Set<string>): ReglaDescart
   if (tiposExcluidos.has(texto(fila.tipo_de_contrato))) return "tipo_contrato_excluido";
   const valor = parsearValor(fila.precio_base);
   if (valor !== null && valor > VALOR_MAXIMO) return "valor_supera_maximo";
+  if (DESCARTAR_OFERTA_VENCIDA && estaOfertaVencida(fila.fecha_de_recepcion_de)) return "oferta_vencida";
   if (yaVisto) return "id_duplicado";
   return null;
 }
@@ -111,6 +171,14 @@ function aCandidato(fila: FilaSecop): Candidato {
     valor: parsearValor(fila.precio_base),
     fechaPublicacion: fecha ? fecha.slice(0, 10) : null,
     url: texto(fila.urlproceso?.url) || null,
+    fechaLimiteOfertas: texto(fila.fecha_de_recepcion_de) || null,
+    duracion: parsearNumero(fila.duracion),
+    unidadDuracion: texto(fila.unidad_de_duracion) || null,
+    numeroLotes: parsearNumero(fila.numero_de_lotes),
+    justificacionModalidad: texto(fila.justificaci_n_modalidad_de) || null,
+    unidadContratante: texto(fila.nombre_de_la_unidad_de) || null,
+    ciudadUnidad: texto(fila.ciudad_de_la_unidad_de) || null,
+    idPortafolio: texto(fila.id_del_portafolio) || null,
   };
 }
 

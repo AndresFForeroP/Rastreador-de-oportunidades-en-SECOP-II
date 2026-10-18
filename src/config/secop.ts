@@ -9,6 +9,12 @@ export const DATASET_ID = "p6dx-8zbt";
 /** Endpoint SODA (SoQL: $where, $order, $limit, $offset). */
 export const ENDPOINT_SECOP = `https://www.datos.gov.co/resource/${DATASET_ID}.json`;
 
+/** Identificador del dataset de archivos descargables desde 2025. */
+export const DATASET_ARCHIVOS_ID = "dmgg-8hin";
+
+/** Endpoint SODA de archivos de descarga. */
+export const ENDPOINT_ARCHIVOS = `https://www.datos.gov.co/resource/${DATASET_ARCHIVOS_ID}.json`;
+
 /** Tamaño de página de la paginación. */
 export const TAMANO_PAGINA = 1000;
 

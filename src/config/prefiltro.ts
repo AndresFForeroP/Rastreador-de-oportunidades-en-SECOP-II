@@ -29,3 +29,11 @@ export const VALOR_MAXIMO = 5_000_000_000;
 
 /** Largo máximo de la descripción en el candidato compacto. */
 export const LARGO_MAX_DESCRIPCION = 2000;
+
+/**
+ * Regla de descarte por plazo de ofertas vencido:
+ * Si fechaLimiteOfertas (fecha_de_recepcion_de) es anterior al momento de
+ * referencia (hora Colombia), ya no es posible presentar propuestas.
+ * Si el campo falta (null o vacío), se CONSERVA (keep when missing).
+ */
+export const DESCARTAR_OFERTA_VENCIDA = true;

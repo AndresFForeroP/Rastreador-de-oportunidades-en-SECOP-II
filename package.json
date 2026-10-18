@@ -10,6 +10,7 @@
     "test:grok": "tsx src/test-grok.ts",
     "probar:datos": "tsx src/tools/probar-datos.ts",
     "filtrar": "tsx src/tools/correr-filtrador.ts",
+    "resumir": "tsx src/tools/correr-resumidor.ts",
     "typecheck": "tsc --noEmit"
   },
   "license": "ISC",

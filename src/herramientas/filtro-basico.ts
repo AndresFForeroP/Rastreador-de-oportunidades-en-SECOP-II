@@ -8,7 +8,7 @@
 import { tool } from "langchain";
 import * as z from "zod";
 import { descargarHoy } from "../datos/socrata.js";
-import { prefiltrar, type ReglaDescarte } from "../filtro/prefiltro.js";
+import { prefiltrar, type Candidato, type ReglaDescarte } from "../filtro/prefiltro.js";
 
 /** Tamaño de página para el filtrador (25 candidatos por llamada). */
 export const TAMANO_PAGINA_FILTRO = 25;
@@ -39,6 +39,7 @@ export interface RespuestaFiltroBasico {
 
 interface CacheDatos {
   candidatosOrdenados: CandidatoHerramienta[];
+  candidatosCompletos: Map<string, Candidato>;
   estadisticasPrefiltro: Record<ReglaDescarte, number>;
   totalPaginas: number;
 }
@@ -57,6 +58,11 @@ export async function cargarDatosMemoizados(): Promise<CacheDatos> {
   promesaCache ??= (async () => {
     const descarga = await descargarHoy();
     const resultado = await prefiltrar(descarga.filas);
+
+    const candidatosCompletos = new Map<string, Candidato>();
+    for (const c of resultado.candidatos) {
+      candidatosCompletos.set(c.id, c);
+    }
 
     // Ordenamiento estable por id ascendente
     const candidatosOrdenados: CandidatoHerramienta[] = resultado.candidatos
@@ -78,12 +84,19 @@ export async function cargarDatosMemoizados(): Promise<CacheDatos> {
 
     return {
       candidatosOrdenados,
+      candidatosCompletos,
       estadisticasPrefiltro: resultado.descartadosPorRegla,
       totalPaginas,
     };
   })();
 
   return promesaCache;
+}
+
+/** Obtiene el candidato completo por id_del_proceso desde la caché memoizada. */
+export async function obtenerCandidatoPorId(id: string): Promise<Candidato | undefined> {
+  const datos = await cargarDatosMemoizados();
+  return datos.candidatosCompletos.get(id);
 }
 
 /** Permite reiniciar la caché en pruebas si es necesario. */

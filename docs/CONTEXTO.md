@@ -21,9 +21,9 @@ El sistema opera bajo un flujo diario multi-agente en 5 etapas secuenciales:
 ```
 
 1. **Código (descarga)**: Descarga exclusivamente los procesos competitivos de SECOP II publicados **HOY** (hora Colombia, UTC-5).
-2. **Código (pre-filtro básico)**: Descarta por reglas deterministas (modalidad no competitiva, estado cerrado, tipos excluidos como seguros/concesiones, valor > $5.000M COP, duplicados).
+2. **Código (pre-filtro básico)**: Descarta por reglas deterministas (modalidad no competitiva, estado cerrado, tipos excluidos como seguros/concesiones, valor > $5.000M COP, fecha límite de ofertas vencida, duplicados).
 3. **Agente 1 "filtrador" (`agente_filtrador`)**: Evalúa candidatos pre-filtrados en páginas de 25 mediante la tool `filtro_basico` y clasifica `aptoPyme: "si" | "no" | "dudoso"`. Genera `data/entregas/<fecha>/aptos.json`.
-4. **Agente 2 "resumidor" (Etapa 3 - Pendiente)**: Recibe los procesos `aptoPyme: "si"`, consulta los pliegos mediante la tool `leer_pliego` y genera un resumen ejecutivo claro para una pyme.
+4. **Agente 2 "resumidor" (`agente_resumidor` - Etapa 3)**: Recibe los procesos `aptoPyme: "si"` (y opcionalmente `"dudoso"`), consulta la ficha técnica enriquecida mediante la tool `obtener_ficha_proceso` (reemplaza a la hipotética `leer_pliego`) y genera un resumen honesto, alertas fundamentadas y puntos a verificar en el pliego para la pyme.
 5. **Agente 3 "documentos" (Etapa 4 - Pendiente)**: Identifica requisitos habilitantes y arma la lista de documentos exigidos mediante la tool `armar_lista_documentos`.
 6. **Código (reporte final - Etapa 5 - Pendiente)**: Consolida la entrega diaria lista para consumo.
 
@@ -36,13 +36,17 @@ El sistema opera bajo un flujo diario multi-agente en 5 etapas secuenciales:
 3. **TypeScript Estricto & ESM**: Imports relativos con sufijo obligatorio `.js`. Comentarios explicativos en español. Cero errores en `pnpm typecheck`.
 4. **Trazabilidad 100%**: Toda llamada a modelo o pipeline debe quedar registrada en LangSmith (proyecto `secop-rastreador`) y registrar tokens en `logs/tokens.jsonl` a través de `src/cost.ts`.
 5. **GUARDA DE CRÉDITOS (Estricta)**: Los créditos de Grok son limitados.
-   - Cualquier comando que invoque LLM **debe operar por defecto en un lote pequeño** (máx. 1 página / 25 procesos).
-   - Solo procesa el día completo si se especifica explícitamente la bandera `--completo`.
+   - Cualquier comando que invoque LLM **debe operar por defecto en un lote pequeño** (Agente 1: máx 1 página / 25 procesos; Agente 2: máx 5 procesos).
+   - Solo procesa el lote completo si se especifica explícitamente la bandera `--completo`.
    - Prohibido realizar bucles sin tope duro.
 6. **Regla de Fecha (Solo HOY)**:
    - Producción procesa **ÚNICAMENTE** procesos con `fecha_de_publicacion_del` del día de hoy en hora Colombia (UTC-5).
    - `descargarHoy()` no recibe parámetro de fecha. Si hoy hay 0 procesos, devuelve lista vacía y mensaje claro; **NUNCA recurre a otra fecha**.
    - **Única excepción de desarrollo**: La variable de entorno `SECOP_FECHA_PRUEBA=YYYY-MM-DD` (apagada por defecto). Si está activa, emite una advertencia ruidosa en consola, marca `modo: "prueba"` en las trazas y utiliza la caché local en `data/dias/<fecha>.json`.
+7. **Regla de Honestidad sobre Pliegos y Protección Anti-Bot**:
+   - Las páginas web del portal SECOP II (`community.secop.gov.co/Public/Tendering/OpportunityDetail/Index?noticeUID=...`) están protegidas por Google ReCaptcha. El código **NUNCA debe hacer peticiones HTTP a esas URLs**.
+   - El contenido del pliego **NO es legible de forma automatizada**. El Agente 2 **NUNCA debe afirmar ni sugerir que leyó el pliego**.
+   - Los requisitos habilitantes (experiencia específica, capacidad financiera RUP, garantías, criterios ponderables) **NO están en los datos abiertos de Socrata**. El sistema nunca los inventa ni los supone; en su lugar, instruye a la pyme sobre qué debe verificar en el pliego oficial.
 
 ---
 
@@ -52,7 +56,7 @@ El sistema opera bajo un flujo diario multi-agente en 5 etapas secuenciales:
 |---|:---:|---|
 | **Etapa 1** | **COMPLETA** | Capa de datos Socrata, pre-filtro determinista, setup de trazas LangSmith, script `probar-datos.ts`. |
 | **Etapa 2** | **COMPLETA** | Tool `filtro_basico`, Agente 1 `agente_filtrador` (`ResultadoPagina`), runner `filtrar-pymes.ts`, CLI `correr-filtrador.ts`, entrega `aptos.json`. |
-| **Etapa 3** | *Pendiente* | Agente 2 "resumidor", herramienta `leer_pliego`. |
+| **Etapa 3** | **EN CURSO (3B)** | Tool `obtener_ficha_proceso`, Agente 2 `agente_resumidor`, runner `resumir-procesos.ts`, CLI `correr-resumidor.ts`. |
 | **Etapa 4** | *Pendiente* | Agente 3 "documentos", herramienta `armar_lista_documentos`. |
 | **Etapa 5** | *Pendiente* | Pipeline integral orquestado y generación de reporte final. |
 
@@ -106,33 +110,22 @@ interface Candidato {
   fase: string | null;         // Fase contractual
   valor: number | null;        // precio_base numérico en COP (null si es 0 o desconocido)
   fechaPublicacion: string;    // YYYY-MM-DD
-  url: string | null;          // Enlace al proceso en SECOP
+  url: string | null;          // Enlace al proceso en SECOP (urlproceso)
+  // Campos extendidos reales de p6dx-8zbt (Etapa 3B):
+  fechaLimiteOfertas: string | null; // fecha_de_recepcion_de (plazo de ofertas)
+  duracion: number | null;           // duracion (numérica)
+  unidadDuracion: string | null;     // unidad_de_duracion (Mes(es), día(s), Hora(s))
+  numeroLotes: number | null;        // numero_de_lotes (0 = sin lotes, >0 = con lotes)
+  justificacionModalidad: string | null; // justificaci_n_modalidad_de
+  unidadContratante: string | null;  // nombre_de_la_unidad_de
+  ciudadUnidad: string | null;       // ciudad_de_la_unidad_de
+  idPortafolio: string | null;       // id_del_portafolio (clave para dmgg-8hin)
 }
+// NOTA: NO se usan 'subtipo_de_contrato' (siempre "No Definido") ni 'codigo_principal_de_categoria' (99% "UNSPECIFIED").
 ```
 
 ### B. Salida de `filtro_basico` (Para el Agente 1)
-Devuelve un string JSON:
-```json
-{
-  "pagina": 1,
-  "totalPaginas": 17,
-  "totalCandidatos": 423,
-  "estadisticasPrefiltro": { ... },
-  "candidatos": [
-    {
-      "id": "CO1.REQ.11205497",
-      "nombre": "...",
-      "descripcion": "... (máx 600 caracteres)",
-      "entidad": "...",
-      "departamento": "...",
-      "tipoDeContrato": "...",
-      "modalidad": "...",
-      "valor": 1309000,
-      "fase": "..."
-    }
-  ]
-}
-```
+Devuelve un string JSON con páginas de 25 candidatos.
 
 ### C. Salida Estructurada de Agente 1 (`ResultadoPagina` Zod)
 ```typescript
@@ -149,26 +142,73 @@ Devuelve un string JSON:
 ```
 
 ### D. Archivo de Entrega de Etapa 2 (`data/entregas/<fecha>/aptos.json`)
-Base para el Agente 2 de la Etapa 3:
-```json
-{
-  "fecha": "YYYY-MM-DD",
-  "modo": "produccion | prueba",
-  "totalCandidatos": 423,
-  "paginasProcesadas": 1,
-  "totalPaginasDisponibles": 17,
-  "estadisticasClasificacion": { "si": 20, "no": 5, "dudoso": 0, "total": 25 },
-  "tokens": { "entrada": 7564, "salida": 2598, "total": 15280 },
-  "resultados": [
-    {
-      "id": "CO1.REQ.11205497",
-      "aptoPyme": "si",
-      "categoriaObjeto": "evaluación psicosocial",
-      "razon": "Mínima cuantía de bajo valor que una pyme puede prestar.",
-      "senales": ["mínima cuantía", "valor 1.3 millones"],
-      "proceso": { ...datos completos del candidato... }
-    }
-  ]
+Contiene los procesos clasificados aptos para pymes por el Agente 1.
+
+### E. Ficha del Proceso (`obtener_ficha_proceso` para el Agente 2)
+Construida en código a partir de los datos verificados del candidato + anexos indexados (best-effort en `dmgg-8hin`):
+```typescript
+interface FichaProceso {
+  id: string;
+  nombre: string;
+  descripcion: string;
+  entidad: string;
+  unidadContratante: string | null;
+  departamento: string;
+  ciudad: string;
+  modalidad: string;
+  justificacionModalidad: string | null;
+  tipoDeContrato: string;
+  fase: string | null;
+  valorCOP: number | null;
+  fechaPublicacion: string;
+  fechaLimiteOfertas: string | null;
+  diasRestantes: number | null;
+  vencido: boolean | null;
+  duracion: { cantidad: number | null; unidad: string | null };
+  lotes: number | null;
+  anexos: {
+    estado: "con_anexos" | "sin_anexos_indexados" | "no_consultado_por_error";
+    total: number;
+    truncado: boolean;
+    lista: Array<{ nombre: string; extension: string; tamanoKB: number }>; // máx 30
+  };
+}
+```
+
+### F. Salida Estructurada del Agente 2 (`ResumenProceso` Zod)
+```typescript
+interface ResumenProceso {
+  id: string;
+  resumen: string;                      // Máximo 100 palabras, lenguaje simple
+  alertasParaPyme: Array<{
+    alerta: string;
+    basadoEn: string;                   // Clave exacta de FichaProceso
+  }>;
+  verificarEnElPliego: string[];        // Requisitos y condiciones a revisar
+  comentarioAnexos: string | null;       // Observación prudente sobre anexos indexados
+}
+```
+
+### G. Archivo de Entrega de Etapa 3 (`data/entregas/<fecha>/resumenes.json`)
+```typescript
+interface EntregaResumenes {
+  fecha: string;
+  modo: "produccion" | "prueba";
+  totalAptos: number;
+  totalProcesados: number;
+  tokens: { entrada: number; salida: number; total: number };
+  resumenes: Array<{
+    id: string;
+    diasRestantes: number | null;
+    ficha: FichaProceso;
+    resumen: string;
+    alertasParaPyme: Array<{ alerta: string; basadoEn: string }>;
+    verificarEnElPliego: string[];
+    comentarioAnexos: string | null;
+    advertencias: string[];             // Guardas de código (números no respaldados o basadoEn inválido)
+    urlProceso: string | null;
+    anexosUrls?: Array<{ nombre: string; urlDescarga: string }>;
+  }>;
 }
 ```
 
@@ -190,6 +230,13 @@ pnpm filtrar --max=50                                # Procesa hasta 2 páginas 
 $env:SECOP_FECHA_PRUEBA="2026-10-15"; pnpm filtrar  # Procesa 1 página sobre la fecha de prueba
 $env:SECOP_FECHA_PRUEBA="2026-10-15"; pnpm filtrar --completo # Procesa TODO el día de prueba
 
-# 4. Abrir dashboard de LangSmith
+# 4. Ejecutar Agente 2 (resumidor) con guarda de créditos
+pnpm resumir                                         # Procesa por defecto 5 procesos aptos de hoy
+pnpm resumir --max=10                                # Procesa hasta 10 procesos aptos
+pnpm resumir --incluir-dudosos                       # Incluye clasificados como "dudoso"
+$env:SECOP_FECHA_PRUEBA="2026-10-15"; pnpm resumir  # Procesa procesos aptos de la fecha de prueba
+$env:SECOP_FECHA_PRUEBA="2026-10-15"; pnpm resumir --completo # Procesa TODOS los aptos de la fecha
+
+# 5. Abrir dashboard de LangSmith
 Start-Process "https://smith.langchain.com"
 ```
