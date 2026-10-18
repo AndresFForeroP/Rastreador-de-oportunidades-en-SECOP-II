@@ -34,9 +34,12 @@ El sistema opera bajo un flujo diario multi-agente en 5 etapas secuenciales:
 1. **Seguridad y Secretos**: NUNCA leer, imprimir, modificar ni commitear `.env`. Los secretos jamás se hardcodean.
 2. **Docs-First**: No confiar en memoria para APIs de LangChain / LangGraph / LangSmith. Revisar la documentación oficial (https://docs.langchain.com/oss/javascript/) y los archivos de tipos instalados (`.d.ts`).
 3. **TypeScript Estricto & ESM**: Imports relativos con sufijo obligatorio `.js`. Comentarios explicativos en español. Cero errores en `pnpm typecheck`.
-4. **Trazabilidad 100%**: Toda llamada a modelo o pipeline debe quedar registrada en LangSmith (proyecto `secop-rastreador`) y registrar tokens en `logs/tokens.jsonl` a través de `src/cost.ts`.
+4. **Trazabilidad & Contabilidad de Tokens**:
+   - Toda llamada a modelo o pipeline debe quedar registrada en LangSmith (proyecto `secop-rastreador`) y registrar tokens en `logs/tokens.jsonl` a través de `src/cost.ts`.
+   - **Discrepancia entre `input + output` y `tokens_total`**: En modelos como Grok (`grok-4.6`), la API genera tokens internos de razonamiento (*reasoning tokens* / cadena de pensamiento interna). `tokens_salida` refleja únicamente los tokens visibles en la respuesta, mientras que `tokens_total` incluye los tokens de entrada + salida visible + tokens de razonamiento (`output_token_details.reasoning`).
+   - **Regla estricta de presupuesto**: El presupuesto de créditos y la estimación de costos **DEBEN guiarse siempre por la cifra de `tokens_total`**, pues es la que factura la plataforma.
 5. **GUARDA DE CRÉDITOS (Estricta)**: Los créditos de Grok son limitados.
-   - Cualquier comando que invoque LLM **debe operar por defecto en un lote pequeño** (Agente 1: máx 1 página / 25 procesos; Agente 2: máx 5 procesos).
+   - Cualquier comando que invoque LLM **debe operar por defecto en un lote pequeño** (Agente 1: máx 1 página / 25 procesos; Agente 2: máx 5 procesos; Agente 3: omite llamada a LLM en procesos sin anexos indexados).
    - Solo procesa el lote completo si se especifica explícitamente la bandera `--completo`.
    - Prohibido realizar bucles sin tope duro.
 6. **Regla de Fecha (Solo HOY)**:
@@ -56,8 +59,8 @@ El sistema opera bajo un flujo diario multi-agente en 5 etapas secuenciales:
 |---|:---:|---|
 | **Etapa 1** | **COMPLETA** | Capa de datos Socrata, pre-filtro determinista, setup de trazas LangSmith, script `probar-datos.ts`. |
 | **Etapa 2** | **COMPLETA** | Tool `filtro_basico`, Agente 1 `agente_filtrador` (`ResultadoPagina`), runner `filtrar-pymes.ts`, CLI `correr-filtrador.ts`, entrega `aptos.json`. |
-| **Etapa 3** | **EN CURSO (3B)** | Tool `obtener_ficha_proceso`, Agente 2 `agente_resumidor`, runner `resumir-procesos.ts`, CLI `correr-resumidor.ts`. |
-| **Etapa 4** | *Pendiente* | Agente 3 "documentos", herramienta `armar_lista_documentos`. |
+| **Etapa 3** | **COMPLETA** | Tool `obtener_ficha_proceso`, Agente 2 `agente_resumidor`, runner `resumir-procesos.ts`, CLI `correr-resumidor.ts`, entrega `resumenes.json`. |
+| **Etapa 4** | **COMPLETA** | Catálogo auditado `documentos-habilitantes.json`, Tool `armar_lista_documentos`, Agente 3 `agente_documentos`, runner `armar-documentos.ts`, CLI `correr-documentos.ts`. |
 | **Etapa 5** | *Pendiente* | Pipeline integral orquestado y generación de reporte final. |
 
 ---
@@ -212,6 +215,70 @@ interface EntregaResumenes {
 }
 ```
 
+### H. Herramienta `armar_lista_documentos` y Catálogo
+Filtra el catálogo auditado `data/catalogos/documentos-habilitantes.json` según modalidad y tipo de contrato:
+```typescript
+interface ItemCatalogoDocumento {
+  id: string;
+  nombre: string;
+  expide: string | null;
+  aplicaA: string[];
+  condicion: string | null;
+  nota: string | null;
+  emisor: string | null;
+  respaldoLegal: string | null;
+  verificar: boolean;
+}
+```
+
+### I. Salida del Modelo (`NotasDocumentos`) y Checklist Determinista
+El modelo genera únicamente notas breves sobre los anexos y una recomendación general:
+```typescript
+interface NotasDocumentos {
+  id: string;
+  anexos: Array<{ nombre: string; queEs: string /* máx 15 palabras */ }>;
+  observaciones: string /* máx 60 palabras */;
+}
+```
+El código construye la lista de forma determinista y deduplicada (`MAPA_DEDUPLICACION_ANEXOS`), fusionando catálogo y anexos:
+```typescript
+interface ItemDocumento {
+  nombre: string;
+  base: "catalogo_con_emisor" | "catalogo_sin_emisor" | "nombre_de_anexo";
+  fundamento: string;
+  catalogoId: string | null;
+  expide: string | null;
+  condicion: string | null;
+  observaciones: string | null;
+}
+```
+
+### J. Archivo de Entrega de Etapa 4 (`data/entregas/<fecha>/documentos.json`)
+```typescript
+interface EntregaDocumentos {
+  fecha: string;
+  modo: "produccion" | "prueba";
+  avisoOficial: string; // "Lista orientativa: confirme siempre en el pliego oficial"
+  totalResumenesDisponibles: number;
+  totalProcesados: number;
+  tokens: { entrada: number; salida: number; total: number };
+  documentosPorProceso: Array<{
+    id: string;
+    avisoOficial: string;
+    items: ItemDocumento[];
+    observacionGeneral: string | null;
+    advertencias: string[];
+    procesoInfo: {
+      modalidad: string;
+      tipoDeContrato: string;
+      valorCOP: number | null;
+      diasRestantes: number | null;
+      urlProceso: string | null;
+    };
+  }>;
+}
+```
+
 ---
 
 ## 6. Comandos de Terminal para Pruebas y Operación
@@ -237,6 +304,15 @@ pnpm resumir --incluir-dudosos                       # Incluye clasificados como
 $env:SECOP_FECHA_PRUEBA="2026-10-15"; pnpm resumir  # Procesa procesos aptos de la fecha de prueba
 $env:SECOP_FECHA_PRUEBA="2026-10-15"; pnpm resumir --completo # Procesa TODOS los aptos de la fecha
 
-# 5. Abrir dashboard de LangSmith
+# 5. Ejecutar Agente 3 (documentos) con guarda de créditos
+pnpm documentos                                      # Procesa por defecto 5 resúmenes de hoy
+pnpm documentos --max=10                             # Procesa hasta 10 resúmenes
+$env:SECOP_FECHA_PRUEBA="2026-10-15"; pnpm documentos # Procesa resúmenes de la fecha de prueba
+$env:SECOP_FECHA_PRUEBA="2026-10-15"; pnpm documentos --completo # Procesa TODOS los resúmenes
+
+# 6. Auditar fuentes oficiales del catálogo de documentos habilitantes
+pnpm auditar:catalogo
+
+# 7. Abrir dashboard de LangSmith
 Start-Process "https://smith.langchain.com"
 ```

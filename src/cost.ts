@@ -13,6 +13,17 @@ export interface RegistroTokens {
   tokens_entrada: number;
   tokens_salida: number;
   tokens_total: number;
+  detalles_salida?: {
+    razonamiento?: number;
+    audio?: number;
+    [key: string]: unknown;
+  };
+  detalles_entrada?: {
+    cache?: number;
+    audio?: number;
+    [key: string]: unknown;
+  };
+  metadatos_completos?: Record<string, unknown>;
 }
 
 /** Alias para compatibilidad hacia atrás */
@@ -20,7 +31,7 @@ export type RegistroCosto = RegistroTokens;
 
 /**
  * Appends one JSON line per model call to logs/tokens.jsonl,
- * using the token counts in `message.usage_metadata`.
+ * logging the full token breakdown from `message.usage_metadata` and response_metadata.
  */
 export async function registrarCosto(
   task: string,
@@ -28,9 +39,13 @@ export async function registrarCosto(
   message: AIMessage,
 ): Promise<RegistroTokens> {
   const uso = message.usage_metadata;
+  const rawMeta = (message.response_metadata?.tokenUsage ?? message.response_metadata?.usage ?? {}) as Record<string, unknown>;
   const tokensEntrada = uso?.input_tokens ?? 0;
   const tokensSalida = uso?.output_tokens ?? 0;
-  const tokensTotal = uso?.total_tokens ?? tokensEntrada + tokensSalida;
+  const tokensTotal = uso?.total_tokens ?? (typeof rawMeta.total_tokens === "number" ? rawMeta.total_tokens : tokensEntrada + tokensSalida);
+
+  const outputDetails = (uso?.output_token_details ?? rawMeta.completion_tokens_details ?? {}) as Record<string, unknown>;
+  const inputDetails = (uso?.input_token_details ?? rawMeta.prompt_tokens_details ?? {}) as Record<string, unknown>;
 
   const registro: RegistroTokens = {
     fecha: new Date().toISOString(),
@@ -39,6 +54,18 @@ export async function registrarCosto(
     tokens_entrada: tokensEntrada,
     tokens_salida: tokensSalida,
     tokens_total: tokensTotal,
+    detalles_salida: {
+      razonamiento: (outputDetails.reasoning ?? outputDetails.reasoning_tokens) as number | undefined,
+      ...outputDetails,
+    },
+    detalles_entrada: {
+      cache: (inputDetails.cache_read ?? inputDetails.cached_tokens) as number | undefined,
+      ...inputDetails,
+    },
+    metadatos_completos: {
+      usage_metadata: uso,
+      raw_token_usage: rawMeta,
+    },
   };
 
   if (!uso) {

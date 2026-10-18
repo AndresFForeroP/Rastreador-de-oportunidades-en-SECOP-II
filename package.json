@@ -11,6 +11,8 @@
     "probar:datos": "tsx src/tools/probar-datos.ts",
     "filtrar": "tsx src/tools/correr-filtrador.ts",
     "resumir": "tsx src/tools/correr-resumidor.ts",
+    "documentos": "tsx src/tools/correr-documentos.ts",
+    "auditar:catalogo": "tsx src/tools/auditar-catalogo.ts",
     "typecheck": "tsc --noEmit"
   },
   "license": "ISC",

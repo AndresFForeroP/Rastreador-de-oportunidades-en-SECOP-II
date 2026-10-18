@@ -1,0 +1,158 @@
+[
+  {
+    "id": "rut",
+    "nombre": "Registro Único Tributario (RUT)",
+    "expide": "Dirección de Impuestos y Aduanas Nacionales (DIAN)",
+    "aplicaA": [
+      "todas"
+    ],
+    "condicion": "Puede exigirse según el pliego; verificar.",
+    "nota": "Acredita la identificación y responsabilidades tributarias del proponente",
+    "emisor": "https://www.dian.gov.co/",
+    "respaldoLegal": null,
+    "verificar": true
+  },
+  {
+    "id": "existencia_representacion",
+    "nombre": "Certificado de existencia y representación legal o matrícula mercantil",
+    "expide": "Cámaras de Comercio (Registro Único Empresarial y Social - RUES)",
+    "aplicaA": [
+      "todas"
+    ],
+    "condicion": "Puede exigirse según el pliego; verificar.",
+    "nota": "Acredita capacidad jurídica y facultades del representante legal",
+    "emisor": "https://www.rues.org.co/",
+    "respaldoLegal": null,
+    "verificar": true
+  },
+  {
+    "id": "cedula_representante",
+    "nombre": "Documento de identidad del representante legal o persona natural proponente",
+    "expide": "Registraduría Nacional del Estado Civil o autoridad migratoria",
+    "aplicaA": [
+      "todas"
+    ],
+    "condicion": "Puede exigirse según el pliego; verificar.",
+    "nota": "Cédula de ciudadanía, extranjería o pasaporte según aplique",
+    "emisor": null,
+    "respaldoLegal": null,
+    "verificar": true
+  },
+  {
+    "id": "seguridad_social",
+    "nombre": "Certificación de pago de aportes a seguridad social y parafiscales",
+    "expide": "Revisor fiscal o Representante legal",
+    "aplicaA": [
+      "todas"
+    ],
+    "condicion": "Puede exigirse según el pliego; verificar.",
+    "nota": "Cumplimiento de aportes a salud, pensión, riesgos laborales y cajas de compensación",
+    "emisor": null,
+    "respaldoLegal": null,
+    "verificar": true
+  },
+  {
+    "id": "antecedentes_disciplinarios",
+    "nombre": "Certificado de antecedentes disciplinarios",
+    "expide": "Procuraduría General de la Nación",
+    "aplicaA": [
+      "todas"
+    ],
+    "condicion": "Puede exigirse según el pliego; verificar.",
+    "nota": "Verificación de ausencia de sanciones o inhabilidades disciplinarias",
+    "emisor": "https://www.procuraduria.gov.co/",
+    "respaldoLegal": null,
+    "verificar": true
+  },
+  {
+    "id": "antecedentes_fiscales",
+    "nombre": "Certificado de antecedentes fiscales (Boletín de Responsables Fiscales)",
+    "expide": "Contraloría General de la República",
+    "aplicaA": [
+      "todas"
+    ],
+    "condicion": "Puede exigirse según el pliego; verificar.",
+    "nota": "Verificación de no encontrarse reportado como responsable fiscal",
+    "emisor": null,
+    "respaldoLegal": null,
+    "verificar": true
+  },
+  {
+    "id": "antecedentes_judiciales",
+    "nombre": "Certificado de antecedentes judiciales y medidas correctivas",
+    "expide": "Policía Nacional",
+    "aplicaA": [
+      "todas"
+    ],
+    "condicion": "Puede exigirse según el pliego; verificar.",
+    "nota": "Verificación de antecedentes judiciales y medidas correctivas del RNMC",
+    "emisor": "https://www.policia.gov.co/",
+    "respaldoLegal": null,
+    "verificar": true
+  },
+  {
+    "id": "rup",
+    "nombre": "Certificado del Registro Único de Proponentes (RUP)",
+    "expide": "Cámaras de Comercio (RUES)",
+    "aplicaA": [
+      "todas"
+    ],
+    "condicion": "Puede exigirse según el pliego; verificar.",
+    "nota": "Acredita capacidad jurídica, financiera, organizacional y experiencia registrada",
+    "emisor": "https://www.rues.org.co/",
+    "respaldoLegal": null,
+    "verificar": true
+  },
+  {
+    "id": "garantia_seriedad",
+    "nombre": "Garantía de seriedad de la oferta",
+    "expide": "Compañía de seguros o entidad bancaria",
+    "aplicaA": [
+      "todas"
+    ],
+    "condicion": "Puede exigirse según el pliego; verificar.",
+    "nota": "Ampara el sostenimiento de la propuesta si el pliego lo contempla",
+    "emisor": null,
+    "respaldoLegal": null,
+    "verificar": true
+  },
+  {
+    "id": "carta_presentacion",
+    "nombre": "Carta de presentación de la oferta y formatos anexos del pliego",
+    "expide": "El proponente (según formatos del pliego en SECOP II)",
+    "aplicaA": [
+      "todas"
+    ],
+    "condicion": "Puede exigirse según el pliego; verificar.",
+    "nota": "Manifestación formal de aceptación del pliego y presentación de oferta",
+    "emisor": null,
+    "respaldoLegal": null,
+    "verificar": true
+  },
+  {
+    "id": "certificaciones_experiencia",
+    "nombre": "Certificaciones de experiencia previa",
+    "expide": "Contratantes anteriores públicos o privados",
+    "aplicaA": [
+      "todas"
+    ],
+    "condicion": "Puede exigirse según el pliego; verificar.",
+    "nota": "Contratos ejecutados con constancia de cumplimiento",
+    "emisor": null,
+    "respaldoLegal": null,
+    "verificar": true
+  },
+  {
+    "id": "estados_financieros",
+    "nombre": "Estados financieros con notas contables y certificación",
+    "expide": "Contador público y Revisor fiscal o Representante legal",
+    "aplicaA": [
+      "todas"
+    ],
+    "condicion": "Puede exigirse según el pliego; verificar.",
+    "nota": "Balance general y estado de resultados a corte reciente",
+    "emisor": null,
+    "respaldoLegal": null,
+    "verificar": true
+  }
+]
