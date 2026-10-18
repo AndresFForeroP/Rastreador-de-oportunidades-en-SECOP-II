@@ -26,5 +26,6 @@ data/reportes/
 
 # Build output / tooling
 dist/
+scratch/
 .DS_Store
 Thumbs.db

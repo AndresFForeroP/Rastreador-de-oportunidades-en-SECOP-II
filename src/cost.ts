@@ -1,4 +1,4 @@
-import { appendFile, mkdir } from "node:fs/promises";
+import { appendFile, mkdir, readFile } from "node:fs/promises";
 import path from "node:path";
 import type { AIMessage } from "@langchain/core/messages";
 
@@ -79,4 +79,21 @@ export async function registrarCosto(
 
 /** Alias con nombre representativo para el registro exclusivo de tokens */
 export const registrarTokens = registrarCosto;
+
+/**
+ * Lee todos los registros históricos de tokens desde logs/tokens.jsonl.
+ */
+export async function leerRegistrosTokens(): Promise<RegistroTokens[]> {
+  try {
+    const raw = await readFile(LOG_FILE, "utf8");
+    return raw
+      .split("\n")
+      .map((l) => l.trim())
+      .filter((l) => l.length > 0)
+      .map((l) => JSON.parse(l) as RegistroTokens);
+  } catch {
+    return [];
+  }
+}
+
 

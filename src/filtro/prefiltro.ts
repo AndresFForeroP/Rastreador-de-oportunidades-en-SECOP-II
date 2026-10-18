@@ -110,16 +110,18 @@ function recortar(s: string, max: number): string {
 
 /**
  * Obtiene el instante de referencia para evaluar vigencia en hora Colombia (UTC-5).
- * En modo prueba con SECOP_FECHA_PRUEBA, evalúa contra el final de ese día de prueba (23:59:59.999).
+ * - En producción: la hora real actual.
+ * - En modo prueba (SECOP_FECHA_PRUEBA): el inicio del día de prueba a las 00:00:00.000-05:00,
+ *   de modo que una fecha histórica se comporta como si se ejecutara ese mismo día.
  */
 export function obtenerInstanteReferencia(referencia?: Date | string): Date {
   if (referencia instanceof Date) return referencia;
   if (typeof referencia === "string" && referencia.trim()) {
-    return new Date(`${referencia.slice(0, 10)}T23:59:59.999-05:00`);
+    return new Date(`${referencia.slice(0, 10)}T00:00:00.000-05:00`);
   }
   const fechaPrueba = leerFechaPrueba();
   if (fechaPrueba) {
-    return new Date(`${fechaPrueba}T23:59:59.999-05:00`);
+    return new Date(`${fechaPrueba}T00:00:00.000-05:00`);
   }
   return new Date();
 }

@@ -19,6 +19,7 @@ import { leerFechaPrueba, type ModoEjecucion } from "../config/entorno.js";
 import { fechaHoy } from "../datos/socrata.js";
 import { registrarCosto } from "../cost.js";
 import { MODEL_NAME } from "../llm.js";
+import type { RunnableConfig } from "@langchain/core/runnables";
 import { configEjecucion } from "../trazas.js";
 import {
   agenteDocumentos,
@@ -37,6 +38,8 @@ export interface OpcionesDocumentos {
   concurrencia?: number;
   fecha?: string;
   siempreAgente?: boolean;
+  /** Configuración de ejecución padre (para anidar trazas en LangSmith). */
+  parentConfig?: RunnableConfig;
 }
 
 export interface ProcesoConDocumentos {
@@ -213,11 +216,14 @@ export async function armarDocumentosParaProcesos(
 
     for (let intento = 1; intento <= 3; intento++) {
       try {
-        const config = configEjecucion({
-          runName: `documentos:${id}${intento > 1 ? `:reintento-${intento}` : ""}`,
-          tags: ["secop", "agente:documentos"],
-          metadata: { fecha, id, intento },
-        });
+        const config = configEjecucion(
+          {
+            runName: `documentos:${id}${intento > 1 ? `:reintento-${intento}` : ""}`,
+            tags: ["secop", "agente:documentos"],
+            metadata: { fecha, id, intento },
+          },
+          opciones.parentConfig,
+        );
 
         const res = await agenteDocumentos.invoke(
           {

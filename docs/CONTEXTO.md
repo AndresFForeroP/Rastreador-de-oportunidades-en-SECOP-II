@@ -42,10 +42,14 @@ El sistema opera bajo un flujo diario multi-agente en 5 etapas secuenciales:
    - Cualquier comando que invoque LLM **debe operar por defecto en un lote pequeño** (Agente 1: máx 1 página / 25 procesos; Agente 2: máx 5 procesos; Agente 3: omite llamada a LLM en procesos sin anexos indexados).
    - Solo procesa el lote completo si se especifica explícitamente la bandera `--completo`.
    - Prohibido realizar bucles sin tope duro.
-6. **Regla de Fecha (Solo HOY)**:
+6. **Regla de Fecha (Solo HOY) e Instante de Referencia**:
    - Producción procesa **ÚNICAMENTE** procesos con `fecha_de_publicacion_del` del día de hoy en hora Colombia (UTC-5).
    - `descargarHoy()` no recibe parámetro de fecha. Si hoy hay 0 procesos, devuelve lista vacía y mensaje claro; **NUNCA recurre a otra fecha**.
    - **Única excepción de desarrollo**: La variable de entorno `SECOP_FECHA_PRUEBA=YYYY-MM-DD` (apagada por defecto). Si está activa, emite una advertencia ruidosa en consola, marca `modo: "prueba"` en las trazas y utiliza la caché local en `data/dias/<fecha>.json`.
+   - **Instante de Referencia (`obtenerInstanteReferencia()`)**: Implementado de forma única y centralizada en `src/filtro/prefiltro.ts`.
+     - En producción: hora real actual en Colombia (UTC-5).
+     - En modo prueba (`SECOP_FECHA_PRUEBA`): inicio del día de prueba a las 00:00:00.000 UTC-5 (`YYYY-MM-DDT00:00:00.000-05:00`). Así, una fecha histórica se evalúa exactamente como si se corriera al inicio de ese día.
+     - Aplica idénticamente para la regla de pre-filtro `oferta_vencida`, el cálculo de `diasRestantes` en la ficha, y se registra en los metadatos de las trazas de LangSmith como `fechaReferencia`.
 7. **Regla de Honestidad sobre Pliegos y Protección Anti-Bot**:
    - Las páginas web del portal SECOP II (`community.secop.gov.co/Public/Tendering/OpportunityDetail/Index?noticeUID=...`) están protegidas por Google ReCaptcha. El código **NUNCA debe hacer peticiones HTTP a esas URLs**.
    - El contenido del pliego **NO es legible de forma automatizada**. El Agente 2 **NUNCA debe afirmar ni sugerir que leyó el pliego**.
@@ -61,7 +65,7 @@ El sistema opera bajo un flujo diario multi-agente en 5 etapas secuenciales:
 | **Etapa 2** | **COMPLETA** | Tool `filtro_basico`, Agente 1 `agente_filtrador` (`ResultadoPagina`), runner `filtrar-pymes.ts`, CLI `correr-filtrador.ts`, entrega `aptos.json`. |
 | **Etapa 3** | **COMPLETA** | Tool `obtener_ficha_proceso`, Agente 2 `agente_resumidor`, runner `resumir-procesos.ts`, CLI `correr-resumidor.ts`, entrega `resumenes.json`. |
 | **Etapa 4** | **COMPLETA** | Catálogo auditado `documentos-habilitantes.json`, Tool `armar_lista_documentos`, Agente 3 `agente_documentos`, runner `armar-documentos.ts`, CLI `correr-documentos.ts`. |
-| **Etapa 5** | *Pendiente* | Pipeline integral orquestado y generación de reporte final. |
+| **Etapa 5** | **COMPLETA** | Grafo LangGraph StateGraph (5 nodos), CLI unificado (`src/index.ts`) con `--reanudar`, reportes JSON y MD (`generar-reporte.ts`), CLI tokens (`resumen-tokens.ts`), Docker y documentación completa. |
 
 ---
 

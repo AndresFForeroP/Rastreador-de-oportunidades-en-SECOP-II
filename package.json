@@ -6,12 +6,13 @@
   "type": "module",
   "scripts": {
     "start": "tsx src/index.ts",
-    "dev": "tsx src/tools/probar-datos.ts",
+    "dev": "langgraphjs dev",
     "test:grok": "tsx src/test-grok.ts",
     "probar:datos": "tsx src/tools/probar-datos.ts",
     "filtrar": "tsx src/tools/correr-filtrador.ts",
     "resumir": "tsx src/tools/correr-resumidor.ts",
     "documentos": "tsx src/tools/correr-documentos.ts",
+    "tokens:resumen": "tsx src/tools/resumen-tokens.ts",
     "auditar:catalogo": "tsx src/tools/auditar-catalogo.ts",
     "typecheck": "tsc --noEmit"
   },
@@ -29,6 +30,7 @@
   "packageManager": "pnpm@12.10.1",
   "dependencies": {
     "@langchain/core": "^1.2.17",
+    "@langchain/langgraph": "^1.5.1",
     "@langchain/openai": "^1.6.2",
     "dotenv": "^18.0.6",
     "langchain": "^1.5.15",
@@ -36,6 +38,7 @@
     "zod": "^4.6.5"
   },
   "devDependencies": {
+    "@langchain/langgraph-cli": "^1.5.4",
     "@types/node": "^26.6.4",
     "tsx": "^4.23.15",
     "typescript": "^7.0.2"

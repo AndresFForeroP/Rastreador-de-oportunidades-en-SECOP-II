@@ -4,8 +4,9 @@ services:
     # RETO_KEY and LANGSMITH_TRACING are injected at runtime; never baked into the image
     env_file: .env
     volumes:
-      # Cost log stays on the host: ./logs/costos.jsonl
+      # Logs and persistent run deliverables stay on the host
       - ./logs:/app/logs
+      - ./data:/app/data
     # No restart policy yet: the script runs once, and a restart policy would
     # re-run it forever (burning credits). Enable only for the future long run:
     # restart: unless-stopped

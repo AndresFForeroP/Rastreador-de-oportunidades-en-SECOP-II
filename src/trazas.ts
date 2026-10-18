@@ -103,11 +103,23 @@ export interface OpcionesTraza {
 }
 
 /** RunnableConfig para invocar modelos, agentes o grafos de LangChain/LangGraph. */
-export function configEjecucion(opciones: OpcionesTraza): RunnableConfig {
+export function configEjecucion(
+  opciones: OpcionesTraza,
+  parentConfig?: RunnableConfig,
+): RunnableConfig {
+  const tagsUnicos = Array.from(
+    new Set([...tagsBase(), ...(opciones.tags ?? []), ...(parentConfig?.tags ?? [])]),
+  );
   return {
+    ...parentConfig,
     runName: opciones.runName,
-    tags: [...tagsBase(), ...(opciones.tags ?? [])],
-    metadata: { ...metadataBase(), ...opciones.metadata },
+    tags: tagsUnicos,
+    metadata: {
+      ...metadataBase(),
+      ...parentConfig?.metadata,
+      ...opciones.metadata,
+    },
+    callbacks: parentConfig?.callbacks,
   };
 }
 

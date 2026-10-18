@@ -29,6 +29,7 @@ import {
   obtenerPaginaFiltroBasico,
   type CandidatoHerramienta,
 } from "../herramientas/filtro-basico.js";
+import type { RunnableConfig } from "@langchain/core/runnables";
 import { configEjecucion, opcionesTraceable } from "../trazas.js";
 
 export interface ResultadoProcesoApto extends ClasificacionPyme {
@@ -60,6 +61,8 @@ export interface OpcionesFiltrarPymes {
   maxPaginas?: number;
   /** Concurrencia de llamadas al agente (por defecto 2). */
   concurrencia?: number;
+  /** Configuración de ejecución padre (para anidar trazas en LangSmith). */
+  parentConfig?: RunnableConfig;
 }
 
 const esperar = (ms: number) => new Promise((r) => setTimeout(r, ms));
@@ -128,6 +131,7 @@ function validarResultadosPagina(
 async function procesarPaginaConReintentos(
   numeroPagina: number,
   fecha: string,
+  parentConfig?: RunnableConfig,
 ): Promise<{ resultados: ResultadoProcesoApto[]; tokens: { entrada: number; salida: number; total: number } }> {
   const paginaDatos = await obtenerPaginaFiltroBasico(numeroPagina);
   const esperados = paginaDatos.candidatos;
@@ -135,11 +139,14 @@ async function procesarPaginaConReintentos(
   const tokensAcumulados = { entrada: 0, salida: 0, total: 0 };
 
   async function invocar(mensajePrompt: string, intento: number): Promise<ResultadoPagina> {
-    const config = configEjecucion({
-      runName: `filtrador:pagina-${numeroPagina}${intento > 1 ? `:reintento-${intento}` : ""}`,
-      tags: ["agente:filtrador"],
-      metadata: { fecha, pagina: numeroPagina, intento },
-    });
+    const config = configEjecucion(
+      {
+        runName: `filtrador:pagina-${numeroPagina}${intento > 1 ? `:reintento-${intento}` : ""}`,
+        tags: ["agente:filtrador"],
+        metadata: { fecha, pagina: numeroPagina, intento },
+      },
+      parentConfig,
+    );
 
     const respuestaAgent = await agenteFiltrador.invoke(
       {
@@ -282,7 +289,7 @@ async function filtrarPymesInterno(opciones: OpcionesFiltrarPymes = {}): Promise
   const listaPaginas = Array.from({ length: paginasAProcesar }, (_, i) => i + 1);
 
   const resultadosPorPagina = await ejecutarConConcurrencia(listaPaginas, concurrencia, (numPagina) =>
-    procesarPaginaConReintentos(numPagina, fecha),
+    procesarPaginaConReintentos(numPagina, fecha, opciones.parentConfig),
   );
 
   const todosResultados: ResultadoProcesoApto[] = [];
