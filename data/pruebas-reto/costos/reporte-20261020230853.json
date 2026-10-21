@@ -1,0 +1,136 @@
+{
+  "timestamp": "2026-10-20T23:08:53.583Z",
+  "filtros": {},
+  "preciosConfigurados": false,
+  "moneda": "USD",
+  "tarifasUtilizadas": {
+    "grok-4.6": {
+      "porMillonEntrada": null,
+      "porMillonSalida": null
+    }
+  },
+  "totales": {
+    "llamadas": 147,
+    "tokensEntrada": 327847,
+    "tokensSalida": 73031,
+    "tokensRazonamiento": 181031,
+    "tokensTotal": 581909,
+    "porcentajeRazonamientoGlobal": 31.1,
+    "costoTotalUSD_A": null,
+    "costoTotalUSD_B": null
+  },
+  "porAgente": [
+    {
+      "agente": "test-grok:respuesta-simple",
+      "llamadas": 1,
+      "tokensEntrada": 649,
+      "tokensSalida": 14,
+      "tokensRazonamiento": 1174,
+      "tokensTotal": 1837,
+      "costoUSD_A": null,
+      "costoUSD_B": null,
+      "porcentajeRazonamiento": 63.9
+    },
+    {
+      "agente": "test-grok:tool-call",
+      "llamadas": 1,
+      "tokensEntrada": 738,
+      "tokensSalida": 12,
+      "tokensRazonamiento": 81,
+      "tokensTotal": 831,
+      "costoUSD_A": null,
+      "costoUSD_B": null,
+      "porcentajeRazonamiento": 9.7
+    },
+    {
+      "agente": "test-grok:structured-output",
+      "llamadas": 1,
+      "tokensEntrada": 814,
+      "tokensSalida": 28,
+      "tokensRazonamiento": 465,
+      "tokensTotal": 1307,
+      "costoUSD_A": null,
+      "costoUSD_B": null,
+      "porcentajeRazonamiento": 35.6
+    },
+    {
+      "agente": "triaje:lote-0",
+      "llamadas": 1,
+      "tokensEntrada": 3656,
+      "tokensSalida": 762,
+      "tokensRazonamiento": 1606,
+      "tokensTotal": 6024,
+      "costoUSD_A": null,
+      "costoUSD_B": null,
+      "porcentajeRazonamiento": 26.7
+    },
+    {
+      "agente": "triaje:lote-1",
+      "llamadas": 1,
+      "tokensEntrada": 3759,
+      "tokensSalida": 720,
+      "tokensRazonamiento": 3242,
+      "tokensTotal": 7721,
+      "costoUSD_A": null,
+      "costoUSD_B": null,
+      "porcentajeRazonamiento": 42
+    },
+    {
+      "agente": "agente_filtrador",
+      "llamadas": 15,
+      "tokensEntrada": 52988,
+      "tokensSalida": 18229,
+      "tokensRazonamiento": 45213,
+      "tokensTotal": 116430,
+      "costoUSD_A": null,
+      "costoUSD_B": null,
+      "porcentajeRazonamiento": 38.8
+    },
+    {
+      "agente": "agente_resumidor",
+      "llamadas": 89,
+      "tokensEntrada": 166922,
+      "tokensSalida": 30903,
+      "tokensRazonamiento": 86318,
+      "tokensTotal": 284143,
+      "costoUSD_A": null,
+      "costoUSD_B": null,
+      "porcentajeRazonamiento": 30.4
+    },
+    {
+      "agente": "agente_documentos",
+      "llamadas": 38,
+      "tokensEntrada": 98321,
+      "tokensSalida": 22363,
+      "tokensRazonamiento": 42932,
+      "tokensTotal": 163616,
+      "costoUSD_A": null,
+      "costoUSD_B": null,
+      "porcentajeRazonamiento": 26.2
+    }
+  ],
+  "porProceso": {
+    "procesosMedidos": 5,
+    "estadisticasTokens": {
+      "conteo": 5,
+      "media": 14965.8,
+      "mediana": 13934,
+      "p90": 17842.4,
+      "max": 19224
+    },
+    "estadisticasUSD_A": null,
+    "estadisticasUSD_B": null
+  },
+  "unidadDeTrabajo": {
+    "candidatoAgente1": {
+      "tokens": 310,
+      "costoUSD_A": null,
+      "costoUSD_B": null
+    },
+    "procesoCompleto": {
+      "tokens": 15276,
+      "costoUSD_A": null,
+      "costoUSD_B": null
+    }
+  }
+}

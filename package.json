@@ -12,7 +12,9 @@
     "filtrar": "tsx src/tools/correr-filtrador.ts",
     "resumir": "tsx src/tools/correr-resumidor.ts",
     "documentos": "tsx src/tools/correr-documentos.ts",
-    "tokens:resumen": "tsx src/tools/resumen-tokens.ts",
+    "tokens": "tsx src/tools/costos.ts",
+    "costos": "tsx src/tools/costos.ts",
+    "tokens:resumen": "tsx src/tools/costos.ts",
     "auditar:catalogo": "tsx src/tools/auditar-catalogo.ts",
     "typecheck": "tsc --noEmit"
   },

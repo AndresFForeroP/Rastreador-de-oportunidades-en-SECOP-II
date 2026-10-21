@@ -1,0 +1,28 @@
+{
+  "fecha": "2026-10-15",
+  "modo": "prueba",
+  "fechaReferencia": "2026-10-15T05:00:00.000Z",
+  "totalDescargados": 449,
+  "descartadosPorRegla": {
+    "modalidad_no_competitiva": 0,
+    "estado_cerrado": 0,
+    "tipo_contrato_excluido": 9,
+    "valor_supera_maximo": 9,
+    "oferta_vencida": 0,
+    "id_duplicado": 8
+  },
+  "totalCandidatos": 423,
+  "conteoClasificacion": {
+    "si": 0,
+    "no": 0,
+    "dudoso": 25
+  },
+  "totalProcesados": 0,
+  "errores": [],
+  "tokensTotales": {
+    "entrada": 0,
+    "salida": 0,
+    "total": 0
+  },
+  "procesos": []
+}

@@ -100,6 +100,8 @@ export interface OpcionesTraza {
   runName: string;
   tags?: string[];
   metadata?: Record<string, unknown>;
+  /** ID único de la corrida raíz (UUID) */
+  runId?: string;
 }
 
 /** RunnableConfig para invocar modelos, agentes o grafos de LangChain/LangGraph. */
@@ -112,6 +114,7 @@ export function configEjecucion(
   );
   return {
     ...parentConfig,
+    runId: opciones.runId ?? parentConfig?.runId,
     runName: opciones.runName,
     tags: tagsUnicos,
     metadata: {

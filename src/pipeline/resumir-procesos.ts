@@ -17,7 +17,7 @@ import path from "node:path";
 import { AIMessage } from "@langchain/core/messages";
 import { leerFechaPrueba, type ModoEjecucion } from "../config/entorno.js";
 import { fechaHoy } from "../datos/socrata.js";
-import { registrarCosto } from "../cost.js";
+import { registrarCosto, ejecutarConContextoTokens } from "../cost.js";
 import { MODEL_NAME } from "../llm.js";
 import type { RunnableConfig } from "@langchain/core/runnables";
 import { configEjecucion } from "../trazas.js";
@@ -153,7 +153,8 @@ export async function resumirProcesosAptos(
     itemApto: any,
   ): Promise<{ item: ItemResumenEntrega; tokens: { entrada: number; salida: number; total: number } }> {
     const id: string = itemApto.id;
-    const tokensItem = { entrada: 0, salida: 0, total: 0 };
+    return ejecutarConContextoTokens({ procesoId: id, agente: NOMBRE_AGENTE_RESUMIDOR }, async () => {
+      const tokensItem = { entrada: 0, salida: 0, total: 0 };
 
     // 1. Obtener candidato completo (desde caché de Socrata o del registro de aptos)
     let candidato: Candidato | undefined = await obtenerCandidatoPorId(id);
@@ -263,7 +264,8 @@ export async function resumirProcesosAptos(
       anexosUrls: anexosUrls.length > 0 ? anexosUrls : undefined,
     };
 
-    return { item: itemFinal, tokens: tokensItem };
+      return { item: itemFinal, tokens: tokensItem };
+    });
   }
 
   // Ejecución concurrente

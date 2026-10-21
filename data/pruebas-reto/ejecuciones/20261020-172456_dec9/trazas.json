@@ -1,0 +1,1684 @@
+{
+  "id": "17a9c37b-4f60-4282-b3be-c4a0f63ee1f0",
+  "nombre": "secop-diario",
+  "tipo": "chain",
+  "estado": "success",
+  "duracionMs": 248936,
+  "tokens": {
+    "entrada": 53708,
+    "salida": 10840,
+    "total": 90091
+  },
+  "error": null,
+  "hijos": [
+    {
+      "id": "01a15b6a-ee61-751a-a141-8ebb572036bb",
+      "nombre": "__start__",
+      "tipo": "chain",
+      "estado": "success",
+      "duracionMs": 5,
+      "tokens": {
+        "entrada": 0,
+        "salida": 0,
+        "total": 0
+      },
+      "error": null
+    },
+    {
+      "id": "01a15b6a-ee68-71d5-a5eb-552683940996",
+      "nombre": "descargar_y_prefiltrar",
+      "tipo": "chain",
+      "estado": "success",
+      "duracionMs": 35,
+      "tokens": {
+        "entrada": 0,
+        "salida": 0,
+        "total": 0
+      },
+      "error": null,
+      "hijos": [
+        {
+          "id": "01a15b6a-ee6a-7000-8000-01c05a905283",
+          "nombre": "descargar_hoy",
+          "tipo": "chain",
+          "estado": "success",
+          "duracionMs": 10,
+          "tokens": {
+            "entrada": 0,
+            "salida": 0,
+            "total": 0
+          },
+          "error": null
+        },
+        {
+          "id": "01a15b6a-ee74-7000-8000-0117d0562441",
+          "nombre": "prefiltro_basico",
+          "tipo": "chain",
+          "estado": "success",
+          "duracionMs": 3,
+          "tokens": {
+            "entrada": 0,
+            "salida": 0,
+            "total": 0
+          },
+          "error": null
+        },
+        {
+          "id": "01a15b6a-ee78-7000-8000-0209dde41469",
+          "nombre": "descargar_hoy",
+          "tipo": "chain",
+          "estado": "success",
+          "duracionMs": 5,
+          "tokens": {
+            "entrada": 0,
+            "salida": 0,
+            "total": 0
+          },
+          "error": null
+        },
+        {
+          "id": "01a15b6a-ee7d-7000-8000-0096fc5e7f48",
+          "nombre": "prefiltro_basico",
+          "tipo": "chain",
+          "estado": "success",
+          "duracionMs": 3,
+          "tokens": {
+            "entrada": 0,
+            "salida": 0,
+            "total": 0
+          },
+          "error": null
+        }
+      ]
+    },
+    {
+      "id": "01a15b6a-ee8f-70ba-9fbc-e9f90d26dd15",
+      "nombre": "filtrar_pymes",
+      "tipo": "chain",
+      "estado": "success",
+      "duracionMs": 82735,
+      "tokens": {
+        "entrada": 7572,
+        "salida": 2555,
+        "total": 15542
+      },
+      "error": null,
+      "hijos": [
+        {
+          "id": "01a15b6a-ee92-7000-8000-03d887691244",
+          "nombre": "filtrar_pymes",
+          "tipo": "chain",
+          "estado": "success",
+          "duracionMs": 82729,
+          "tokens": {
+            "entrada": 0,
+            "salida": 0,
+            "total": 0
+          },
+          "error": null
+        },
+        {
+          "id": "01a15b6a-ee96-713f-a04e-e698be49ca2e",
+          "nombre": "filtrador:pagina-1",
+          "tipo": "chain",
+          "estado": "success",
+          "duracionMs": 82714,
+          "tokens": {
+            "entrada": 7572,
+            "salida": 2555,
+            "total": 15542
+          },
+          "error": null,
+          "hijos": [
+            {
+              "id": "01a15b6a-ee97-7509-9b0d-a74b6a22140e",
+              "nombre": "__start__",
+              "tipo": "chain",
+              "estado": "success",
+              "duracionMs": 2,
+              "tokens": {
+                "entrada": 0,
+                "salida": 0,
+                "total": 0
+              },
+              "error": null
+            },
+            {
+              "id": "01a15b6a-ee9b-71b8-8ee9-9c7f5f13cc7f",
+              "nombre": "model_request",
+              "tipo": "chain",
+              "estado": "success",
+              "duracionMs": 1843,
+              "tokens": {
+                "entrada": 1504,
+                "salida": 14,
+                "total": 1559
+              },
+              "error": null,
+              "hijos": [
+                {
+                  "id": "01a15b6a-eea2-763c-b829-81d9589fae45",
+                  "nombre": "ChatOpenAI",
+                  "tipo": "llm",
+                  "estado": "success",
+                  "duracionMs": 1829,
+                  "tokens": {
+                    "entrada": 1504,
+                    "salida": 14,
+                    "total": 1559
+                  },
+                  "error": null
+                },
+                {
+                  "id": "01a15b6a-f5cb-72d7-8352-2d6759182ad4",
+                  "nombre": "RunnableLambda",
+                  "tipo": "chain",
+                  "estado": "success",
+                  "duracionMs": 2,
+                  "tokens": {
+                    "entrada": 0,
+                    "salida": 0,
+                    "total": 0
+                  },
+                  "error": null
+                }
+              ]
+            },
+            {
+              "id": "01a15b6a-f5d0-7343-a0f4-49c8e5ab5c5e",
+              "nombre": "tools",
+              "tipo": "chain",
+              "estado": "success",
+              "duracionMs": 7,
+              "tokens": {
+                "entrada": 0,
+                "salida": 0,
+                "total": 0
+              },
+              "error": null,
+              "hijos": [
+                {
+                  "id": "01a15b6a-f5d3-7508-83a1-8098f1ec58c6",
+                  "nombre": "filtro_basico",
+                  "tipo": "tool",
+                  "estado": "success",
+                  "duracionMs": 2,
+                  "tokens": {
+                    "entrada": 0,
+                    "salida": 0,
+                    "total": 0
+                  },
+                  "error": null
+                }
+              ]
+            },
+            {
+              "id": "01a15b6a-f5d9-709c-84ae-00b69278122d",
+              "nombre": "model_request",
+              "tipo": "chain",
+              "estado": "success",
+              "duracionMs": 80852,
+              "tokens": {
+                "entrada": 6068,
+                "salida": 2541,
+                "total": 13983
+              },
+              "error": null,
+              "hijos": [
+                {
+                  "id": "01a15b6a-f5db-7561-abfa-ae6f001ef556",
+                  "nombre": "ChatOpenAI",
+                  "tipo": "llm",
+                  "estado": "success",
+                  "duracionMs": 80835,
+                  "tokens": {
+                    "entrada": 6068,
+                    "salida": 2541,
+                    "total": 13983
+                  },
+                  "error": null
+                },
+                {
+                  "id": "01a15b6c-31ab-77f9-8214-1045e8519ef9",
+                  "nombre": "RunnableLambda",
+                  "tipo": "chain",
+                  "estado": "success",
+                  "duracionMs": 2,
+                  "tokens": {
+                    "entrada": 0,
+                    "salida": 0,
+                    "total": 0
+                  },
+                  "error": null
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "01a15b6c-31c2-723d-9052-cb677f30009a",
+      "nombre": "resumir_procesos",
+      "tipo": "chain",
+      "estado": "success",
+      "duracionMs": 94995,
+      "tokens": {
+        "entrada": 20901,
+        "salida": 4309,
+        "total": 35521
+      },
+      "error": null,
+      "hijos": [
+        {
+          "id": "01a15b6c-3411-77f2-b328-772b1b7cc401",
+          "nombre": "resumidor:CO1.REQ.11205497",
+          "tipo": "chain",
+          "estado": "success",
+          "duracionMs": 34445,
+          "tokens": {
+            "entrada": 3989,
+            "salida": 825,
+            "total": 6815
+          },
+          "error": null,
+          "hijos": [
+            {
+              "id": "01a15b6c-3414-74f9-8776-10ad578464ae",
+              "nombre": "__start__",
+              "tipo": "chain",
+              "estado": "success",
+              "duracionMs": 2,
+              "tokens": {
+                "entrada": 0,
+                "salida": 0,
+                "total": 0
+              },
+              "error": null
+            },
+            {
+              "id": "01a15b6c-3418-75a8-9c56-facc8e56ccbe",
+              "nombre": "model_request",
+              "tipo": "chain",
+              "estado": "success",
+              "duracionMs": 2098,
+              "tokens": {
+                "entrada": 1640,
+                "salida": 20,
+                "total": 1711
+              },
+              "error": null,
+              "hijos": [
+                {
+                  "id": "01a15b6c-3424-70d1-99e6-58b99a066703",
+                  "nombre": "ChatOpenAI",
+                  "tipo": "llm",
+                  "estado": "success",
+                  "duracionMs": 2082,
+                  "tokens": {
+                    "entrada": 1640,
+                    "salida": 20,
+                    "total": 1711
+                  },
+                  "error": null
+                },
+                {
+                  "id": "01a15b6c-3c48-7593-80c8-82ee2fe9b251",
+                  "nombre": "RunnableLambda",
+                  "tipo": "chain",
+                  "estado": "success",
+                  "duracionMs": 1,
+                  "tokens": {
+                    "entrada": 0,
+                    "salida": 0,
+                    "total": 0
+                  },
+                  "error": null
+                }
+              ]
+            },
+            {
+              "id": "01a15b6c-3c4c-73ad-a866-f97dc04a3160",
+              "nombre": "tools",
+              "tipo": "chain",
+              "estado": "success",
+              "duracionMs": 198,
+              "tokens": {
+                "entrada": 0,
+                "salida": 0,
+                "total": 0
+              },
+              "error": null,
+              "hijos": [
+                {
+                  "id": "01a15b6c-3c4d-7236-a4a5-a2c37f71805e",
+                  "nombre": "obtener_ficha_proceso",
+                  "tipo": "tool",
+                  "estado": "success",
+                  "duracionMs": 191,
+                  "tokens": {
+                    "entrada": 0,
+                    "salida": 0,
+                    "total": 0
+                  },
+                  "error": null
+                }
+              ]
+            },
+            {
+              "id": "01a15b6c-3d17-75c8-b8a5-d5128f41f744",
+              "nombre": "model_request",
+              "tipo": "chain",
+              "estado": "success",
+              "duracionMs": 32133,
+              "tokens": {
+                "entrada": 2349,
+                "salida": 805,
+                "total": 5104
+              },
+              "error": null,
+              "hijos": [
+                {
+                  "id": "01a15b6c-3d1a-753d-842b-521951e9a69a",
+                  "nombre": "ChatOpenAI",
+                  "tipo": "llm",
+                  "estado": "success",
+                  "duracionMs": 32125,
+                  "tokens": {
+                    "entrada": 2349,
+                    "salida": 805,
+                    "total": 5104
+                  },
+                  "error": null
+                },
+                {
+                  "id": "01a15b6c-ba9b-713d-8cdb-041c8a020c26",
+                  "nombre": "RunnableLambda",
+                  "tipo": "chain",
+                  "estado": "success",
+                  "duracionMs": 1,
+                  "tokens": {
+                    "entrada": 0,
+                    "salida": 0,
+                    "total": 0
+                  },
+                  "error": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "01a15b6c-4115-7299-93c1-6c889ec34692",
+          "nombre": "resumidor:CO1.REQ.11204985",
+          "tipo": "chain",
+          "estado": "success",
+          "duracionMs": 25261,
+          "tokens": {
+            "entrada": 3900,
+            "salida": 695,
+            "total": 6209
+          },
+          "error": null,
+          "hijos": [
+            {
+              "id": "01a15b6c-4117-718a-b4b2-faa8178f3258",
+              "nombre": "__start__",
+              "tipo": "chain",
+              "estado": "success",
+              "duracionMs": 4,
+              "tokens": {
+                "entrada": 0,
+                "salida": 0,
+                "total": 0
+              },
+              "error": null
+            },
+            {
+              "id": "01a15b6c-411d-7128-a30b-522fdeeec0a9",
+              "nombre": "model_request",
+              "tipo": "chain",
+              "estado": "success",
+              "duracionMs": 1660,
+              "tokens": {
+                "entrada": 1640,
+                "salida": 20,
+                "total": 1711
+              },
+              "error": null,
+              "hijos": [
+                {
+                  "id": "01a15b6c-4120-7592-ac52-86179c672d75",
+                  "nombre": "ChatOpenAI",
+                  "tipo": "llm",
+                  "estado": "success",
+                  "duracionMs": 1653,
+                  "tokens": {
+                    "entrada": 1640,
+                    "salida": 20,
+                    "total": 1711
+                  },
+                  "error": null
+                },
+                {
+                  "id": "01a15b6c-4798-702f-9275-0c5dabcde82f",
+                  "nombre": "RunnableLambda",
+                  "tipo": "chain",
+                  "estado": "success",
+                  "duracionMs": 1,
+                  "tokens": {
+                    "entrada": 0,
+                    "salida": 0,
+                    "total": 0
+                  },
+                  "error": null
+                }
+              ]
+            },
+            {
+              "id": "01a15b6c-479b-77cf-95d3-6a348d52eb77",
+              "nombre": "tools",
+              "tipo": "chain",
+              "estado": "success",
+              "duracionMs": 190,
+              "tokens": {
+                "entrada": 0,
+                "salida": 0,
+                "total": 0
+              },
+              "error": null,
+              "hijos": [
+                {
+                  "id": "01a15b6c-479d-73af-b35f-e822647d2be8",
+                  "nombre": "obtener_ficha_proceso",
+                  "tipo": "tool",
+                  "estado": "success",
+                  "duracionMs": 184,
+                  "tokens": {
+                    "entrada": 0,
+                    "salida": 0,
+                    "total": 0
+                  },
+                  "error": null
+                }
+              ]
+            },
+            {
+              "id": "01a15b6c-485b-7393-984b-9f016767a81d",
+              "nombre": "model_request",
+              "tipo": "chain",
+              "estado": "success",
+              "duracionMs": 23397,
+              "tokens": {
+                "entrada": 2260,
+                "salida": 675,
+                "total": 4498
+              },
+              "error": null,
+              "hijos": [
+                {
+                  "id": "01a15b6c-485d-75fa-b91d-0359204944ac",
+                  "nombre": "ChatOpenAI",
+                  "tipo": "llm",
+                  "estado": "success",
+                  "duracionMs": 23390,
+                  "tokens": {
+                    "entrada": 2260,
+                    "salida": 675,
+                    "total": 4498
+                  },
+                  "error": null
+                },
+                {
+                  "id": "01a15b6c-a3bf-714c-8046-2c4ff9eab319",
+                  "nombre": "RunnableLambda",
+                  "tipo": "chain",
+                  "estado": "success",
+                  "duracionMs": 1,
+                  "tokens": {
+                    "entrada": 0,
+                    "salida": 0,
+                    "total": 0
+                  },
+                  "error": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "01a15b6c-a615-778c-9d9e-5539ea712311",
+          "nombre": "resumidor:CO1.REQ.11205520",
+          "tipo": "chain",
+          "estado": "success",
+          "duracionMs": 40052,
+          "tokens": {
+            "entrada": 4727,
+            "salida": 883,
+            "total": 8545
+          },
+          "error": null,
+          "hijos": [
+            {
+              "id": "01a15b6c-a617-770e-9205-c7a33a8fb7b3",
+              "nombre": "__start__",
+              "tipo": "chain",
+              "estado": "success",
+              "duracionMs": 2,
+              "tokens": {
+                "entrada": 0,
+                "salida": 0,
+                "total": 0
+              },
+              "error": null
+            },
+            {
+              "id": "01a15b6c-a61a-7698-ba20-7719e997f1cc",
+              "nombre": "model_request",
+              "tipo": "chain",
+              "estado": "success",
+              "duracionMs": 2556,
+              "tokens": {
+                "entrada": 1640,
+                "salida": 20,
+                "total": 1805
+              },
+              "error": null,
+              "hijos": [
+                {
+                  "id": "01a15b6c-a61c-751b-8ab3-79c326571d79",
+                  "nombre": "ChatOpenAI",
+                  "tipo": "llm",
+                  "estado": "success",
+                  "duracionMs": 2548,
+                  "tokens": {
+                    "entrada": 1640,
+                    "salida": 20,
+                    "total": 1805
+                  },
+                  "error": null
+                },
+                {
+                  "id": "01a15b6c-b013-746f-ac45-214c3a086730",
+                  "nombre": "RunnableLambda",
+                  "tipo": "chain",
+                  "estado": "success",
+                  "duracionMs": 1,
+                  "tokens": {
+                    "entrada": 0,
+                    "salida": 0,
+                    "total": 0
+                  },
+                  "error": null
+                }
+              ]
+            },
+            {
+              "id": "01a15b6c-b018-718f-8cac-9fe9ad82c2e1",
+              "nombre": "tools",
+              "tipo": "chain",
+              "estado": "success",
+              "duracionMs": 180,
+              "tokens": {
+                "entrada": 0,
+                "salida": 0,
+                "total": 0
+              },
+              "error": null,
+              "hijos": [
+                {
+                  "id": "01a15b6c-b01b-7368-bdfa-851fc0b48b9a",
+                  "nombre": "obtener_ficha_proceso",
+                  "tipo": "tool",
+                  "estado": "success",
+                  "duracionMs": 172,
+                  "tokens": {
+                    "entrada": 0,
+                    "salida": 0,
+                    "total": 0
+                  },
+                  "error": null
+                }
+              ]
+            },
+            {
+              "id": "01a15b6c-b0cf-749e-b7c5-d605f919f205",
+              "nombre": "model_request",
+              "tipo": "chain",
+              "estado": "success",
+              "duracionMs": 37304,
+              "tokens": {
+                "entrada": 3087,
+                "salida": 863,
+                "total": 6740
+              },
+              "error": null,
+              "hijos": [
+                {
+                  "id": "01a15b6c-b0d5-7420-a816-e3a362a49ada",
+                  "nombre": "ChatOpenAI",
+                  "tipo": "llm",
+                  "estado": "success",
+                  "duracionMs": 37291,
+                  "tokens": {
+                    "entrada": 3087,
+                    "salida": 863,
+                    "total": 6740
+                  },
+                  "error": null
+                },
+                {
+                  "id": "01a15b6d-4285-7309-a6cd-9b9c5be9bfbe",
+                  "nombre": "RunnableLambda",
+                  "tipo": "chain",
+                  "estado": "success",
+                  "duracionMs": 2,
+                  "tokens": {
+                    "entrada": 0,
+                    "salida": 0,
+                    "total": 0
+                  },
+                  "error": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "01a15b6c-bb6f-74f8-b064-ac39f717c8c6",
+          "nombre": "resumidor:CO1.REQ.11205650",
+          "tipo": "chain",
+          "estado": "success",
+          "duracionMs": 31247,
+          "tokens": {
+            "entrada": 4031,
+            "salida": 929,
+            "total": 6891
+          },
+          "error": null,
+          "hijos": [
+            {
+              "id": "01a15b6c-bb70-723f-9516-4a072896b680",
+              "nombre": "__start__",
+              "tipo": "chain",
+              "estado": "success",
+              "duracionMs": 2,
+              "tokens": {
+                "entrada": 0,
+                "salida": 0,
+                "total": 0
+              },
+              "error": null
+            },
+            {
+              "id": "01a15b6c-bb73-747a-90d3-91ed39ca04b0",
+              "nombre": "model_request",
+              "tipo": "chain",
+              "estado": "success",
+              "duracionMs": 2808,
+              "tokens": {
+                "entrada": 1640,
+                "salida": 20,
+                "total": 1838
+              },
+              "error": null,
+              "hijos": [
+                {
+                  "id": "01a15b6c-bb75-72ea-9ece-ae2f9ea6547f",
+                  "nombre": "ChatOpenAI",
+                  "tipo": "llm",
+                  "estado": "success",
+                  "duracionMs": 2800,
+                  "tokens": {
+                    "entrada": 1640,
+                    "salida": 20,
+                    "total": 1838
+                  },
+                  "error": null
+                },
+                {
+                  "id": "01a15b6c-c66a-735f-85a6-0cf7138e244c",
+                  "nombre": "RunnableLambda",
+                  "tipo": "chain",
+                  "estado": "success",
+                  "duracionMs": 1,
+                  "tokens": {
+                    "entrada": 0,
+                    "salida": 0,
+                    "total": 0
+                  },
+                  "error": null
+                }
+              ]
+            },
+            {
+              "id": "01a15b6c-c678-773d-ae34-e92e900623f9",
+              "nombre": "tools",
+              "tipo": "chain",
+              "estado": "success",
+              "duracionMs": 188,
+              "tokens": {
+                "entrada": 0,
+                "salida": 0,
+                "total": 0
+              },
+              "error": null,
+              "hijos": [
+                {
+                  "id": "01a15b6c-c67a-74ad-a904-962ead1a9624",
+                  "nombre": "obtener_ficha_proceso",
+                  "tipo": "tool",
+                  "estado": "success",
+                  "duracionMs": 185,
+                  "tokens": {
+                    "entrada": 0,
+                    "salida": 0,
+                    "total": 0
+                  },
+                  "error": null
+                }
+              ]
+            },
+            {
+              "id": "01a15b6c-c736-713c-b32c-e11fd97516b5",
+              "nombre": "model_request",
+              "tipo": "chain",
+              "estado": "success",
+              "duracionMs": 28230,
+              "tokens": {
+                "entrada": 2391,
+                "salida": 909,
+                "total": 5053
+              },
+              "error": null,
+              "hijos": [
+                {
+                  "id": "01a15b6c-c737-70cd-be1c-eaacf580fa21",
+                  "nombre": "ChatOpenAI",
+                  "tipo": "llm",
+                  "estado": "success",
+                  "duracionMs": 28222,
+                  "tokens": {
+                    "entrada": 2391,
+                    "salida": 909,
+                    "total": 5053
+                  },
+                  "error": null
+                },
+                {
+                  "id": "01a15b6d-357a-7098-bc34-2899a3e54c75",
+                  "nombre": "RunnableLambda",
+                  "tipo": "chain",
+                  "estado": "success",
+                  "duracionMs": 2,
+                  "tokens": {
+                    "entrada": 0,
+                    "salida": 0,
+                    "total": 0
+                  },
+                  "error": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "01a15b6d-3846-774d-906d-7bf72f849eb7",
+          "nombre": "resumidor:CO1.REQ.11205766",
+          "tipo": "chain",
+          "estado": "success",
+          "duracionMs": 27758,
+          "tokens": {
+            "entrada": 4254,
+            "salida": 977,
+            "total": 7061
+          },
+          "error": null,
+          "hijos": [
+            {
+              "id": "01a15b6d-3849-7639-a6d7-c9be782daa08",
+              "nombre": "__start__",
+              "tipo": "chain",
+              "estado": "success",
+              "duracionMs": 1,
+              "tokens": {
+                "entrada": 0,
+                "salida": 0,
+                "total": 0
+              },
+              "error": null
+            },
+            {
+              "id": "01a15b6d-384b-7510-8320-94304b3a8a91",
+              "nombre": "model_request",
+              "tipo": "chain",
+              "estado": "success",
+              "duracionMs": 1739,
+              "tokens": {
+                "entrada": 1640,
+                "salida": 20,
+                "total": 1710
+              },
+              "error": null,
+              "hijos": [
+                {
+                  "id": "01a15b6d-384c-708c-bc72-6fba0060ab8b",
+                  "nombre": "ChatOpenAI",
+                  "tipo": "llm",
+                  "estado": "success",
+                  "duracionMs": 1730,
+                  "tokens": {
+                    "entrada": 1640,
+                    "salida": 20,
+                    "total": 1710
+                  },
+                  "error": null
+                },
+                {
+                  "id": "01a15b6d-3f13-75b8-a021-d58823b1bbbf",
+                  "nombre": "RunnableLambda",
+                  "tipo": "chain",
+                  "estado": "success",
+                  "duracionMs": 2,
+                  "tokens": {
+                    "entrada": 0,
+                    "salida": 0,
+                    "total": 0
+                  },
+                  "error": null
+                }
+              ]
+            },
+            {
+              "id": "01a15b6d-3f17-743e-8c1d-08206a84bda2",
+              "nombre": "tools",
+              "tipo": "chain",
+              "estado": "success",
+              "duracionMs": 188,
+              "tokens": {
+                "entrada": 0,
+                "salida": 0,
+                "total": 0
+              },
+              "error": null,
+              "hijos": [
+                {
+                  "id": "01a15b6d-3f18-70da-9791-c11d481c94f6",
+                  "nombre": "obtener_ficha_proceso",
+                  "tipo": "tool",
+                  "estado": "success",
+                  "duracionMs": 185,
+                  "tokens": {
+                    "entrada": 0,
+                    "salida": 0,
+                    "total": 0
+                  },
+                  "error": null
+                }
+              ]
+            },
+            {
+              "id": "01a15b6d-3fd5-736b-bad3-f098f4a5be0f",
+              "nombre": "model_request",
+              "tipo": "chain",
+              "estado": "success",
+              "duracionMs": 25815,
+              "tokens": {
+                "entrada": 2614,
+                "salida": 957,
+                "total": 5351
+              },
+              "error": null,
+              "hijos": [
+                {
+                  "id": "01a15b6d-3fd6-74b9-812c-0a1f74ea210b",
+                  "nombre": "ChatOpenAI",
+                  "tipo": "llm",
+                  "estado": "success",
+                  "duracionMs": 25800,
+                  "tokens": {
+                    "entrada": 2614,
+                    "salida": 957,
+                    "total": 5351
+                  },
+                  "error": null
+                },
+                {
+                  "id": "01a15b6d-a4aa-738e-ba50-2339d7b608be",
+                  "nombre": "RunnableLambda",
+                  "tipo": "chain",
+                  "estado": "success",
+                  "duracionMs": 1,
+                  "tokens": {
+                    "entrada": 0,
+                    "salida": 0,
+                    "total": 0
+                  },
+                  "error": null
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "01a15b6d-a4d7-7113-94bc-f13fee90eae1",
+      "nombre": "armar_documentos",
+      "tipo": "chain",
+      "estado": "success",
+      "duracionMs": 71104,
+      "tokens": {
+        "entrada": 25235,
+        "salida": 3976,
+        "total": 39028
+      },
+      "error": null,
+      "hijos": [
+        {
+          "id": "01a15b6d-a4e6-73dd-89b5-477653e6e7dd",
+          "nombre": "documentos:CO1.REQ.11205497",
+          "tipo": "chain",
+          "estado": "success",
+          "duracionMs": 21618,
+          "tokens": {
+            "entrada": 4795,
+            "salida": 608,
+            "total": 6839
+          },
+          "error": null,
+          "hijos": [
+            {
+              "id": "01a15b6d-a4e9-761f-a056-86f070a6f9be",
+              "nombre": "__start__",
+              "tipo": "chain",
+              "estado": "success",
+              "duracionMs": 4,
+              "tokens": {
+                "entrada": 0,
+                "salida": 0,
+                "total": 0
+              },
+              "error": null
+            },
+            {
+              "id": "01a15b6d-a4f1-70eb-b000-9d04188acf6b",
+              "nombre": "model_request",
+              "tipo": "chain",
+              "estado": "success",
+              "duracionMs": 4077,
+              "tokens": {
+                "entrada": 1766,
+                "salida": 29,
+                "total": 2090
+              },
+              "error": null,
+              "hijos": [
+                {
+                  "id": "01a15b6d-a4f5-718e-997b-d1a1cc7a67a0",
+                  "nombre": "ChatOpenAI",
+                  "tipo": "llm",
+                  "estado": "success",
+                  "duracionMs": 4061,
+                  "tokens": {
+                    "entrada": 1766,
+                    "salida": 29,
+                    "total": 2090
+                  },
+                  "error": null
+                },
+                {
+                  "id": "01a15b6d-b4d9-7288-a656-8bfecd185046",
+                  "nombre": "RunnableLambda",
+                  "tipo": "chain",
+                  "estado": "success",
+                  "duracionMs": 4,
+                  "tokens": {
+                    "entrada": 0,
+                    "salida": 0,
+                    "total": 0
+                  },
+                  "error": null
+                }
+              ]
+            },
+            {
+              "id": "01a15b6d-b4df-72cd-97d2-37704c358b70",
+              "nombre": "tools",
+              "tipo": "chain",
+              "estado": "success",
+              "duracionMs": 5,
+              "tokens": {
+                "entrada": 0,
+                "salida": 0,
+                "total": 0
+              },
+              "error": null,
+              "hijos": [
+                {
+                  "id": "01a15b6d-b4e1-745f-b7ef-158b73e46ffe",
+                  "nombre": "armar_lista_documentos",
+                  "tipo": "tool",
+                  "estado": "success",
+                  "duracionMs": 1,
+                  "tokens": {
+                    "entrada": 0,
+                    "salida": 0,
+                    "total": 0
+                  },
+                  "error": null
+                }
+              ]
+            },
+            {
+              "id": "01a15b6d-b4e5-7403-85d2-7d791cc912ac",
+              "nombre": "model_request",
+              "tipo": "chain",
+              "estado": "success",
+              "duracionMs": 17522,
+              "tokens": {
+                "entrada": 3029,
+                "salida": 579,
+                "total": 4749
+              },
+              "error": null,
+              "hijos": [
+                {
+                  "id": "01a15b6d-b4e6-742a-904b-1b870716d04f",
+                  "nombre": "ChatOpenAI",
+                  "tipo": "llm",
+                  "estado": "success",
+                  "duracionMs": 17514,
+                  "tokens": {
+                    "entrada": 3029,
+                    "salida": 579,
+                    "total": 4749
+                  },
+                  "error": null
+                },
+                {
+                  "id": "01a15b6d-f955-735b-8048-8a5573cf1016",
+                  "nombre": "RunnableLambda",
+                  "tipo": "chain",
+                  "estado": "success",
+                  "duracionMs": 2,
+                  "tokens": {
+                    "entrada": 0,
+                    "salida": 0,
+                    "total": 0
+                  },
+                  "error": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "01a15b6d-a4e6-73dd-89b5-4abfac139d78",
+          "nombre": "documentos:CO1.REQ.11205520",
+          "tipo": "chain",
+          "estado": "success",
+          "duracionMs": 38940,
+          "tokens": {
+            "entrada": 5745,
+            "salida": 1039,
+            "total": 10679
+          },
+          "error": null,
+          "hijos": [
+            {
+              "id": "01a15b6d-a4e9-761f-a056-8a5567d1ccc6",
+              "nombre": "__start__",
+              "tipo": "chain",
+              "estado": "success",
+              "duracionMs": 4,
+              "tokens": {
+                "entrada": 0,
+                "salida": 0,
+                "total": 0
+              },
+              "error": null
+            },
+            {
+              "id": "01a15b6d-a4f1-70eb-b000-a32edae433d9",
+              "nombre": "model_request",
+              "tipo": "chain",
+              "estado": "success",
+              "duracionMs": 7435,
+              "tokens": {
+                "entrada": 2229,
+                "salida": 48,
+                "total": 3073
+              },
+              "error": null,
+              "hijos": [
+                {
+                  "id": "01a15b6d-a4f5-718e-997b-d7b79d94812e",
+                  "nombre": "ChatOpenAI",
+                  "tipo": "llm",
+                  "estado": "success",
+                  "duracionMs": 7427,
+                  "tokens": {
+                    "entrada": 2229,
+                    "salida": 48,
+                    "total": 3073
+                  },
+                  "error": null
+                },
+                {
+                  "id": "01a15b6d-c1fb-735e-abe7-b1e5211f64a6",
+                  "nombre": "RunnableLambda",
+                  "tipo": "chain",
+                  "estado": "success",
+                  "duracionMs": 1,
+                  "tokens": {
+                    "entrada": 0,
+                    "salida": 0,
+                    "total": 0
+                  },
+                  "error": null
+                }
+              ]
+            },
+            {
+              "id": "01a15b6d-c1fd-7483-829d-7dfd58f1f7fb",
+              "nombre": "tools",
+              "tipo": "chain",
+              "estado": "success",
+              "duracionMs": 2,
+              "tokens": {
+                "entrada": 0,
+                "salida": 0,
+                "total": 0
+              },
+              "error": null,
+              "hijos": [
+                {
+                  "id": "01a15b6d-c1fd-7483-829d-8008023ba0e0",
+                  "nombre": "armar_lista_documentos",
+                  "tipo": "tool",
+                  "estado": "success",
+                  "duracionMs": 1,
+                  "tokens": {
+                    "entrada": 0,
+                    "salida": 0,
+                    "total": 0
+                  },
+                  "error": null
+                }
+              ]
+            },
+            {
+              "id": "01a15b6d-c201-779f-a6c6-49733843a9bd",
+              "nombre": "model_request",
+              "tipo": "chain",
+              "estado": "success",
+              "duracionMs": 31487,
+              "tokens": {
+                "entrada": 3516,
+                "salida": 991,
+                "total": 7606
+              },
+              "error": null,
+              "hijos": [
+                {
+                  "id": "01a15b6d-c202-756b-ab8f-eb3232764fcc",
+                  "nombre": "ChatOpenAI",
+                  "tipo": "llm",
+                  "estado": "success",
+                  "duracionMs": 31475,
+                  "tokens": {
+                    "entrada": 3516,
+                    "salida": 991,
+                    "total": 7606
+                  },
+                  "error": null
+                },
+                {
+                  "id": "01a15b6e-3cf9-74cf-82d8-8913ba185678",
+                  "nombre": "RunnableLambda",
+                  "tipo": "chain",
+                  "estado": "success",
+                  "duracionMs": 7,
+                  "tokens": {
+                    "entrada": 0,
+                    "salida": 0,
+                    "total": 0
+                  },
+                  "error": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "01a15b6d-f960-77bf-a51c-a1cec6c34dc5",
+          "nombre": "documentos:CO1.REQ.11205766",
+          "tipo": "chain",
+          "estado": "success",
+          "duracionMs": 29492,
+          "tokens": {
+            "entrada": 5229,
+            "salida": 1182,
+            "total": 8709
+          },
+          "error": null,
+          "hijos": [
+            {
+              "id": "01a15b6d-f963-7248-b3b1-6f13e19a7d07",
+              "nombre": "__start__",
+              "tipo": "chain",
+              "estado": "success",
+              "duracionMs": 2,
+              "tokens": {
+                "entrada": 0,
+                "salida": 0,
+                "total": 0
+              },
+              "error": null
+            },
+            {
+              "id": "01a15b6d-f966-709a-925f-39a36c72bc80",
+              "nombre": "model_request",
+              "tipo": "chain",
+              "estado": "success",
+              "duracionMs": 5259,
+              "tokens": {
+                "entrada": 1984,
+                "salida": 28,
+                "total": 2418
+              },
+              "error": null,
+              "hijos": [
+                {
+                  "id": "01a15b6d-f968-7617-86d8-d2ebb9b33b01",
+                  "nombre": "ChatOpenAI",
+                  "tipo": "llm",
+                  "estado": "success",
+                  "duracionMs": 5253,
+                  "tokens": {
+                    "entrada": 1984,
+                    "salida": 28,
+                    "total": 2418
+                  },
+                  "error": null
+                },
+                {
+                  "id": "01a15b6e-0def-7009-8bc2-d677badf6814",
+                  "nombre": "RunnableLambda",
+                  "tipo": "chain",
+                  "estado": "success",
+                  "duracionMs": 2,
+                  "tokens": {
+                    "entrada": 0,
+                    "salida": 0,
+                    "total": 0
+                  },
+                  "error": null
+                }
+              ]
+            },
+            {
+              "id": "01a15b6e-0df2-751d-a15f-8f6bc2034727",
+              "nombre": "tools",
+              "tipo": "chain",
+              "estado": "success",
+              "duracionMs": 3,
+              "tokens": {
+                "entrada": 0,
+                "salida": 0,
+                "total": 0
+              },
+              "error": null,
+              "hijos": [
+                {
+                  "id": "01a15b6e-0df3-737f-9ccb-bef6f4c90163",
+                  "nombre": "armar_lista_documentos",
+                  "tipo": "tool",
+                  "estado": "success",
+                  "duracionMs": 1,
+                  "tokens": {
+                    "entrada": 0,
+                    "salida": 0,
+                    "total": 0
+                  },
+                  "error": null
+                }
+              ]
+            },
+            {
+              "id": "01a15b6e-0df6-76dc-8864-6c0eca437974",
+              "nombre": "model_request",
+              "tipo": "chain",
+              "estado": "success",
+              "duracionMs": 24221,
+              "tokens": {
+                "entrada": 3245,
+                "salida": 1154,
+                "total": 6291
+              },
+              "error": null,
+              "hijos": [
+                {
+                  "id": "01a15b6e-0df8-764a-8970-6435074f87dc",
+                  "nombre": "ChatOpenAI",
+                  "tipo": "llm",
+                  "estado": "success",
+                  "duracionMs": 24215,
+                  "tokens": {
+                    "entrada": 3245,
+                    "salida": 1154,
+                    "total": 6291
+                  },
+                  "error": null
+                },
+                {
+                  "id": "01a15b6e-6c92-702e-9b4e-15d29d0da49f",
+                  "nombre": "RunnableLambda",
+                  "tipo": "chain",
+                  "estado": "success",
+                  "duracionMs": 1,
+                  "tokens": {
+                    "entrada": 0,
+                    "salida": 0,
+                    "total": 0
+                  },
+                  "error": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "01a15b6e-3d0b-752c-8a5b-57941c37735a",
+          "nombre": "documentos:CO1.REQ.11204985",
+          "tipo": "chain",
+          "estado": "success",
+          "duracionMs": 20995,
+          "tokens": {
+            "entrada": 4615,
+            "salida": 472,
+            "total": 6300
+          },
+          "error": null,
+          "hijos": [
+            {
+              "id": "01a15b6e-3d0d-74f4-bce9-2855e6808c9d",
+              "nombre": "__start__",
+              "tipo": "chain",
+              "estado": "success",
+              "duracionMs": 2,
+              "tokens": {
+                "entrada": 0,
+                "salida": 0,
+                "total": 0
+              },
+              "error": null
+            },
+            {
+              "id": "01a15b6e-3d13-702c-99e0-28073e9c1a94",
+              "nombre": "model_request",
+              "tipo": "chain",
+              "estado": "success",
+              "duracionMs": 4111,
+              "tokens": {
+                "entrada": 1674,
+                "salida": 31,
+                "total": 1984
+              },
+              "error": null,
+              "hijos": [
+                {
+                  "id": "01a15b6e-3d15-75eb-b43a-514b07b4546e",
+                  "nombre": "ChatOpenAI",
+                  "tipo": "llm",
+                  "estado": "success",
+                  "duracionMs": 4100,
+                  "tokens": {
+                    "entrada": 1674,
+                    "salida": 31,
+                    "total": 1984
+                  },
+                  "error": null
+                },
+                {
+                  "id": "01a15b6e-4d1b-73c5-a5af-47f70bf838ba",
+                  "nombre": "RunnableLambda",
+                  "tipo": "chain",
+                  "estado": "success",
+                  "duracionMs": 1,
+                  "tokens": {
+                    "entrada": 0,
+                    "salida": 0,
+                    "total": 0
+                  },
+                  "error": null
+                }
+              ]
+            },
+            {
+              "id": "01a15b6e-4d25-70dd-98f1-e780f6008495",
+              "nombre": "tools",
+              "tipo": "chain",
+              "estado": "success",
+              "duracionMs": 7,
+              "tokens": {
+                "entrada": 0,
+                "salida": 0,
+                "total": 0
+              },
+              "error": null,
+              "hijos": [
+                {
+                  "id": "01a15b6e-4d26-756d-83b9-a23edbd59cd1",
+                  "nombre": "armar_lista_documentos",
+                  "tipo": "tool",
+                  "estado": "success",
+                  "duracionMs": 5,
+                  "tokens": {
+                    "entrada": 0,
+                    "salida": 0,
+                    "total": 0
+                  },
+                  "error": null
+                }
+              ]
+            },
+            {
+              "id": "01a15b6e-4d2d-758d-83a2-9238aeaaf074",
+              "nombre": "model_request",
+              "tipo": "chain",
+              "estado": "success",
+              "duracionMs": 16863,
+              "tokens": {
+                "entrada": 2941,
+                "salida": 441,
+                "total": 4316
+              },
+              "error": null,
+              "hijos": [
+                {
+                  "id": "01a15b6e-4d31-75ba-96cf-a51eedaf363e",
+                  "nombre": "ChatOpenAI",
+                  "tipo": "llm",
+                  "estado": "success",
+                  "duracionMs": 16854,
+                  "tokens": {
+                    "entrada": 2941,
+                    "salida": 441,
+                    "total": 4316
+                  },
+                  "error": null
+                },
+                {
+                  "id": "01a15b6e-8f0a-77f8-a091-12911d288af2",
+                  "nombre": "RunnableLambda",
+                  "tipo": "chain",
+                  "estado": "success",
+                  "duracionMs": 1,
+                  "tokens": {
+                    "entrada": 0,
+                    "salida": 0,
+                    "total": 0
+                  },
+                  "error": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "01a15b6e-6c9a-75fb-abf5-9238e6b66b4f",
+          "nombre": "documentos:CO1.REQ.11205650",
+          "tipo": "chain",
+          "estado": "success",
+          "duracionMs": 19956,
+          "tokens": {
+            "entrada": 4851,
+            "salida": 675,
+            "total": 6501
+          },
+          "error": null,
+          "hijos": [
+            {
+              "id": "01a15b6e-6c9b-708c-8910-dc3f10313216",
+              "nombre": "__start__",
+              "tipo": "chain",
+              "estado": "success",
+              "duracionMs": 2,
+              "tokens": {
+                "entrada": 0,
+                "salida": 0,
+                "total": 0
+              },
+              "error": null
+            },
+            {
+              "id": "01a15b6e-6c9f-7087-aecf-39865aaa5315",
+              "nombre": "model_request",
+              "tipo": "chain",
+              "estado": "success",
+              "duracionMs": 9005,
+              "tokens": {
+                "entrada": 1794,
+                "salida": 29,
+                "total": 2440
+              },
+              "error": null,
+              "hijos": [
+                {
+                  "id": "01a15b6e-6ca0-75fc-8440-22d046736737",
+                  "nombre": "ChatOpenAI",
+                  "tipo": "llm",
+                  "estado": "success",
+                  "duracionMs": 9000,
+                  "tokens": {
+                    "entrada": 1794,
+                    "salida": 29,
+                    "total": 2440
+                  },
+                  "error": null
+                },
+                {
+                  "id": "01a15b6e-8fcb-76cb-b82d-7b4c326cb5ca",
+                  "nombre": "RunnableLambda",
+                  "tipo": "chain",
+                  "estado": "success",
+                  "duracionMs": 1,
+                  "tokens": {
+                    "entrada": 0,
+                    "salida": 0,
+                    "total": 0
+                  },
+                  "error": null
+                }
+              ]
+            },
+            {
+              "id": "01a15b6e-8fcd-77c9-b73e-b46a4622850b",
+              "nombre": "tools",
+              "tipo": "chain",
+              "estado": "success",
+              "duracionMs": 4,
+              "tokens": {
+                "entrada": 0,
+                "salida": 0,
+                "total": 0
+              },
+              "error": null,
+              "hijos": [
+                {
+                  "id": "01a15b6e-8fce-733a-adcc-ecaac120b072",
+                  "nombre": "armar_lista_documentos",
+                  "tipo": "tool",
+                  "estado": "success",
+                  "duracionMs": 1,
+                  "tokens": {
+                    "entrada": 0,
+                    "salida": 0,
+                    "total": 0
+                  },
+                  "error": null
+                }
+              ]
+            },
+            {
+              "id": "01a15b6e-8fd2-73ab-ab52-1e7fcfd09ebe",
+              "nombre": "model_request",
+              "tipo": "chain",
+              "estado": "success",
+              "duracionMs": 10939,
+              "tokens": {
+                "entrada": 3057,
+                "salida": 646,
+                "total": 4061
+              },
+              "error": null,
+              "hijos": [
+                {
+                  "id": "01a15b6e-8fd3-77b9-9244-f82648adedaa",
+                  "nombre": "ChatOpenAI",
+                  "tipo": "llm",
+                  "estado": "success",
+                  "duracionMs": 10934,
+                  "tokens": {
+                    "entrada": 3057,
+                    "salida": 646,
+                    "total": 4061
+                  },
+                  "error": null
+                },
+                {
+                  "id": "01a15b6e-ba8c-7091-b68e-b0179d30e321",
+                  "nombre": "RunnableLambda",
+                  "tipo": "chain",
+                  "estado": "success",
+                  "duracionMs": 1,
+                  "tokens": {
+                    "entrada": 0,
+                    "salida": 0,
+                    "total": 0
+                  },
+                  "error": null
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "01a15b6e-ba99-704f-8812-3637b250c24c",
+      "nombre": "ensamblar_reporte",
+      "tipo": "chain",
+      "estado": "success",
+      "duracionMs": 32,
+      "tokens": {
+        "entrada": 0,
+        "salida": 0,
+        "total": 0
+      },
+      "error": null
+    }
+  ]
+}

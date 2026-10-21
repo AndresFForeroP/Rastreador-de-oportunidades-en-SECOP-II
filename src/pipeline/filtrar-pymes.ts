@@ -22,7 +22,7 @@ import {
   type ResultadoPagina,
 } from "../agentes/filtrador.js";
 import { MODEL_NAME } from "../llm.js";
-import { registrarCosto } from "../cost.js";
+import { registrarCosto, ejecutarConContextoTokens } from "../cost.js";
 import { fechaHoy } from "../datos/socrata.js";
 import { leerFechaPrueba, modoEjecucion } from "../config/entorno.js";
 import {
@@ -252,9 +252,10 @@ async function procesarPaginaConReintentos(
 }
 
 async function filtrarPymesInterno(opciones: OpcionesFiltrarPymes = {}): Promise<ResumenAptos> {
-  const fechaPrueba = leerFechaPrueba();
-  const fecha = fechaPrueba ?? fechaHoy();
-  const modo = modoEjecucion();
+  return ejecutarConContextoTokens({ agente: NOMBRE_AGENTE_FILTRADOR }, async () => {
+    const fechaPrueba = leerFechaPrueba();
+    const fecha = fechaPrueba ?? fechaHoy();
+    const modo = modoEjecucion();
 
   const primeraPagina = await obtenerPaginaFiltroBasico(1);
   const totalPaginasDisponibles = primeraPagina.totalPaginas;
@@ -321,7 +322,8 @@ async function filtrarPymesInterno(opciones: OpcionesFiltrarPymes = {}): Promise
   };
 
   await guardarAptos(fecha, resumen);
-  return resumen;
+    return resumen;
+  });
 }
 
 async function guardarAptos(fecha: string, resumen: ResumenAptos): Promise<void> {

@@ -1,0 +1,11 @@
+{
+  "moneda": "USD",
+  "actualizado": "2026-10-20",
+  "fuente": "panel del reto (calibración empírica con 15 llamadas)",
+  "modelos": {
+    "grok-4.6": {
+      "porMillonEntrada": 2.0,
+      "porMillonSalida": 6.0
+    }
+  }
+}

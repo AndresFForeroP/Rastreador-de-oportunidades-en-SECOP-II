@@ -29,3 +29,6 @@ dist/
 scratch/
 .DS_Store
 Thumbs.db
+
+# Seguimiento interno
+HITOS-FALTANTES.md

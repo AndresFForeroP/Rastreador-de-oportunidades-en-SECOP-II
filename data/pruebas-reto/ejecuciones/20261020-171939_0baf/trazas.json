@@ -1,0 +1,330 @@
+{
+  "id": "e0ab4cc7-593f-4a2b-8207-1afd0d5fb1be",
+  "nombre": "secop-diario",
+  "tipo": "chain",
+  "estado": "success",
+  "duracionMs": 5858,
+  "tokens": {
+    "entrada": 0,
+    "salida": 0,
+    "total": 0
+  },
+  "error": null,
+  "hijos": [
+    {
+      "id": "01a15b66-199a-7583-a52e-bcfeda9d1177",
+      "nombre": "__start__",
+      "tipo": "chain",
+      "estado": "success",
+      "duracionMs": 4,
+      "tokens": {
+        "entrada": 0,
+        "salida": 0,
+        "total": 0
+      },
+      "error": null
+    },
+    {
+      "id": "01a15b66-19a2-742b-b3e2-6402c0108950",
+      "nombre": "descargar_y_prefiltrar",
+      "tipo": "chain",
+      "estado": "success",
+      "duracionMs": 40,
+      "tokens": {
+        "entrada": 0,
+        "salida": 0,
+        "total": 0
+      },
+      "error": null,
+      "hijos": [
+        {
+          "id": "01a15b66-19a3-7000-8000-0104b1187cc9",
+          "nombre": "descargar_hoy",
+          "tipo": "chain",
+          "estado": "success",
+          "duracionMs": 13,
+          "tokens": {
+            "entrada": 0,
+            "salida": 0,
+            "total": 0
+          },
+          "error": null
+        },
+        {
+          "id": "01a15b66-19b1-7000-8000-03f7cd9b0192",
+          "nombre": "prefiltro_basico",
+          "tipo": "chain",
+          "estado": "success",
+          "duracionMs": 4,
+          "tokens": {
+            "entrada": 0,
+            "salida": 0,
+            "total": 0
+          },
+          "error": null
+        },
+        {
+          "id": "01a15b66-19b5-7000-8000-01fc5cc49506",
+          "nombre": "descargar_hoy",
+          "tipo": "chain",
+          "estado": "success",
+          "duracionMs": 6,
+          "tokens": {
+            "entrada": 0,
+            "salida": 0,
+            "total": 0
+          },
+          "error": null
+        },
+        {
+          "id": "01a15b66-19bb-7000-8000-00ffdab82182",
+          "nombre": "prefiltro_basico",
+          "tipo": "chain",
+          "estado": "success",
+          "duracionMs": 3,
+          "tokens": {
+            "entrada": 0,
+            "salida": 0,
+            "total": 0
+          },
+          "error": null
+        }
+      ]
+    },
+    {
+      "id": "01a15b66-19ce-70d6-ad36-1b7c41ef9e72",
+      "nombre": "filtrar_pymes",
+      "tipo": "chain",
+      "estado": "success",
+      "duracionMs": 5758,
+      "tokens": {
+        "entrada": 0,
+        "salida": 0,
+        "total": 0
+      },
+      "error": null,
+      "hijos": [
+        {
+          "id": "01a15b66-19d1-7000-8000-0246e306649c",
+          "nombre": "filtrar_pymes",
+          "tipo": "chain",
+          "estado": "success",
+          "duracionMs": 5753,
+          "tokens": {
+            "entrada": 0,
+            "salida": 0,
+            "total": 0
+          },
+          "error": null
+        },
+        {
+          "id": "01a15b66-19d5-7005-86fe-100a9b8b032d",
+          "nombre": "filtrador:pagina-1",
+          "tipo": "chain",
+          "estado": "error",
+          "duracionMs": 815,
+          "tokens": {
+            "entrada": 0,
+            "salida": 0,
+            "total": 0
+          },
+          "error": "401 \"Llave de API inválida o revocada.\"\n\nTroubleshooting URL: https://docs.langchain.com/oss/javascript/langchain/errors/MODEL_AUTHENTICATION/\n\n\nError: 401 \"Llave de API inválida o revocada.\"\n\nTroubleshooting URL: https://docs.langchain.com/oss/javascript/langchain/errors/MODEL_AUTHENTICATION/\n\n    at APIError.generate (C:\\Proyectos\\Agentes\\Rastreador-de-oportunidades-en-SECOP-II\\node_modules\\.pnpm\\openai@7.30.0_ws@8.22.0_zod@4.6.5\\node_modules\\openai\\src\\core\\error.ts:75:14)\n    at OpenAI.makeStatusError (C:\\Proyectos\\Agentes\\Rastreador-de-oportunidades-en-SECOP-II\\node_modules\\.pnpm\\openai@7.30.0_ws@8.22.0_zod@4.6.5\\node_modules\\openai\\src\\client.ts:903:28)\n    at OpenAI.makeRequest (C:\\Proyectos\\Agentes\\Rastreador-de-oportunidades-en-SECOP-II\\node_modules\\.pnpm\\openai@7.30.0_ws@8.22.0_zod@4.6.5\\node_modules\\openai\\src\\client.ts:1927:24)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async <anonymous> (C:\\Proyectos\\Agentes\\Rastreador-de-oportunidades-en-SECOP-II\\node_modules\\.pnpm\\@langchain+openai@1.6.2_@la_685da5ebeae2027b7fd62f64277ecf75\\node_modules\\@langchain\\openai\\src\\chat_models\\completions.ts:598:18)\n    at async pRetry (C:\\Proyectos\\Agentes\\Rastreador-de-oportunidades-en-SECOP-II\\node_modules\\.pnpm\\@langchain+core@1.2.17_open_3a3ae1294983c8b0c51fcf1b76743493\\node_modules\\@langchain\\core\\src\\utils\\p-retry\\index.js:246:22)\n    at async run (C:\\Proyectos\\Agentes\\Rastreador-de-oportunidades-en-SECOP-II\\node_modules\\.pnpm\\p-queue@6.6.2\\node_modules\\p-queue\\dist\\index.js:163:29)",
+          "hijos": [
+            {
+              "id": "01a15b66-19d6-762f-a969-692dea3614e5",
+              "nombre": "__start__",
+              "tipo": "chain",
+              "estado": "success",
+              "duracionMs": 2,
+              "tokens": {
+                "entrada": 0,
+                "salida": 0,
+                "total": 0
+              },
+              "error": null
+            },
+            {
+              "id": "01a15b66-19d9-71bc-b57a-02e93057b64a",
+              "nombre": "model_request",
+              "tipo": "chain",
+              "estado": "error",
+              "duracionMs": 810,
+              "tokens": {
+                "entrada": 0,
+                "salida": 0,
+                "total": 0
+              },
+              "error": "401 \"Llave de API inválida o revocada.\"\n\nTroubleshooting URL: https://docs.langchain.com/oss/javascript/langchain/errors/MODEL_AUTHENTICATION/\n\n\nError: 401 \"Llave de API inválida o revocada.\"\n\nTroubleshooting URL: https://docs.langchain.com/oss/javascript/langchain/errors/MODEL_AUTHENTICATION/\n\n    at APIError.generate (C:\\Proyectos\\Agentes\\Rastreador-de-oportunidades-en-SECOP-II\\node_modules\\.pnpm\\openai@7.30.0_ws@8.22.0_zod@4.6.5\\node_modules\\openai\\src\\core\\error.ts:75:14)\n    at OpenAI.makeStatusError (C:\\Proyectos\\Agentes\\Rastreador-de-oportunidades-en-SECOP-II\\node_modules\\.pnpm\\openai@7.30.0_ws@8.22.0_zod@4.6.5\\node_modules\\openai\\src\\client.ts:903:28)\n    at OpenAI.makeRequest (C:\\Proyectos\\Agentes\\Rastreador-de-oportunidades-en-SECOP-II\\node_modules\\.pnpm\\openai@7.30.0_ws@8.22.0_zod@4.6.5\\node_modules\\openai\\src\\client.ts:1927:24)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async <anonymous> (C:\\Proyectos\\Agentes\\Rastreador-de-oportunidades-en-SECOP-II\\node_modules\\.pnpm\\@langchain+openai@1.6.2_@la_685da5ebeae2027b7fd62f64277ecf75\\node_modules\\@langchain\\openai\\src\\chat_models\\completions.ts:598:18)\n    at async pRetry (C:\\Proyectos\\Agentes\\Rastreador-de-oportunidades-en-SECOP-II\\node_modules\\.pnpm\\@langchain+core@1.2.17_open_3a3ae1294983c8b0c51fcf1b76743493\\node_modules\\@langchain\\core\\src\\utils\\p-retry\\index.js:246:22)\n    at async run (C:\\Proyectos\\Agentes\\Rastreador-de-oportunidades-en-SECOP-II\\node_modules\\.pnpm\\p-queue@6.6.2\\node_modules\\p-queue\\dist\\index.js:163:29)",
+              "hijos": [
+                {
+                  "id": "01a15b66-19e0-76fa-b610-9b10338819a8",
+                  "nombre": "ChatOpenAI",
+                  "tipo": "llm",
+                  "estado": "error",
+                  "duracionMs": 796,
+                  "tokens": {
+                    "entrada": 0,
+                    "salida": 0,
+                    "total": 0
+                  },
+                  "error": "401 \"Llave de API inválida o revocada.\"\n\nTroubleshooting URL: https://docs.langchain.com/oss/javascript/langchain/errors/MODEL_AUTHENTICATION/\n\n\nError: 401 \"Llave de API inválida o revocada.\"\n\nTroubleshooting URL: https://docs.langchain.com/oss/javascript/langchain/errors/MODEL_AUTHENTICATION/\n\n    at APIError.generate (C:\\Proyectos\\Agentes\\Rastreador-de-oportunidades-en-SECOP-II\\node_modules\\.pnpm\\openai@7.30.0_ws@8.22.0_zod@4.6.5\\node_modules\\openai\\src\\core\\error.ts:75:14)\n    at OpenAI.makeStatusError (C:\\Proyectos\\Agentes\\Rastreador-de-oportunidades-en-SECOP-II\\node_modules\\.pnpm\\openai@7.30.0_ws@8.22.0_zod@4.6.5\\node_modules\\openai\\src\\client.ts:903:28)\n    at OpenAI.makeRequest (C:\\Proyectos\\Agentes\\Rastreador-de-oportunidades-en-SECOP-II\\node_modules\\.pnpm\\openai@7.30.0_ws@8.22.0_zod@4.6.5\\node_modules\\openai\\src\\client.ts:1927:24)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async <anonymous> (C:\\Proyectos\\Agentes\\Rastreador-de-oportunidades-en-SECOP-II\\node_modules\\.pnpm\\@langchain+openai@1.6.2_@la_685da5ebeae2027b7fd62f64277ecf75\\node_modules\\@langchain\\openai\\src\\chat_models\\completions.ts:598:18)\n    at async pRetry (C:\\Proyectos\\Agentes\\Rastreador-de-oportunidades-en-SECOP-II\\node_modules\\.pnpm\\@langchain+core@1.2.17_open_3a3ae1294983c8b0c51fcf1b76743493\\node_modules\\@langchain\\core\\src\\utils\\p-retry\\index.js:246:22)\n    at async run (C:\\Proyectos\\Agentes\\Rastreador-de-oportunidades-en-SECOP-II\\node_modules\\.pnpm\\p-queue@6.6.2\\node_modules\\p-queue\\dist\\index.js:163:29)"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "01a15b66-22e4-7560-9281-6f704f682678",
+          "nombre": "filtrador:pagina-1:reintento-2",
+          "tipo": "chain",
+          "estado": "error",
+          "duracionMs": 205,
+          "tokens": {
+            "entrada": 0,
+            "salida": 0,
+            "total": 0
+          },
+          "error": "401 \"Llave de API inválida o revocada.\"\n\nTroubleshooting URL: https://docs.langchain.com/oss/javascript/langchain/errors/MODEL_AUTHENTICATION/\n\n\nError: 401 \"Llave de API inválida o revocada.\"\n\nTroubleshooting URL: https://docs.langchain.com/oss/javascript/langchain/errors/MODEL_AUTHENTICATION/\n\n    at APIError.generate (C:\\Proyectos\\Agentes\\Rastreador-de-oportunidades-en-SECOP-II\\node_modules\\.pnpm\\openai@7.30.0_ws@8.22.0_zod@4.6.5\\node_modules\\openai\\src\\core\\error.ts:75:14)\n    at OpenAI.makeStatusError (C:\\Proyectos\\Agentes\\Rastreador-de-oportunidades-en-SECOP-II\\node_modules\\.pnpm\\openai@7.30.0_ws@8.22.0_zod@4.6.5\\node_modules\\openai\\src\\client.ts:903:28)\n    at OpenAI.makeRequest (C:\\Proyectos\\Agentes\\Rastreador-de-oportunidades-en-SECOP-II\\node_modules\\.pnpm\\openai@7.30.0_ws@8.22.0_zod@4.6.5\\node_modules\\openai\\src\\client.ts:1927:24)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async <anonymous> (C:\\Proyectos\\Agentes\\Rastreador-de-oportunidades-en-SECOP-II\\node_modules\\.pnpm\\@langchain+openai@1.6.2_@la_685da5ebeae2027b7fd62f64277ecf75\\node_modules\\@langchain\\openai\\src\\chat_models\\completions.ts:598:18)\n    at async pRetry (C:\\Proyectos\\Agentes\\Rastreador-de-oportunidades-en-SECOP-II\\node_modules\\.pnpm\\@langchain+core@1.2.17_open_3a3ae1294983c8b0c51fcf1b76743493\\node_modules\\@langchain\\core\\src\\utils\\p-retry\\index.js:246:22)\n    at async run (C:\\Proyectos\\Agentes\\Rastreador-de-oportunidades-en-SECOP-II\\node_modules\\.pnpm\\p-queue@6.6.2\\node_modules\\p-queue\\dist\\index.js:163:29)",
+          "hijos": [
+            {
+              "id": "01a15b66-22e7-719b-841e-d06604bb6cd3",
+              "nombre": "__start__",
+              "tipo": "chain",
+              "estado": "success",
+              "duracionMs": 2,
+              "tokens": {
+                "entrada": 0,
+                "salida": 0,
+                "total": 0
+              },
+              "error": null
+            },
+            {
+              "id": "01a15b66-22eb-75c4-82e2-5d583654b08f",
+              "nombre": "model_request",
+              "tipo": "chain",
+              "estado": "error",
+              "duracionMs": 197,
+              "tokens": {
+                "entrada": 0,
+                "salida": 0,
+                "total": 0
+              },
+              "error": "401 \"Llave de API inválida o revocada.\"\n\nTroubleshooting URL: https://docs.langchain.com/oss/javascript/langchain/errors/MODEL_AUTHENTICATION/\n\n\nError: 401 \"Llave de API inválida o revocada.\"\n\nTroubleshooting URL: https://docs.langchain.com/oss/javascript/langchain/errors/MODEL_AUTHENTICATION/\n\n    at APIError.generate (C:\\Proyectos\\Agentes\\Rastreador-de-oportunidades-en-SECOP-II\\node_modules\\.pnpm\\openai@7.30.0_ws@8.22.0_zod@4.6.5\\node_modules\\openai\\src\\core\\error.ts:75:14)\n    at OpenAI.makeStatusError (C:\\Proyectos\\Agentes\\Rastreador-de-oportunidades-en-SECOP-II\\node_modules\\.pnpm\\openai@7.30.0_ws@8.22.0_zod@4.6.5\\node_modules\\openai\\src\\client.ts:903:28)\n    at OpenAI.makeRequest (C:\\Proyectos\\Agentes\\Rastreador-de-oportunidades-en-SECOP-II\\node_modules\\.pnpm\\openai@7.30.0_ws@8.22.0_zod@4.6.5\\node_modules\\openai\\src\\client.ts:1927:24)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async <anonymous> (C:\\Proyectos\\Agentes\\Rastreador-de-oportunidades-en-SECOP-II\\node_modules\\.pnpm\\@langchain+openai@1.6.2_@la_685da5ebeae2027b7fd62f64277ecf75\\node_modules\\@langchain\\openai\\src\\chat_models\\completions.ts:598:18)\n    at async pRetry (C:\\Proyectos\\Agentes\\Rastreador-de-oportunidades-en-SECOP-II\\node_modules\\.pnpm\\@langchain+core@1.2.17_open_3a3ae1294983c8b0c51fcf1b76743493\\node_modules\\@langchain\\core\\src\\utils\\p-retry\\index.js:246:22)\n    at async run (C:\\Proyectos\\Agentes\\Rastreador-de-oportunidades-en-SECOP-II\\node_modules\\.pnpm\\p-queue@6.6.2\\node_modules\\p-queue\\dist\\index.js:163:29)",
+              "hijos": [
+                {
+                  "id": "01a15b66-22ed-766b-9e67-cef4e730e9e4",
+                  "nombre": "ChatOpenAI",
+                  "tipo": "llm",
+                  "estado": "error",
+                  "duracionMs": 194,
+                  "tokens": {
+                    "entrada": 0,
+                    "salida": 0,
+                    "total": 0
+                  },
+                  "error": "401 \"Llave de API inválida o revocada.\"\n\nTroubleshooting URL: https://docs.langchain.com/oss/javascript/langchain/errors/MODEL_AUTHENTICATION/\n\n\nError: 401 \"Llave de API inválida o revocada.\"\n\nTroubleshooting URL: https://docs.langchain.com/oss/javascript/langchain/errors/MODEL_AUTHENTICATION/\n\n    at APIError.generate (C:\\Proyectos\\Agentes\\Rastreador-de-oportunidades-en-SECOP-II\\node_modules\\.pnpm\\openai@7.30.0_ws@8.22.0_zod@4.6.5\\node_modules\\openai\\src\\core\\error.ts:75:14)\n    at OpenAI.makeStatusError (C:\\Proyectos\\Agentes\\Rastreador-de-oportunidades-en-SECOP-II\\node_modules\\.pnpm\\openai@7.30.0_ws@8.22.0_zod@4.6.5\\node_modules\\openai\\src\\client.ts:903:28)\n    at OpenAI.makeRequest (C:\\Proyectos\\Agentes\\Rastreador-de-oportunidades-en-SECOP-II\\node_modules\\.pnpm\\openai@7.30.0_ws@8.22.0_zod@4.6.5\\node_modules\\openai\\src\\client.ts:1927:24)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async <anonymous> (C:\\Proyectos\\Agentes\\Rastreador-de-oportunidades-en-SECOP-II\\node_modules\\.pnpm\\@langchain+openai@1.6.2_@la_685da5ebeae2027b7fd62f64277ecf75\\node_modules\\@langchain\\openai\\src\\chat_models\\completions.ts:598:18)\n    at async pRetry (C:\\Proyectos\\Agentes\\Rastreador-de-oportunidades-en-SECOP-II\\node_modules\\.pnpm\\@langchain+core@1.2.17_open_3a3ae1294983c8b0c51fcf1b76743493\\node_modules\\@langchain\\core\\src\\utils\\p-retry\\index.js:246:22)\n    at async run (C:\\Proyectos\\Agentes\\Rastreador-de-oportunidades-en-SECOP-II\\node_modules\\.pnpm\\p-queue@6.6.2\\node_modules\\p-queue\\dist\\index.js:163:29)"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "01a15b66-2f78-738b-93ca-079d29a5136d",
+          "nombre": "filtrador:pagina-1:reintento-3",
+          "tipo": "chain",
+          "estado": "error",
+          "duracionMs": 207,
+          "tokens": {
+            "entrada": 0,
+            "salida": 0,
+            "total": 0
+          },
+          "error": "401 \"Llave de API inválida o revocada.\"\n\nTroubleshooting URL: https://docs.langchain.com/oss/javascript/langchain/errors/MODEL_AUTHENTICATION/\n\n\nError: 401 \"Llave de API inválida o revocada.\"\n\nTroubleshooting URL: https://docs.langchain.com/oss/javascript/langchain/errors/MODEL_AUTHENTICATION/\n\n    at APIError.generate (C:\\Proyectos\\Agentes\\Rastreador-de-oportunidades-en-SECOP-II\\node_modules\\.pnpm\\openai@7.30.0_ws@8.22.0_zod@4.6.5\\node_modules\\openai\\src\\core\\error.ts:75:14)\n    at OpenAI.makeStatusError (C:\\Proyectos\\Agentes\\Rastreador-de-oportunidades-en-SECOP-II\\node_modules\\.pnpm\\openai@7.30.0_ws@8.22.0_zod@4.6.5\\node_modules\\openai\\src\\client.ts:903:28)\n    at OpenAI.makeRequest (C:\\Proyectos\\Agentes\\Rastreador-de-oportunidades-en-SECOP-II\\node_modules\\.pnpm\\openai@7.30.0_ws@8.22.0_zod@4.6.5\\node_modules\\openai\\src\\client.ts:1927:24)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async <anonymous> (C:\\Proyectos\\Agentes\\Rastreador-de-oportunidades-en-SECOP-II\\node_modules\\.pnpm\\@langchain+openai@1.6.2_@la_685da5ebeae2027b7fd62f64277ecf75\\node_modules\\@langchain\\openai\\src\\chat_models\\completions.ts:598:18)\n    at async pRetry (C:\\Proyectos\\Agentes\\Rastreador-de-oportunidades-en-SECOP-II\\node_modules\\.pnpm\\@langchain+core@1.2.17_open_3a3ae1294983c8b0c51fcf1b76743493\\node_modules\\@langchain\\core\\src\\utils\\p-retry\\index.js:246:22)\n    at async run (C:\\Proyectos\\Agentes\\Rastreador-de-oportunidades-en-SECOP-II\\node_modules\\.pnpm\\p-queue@6.6.2\\node_modules\\p-queue\\dist\\index.js:163:29)",
+          "hijos": [
+            {
+              "id": "01a15b66-2f79-779d-a5ec-cbd277c34023",
+              "nombre": "__start__",
+              "tipo": "chain",
+              "estado": "success",
+              "duracionMs": 1,
+              "tokens": {
+                "entrada": 0,
+                "salida": 0,
+                "total": 0
+              },
+              "error": null
+            },
+            {
+              "id": "01a15b66-2f7c-769d-8818-f9059be68781",
+              "nombre": "model_request",
+              "tipo": "chain",
+              "estado": "error",
+              "duracionMs": 201,
+              "tokens": {
+                "entrada": 0,
+                "salida": 0,
+                "total": 0
+              },
+              "error": "401 \"Llave de API inválida o revocada.\"\n\nTroubleshooting URL: https://docs.langchain.com/oss/javascript/langchain/errors/MODEL_AUTHENTICATION/\n\n\nError: 401 \"Llave de API inválida o revocada.\"\n\nTroubleshooting URL: https://docs.langchain.com/oss/javascript/langchain/errors/MODEL_AUTHENTICATION/\n\n    at APIError.generate (C:\\Proyectos\\Agentes\\Rastreador-de-oportunidades-en-SECOP-II\\node_modules\\.pnpm\\openai@7.30.0_ws@8.22.0_zod@4.6.5\\node_modules\\openai\\src\\core\\error.ts:75:14)\n    at OpenAI.makeStatusError (C:\\Proyectos\\Agentes\\Rastreador-de-oportunidades-en-SECOP-II\\node_modules\\.pnpm\\openai@7.30.0_ws@8.22.0_zod@4.6.5\\node_modules\\openai\\src\\client.ts:903:28)\n    at OpenAI.makeRequest (C:\\Proyectos\\Agentes\\Rastreador-de-oportunidades-en-SECOP-II\\node_modules\\.pnpm\\openai@7.30.0_ws@8.22.0_zod@4.6.5\\node_modules\\openai\\src\\client.ts:1927:24)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async <anonymous> (C:\\Proyectos\\Agentes\\Rastreador-de-oportunidades-en-SECOP-II\\node_modules\\.pnpm\\@langchain+openai@1.6.2_@la_685da5ebeae2027b7fd62f64277ecf75\\node_modules\\@langchain\\openai\\src\\chat_models\\completions.ts:598:18)\n    at async pRetry (C:\\Proyectos\\Agentes\\Rastreador-de-oportunidades-en-SECOP-II\\node_modules\\.pnpm\\@langchain+core@1.2.17_open_3a3ae1294983c8b0c51fcf1b76743493\\node_modules\\@langchain\\core\\src\\utils\\p-retry\\index.js:246:22)\n    at async run (C:\\Proyectos\\Agentes\\Rastreador-de-oportunidades-en-SECOP-II\\node_modules\\.pnpm\\p-queue@6.6.2\\node_modules\\p-queue\\dist\\index.js:163:29)",
+              "hijos": [
+                {
+                  "id": "01a15b66-2f7e-73fb-8810-cbd9263e08f6",
+                  "nombre": "ChatOpenAI",
+                  "tipo": "llm",
+                  "estado": "error",
+                  "duracionMs": 198,
+                  "tokens": {
+                    "entrada": 0,
+                    "salida": 0,
+                    "total": 0
+                  },
+                  "error": "401 \"Llave de API inválida o revocada.\"\n\nTroubleshooting URL: https://docs.langchain.com/oss/javascript/langchain/errors/MODEL_AUTHENTICATION/\n\n\nError: 401 \"Llave de API inválida o revocada.\"\n\nTroubleshooting URL: https://docs.langchain.com/oss/javascript/langchain/errors/MODEL_AUTHENTICATION/\n\n    at APIError.generate (C:\\Proyectos\\Agentes\\Rastreador-de-oportunidades-en-SECOP-II\\node_modules\\.pnpm\\openai@7.30.0_ws@8.22.0_zod@4.6.5\\node_modules\\openai\\src\\core\\error.ts:75:14)\n    at OpenAI.makeStatusError (C:\\Proyectos\\Agentes\\Rastreador-de-oportunidades-en-SECOP-II\\node_modules\\.pnpm\\openai@7.30.0_ws@8.22.0_zod@4.6.5\\node_modules\\openai\\src\\client.ts:903:28)\n    at OpenAI.makeRequest (C:\\Proyectos\\Agentes\\Rastreador-de-oportunidades-en-SECOP-II\\node_modules\\.pnpm\\openai@7.30.0_ws@8.22.0_zod@4.6.5\\node_modules\\openai\\src\\client.ts:1927:24)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async <anonymous> (C:\\Proyectos\\Agentes\\Rastreador-de-oportunidades-en-SECOP-II\\node_modules\\.pnpm\\@langchain+openai@1.6.2_@la_685da5ebeae2027b7fd62f64277ecf75\\node_modules\\@langchain\\openai\\src\\chat_models\\completions.ts:598:18)\n    at async pRetry (C:\\Proyectos\\Agentes\\Rastreador-de-oportunidades-en-SECOP-II\\node_modules\\.pnpm\\@langchain+core@1.2.17_open_3a3ae1294983c8b0c51fcf1b76743493\\node_modules\\@langchain\\core\\src\\utils\\p-retry\\index.js:246:22)\n    at async run (C:\\Proyectos\\Agentes\\Rastreador-de-oportunidades-en-SECOP-II\\node_modules\\.pnpm\\p-queue@6.6.2\\node_modules\\p-queue\\dist\\index.js:163:29)"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "01a15b66-304d-739a-bf70-2cf04672a8c5",
+      "nombre": "resumir_procesos",
+      "tipo": "chain",
+      "estado": "success",
+      "duracionMs": 2,
+      "tokens": {
+        "entrada": 0,
+        "salida": 0,
+        "total": 0
+      },
+      "error": null
+    },
+    {
+      "id": "01a15b66-3050-71e3-a009-9b7c378b8df1",
+      "nombre": "armar_documentos",
+      "tipo": "chain",
+      "estado": "success",
+      "duracionMs": 6,
+      "tokens": {
+        "entrada": 0,
+        "salida": 0,
+        "total": 0
+      },
+      "error": null
+    },
+    {
+      "id": "01a15b66-3057-74f0-a74a-6186501f062b",
+      "nombre": "ensamblar_reporte",
+      "tipo": "chain",
+      "estado": "success",
+      "duracionMs": 22,
+      "tokens": {
+        "entrada": 0,
+        "salida": 0,
+        "total": 0
+      },
+      "error": null
+    }
+  ]
+}

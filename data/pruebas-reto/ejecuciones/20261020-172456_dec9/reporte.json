@@ -1,0 +1,1978 @@
+{
+  "fecha": "2026-10-15",
+  "modo": "prueba",
+  "fechaReferencia": "2026-10-15T05:00:00.000Z",
+  "totalDescargados": 449,
+  "descartadosPorRegla": {
+    "modalidad_no_competitiva": 0,
+    "estado_cerrado": 0,
+    "tipo_contrato_excluido": 9,
+    "valor_supera_maximo": 9,
+    "oferta_vencida": 0,
+    "id_duplicado": 8
+  },
+  "totalCandidatos": 423,
+  "conteoClasificacion": {
+    "si": 23,
+    "no": 2,
+    "dudoso": 0
+  },
+  "totalProcesados": 5,
+  "errores": [],
+  "tokensTotales": {
+    "entrada": 53858,
+    "salida": 10885,
+    "total": 90371
+  },
+  "procesos": [
+    {
+      "id": "CO1.REQ.11205497",
+      "diasRestantes": 6,
+      "ficha": {
+        "nombre": "CONTRATAR EL SERVICIO DE APLICACIÓN DE LA BATERÍA DE INSTRUMENTOS PARA LA EVALUACIÓN DE FACTORES DE RIESGO PSICOSOCIAL; INCLUIDO EL PROCESAMIENTO; ANÁLISIS DE RESULTADOS Y FORMULACIÓN DEL PLAN DE INTE",
+        "entidad": "UNIDAD ADMINISTRATIVA ESPECIAL DE PENSIONES DE CUNDINAMARCA",
+        "departamento": "Distrito Capital de Bogotá",
+        "ciudad": "No Definido",
+        "modalidad": "Mínima cuantía",
+        "tipoDeContrato": "Prestación de servicios",
+        "valorCOP": 1309000,
+        "fechaLimiteOfertas": "2026-10-21T00:00:00.000",
+        "duracion": {
+          "cantidad": 30,
+          "unidad": "día(s)"
+        },
+        "lotes": 0,
+        "urlProceso": "https://community.secop.gov.co/Public/Tendering/OpportunityDetail/Index?noticeUID=CO1.NTC.11070275"
+      },
+      "anexosUrls": [
+        {
+          "nombre": "8111-26- UNIDAD ADMINISTRATIVA DE PENSIONES DE CUNDINAMARCA- TAMIZAJE 2 R1 V1.pdf",
+          "urlDescarga": "https://community.secop.gov.co/Public/Archive/RetrieveFile/Index?DocumentId=874538903&InCommunity=False&InPaymentGateway=False&DocUniqueIdentifier="
+        },
+        {
+          "nombre": "PRESUPUESTO OFICIAL-6.xlsx",
+          "urlDescarga": "https://community.secop.gov.co/Public/Archive/RetrieveFile/Index?DocumentId=874538911&InCommunity=False&InPaymentGateway=False&DocUniqueIdentifier="
+        },
+        {
+          "nombre": "ANEXOS-2.pdf",
+          "urlDescarga": "https://community.secop.gov.co/Public/Archive/RetrieveFile/Index?DocumentId=874538909&InCommunity=False&InPaymentGateway=False&DocUniqueIdentifier="
+        },
+        {
+          "nombre": "ANEXO 09 PROPUESTA ECONOMICA.pdf",
+          "urlDescarga": "https://community.secop.gov.co/Public/Archive/RetrieveFile/Index?DocumentId=874538910&InCommunity=False&InPaymentGateway=False&DocUniqueIdentifier="
+        },
+        {
+          "nombre": "PROPUESTA BATERIA DE RIESGO PSICOSOCIAL UNIDAD ADMINISTRATIVA ESPECIAL DE PENSIONES DE CUNDINAMARCA.pdf",
+          "urlDescarga": "https://community.secop.gov.co/Public/Archive/RetrieveFile/Index?DocumentId=874538901&InCommunity=False&InPaymentGateway=False&DocUniqueIdentifier="
+        },
+        {
+          "nombre": "Oferta de Valor Medicion Riesgo Psic 2026.pdf",
+          "urlDescarga": "https://community.secop.gov.co/Public/Archive/RetrieveFile/Index?DocumentId=874538902&InCommunity=False&InPaymentGateway=False&DocUniqueIdentifier="
+        },
+        {
+          "nombre": "Analisis del sector..pdf",
+          "urlDescarga": "https://community.secop.gov.co/Public/Archive/RetrieveFile/Index?DocumentId=874538907&InCommunity=False&InPaymentGateway=False&DocUniqueIdentifier="
+        },
+        {
+          "nombre": "GJC-PR-03-F2 ESTUDIOS PREVIOS-2. ok, bateria..pdf",
+          "urlDescarga": "https://community.secop.gov.co/Public/Archive/RetrieveFile/Index?DocumentId=874538906&InCommunity=False&InPaymentGateway=False&DocUniqueIdentifier="
+        },
+        {
+          "nombre": "INVITACION PUBLICA..pdf",
+          "urlDescarga": "https://community.secop.gov.co/Public/Archive/RetrieveFile/Index?DocumentId=874538908&InCommunity=False&InPaymentGateway=False&DocUniqueIdentifier="
+        },
+        {
+          "nombre": "CDP-20260001895.pdf",
+          "urlDescarga": "https://community.secop.gov.co/Public/Archive/RetrieveFile/Index?DocumentId=874538904&InCommunity=False&InPaymentGateway=False&DocUniqueIdentifier="
+        }
+      ],
+      "resumen": "La entidad busca contratar un servicio para aplicar una batería de instrumentos que evalúe factores de riesgo psicosocial en los funcionarios de planta de la Unidad Administrativa Especial de Pensiones del Departamento de Cundinamarca. El servicio incluye el procesamiento de la información, el análisis de los resultados y la formulación de un plan de intervención.",
+      "alertasParaPyme": [
+        {
+          "alerta": "El plazo para presentar oferta es corto; conviene revisar de inmediato el cronograma y la documentación a cargar.",
+          "basadoEn": "diasRestantes"
+        },
+        {
+          "alerta": "El presupuesto oficial es relativamente bajo para un servicio especializado de este tipo; conviene contrastar alcance y costos reales.",
+          "basadoEn": "valorCOP"
+        },
+        {
+          "alerta": "La duración prevista del contrato es breve, lo que puede exigir disponibilidad inmediata del equipo y entrega rápida.",
+          "basadoEn": "duracion"
+        },
+        {
+          "alerta": "No hay división por lotes: se ofertaría el servicio completo en un solo paquete.",
+          "basadoEn": "lotes"
+        },
+        {
+          "alerta": "La ciudad de ejecución aparece como no definida; hay que confirmar el lugar y si el trabajo es presencial o remoto.",
+          "basadoEn": "ciudad"
+        },
+        {
+          "alerta": "Es mínima cuantía (procedimiento simplificado); los plazos y formalidades suelen ser más ágiles y exigentes en tiempo.",
+          "basadoEn": "modalidad"
+        },
+        {
+          "alerta": "El objeto es prestación de servicios; suele implicar requisitos de perfil profesional y no de obra o suministro.",
+          "basadoEn": "tipoDeContrato"
+        }
+      ],
+      "verificarEnElPliego": [
+        "Requisitos habilitantes de experiencia específica (aplicación de baterías de riesgo psicosocial, personal idóneo, habilitaciones o metodologías exigidas).",
+        "Indicadores o requisitos de capacidad financiera y de organización.",
+        "Garantías (seriedad de la oferta, cumplimiento u otras) y si aplican en esta modalidad.",
+        "Criterios de evaluación, puntajes y forma de presentar la oferta económica y técnica.",
+        "Si hay visita técnica, audiencia o acto de aclaraciones, y si son obligatorios.",
+        "Anticipo, forma de pago, facturación y si se exige cuenta o RUT específicos.",
+        "Alcance exacto: número de funcionarios, instrumentos a aplicar, entregables del plan de intervención y lugar o modalidad de ejecución.",
+        "Formatos obligatorios, lista de chequeo y documentos jurídicos a anexar en SECOP II."
+      ],
+      "documentos": [
+        {
+          "nombre": "8111 26 UNIDAD ADMINISTRATIVA DE PENSIONES DE CUNDINAMARCA TAMIZAJE 2 R1 V1",
+          "base": "nombre_de_anexo",
+          "fundamento": "8111-26- UNIDAD ADMINISTRATIVA DE PENSIONES DE CUNDINAMARCA- TAMIZAJE 2 R1 V1.pdf",
+          "catalogoId": null,
+          "expide": null,
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Documento de tamizaje o formato ligado a evaluación de riesgo psicosocial."
+        },
+        {
+          "nombre": "PRESUPUESTO OFICIAL 6",
+          "base": "nombre_de_anexo",
+          "fundamento": "PRESUPUESTO OFICIAL-6.xlsx",
+          "catalogoId": null,
+          "expide": null,
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Hoja de cálculo con el presupuesto oficial estimado del proceso."
+        },
+        {
+          "nombre": "ANEXOS 2",
+          "base": "nombre_de_anexo",
+          "fundamento": "ANEXOS-2.pdf",
+          "catalogoId": null,
+          "expide": null,
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Compilación de anexos; el contenido real lo define el pliego."
+        },
+        {
+          "nombre": "ANEXO 09 PROPUESTA ECONOMICA",
+          "base": "nombre_de_anexo",
+          "fundamento": "ANEXO 09 PROPUESTA ECONOMICA.pdf",
+          "catalogoId": null,
+          "expide": null,
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Formato aparente de propuesta económica para cotizar el servicio."
+        },
+        {
+          "nombre": "PROPUESTA BATERIA DE RIESGO PSICOSOCIAL UNIDAD ADMINISTRATIVA ESPECIAL DE PENSIONES DE CUNDINAMARCA",
+          "base": "nombre_de_anexo",
+          "fundamento": "PROPUESTA BATERIA DE RIESGO PSICOSOCIAL UNIDAD ADMINISTRATIVA ESPECIAL DE PENSIONES DE CUNDINAMARCA.pdf",
+          "catalogoId": null,
+          "expide": null,
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Documento que sugiere una propuesta sobre la batería de riesgo psicosocial."
+        },
+        {
+          "nombre": "Oferta de Valor Medicion Riesgo Psic 2026",
+          "base": "nombre_de_anexo",
+          "fundamento": "Oferta de Valor Medicion Riesgo Psic 2026.pdf",
+          "catalogoId": null,
+          "expide": null,
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Oferta de valor o presentación sobre medición de riesgo psicosocial 2026."
+        },
+        {
+          "nombre": "Analisis del sector.",
+          "base": "nombre_de_anexo",
+          "fundamento": "Analisis del sector..pdf",
+          "catalogoId": null,
+          "expide": null,
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Análisis del sector que suele acompañar los estudios previos."
+        },
+        {
+          "nombre": "GJC PR 03 F2 ESTUDIOS PREVIOS 2. ok, bateria.",
+          "base": "nombre_de_anexo",
+          "fundamento": "GJC-PR-03-F2 ESTUDIOS PREVIOS-2. ok, bateria..pdf",
+          "catalogoId": null,
+          "expide": null,
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Formato de estudios previos sobre necesidad, alcance y justificación."
+        },
+        {
+          "nombre": "INVITACION PUBLICA.",
+          "base": "nombre_de_anexo",
+          "fundamento": "INVITACION PUBLICA..pdf",
+          "catalogoId": null,
+          "expide": null,
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Invitación pública de mínima cuantía; suele recoger reglas del proceso."
+        },
+        {
+          "nombre": "CDP 20260001895",
+          "base": "nombre_de_anexo",
+          "fundamento": "CDP-20260001895.pdf",
+          "catalogoId": null,
+          "expide": null,
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Certificado de disponibilidad presupuestal que respalda existencia de recursos."
+        },
+        {
+          "nombre": "Registro Único Tributario (RUT)",
+          "base": "catalogo_con_emisor",
+          "fundamento": "https://www.dian.gov.co/",
+          "catalogoId": "rut",
+          "expide": "Dirección de Impuestos y Aduanas Nacionales (DIAN)",
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Documento del catálogo general de referencia; confirme en el pliego oficial."
+        },
+        {
+          "nombre": "Certificado de existencia y representación legal o matrícula mercantil",
+          "base": "catalogo_con_emisor",
+          "fundamento": "https://www.rues.org.co/",
+          "catalogoId": "existencia_representacion",
+          "expide": "Cámaras de Comercio (Registro Único Empresarial y Social - RUES)",
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Documento del catálogo general de referencia; confirme en el pliego oficial."
+        },
+        {
+          "nombre": "Documento de identidad del representante legal o persona natural proponente",
+          "base": "catalogo_sin_emisor",
+          "fundamento": "Catálogo general (sin emisor oficial enlazado; confirme en pliego)",
+          "catalogoId": "cedula_representante",
+          "expide": "Registraduría Nacional del Estado Civil o autoridad migratoria",
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Documento del catálogo general de referencia; confirme en el pliego oficial."
+        },
+        {
+          "nombre": "Certificación de pago de aportes a seguridad social y parafiscales",
+          "base": "catalogo_sin_emisor",
+          "fundamento": "Catálogo general (sin emisor oficial enlazado; confirme en pliego)",
+          "catalogoId": "seguridad_social",
+          "expide": "Revisor fiscal o Representante legal",
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Documento del catálogo general de referencia; confirme en el pliego oficial."
+        },
+        {
+          "nombre": "Certificado de antecedentes disciplinarios",
+          "base": "catalogo_con_emisor",
+          "fundamento": "https://www.procuraduria.gov.co/",
+          "catalogoId": "antecedentes_disciplinarios",
+          "expide": "Procuraduría General de la Nación",
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Documento del catálogo general de referencia; confirme en el pliego oficial."
+        },
+        {
+          "nombre": "Certificado de antecedentes fiscales (Boletín de Responsables Fiscales)",
+          "base": "catalogo_sin_emisor",
+          "fundamento": "Catálogo general (sin emisor oficial enlazado; confirme en pliego)",
+          "catalogoId": "antecedentes_fiscales",
+          "expide": "Contraloría General de la República",
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Documento del catálogo general de referencia; confirme en el pliego oficial."
+        },
+        {
+          "nombre": "Certificado de antecedentes judiciales y medidas correctivas",
+          "base": "catalogo_con_emisor",
+          "fundamento": "https://www.policia.gov.co/",
+          "catalogoId": "antecedentes_judiciales",
+          "expide": "Policía Nacional",
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Documento del catálogo general de referencia; confirme en el pliego oficial."
+        },
+        {
+          "nombre": "Certificado del Registro Único de Proponentes (RUP)",
+          "base": "catalogo_con_emisor",
+          "fundamento": "https://www.rues.org.co/",
+          "catalogoId": "rup",
+          "expide": "Cámaras de Comercio (RUES)",
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Documento del catálogo general de referencia; confirme en el pliego oficial."
+        },
+        {
+          "nombre": "Garantía de seriedad de la oferta",
+          "base": "catalogo_sin_emisor",
+          "fundamento": "Catálogo general (sin emisor oficial enlazado; confirme en pliego)",
+          "catalogoId": "garantia_seriedad",
+          "expide": "Compañía de seguros o entidad bancaria",
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Documento del catálogo general de referencia; confirme en el pliego oficial."
+        },
+        {
+          "nombre": "Carta de presentación de la oferta y formatos anexos del pliego",
+          "base": "catalogo_sin_emisor",
+          "fundamento": "Catálogo general (sin emisor oficial enlazado; confirme en pliego)",
+          "catalogoId": "carta_presentacion",
+          "expide": "El proponente (según formatos del pliego en SECOP II)",
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Documento del catálogo general de referencia; confirme en el pliego oficial."
+        },
+        {
+          "nombre": "Certificaciones de experiencia previa",
+          "base": "catalogo_sin_emisor",
+          "fundamento": "Catálogo general (sin emisor oficial enlazado; confirme en pliego)",
+          "catalogoId": "certificaciones_experiencia",
+          "expide": "Contratantes anteriores públicos o privados",
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Documento del catálogo general de referencia; confirme en el pliego oficial."
+        },
+        {
+          "nombre": "Estados financieros con notas contables y certificación",
+          "base": "catalogo_sin_emisor",
+          "fundamento": "Catálogo general (sin emisor oficial enlazado; confirme en pliego)",
+          "catalogoId": "estados_financieros",
+          "expide": "Contador público y Revisor fiscal o Representante legal",
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Documento del catálogo general de referencia; confirme en el pliego oficial."
+        }
+      ],
+      "observacionGeneralDoc": "Revise el pliego e invitación oficiales en SECOP II: ellos definen requisitos, formatos y plazos. Los anexos indexados son orientativos; no asuma obligatoriedad por el nombre. Contraste presupuesto, propuesta económica y estudios previos. El catálogo de mínima cuantía es solo referencia. Quedan pocos días: confirme documentos vigentes y condiciones reales antes de ofertar.",
+      "advertenciasDoc": [
+        "Lista orientativa: confirme siempre en el pliego oficial",
+        "Nadie ha leído el pliego oficial de condiciones: la lista es orientativa y el pliego oficial manda."
+      ]
+    },
+    {
+      "id": "CO1.REQ.11205520",
+      "diasRestantes": 6,
+      "ficha": {
+        "nombre": "DOTACIÓN Y ELEMENTOS DE TRABAJO PARA LOS FUNCIONARIOS Y CONTRATISTAS DE LA DIRECCIÓN DE FISCALIZACIÓN Y GESTIÓN DE INGRESOS DE LA SECRETARÍA DE HACIENDA DEPARTAMENTAL EN EL MARCO DEL CONVENIO NO. PMIC",
+        "entidad": "GOBERNACIÓN DE RISARALDA**",
+        "departamento": "Risaralda",
+        "ciudad": "Pereira",
+        "modalidad": "Selección abreviada subasta inversa",
+        "tipoDeContrato": "Suministros",
+        "valorCOP": 123702343,
+        "fechaLimiteOfertas": "2026-10-21T00:00:00.000",
+        "duracion": {
+          "cantidad": 30,
+          "unidad": "día(s)"
+        },
+        "lotes": 0,
+        "urlProceso": "https://community.secop.gov.co/Public/Tendering/OpportunityDetail/Index?noticeUID=CO1.NTC.11066882"
+      },
+      "anexosUrls": [
+        {
+          "nombre": "2. Anexo 1 - ANALISIS DEL SECTOR  DOTACION FISCALIZACION, Anexo 4 ok.pdf",
+          "urlDescarga": "https://community.secop.gov.co/Public/Archive/RetrieveFile/Index?DocumentId=866758124&InCommunity=False&InPaymentGateway=False&DocUniqueIdentifier="
+        },
+        {
+          "nombre": "General_F_PACTO_DE_TRANSPARENCIA_doc (1).doc",
+          "urlDescarga": "https://community.secop.gov.co/Public/Archive/RetrieveFile/Index?DocumentId=866758132&InCommunity=False&InPaymentGateway=False&DocUniqueIdentifier="
+        },
+        {
+          "nombre": "2. Anexo 1 - ANALISIS DEL SECTOR  DOTACION FISCALIZACION, Anexo 4 ok.pdf",
+          "urlDescarga": "https://community.secop.gov.co/Public/Archive/RetrieveFile/Index?DocumentId=874248087&InCommunity=False&InPaymentGateway=False&DocUniqueIdentifier="
+        },
+        {
+          "nombre": "(General)_F-_CONFORMACION_DEL_PROPONENTE_PLURAL (2).doc",
+          "urlDescarga": "https://community.secop.gov.co/Public/Archive/RetrieveFile/Index?DocumentId=866758129&InCommunity=False&InPaymentGateway=False&DocUniqueIdentifier="
+        },
+        {
+          "nombre": "FICHA TECNICA SA-SAI-16-2026.pdf",
+          "urlDescarga": "https://community.secop.gov.co/Public/Archive/RetrieveFile/Index?DocumentId=874248100&InCommunity=False&InPaymentGateway=False&DocUniqueIdentifier="
+        },
+        {
+          "nombre": "8. Proyecto de pliego de condiciones Dotacion de Fiscalizacion.pdf",
+          "urlDescarga": "https://community.secop.gov.co/Public/Archive/RetrieveFile/Index?DocumentId=866758135&InCommunity=False&InPaymentGateway=False&DocUniqueIdentifier="
+        },
+        {
+          "nombre": "ACTA DE APROBACION COMITE SASI 16.pdf",
+          "urlDescarga": "https://community.secop.gov.co/Public/Archive/RetrieveFile/Index?DocumentId=874248103&InCommunity=False&InPaymentGateway=False&DocUniqueIdentifier="
+        },
+        {
+          "nombre": "10. Pliego de condiciones definitivo.pdf",
+          "urlDescarga": "https://community.secop.gov.co/Public/Archive/RetrieveFile/Index?DocumentId=874248106&InCommunity=False&InPaymentGateway=False&DocUniqueIdentifier="
+        },
+        {
+          "nombre": "6. Anexo 3 - Precios de referencia(1).pdf",
+          "urlDescarga": "https://community.secop.gov.co/Public/Archive/RetrieveFile/Index?DocumentId=866758134&InCommunity=False&InPaymentGateway=False&DocUniqueIdentifier="
+        },
+        {
+          "nombre": "5. Matriz de riesgos, Anexo 3.pdf",
+          "urlDescarga": "https://community.secop.gov.co/Public/Archive/RetrieveFile/Index?DocumentId=874248089&InCommunity=False&InPaymentGateway=False&DocUniqueIdentifier="
+        },
+        {
+          "nombre": "(General_)_F-_Carta_de_presentacion_de_la_Oferta_Procesos_Publicos (1) (1).docx",
+          "urlDescarga": "https://community.secop.gov.co/Public/Archive/RetrieveFile/Index?DocumentId=866758131&InCommunity=False&InPaymentGateway=False&DocUniqueIdentifier="
+        },
+        {
+          "nombre": "6. Anexo 3 - Precios de referencia(1).pdf",
+          "urlDescarga": "https://community.secop.gov.co/Public/Archive/RetrieveFile/Index?DocumentId=874248097&InCommunity=False&InPaymentGateway=False&DocUniqueIdentifier="
+        },
+        {
+          "nombre": "(General)_F-_Acreditacion_de_la_seguridad_soscial_para_persona_juridica_y_o_persona_natural (1) (1).doc",
+          "urlDescarga": "https://community.secop.gov.co/Public/Archive/RetrieveFile/Index?DocumentId=866758128&InCommunity=False&InPaymentGateway=False&DocUniqueIdentifier="
+        },
+        {
+          "nombre": "7. Aviso de convocatoria publica SA-SASI-16-2026 (1) (1).pdf",
+          "urlDescarga": "https://community.secop.gov.co/Public/Archive/RetrieveFile/Index?DocumentId=866758138&InCommunity=False&InPaymentGateway=False&DocUniqueIdentifier="
+        },
+        {
+          "nombre": "(General)_F-_Acreditacion_de_la_seguridad_soscial_para_persona_juridica_y_o_persona_natural (1) (1).doc",
+          "urlDescarga": "https://community.secop.gov.co/Public/Archive/RetrieveFile/Index?DocumentId=874248091&InCommunity=False&InPaymentGateway=False&DocUniqueIdentifier="
+        },
+        {
+          "nombre": "11. Resolucion de apertura SA-SASI-16-2026.pdf",
+          "urlDescarga": "https://community.secop.gov.co/Public/Archive/RetrieveFile/Index?DocumentId=874248107&InCommunity=False&InPaymentGateway=False&DocUniqueIdentifier="
+        },
+        {
+          "nombre": "Estudio previo SA-SASI-16-2026 1.pdf",
+          "urlDescarga": "https://community.secop.gov.co/Public/Archive/RetrieveFile/Index?DocumentId=874248099&InCommunity=False&InPaymentGateway=False&DocUniqueIdentifier="
+        },
+        {
+          "nombre": "General_F_PACTO_DE_TRANSPARENCIA_doc (1).doc",
+          "urlDescarga": "https://community.secop.gov.co/Public/Archive/RetrieveFile/Index?DocumentId=874248095&InCommunity=False&InPaymentGateway=False&DocUniqueIdentifier="
+        },
+        {
+          "nombre": "5. Matriz de riesgos, Anexo 3.pdf",
+          "urlDescarga": "https://community.secop.gov.co/Public/Archive/RetrieveFile/Index?DocumentId=866758126&InCommunity=False&InPaymentGateway=False&DocUniqueIdentifier="
+        },
+        {
+          "nombre": "(General)_F-_CONFORMACION_DEL_PROPONENTE_PLURAL (2).doc",
+          "urlDescarga": "https://community.secop.gov.co/Public/Archive/RetrieveFile/Index?DocumentId=874248092&InCommunity=False&InPaymentGateway=False&DocUniqueIdentifier="
+        },
+        {
+          "nombre": "FICHA TECNICA SA-SAI-16-2026.pdf",
+          "urlDescarga": "https://community.secop.gov.co/Public/Archive/RetrieveFile/Index?DocumentId=866758137&InCommunity=False&InPaymentGateway=False&DocUniqueIdentifier="
+        },
+        {
+          "nombre": "9. AVISO LIMITACION A MIPYME.pdf",
+          "urlDescarga": "https://community.secop.gov.co/Public/Archive/RetrieveFile/Index?DocumentId=874248105&InCommunity=False&InPaymentGateway=False&DocUniqueIdentifier="
+        },
+        {
+          "nombre": "7. Aviso de convocatoria publica SA-SASI-16-2026 (1) (1).pdf",
+          "urlDescarga": "https://community.secop.gov.co/Public/Archive/RetrieveFile/Index?DocumentId=874248101&InCommunity=False&InPaymentGateway=False&DocUniqueIdentifier="
+        },
+        {
+          "nombre": "4. Analisis de precios.pdf",
+          "urlDescarga": "https://community.secop.gov.co/Public/Archive/RetrieveFile/Index?DocumentId=874248096&InCommunity=False&InPaymentGateway=False&DocUniqueIdentifier="
+        },
+        {
+          "nombre": "(General_)_F-_Carta_de_presentacion_de_la_Oferta_Procesos_Publicos (1) (1).docx",
+          "urlDescarga": "https://community.secop.gov.co/Public/Archive/RetrieveFile/Index?DocumentId=874248094&InCommunity=False&InPaymentGateway=False&DocUniqueIdentifier="
+        },
+        {
+          "nombre": "8. Proyecto de pliego de condiciones Dotacion de Fiscalizacion.pdf",
+          "urlDescarga": "https://community.secop.gov.co/Public/Archive/RetrieveFile/Index?DocumentId=874248098&InCommunity=False&InPaymentGateway=False&DocUniqueIdentifier="
+        },
+        {
+          "nombre": "Documentos presupuestales.pdf",
+          "urlDescarga": "https://community.secop.gov.co/Public/Archive/RetrieveFile/Index?DocumentId=866758127&InCommunity=False&InPaymentGateway=False&DocUniqueIdentifier="
+        },
+        {
+          "nombre": "(GENERAL_)_F-_ACREDITACION_CRITERIOS_DE_DESEMPATE_PROCESOS_DE_SELECCION_PUBLICA (1) (1).docx",
+          "urlDescarga": "https://community.secop.gov.co/Public/Archive/RetrieveFile/Index?DocumentId=874248093&InCommunity=False&InPaymentGateway=False&DocUniqueIdentifier="
+        },
+        {
+          "nombre": "Documentos presupuestales.pdf",
+          "urlDescarga": "https://community.secop.gov.co/Public/Archive/RetrieveFile/Index?DocumentId=874248090&InCommunity=False&InPaymentGateway=False&DocUniqueIdentifier="
+        },
+        {
+          "nombre": "Acta de Aprobacion SA-SASI-16-2026.pdf",
+          "urlDescarga": "https://community.secop.gov.co/Public/Archive/RetrieveFile/Index?DocumentId=874248102&InCommunity=False&InPaymentGateway=False&DocUniqueIdentifier="
+        },
+        {
+          "nombre": "Estudio previo SA-SASI-16-2026 1.pdf",
+          "urlDescarga": "https://community.secop.gov.co/Public/Archive/RetrieveFile/Index?DocumentId=866758136&InCommunity=False&InPaymentGateway=False&DocUniqueIdentifier="
+        },
+        {
+          "nombre": "4. Analisis de precios.pdf",
+          "urlDescarga": "https://community.secop.gov.co/Public/Archive/RetrieveFile/Index?DocumentId=866758133&InCommunity=False&InPaymentGateway=False&DocUniqueIdentifier="
+        },
+        {
+          "nombre": "(GENERAL_)_F-_ACREDITACION_CRITERIOS_DE_DESEMPATE_PROCESOS_DE_SELECCION_PUBLICA (1) (1).docx",
+          "urlDescarga": "https://community.secop.gov.co/Public/Archive/RetrieveFile/Index?DocumentId=866758130&InCommunity=False&InPaymentGateway=False&DocUniqueIdentifier="
+        },
+        {
+          "nombre": "Acta de Aprobacion SA-SASI-16-2026.pdf",
+          "urlDescarga": "https://community.secop.gov.co/Public/Archive/RetrieveFile/Index?DocumentId=866758139&InCommunity=False&InPaymentGateway=False&DocUniqueIdentifier="
+        },
+        {
+          "nombre": "3. MEMORANDO DESIGNACION ANALISIS PRECIOS.pdf",
+          "urlDescarga": "https://community.secop.gov.co/Public/Archive/RetrieveFile/Index?DocumentId=874248088&InCommunity=False&InPaymentGateway=False&DocUniqueIdentifier="
+        },
+        {
+          "nombre": "3. MEMORANDO DESIGNACION ANALISIS PRECIOS.pdf",
+          "urlDescarga": "https://community.secop.gov.co/Public/Archive/RetrieveFile/Index?DocumentId=866758125&InCommunity=False&InPaymentGateway=False&DocUniqueIdentifier="
+        }
+      ],
+      "resumen": "La entidad busca comprar dotación y elementos de trabajo para funcionarios y contratistas de la Dirección de Fiscalización y Gestión de Ingresos de la Secretaría de Hacienda Departamental, en el marco de un convenio entre la Federación Nacional de Departamentos y la Gobernación de Risaralda.",
+      "alertasParaPyme": [
+        {
+          "alerta": "El plazo para presentar oferta es corto: hay poco tiempo para armar documentos, cotizar y cargar la propuesta.",
+          "basadoEn": "diasRestantes"
+        },
+        {
+          "alerta": "El valor del proceso puede exigir capacidad de suministro y caja que conviene contrastar con la operación de la pyme (el sistema muestra el monto aparte).",
+          "basadoEn": "valorCOP"
+        },
+        {
+          "alerta": "La duración prevista del contrato es breve, lo que puede tensionar la producción, compra y entrega de la dotación.",
+          "basadoEn": "duracion"
+        },
+        {
+          "alerta": "No aparece división por lotes, así que la oferta cubriría el suministro completo y no un fragmento.",
+          "basadoEn": "lotes"
+        },
+        {
+          "alerta": "Es selección abreviada por subasta inversa: tras habilitarse, la competencia suele centrarse en el precio sobre bienes de características uniformes.",
+          "basadoEn": "modalidad"
+        },
+        {
+          "alerta": "La contratación se localiza en Pereira, Risaralda; hay que revisar logística y costos de entrega si la pyme opera desde otra ciudad.",
+          "basadoEn": "ciudad"
+        }
+      ],
+      "verificarEnElPliego": [
+        "Requisitos habilitantes de experiencia (contratos similares, cantidades, vigencia y acreditación).",
+        "Capacidad financiera e indicadores exigidos, y si aplican umbrales mínimos.",
+        "Garantías de seriedad, cumplimiento, calidad o demás pólizas, montos y vigencias.",
+        "Criterios de evaluación, factores de desempate y reglas concretas de la subasta inversa.",
+        "Especificaciones técnicas de la dotación y elementos (prendas, tallas, normas, muestras o fichas).",
+        "Si hay visita técnica, entrega de muestras o ensayos de calidad.",
+        "Anticipo, forma de pago, retenciones y cronograma de entregas.",
+        "Si el proceso está limitado a Mipyme y qué acreditación se pide para participar.",
+        "Posibilidad de proponente plural y documentos de conformación.",
+        "Lugar, plazo y condiciones de entrega, y asignación de riesgos contractuales."
+      ],
+      "documentos": [
+        {
+          "nombre": "2. Anexo 1 ANALISIS DEL SECTOR DOTACION FISCALIZACION, Anexo 4 ok",
+          "base": "nombre_de_anexo",
+          "fundamento": "2. Anexo 1 - ANALISIS DEL SECTOR  DOTACION FISCALIZACION, Anexo 4 ok.pdf",
+          "catalogoId": null,
+          "expide": null,
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Análisis del sector para la compra de dotación de fiscalización."
+        },
+        {
+          "nombre": "General F PACTO DE TRANSPARENCIA doc (1)",
+          "base": "nombre_de_anexo",
+          "fundamento": "General_F_PACTO_DE_TRANSPARENCIA_doc (1).doc",
+          "catalogoId": null,
+          "expide": null,
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Formato de pacto de transparencia para el proponente."
+        },
+        {
+          "nombre": "2. Anexo 1 ANALISIS DEL SECTOR DOTACION FISCALIZACION, Anexo 4 ok",
+          "base": "nombre_de_anexo",
+          "fundamento": "2. Anexo 1 - ANALISIS DEL SECTOR  DOTACION FISCALIZACION, Anexo 4 ok.pdf",
+          "catalogoId": null,
+          "expide": null,
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Análisis del sector para la compra de dotación de fiscalización."
+        },
+        {
+          "nombre": "(General) F CONFORMACION DEL PROPONENTE PLURAL (2)",
+          "base": "nombre_de_anexo",
+          "fundamento": "(General)_F-_CONFORMACION_DEL_PROPONENTE_PLURAL (2).doc",
+          "catalogoId": null,
+          "expide": null,
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Formato para conformación de proponente plural o consorcio."
+        },
+        {
+          "nombre": "FICHA TECNICA SA SAI 16 2026",
+          "base": "nombre_de_anexo",
+          "fundamento": "FICHA TECNICA SA-SAI-16-2026.pdf",
+          "catalogoId": null,
+          "expide": null,
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Ficha técnica del proceso SA-SAI-16-2026."
+        },
+        {
+          "nombre": "8. Proyecto de pliego de condiciones Dotacion de Fiscalizacion",
+          "base": "nombre_de_anexo",
+          "fundamento": "8. Proyecto de pliego de condiciones Dotacion de Fiscalizacion.pdf",
+          "catalogoId": null,
+          "expide": null,
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Proyecto de pliego de condiciones de la dotación."
+        },
+        {
+          "nombre": "ACTA DE APROBACION COMITE SASI 16",
+          "base": "nombre_de_anexo",
+          "fundamento": "ACTA DE APROBACION COMITE SASI 16.pdf",
+          "catalogoId": null,
+          "expide": null,
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Acta de aprobación del comité del proceso SASI 16."
+        },
+        {
+          "nombre": "10. Pliego de condiciones definitivo",
+          "base": "nombre_de_anexo",
+          "fundamento": "10. Pliego de condiciones definitivo.pdf",
+          "catalogoId": null,
+          "expide": null,
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Pliego de condiciones definitivo del proceso."
+        },
+        {
+          "nombre": "6. Anexo 3 Precios de referencia(1)",
+          "base": "nombre_de_anexo",
+          "fundamento": "6. Anexo 3 - Precios de referencia(1).pdf",
+          "catalogoId": null,
+          "expide": null,
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Anexo con precios de referencia del suministro."
+        },
+        {
+          "nombre": "5. Matriz de riesgos, Anexo 3",
+          "base": "nombre_de_anexo",
+          "fundamento": "5. Matriz de riesgos, Anexo 3.pdf",
+          "catalogoId": null,
+          "expide": null,
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Matriz de riesgos del proceso, identificada como anexo 3."
+        },
+        {
+          "nombre": "Carta de presentación de la oferta y formatos anexos del pliego",
+          "base": "nombre_de_anexo",
+          "fundamento": "(General_)_F-_Carta_de_presentacion_de_la_Oferta_Procesos_Publicos (1) (1).docx",
+          "catalogoId": "carta_presentacion",
+          "expide": "El proponente (según formatos del pliego en SECOP II)",
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Formato de carta de presentación de la oferta."
+        },
+        {
+          "nombre": "6. Anexo 3 Precios de referencia(1)",
+          "base": "nombre_de_anexo",
+          "fundamento": "6. Anexo 3 - Precios de referencia(1).pdf",
+          "catalogoId": null,
+          "expide": null,
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Anexo con precios de referencia del suministro."
+        },
+        {
+          "nombre": "Certificación de pago de aportes a seguridad social y parafiscales",
+          "base": "nombre_de_anexo",
+          "fundamento": "(General)_F-_Acreditacion_de_la_seguridad_soscial_para_persona_juridica_y_o_persona_natural (1) (1).doc",
+          "catalogoId": "seguridad_social",
+          "expide": "Revisor fiscal o Representante legal",
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Formato de acreditación de seguridad social."
+        },
+        {
+          "nombre": "7. Aviso de convocatoria publica SA SASI 16 2026 (1) (1)",
+          "base": "nombre_de_anexo",
+          "fundamento": "7. Aviso de convocatoria publica SA-SASI-16-2026 (1) (1).pdf",
+          "catalogoId": null,
+          "expide": null,
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Aviso de convocatoria pública del proceso SA-SASI-16-2026."
+        },
+        {
+          "nombre": "Certificación de pago de aportes a seguridad social y parafiscales",
+          "base": "nombre_de_anexo",
+          "fundamento": "(General)_F-_Acreditacion_de_la_seguridad_soscial_para_persona_juridica_y_o_persona_natural (1) (1).doc",
+          "catalogoId": "seguridad_social",
+          "expide": "Revisor fiscal o Representante legal",
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Formato de acreditación de seguridad social."
+        },
+        {
+          "nombre": "11. Resolucion de apertura SA SASI 16 2026",
+          "base": "nombre_de_anexo",
+          "fundamento": "11. Resolucion de apertura SA-SASI-16-2026.pdf",
+          "catalogoId": null,
+          "expide": null,
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Resolución de apertura del proceso SA-SASI-16-2026."
+        },
+        {
+          "nombre": "Estudio previo SA SASI 16 2026 1",
+          "base": "nombre_de_anexo",
+          "fundamento": "Estudio previo SA-SASI-16-2026 1.pdf",
+          "catalogoId": null,
+          "expide": null,
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Estudio previo del proceso de contratación."
+        },
+        {
+          "nombre": "General F PACTO DE TRANSPARENCIA doc (1)",
+          "base": "nombre_de_anexo",
+          "fundamento": "General_F_PACTO_DE_TRANSPARENCIA_doc (1).doc",
+          "catalogoId": null,
+          "expide": null,
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Formato de pacto de transparencia para el proponente."
+        },
+        {
+          "nombre": "5. Matriz de riesgos, Anexo 3",
+          "base": "nombre_de_anexo",
+          "fundamento": "5. Matriz de riesgos, Anexo 3.pdf",
+          "catalogoId": null,
+          "expide": null,
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Matriz de riesgos del proceso, identificada como anexo 3."
+        },
+        {
+          "nombre": "(General) F CONFORMACION DEL PROPONENTE PLURAL (2)",
+          "base": "nombre_de_anexo",
+          "fundamento": "(General)_F-_CONFORMACION_DEL_PROPONENTE_PLURAL (2).doc",
+          "catalogoId": null,
+          "expide": null,
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Formato para conformación de proponente plural o consorcio."
+        },
+        {
+          "nombre": "FICHA TECNICA SA SAI 16 2026",
+          "base": "nombre_de_anexo",
+          "fundamento": "FICHA TECNICA SA-SAI-16-2026.pdf",
+          "catalogoId": null,
+          "expide": null,
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Ficha técnica del proceso SA-SAI-16-2026."
+        },
+        {
+          "nombre": "9. AVISO LIMITACION A MIPYME",
+          "base": "nombre_de_anexo",
+          "fundamento": "9. AVISO LIMITACION A MIPYME.pdf",
+          "catalogoId": null,
+          "expide": null,
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Aviso sobre posible limitación del proceso a Mipyme."
+        },
+        {
+          "nombre": "7. Aviso de convocatoria publica SA SASI 16 2026 (1) (1)",
+          "base": "nombre_de_anexo",
+          "fundamento": "7. Aviso de convocatoria publica SA-SASI-16-2026 (1) (1).pdf",
+          "catalogoId": null,
+          "expide": null,
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Aviso de convocatoria pública del proceso SA-SASI-16-2026."
+        },
+        {
+          "nombre": "4. Analisis de precios",
+          "base": "nombre_de_anexo",
+          "fundamento": "4. Analisis de precios.pdf",
+          "catalogoId": null,
+          "expide": null,
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Análisis de precios del suministro de dotación."
+        },
+        {
+          "nombre": "Carta de presentación de la oferta y formatos anexos del pliego",
+          "base": "nombre_de_anexo",
+          "fundamento": "(General_)_F-_Carta_de_presentacion_de_la_Oferta_Procesos_Publicos (1) (1).docx",
+          "catalogoId": "carta_presentacion",
+          "expide": "El proponente (según formatos del pliego en SECOP II)",
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Formato de carta de presentación de la oferta."
+        },
+        {
+          "nombre": "8. Proyecto de pliego de condiciones Dotacion de Fiscalizacion",
+          "base": "nombre_de_anexo",
+          "fundamento": "8. Proyecto de pliego de condiciones Dotacion de Fiscalizacion.pdf",
+          "catalogoId": null,
+          "expide": null,
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Proyecto de pliego de condiciones de la dotación."
+        },
+        {
+          "nombre": "Documentos presupuestales",
+          "base": "nombre_de_anexo",
+          "fundamento": "Documentos presupuestales.pdf",
+          "catalogoId": null,
+          "expide": null,
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Documentos de disponibilidad o respaldo presupuestal."
+        },
+        {
+          "nombre": "(GENERAL ) F ACREDITACION CRITERIOS DE DESEMPATE PROCESOS DE SELECCION PUBLICA (1) (1)",
+          "base": "nombre_de_anexo",
+          "fundamento": "(GENERAL_)_F-_ACREDITACION_CRITERIOS_DE_DESEMPATE_PROCESOS_DE_SELECCION_PUBLICA (1) (1).docx",
+          "catalogoId": null,
+          "expide": null,
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Formato de acreditación de criterios de desempate."
+        },
+        {
+          "nombre": "Documentos presupuestales",
+          "base": "nombre_de_anexo",
+          "fundamento": "Documentos presupuestales.pdf",
+          "catalogoId": null,
+          "expide": null,
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Documentos de disponibilidad o respaldo presupuestal."
+        },
+        {
+          "nombre": "Acta de Aprobacion SA SASI 16 2026",
+          "base": "nombre_de_anexo",
+          "fundamento": "Acta de Aprobacion SA-SASI-16-2026.pdf",
+          "catalogoId": null,
+          "expide": null,
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Acta de aprobación del proceso SA-SASI-16-2026."
+        },
+        {
+          "nombre": "Registro Único Tributario (RUT)",
+          "base": "catalogo_con_emisor",
+          "fundamento": "https://www.dian.gov.co/",
+          "catalogoId": "rut",
+          "expide": "Dirección de Impuestos y Aduanas Nacionales (DIAN)",
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Documento del catálogo general de referencia; confirme en el pliego oficial."
+        },
+        {
+          "nombre": "Certificado de existencia y representación legal o matrícula mercantil",
+          "base": "catalogo_con_emisor",
+          "fundamento": "https://www.rues.org.co/",
+          "catalogoId": "existencia_representacion",
+          "expide": "Cámaras de Comercio (Registro Único Empresarial y Social - RUES)",
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Documento del catálogo general de referencia; confirme en el pliego oficial."
+        },
+        {
+          "nombre": "Documento de identidad del representante legal o persona natural proponente",
+          "base": "catalogo_sin_emisor",
+          "fundamento": "Catálogo general (sin emisor oficial enlazado; confirme en pliego)",
+          "catalogoId": "cedula_representante",
+          "expide": "Registraduría Nacional del Estado Civil o autoridad migratoria",
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Documento del catálogo general de referencia; confirme en el pliego oficial."
+        },
+        {
+          "nombre": "Certificado de antecedentes disciplinarios",
+          "base": "catalogo_con_emisor",
+          "fundamento": "https://www.procuraduria.gov.co/",
+          "catalogoId": "antecedentes_disciplinarios",
+          "expide": "Procuraduría General de la Nación",
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Documento del catálogo general de referencia; confirme en el pliego oficial."
+        },
+        {
+          "nombre": "Certificado de antecedentes fiscales (Boletín de Responsables Fiscales)",
+          "base": "catalogo_sin_emisor",
+          "fundamento": "Catálogo general (sin emisor oficial enlazado; confirme en pliego)",
+          "catalogoId": "antecedentes_fiscales",
+          "expide": "Contraloría General de la República",
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Documento del catálogo general de referencia; confirme en el pliego oficial."
+        },
+        {
+          "nombre": "Certificado de antecedentes judiciales y medidas correctivas",
+          "base": "catalogo_con_emisor",
+          "fundamento": "https://www.policia.gov.co/",
+          "catalogoId": "antecedentes_judiciales",
+          "expide": "Policía Nacional",
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Documento del catálogo general de referencia; confirme en el pliego oficial."
+        },
+        {
+          "nombre": "Certificado del Registro Único de Proponentes (RUP)",
+          "base": "catalogo_con_emisor",
+          "fundamento": "https://www.rues.org.co/",
+          "catalogoId": "rup",
+          "expide": "Cámaras de Comercio (RUES)",
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Documento del catálogo general de referencia; confirme en el pliego oficial."
+        },
+        {
+          "nombre": "Garantía de seriedad de la oferta",
+          "base": "catalogo_sin_emisor",
+          "fundamento": "Catálogo general (sin emisor oficial enlazado; confirme en pliego)",
+          "catalogoId": "garantia_seriedad",
+          "expide": "Compañía de seguros o entidad bancaria",
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Documento del catálogo general de referencia; confirme en el pliego oficial."
+        },
+        {
+          "nombre": "Certificaciones de experiencia previa",
+          "base": "catalogo_sin_emisor",
+          "fundamento": "Catálogo general (sin emisor oficial enlazado; confirme en pliego)",
+          "catalogoId": "certificaciones_experiencia",
+          "expide": "Contratantes anteriores públicos o privados",
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Documento del catálogo general de referencia; confirme en el pliego oficial."
+        },
+        {
+          "nombre": "Estados financieros con notas contables y certificación",
+          "base": "catalogo_sin_emisor",
+          "fundamento": "Catálogo general (sin emisor oficial enlazado; confirme en pliego)",
+          "catalogoId": "estados_financieros",
+          "expide": "Contador público y Revisor fiscal o Representante legal",
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Documento del catálogo general de referencia; confirme en el pliego oficial."
+        }
+      ],
+      "observacionGeneralDoc": "Consulte el pliego de condiciones definitivo publicado en SECOP II; ese documento rige. Los anexos listados solo se describen por su nombre. No asuma requisitos, plazos ni formularios. Verifique allí qué debe aportar su pyme antes de ofertar.",
+      "advertenciasDoc": [
+        "Lista orientativa: confirme siempre en el pliego oficial",
+        "Nadie ha leído el pliego oficial de condiciones: la lista es orientativa y el pliego oficial manda."
+      ]
+    },
+    {
+      "id": "CO1.REQ.11205766",
+      "diasRestantes": 6,
+      "ficha": {
+        "nombre": "GASES INDUSTRIALES",
+        "entidad": "SERVICIO NACIONAL DE APRENDIZAJE - SENA MAGDALENA",
+        "departamento": "Magdalena",
+        "ciudad": "Santa Marta",
+        "modalidad": "Mínima cuantía",
+        "tipoDeContrato": "Suministros",
+        "valorCOP": 9830565,
+        "fechaLimiteOfertas": "2026-10-21T00:00:00.000",
+        "duracion": {
+          "cantidad": 0,
+          "unidad": "día(s)"
+        },
+        "lotes": 0,
+        "urlProceso": "https://community.secop.gov.co/Public/Tendering/OpportunityDetail/Index?noticeUID=CO1.NTC.11069034"
+      },
+      "anexosUrls": [
+        {
+          "nombre": "GCCON-F-053-ListadeChequeoMinimaCuantia_V05.xlsx",
+          "urlDescarga": "https://community.secop.gov.co/Public/Archive/RetrieveFile/Index?DocumentId=874437343&InCommunity=False&InPaymentGateway=False&DocUniqueIdentifier="
+        },
+        {
+          "nombre": "11. ANEXO NO. 3 MATRIZ DE RIESGOS.pdf",
+          "urlDescarga": "https://community.secop.gov.co/Public/Archive/RetrieveFile/Index?DocumentId=874437333&InCommunity=False&InPaymentGateway=False&DocUniqueIdentifier="
+        },
+        {
+          "nombre": "15. GCCON-F-065Certificadodeimplementaciondelsistemadegestiondelaseguridadysaludeneltrabajo.docx",
+          "urlDescarga": "https://community.secop.gov.co/Public/Archive/RetrieveFile/Index?DocumentId=874437337&InCommunity=False&InPaymentGateway=False&DocUniqueIdentifier="
+        },
+        {
+          "nombre": "16. GCCON-F-067Constituciondeproponenteplural.docx",
+          "urlDescarga": "https://community.secop.gov.co/Public/Archive/RetrieveFile/Index?DocumentId=874437338&InCommunity=False&InPaymentGateway=False&DocUniqueIdentifier="
+        },
+        {
+          "nombre": "12. GCCON-F-023_Anexo_a_la_Invitación_pública.pdf",
+          "urlDescarga": "https://community.secop.gov.co/Public/Archive/RetrieveFile/Index?DocumentId=874437334&InCommunity=False&InPaymentGateway=False&DocUniqueIdentifier="
+        },
+        {
+          "nombre": "6. PRECOTIZACIONES.pdf",
+          "urlDescarga": "https://community.secop.gov.co/Public/Archive/RetrieveFile/Index?DocumentId=874437328&InCommunity=False&InPaymentGateway=False&DocUniqueIdentifier="
+        },
+        {
+          "nombre": "19. Certificado Aprendices.docx",
+          "urlDescarga": "https://community.secop.gov.co/Public/Archive/RetrieveFile/Index?DocumentId=874437341&InCommunity=False&InPaymentGateway=False&DocUniqueIdentifier="
+        },
+        {
+          "nombre": "13. GCCON-F-061Cartadepresentaciondelapropuesta.docx",
+          "urlDescarga": "https://community.secop.gov.co/Public/Archive/RetrieveFile/Index?DocumentId=874437335&InCommunity=False&InPaymentGateway=False&DocUniqueIdentifier="
+        },
+        {
+          "nombre": "18. Certificado Inhabilidades.docx",
+          "urlDescarga": "https://community.secop.gov.co/Public/Archive/RetrieveFile/Index?DocumentId=874437340&InCommunity=False&InPaymentGateway=False&DocUniqueIdentifier="
+        },
+        {
+          "nombre": "9. ESTUDIOS PREVIOS GASES  revisado.pdf",
+          "urlDescarga": "https://community.secop.gov.co/Public/Archive/RetrieveFile/Index?DocumentId=874437331&InCommunity=False&InPaymentGateway=False&DocUniqueIdentifier="
+        },
+        {
+          "nombre": "5. SOLICITUD INFORMACIÓN PROVEEDORES.pdf",
+          "urlDescarga": "https://community.secop.gov.co/Public/Archive/RetrieveFile/Index?DocumentId=874437327&InCommunity=False&InPaymentGateway=False&DocUniqueIdentifier="
+        },
+        {
+          "nombre": "7. ANALISIS_DE_PRECIOS_GASES _ ANEXO 1_ INICIAL Y FINAL.xlsx",
+          "urlDescarga": "https://community.secop.gov.co/Public/Archive/RetrieveFile/Index?DocumentId=874437329&InCommunity=False&InPaymentGateway=False&DocUniqueIdentifier="
+        },
+        {
+          "nombre": "1. Formato necesidad.pdf",
+          "urlDescarga": "https://community.secop.gov.co/Public/Archive/RetrieveFile/Index?DocumentId=874437323&InCommunity=False&InPaymentGateway=False&DocUniqueIdentifier="
+        },
+        {
+          "nombre": "4. GIL-F-073-Formatoconsultabienesenkardex - Gases (1).pdf",
+          "urlDescarga": "https://community.secop.gov.co/Public/Archive/RetrieveFile/Index?DocumentId=874437326&InCommunity=False&InPaymentGateway=False&DocUniqueIdentifier="
+        },
+        {
+          "nombre": "17. GCCON-F-094AUTORIZACIONCONSULTAINHABILIDADESDELITOSSEXUAL.docx",
+          "urlDescarga": "https://community.secop.gov.co/Public/Archive/RetrieveFile/Index?DocumentId=874437339&InCommunity=False&InPaymentGateway=False&DocUniqueIdentifier="
+        },
+        {
+          "nombre": "cce-sec-gi-14_protocolo_de_indisponibilidad_secop_ii_25-11-2022_0 (1).pdf",
+          "urlDescarga": "https://community.secop.gov.co/Public/Archive/RetrieveFile/Index?DocumentId=874437342&InCommunity=False&InPaymentGateway=False&DocUniqueIdentifier="
+        },
+        {
+          "nombre": "14. GCCON-F-063CertificacionaportesalSISSSP.docx",
+          "urlDescarga": "https://community.secop.gov.co/Public/Archive/RetrieveFile/Index?DocumentId=874437336&InCommunity=False&InPaymentGateway=False&DocUniqueIdentifier="
+        },
+        {
+          "nombre": "8. ANEXO 2 ANALISIS SECTOR GASES 2026 REVISADO.pdf",
+          "urlDescarga": "https://community.secop.gov.co/Public/Archive/RetrieveFile/Index?DocumentId=874437330&InCommunity=False&InPaymentGateway=False&DocUniqueIdentifier="
+        },
+        {
+          "nombre": "10. AUTORIZACION DIRECTOR.pdf",
+          "urlDescarga": "https://community.secop.gov.co/Public/Archive/RetrieveFile/Index?DocumentId=874437332&InCommunity=False&InPaymentGateway=False&DocUniqueIdentifier="
+        },
+        {
+          "nombre": "2. CDP 7226 MATERIALES FORMACION.pdf",
+          "urlDescarga": "https://community.secop.gov.co/Public/Archive/RetrieveFile/Index?DocumentId=874437324&InCommunity=False&InPaymentGateway=False&DocUniqueIdentifier="
+        },
+        {
+          "nombre": "3. DESIGNACIÓN COMITÉ ESTRUCTURADOR - SUMINISTRO GASES INDUSTRIALES SOLDADURA.pdf",
+          "urlDescarga": "https://community.secop.gov.co/Public/Archive/RetrieveFile/Index?DocumentId=874437325&InCommunity=False&InPaymentGateway=False&DocUniqueIdentifier="
+        }
+      ],
+      "resumen": "La entidad busca contratar el suministro de gases industriales destinados a los talleres de formación de soldadura del Centro Acuícola y Agroindustrial de Gaira.",
+      "alertasParaPyme": [
+        {
+          "alerta": "El plazo para presentar oferta es corto; conviene revisar de inmediato el pliego y los formatos.",
+          "basadoEn": "diasRestantes"
+        },
+        {
+          "alerta": "El proceso sigue abierto en fase de presentación de oferta, no de adjudicación.",
+          "basadoEn": "fase"
+        },
+        {
+          "alerta": "Es mínima cuantía (presupuesto por debajo del umbral de menor cuantía): suele primar el precio y hay menos margen para objetar o negociar.",
+          "basadoEn": "modalidad"
+        },
+        {
+          "alerta": "La duración del contrato aparece en cero día(s) en esta ficha; hay que confirmar en el pliego el plazo real de suministro.",
+          "basadoEn": "duracion"
+        },
+        {
+          "alerta": "No hay división por lotes: quien oferte debe cubrir el suministro completo, no un ítem aislado.",
+          "basadoEn": "lotes"
+        },
+        {
+          "alerta": "El suministro se ubica en Santa Marta (Magdalena); una pyme de otra región debe valorar logística, cilindros y entrega a los talleres.",
+          "basadoEn": "ciudad"
+        },
+        {
+          "alerta": "El tipo de contrato es de suministros (gases industriales de uso formativo), no una obra ni un servicio puntual.",
+          "basadoEn": "tipoDeContrato"
+        }
+      ],
+      "verificarEnElPliego": [
+        "Requisitos habilitantes de experiencia específica en suministro de gases industriales (no constan en esta ficha).",
+        "Capacidad financiera e indicadores exigidos, si aplican en mínima cuantía.",
+        "Garantías de seriedad de la oferta y de cumplimiento, montos y vigencias.",
+        "Criterios de evaluación y desempate (en mínima cuantía suele ser el menor precio, pero debe confirmarse).",
+        "Especificaciones técnicas de los gases, pureza, presentación (cilindros), cantidades y frecuencia de entrega.",
+        "Visita técnica o conocimiento del sitio de entrega en el Centro de Gaira: si es obligatoria o no.",
+        "Anticipo, forma de pago y si se exige cuenta o facturación electrónica.",
+        "Lugar exacto, horarios de recibo y obligaciones de retiro o recambio de envases.",
+        "Si se permite proponente plural y qué documentos de constitución piden.",
+        "Certificaciones laborales, SG-SST, aportes a seguridad social, inhabilidades y demás formatos de la invitación.",
+        "Plazo real de ejecución y vigencia, porque en la ficha la duración no queda clara."
+      ],
+      "documentos": [
+        {
+          "nombre": "GCCON F 053 ListadeChequeoMinimaCuantia V05",
+          "base": "nombre_de_anexo",
+          "fundamento": "GCCON-F-053-ListadeChequeoMinimaCuantia_V05.xlsx",
+          "catalogoId": null,
+          "expide": null,
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Lista de chequeo sugerida para mínima cuantía, según el nombre."
+        },
+        {
+          "nombre": "11. ANEXO NO. 3 MATRIZ DE RIESGOS",
+          "base": "nombre_de_anexo",
+          "fundamento": "11. ANEXO NO. 3 MATRIZ DE RIESGOS.pdf",
+          "catalogoId": null,
+          "expide": null,
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Matriz de riesgos del proceso, según el nombre del archivo."
+        },
+        {
+          "nombre": "15. GCCON F 065Certificadodeimplementaciondelsistemadegestiondelaseguridadysaludeneltrabajo",
+          "base": "nombre_de_anexo",
+          "fundamento": "15. GCCON-F-065Certificadodeimplementaciondelsistemadegestiondelaseguridadysaludeneltrabajo.docx",
+          "catalogoId": null,
+          "expide": null,
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Formato de certificado de implementación del sistema de gestión SST."
+        },
+        {
+          "nombre": "16. GCCON F 067Constituciondeproponenteplural",
+          "base": "nombre_de_anexo",
+          "fundamento": "16. GCCON-F-067Constituciondeproponenteplural.docx",
+          "catalogoId": null,
+          "expide": null,
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Formato de constitución de proponente plural, según su nombre."
+        },
+        {
+          "nombre": "12. GCCON F 023 Anexo a la Invitación pública",
+          "base": "nombre_de_anexo",
+          "fundamento": "12. GCCON-F-023_Anexo_a_la_Invitación_pública.pdf",
+          "catalogoId": null,
+          "expide": null,
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Anexo a la invitación pública, según el nombre del archivo."
+        },
+        {
+          "nombre": "6. PRECOTIZACIONES",
+          "base": "nombre_de_anexo",
+          "fundamento": "6. PRECOTIZACIONES.pdf",
+          "catalogoId": null,
+          "expide": null,
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Documento de precotizaciones, según el nombre del archivo."
+        },
+        {
+          "nombre": "19. Certificado Aprendices",
+          "base": "nombre_de_anexo",
+          "fundamento": "19. Certificado Aprendices.docx",
+          "catalogoId": null,
+          "expide": null,
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Formato de certificado de aprendices, según el nombre del archivo."
+        },
+        {
+          "nombre": "13. GCCON F 061Cartadepresentaciondelapropuesta",
+          "base": "nombre_de_anexo",
+          "fundamento": "13. GCCON-F-061Cartadepresentaciondelapropuesta.docx",
+          "catalogoId": null,
+          "expide": null,
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Formato de carta de presentación de la propuesta."
+        },
+        {
+          "nombre": "18. Certificado Inhabilidades",
+          "base": "nombre_de_anexo",
+          "fundamento": "18. Certificado Inhabilidades.docx",
+          "catalogoId": null,
+          "expide": null,
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Formato de certificado de inhabilidades, según el nombre del archivo."
+        },
+        {
+          "nombre": "9. ESTUDIOS PREVIOS GASES revisado",
+          "base": "nombre_de_anexo",
+          "fundamento": "9. ESTUDIOS PREVIOS GASES  revisado.pdf",
+          "catalogoId": null,
+          "expide": null,
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Estudios previos del suministro de gases, versión revisada."
+        },
+        {
+          "nombre": "5. SOLICITUD INFORMACIÓN PROVEEDORES",
+          "base": "nombre_de_anexo",
+          "fundamento": "5. SOLICITUD INFORMACIÓN PROVEEDORES.pdf",
+          "catalogoId": null,
+          "expide": null,
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Solicitud de información a proveedores, según el nombre del archivo."
+        },
+        {
+          "nombre": "7. ANALISIS DE PRECIOS GASES ANEXO 1 INICIAL Y FINAL",
+          "base": "nombre_de_anexo",
+          "fundamento": "7. ANALISIS_DE_PRECIOS_GASES _ ANEXO 1_ INICIAL Y FINAL.xlsx",
+          "catalogoId": null,
+          "expide": null,
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Análisis de precios de gases, anexo inicial y final."
+        },
+        {
+          "nombre": "1. Formato necesidad",
+          "base": "nombre_de_anexo",
+          "fundamento": "1. Formato necesidad.pdf",
+          "catalogoId": null,
+          "expide": null,
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Formato de necesidad del proceso, según el nombre del archivo."
+        },
+        {
+          "nombre": "4. GIL F 073 Formatoconsultabienesenkardex Gases (1)",
+          "base": "nombre_de_anexo",
+          "fundamento": "4. GIL-F-073-Formatoconsultabienesenkardex - Gases (1).pdf",
+          "catalogoId": null,
+          "expide": null,
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Formato de consulta de bienes en kárdex para gases."
+        },
+        {
+          "nombre": "17. GCCON F 094AUTORIZACIONCONSULTAINHABILIDADESDELITOSSEXUAL",
+          "base": "nombre_de_anexo",
+          "fundamento": "17. GCCON-F-094AUTORIZACIONCONSULTAINHABILIDADESDELITOSSEXUAL.docx",
+          "catalogoId": null,
+          "expide": null,
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Formato de autorización para consulta de inhabilidades por delitos sexuales."
+        },
+        {
+          "nombre": "cce sec gi 14 protocolo de indisponibilidad secop ii 25 11 2022 0 (1)",
+          "base": "nombre_de_anexo",
+          "fundamento": "cce-sec-gi-14_protocolo_de_indisponibilidad_secop_ii_25-11-2022_0 (1).pdf",
+          "catalogoId": null,
+          "expide": null,
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Protocolo de indisponibilidad de SECOP II, según el nombre."
+        },
+        {
+          "nombre": "14. GCCON F 063CertificacionaportesalSISSSP",
+          "base": "nombre_de_anexo",
+          "fundamento": "14. GCCON-F-063CertificacionaportesalSISSSP.docx",
+          "catalogoId": null,
+          "expide": null,
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Formato de certificación de aportes al sistema de seguridad social."
+        },
+        {
+          "nombre": "8. ANEXO 2 ANALISIS SECTOR GASES 2026 REVISADO",
+          "base": "nombre_de_anexo",
+          "fundamento": "8. ANEXO 2 ANALISIS SECTOR GASES 2026 REVISADO.pdf",
+          "catalogoId": null,
+          "expide": null,
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Análisis del sector de gases 2026, versión revisada."
+        },
+        {
+          "nombre": "10. AUTORIZACION DIRECTOR",
+          "base": "nombre_de_anexo",
+          "fundamento": "10. AUTORIZACION DIRECTOR.pdf",
+          "catalogoId": null,
+          "expide": null,
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Autorización del director, según el nombre del archivo."
+        },
+        {
+          "nombre": "2. CDP 7226 MATERIALES FORMACION",
+          "base": "nombre_de_anexo",
+          "fundamento": "2. CDP 7226 MATERIALES FORMACION.pdf",
+          "catalogoId": null,
+          "expide": null,
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Certificado de disponibilidad presupuestal para materiales de formación."
+        },
+        {
+          "nombre": "3. DESIGNACIÓN COMITÉ ESTRUCTURADOR SUMINISTRO GASES INDUSTRIALES SOLDADURA",
+          "base": "nombre_de_anexo",
+          "fundamento": "3. DESIGNACIÓN COMITÉ ESTRUCTURADOR - SUMINISTRO GASES INDUSTRIALES SOLDADURA.pdf",
+          "catalogoId": null,
+          "expide": null,
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Designación del comité estructurador del suministro de gases."
+        },
+        {
+          "nombre": "Registro Único Tributario (RUT)",
+          "base": "catalogo_con_emisor",
+          "fundamento": "https://www.dian.gov.co/",
+          "catalogoId": "rut",
+          "expide": "Dirección de Impuestos y Aduanas Nacionales (DIAN)",
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Documento del catálogo general de referencia; confirme en el pliego oficial."
+        },
+        {
+          "nombre": "Certificado de existencia y representación legal o matrícula mercantil",
+          "base": "catalogo_con_emisor",
+          "fundamento": "https://www.rues.org.co/",
+          "catalogoId": "existencia_representacion",
+          "expide": "Cámaras de Comercio (Registro Único Empresarial y Social - RUES)",
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Documento del catálogo general de referencia; confirme en el pliego oficial."
+        },
+        {
+          "nombre": "Documento de identidad del representante legal o persona natural proponente",
+          "base": "catalogo_sin_emisor",
+          "fundamento": "Catálogo general (sin emisor oficial enlazado; confirme en pliego)",
+          "catalogoId": "cedula_representante",
+          "expide": "Registraduría Nacional del Estado Civil o autoridad migratoria",
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Documento del catálogo general de referencia; confirme en el pliego oficial."
+        },
+        {
+          "nombre": "Certificación de pago de aportes a seguridad social y parafiscales",
+          "base": "catalogo_sin_emisor",
+          "fundamento": "Catálogo general (sin emisor oficial enlazado; confirme en pliego)",
+          "catalogoId": "seguridad_social",
+          "expide": "Revisor fiscal o Representante legal",
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Documento del catálogo general de referencia; confirme en el pliego oficial."
+        },
+        {
+          "nombre": "Certificado de antecedentes disciplinarios",
+          "base": "catalogo_con_emisor",
+          "fundamento": "https://www.procuraduria.gov.co/",
+          "catalogoId": "antecedentes_disciplinarios",
+          "expide": "Procuraduría General de la Nación",
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Documento del catálogo general de referencia; confirme en el pliego oficial."
+        },
+        {
+          "nombre": "Certificado de antecedentes fiscales (Boletín de Responsables Fiscales)",
+          "base": "catalogo_sin_emisor",
+          "fundamento": "Catálogo general (sin emisor oficial enlazado; confirme en pliego)",
+          "catalogoId": "antecedentes_fiscales",
+          "expide": "Contraloría General de la República",
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Documento del catálogo general de referencia; confirme en el pliego oficial."
+        },
+        {
+          "nombre": "Certificado de antecedentes judiciales y medidas correctivas",
+          "base": "catalogo_con_emisor",
+          "fundamento": "https://www.policia.gov.co/",
+          "catalogoId": "antecedentes_judiciales",
+          "expide": "Policía Nacional",
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Documento del catálogo general de referencia; confirme en el pliego oficial."
+        },
+        {
+          "nombre": "Certificado del Registro Único de Proponentes (RUP)",
+          "base": "catalogo_con_emisor",
+          "fundamento": "https://www.rues.org.co/",
+          "catalogoId": "rup",
+          "expide": "Cámaras de Comercio (RUES)",
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Documento del catálogo general de referencia; confirme en el pliego oficial."
+        },
+        {
+          "nombre": "Garantía de seriedad de la oferta",
+          "base": "catalogo_sin_emisor",
+          "fundamento": "Catálogo general (sin emisor oficial enlazado; confirme en pliego)",
+          "catalogoId": "garantia_seriedad",
+          "expide": "Compañía de seguros o entidad bancaria",
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Documento del catálogo general de referencia; confirme en el pliego oficial."
+        },
+        {
+          "nombre": "Carta de presentación de la oferta y formatos anexos del pliego",
+          "base": "catalogo_sin_emisor",
+          "fundamento": "Catálogo general (sin emisor oficial enlazado; confirme en pliego)",
+          "catalogoId": "carta_presentacion",
+          "expide": "El proponente (según formatos del pliego en SECOP II)",
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Documento del catálogo general de referencia; confirme en el pliego oficial."
+        },
+        {
+          "nombre": "Certificaciones de experiencia previa",
+          "base": "catalogo_sin_emisor",
+          "fundamento": "Catálogo general (sin emisor oficial enlazado; confirme en pliego)",
+          "catalogoId": "certificaciones_experiencia",
+          "expide": "Contratantes anteriores públicos o privados",
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Documento del catálogo general de referencia; confirme en el pliego oficial."
+        },
+        {
+          "nombre": "Estados financieros con notas contables y certificación",
+          "base": "catalogo_sin_emisor",
+          "fundamento": "Catálogo general (sin emisor oficial enlazado; confirme en pliego)",
+          "catalogoId": "estados_financieros",
+          "expide": "Contador público y Revisor fiscal o Representante legal",
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Documento del catálogo general de referencia; confirme en el pliego oficial."
+        }
+      ],
+      "observacionGeneralDoc": "Revise el pliego oficial en SECOP II antes de preparar su oferta: solo ese documento define qué se pide. Los anexos de la ficha parecen estudios, formatos y soportes internos; no asuma obligaciones por el nombre. Contraste cada archivo con la invitación publicada y no tome esta nota como asesoría legal.",
+      "advertenciasDoc": [
+        "Lista orientativa: confirme siempre en el pliego oficial",
+        "Nadie ha leído el pliego oficial de condiciones: la lista es orientativa y el pliego oficial manda."
+      ]
+    },
+    {
+      "id": "CO1.REQ.11204985",
+      "diasRestantes": 12,
+      "ficha": {
+        "nombre": "ADQUIRIR MATERIALES; INSUMOS Y ELEMENTOS PARA EL FORTALECIMIENTO DE LOS PROYECTOS AMBIENTALES ESCOLARES - PRAE; EN EL MARCO DEL PROYECTO  FORTALECIMIENTO DE LOS PRAE EN ESTABLECIMIENTOS EDUCATIVOS OFI",
+        "entidad": "GOBERNACION DEL CAQUETA**",
+        "departamento": "Caquetá",
+        "ciudad": "No Definido",
+        "modalidad": "Selección abreviada subasta inversa",
+        "tipoDeContrato": "Compraventa",
+        "valorCOP": 1176283836,
+        "fechaLimiteOfertas": "2026-10-27T00:00:00.000",
+        "duracion": {
+          "cantidad": 2,
+          "unidad": "Mes(es)"
+        },
+        "lotes": 0,
+        "urlProceso": "https://community.secop.gov.co/Public/Tendering/OpportunityDetail/Index?noticeUID=CO1.NTC.11065673"
+      },
+      "anexosUrls": [
+        {
+          "nombre": "3. SOLICITUD Y CDP.pdf",
+          "urlDescarga": "https://community.secop.gov.co/Public/Archive/RetrieveFile/Index?DocumentId=874096061&InCommunity=False&InPaymentGateway=False&DocUniqueIdentifier="
+        },
+        {
+          "nombre": "2. BPIN.pdf",
+          "urlDescarga": "https://community.secop.gov.co/Public/Archive/RetrieveFile/Index?DocumentId=874096060&InCommunity=False&InPaymentGateway=False&DocUniqueIdentifier="
+        },
+        {
+          "nombre": "7. Proyecto pliego de condiciones subasta inversa.pdf",
+          "urlDescarga": "https://community.secop.gov.co/Public/Archive/RetrieveFile/Index?DocumentId=874096065&InCommunity=False&InPaymentGateway=False&DocUniqueIdentifier="
+        },
+        {
+          "nombre": "8. FORMATOS Y ANEXO.zip",
+          "urlDescarga": "https://community.secop.gov.co/Public/Archive/RetrieveFile/Index?DocumentId=874096066&InCommunity=False&InPaymentGateway=False&DocUniqueIdentifier="
+        },
+        {
+          "nombre": "5. ANALISIS DEL SECTOR.pdf",
+          "urlDescarga": "https://community.secop.gov.co/Public/Archive/RetrieveFile/Index?DocumentId=874096063&InCommunity=False&InPaymentGateway=False&DocUniqueIdentifier="
+        },
+        {
+          "nombre": "1. PROYECTO.pdf",
+          "urlDescarga": "https://community.secop.gov.co/Public/Archive/RetrieveFile/Index?DocumentId=874096059&InCommunity=False&InPaymentGateway=False&DocUniqueIdentifier="
+        },
+        {
+          "nombre": "4. ESTUDIO PREVIO.pdf",
+          "urlDescarga": "https://community.secop.gov.co/Public/Archive/RetrieveFile/Index?DocumentId=874096062&InCommunity=False&InPaymentGateway=False&DocUniqueIdentifier="
+        },
+        {
+          "nombre": "6. GA-GC-FR-037 Aviso a convocatoria Ley 80 docx.pdf",
+          "urlDescarga": "https://community.secop.gov.co/Public/Archive/RetrieveFile/Index?DocumentId=874096064&InCommunity=False&InPaymentGateway=False&DocUniqueIdentifier="
+        },
+        {
+          "nombre": "0. MEMORANDO INICIO.pdf",
+          "urlDescarga": "https://community.secop.gov.co/Public/Archive/RetrieveFile/Index?DocumentId=874096058&InCommunity=False&InPaymentGateway=False&DocUniqueIdentifier="
+        }
+      ],
+      "resumen": "La entidad busca comprar materiales, insumos y elementos para fortalecer los Proyectos Ambientales Escolares (PRAE) en establecimientos educativos oficiales del departamento del Caquetá.",
+      "alertasParaPyme": [
+        {
+          "alerta": "Queda un plazo relativamente corto para estudiar el proceso y ofertar.",
+          "basadoEn": "diasRestantes"
+        },
+        {
+          "alerta": "El valor del proceso es alto para una pyme y puede exigir mayor capacidad de suministro y respaldo.",
+          "basadoEn": "valorCOP"
+        },
+        {
+          "alerta": "La duración prevista de ejecución es breve, lo que implica poder entregar rápido.",
+          "basadoEn": "duracion"
+        },
+        {
+          "alerta": "No hay división por lotes: quien oferte cubre el objeto completo.",
+          "basadoEn": "lotes"
+        },
+        {
+          "alerta": "Es subasta inversa de bienes de características técnicas uniformes: la competencia suele centrarse en el precio.",
+          "basadoEn": "modalidad"
+        },
+        {
+          "alerta": "La ciudad de ejecución no está definida en la ficha; conviene confirmar lugares de entrega en Caquetá.",
+          "basadoEn": "ciudad"
+        },
+        {
+          "alerta": "Aún está en fase de presentación de observaciones, no de cierre de ofertas.",
+          "basadoEn": "fase"
+        }
+      ],
+      "verificarEnElPliego": [
+        "Requisitos habilitantes de experiencia (contratos similares, certificaciones y si aplican umbrales).",
+        "Capacidad financiera e indicadores exigidos (patrimonio, liquidez, endeudamiento u otros).",
+        "Garantías de seriedad, cumplimiento y demás pólizas, montos y vigencias.",
+        "Criterios de evaluación, reglas de la subasta inversa y factores de desempate.",
+        "Especificaciones técnicas, cantidades, marcas equivalentes y lugares o cronograma de entrega.",
+        "Si hay visita técnica, anticipo, forma de pago y retenciones.",
+        "Posibilidad de consorcio, unión temporal o proponente plural y documentos de la oferta."
+      ],
+      "documentos": [
+        {
+          "nombre": "3. SOLICITUD Y CDP",
+          "base": "nombre_de_anexo",
+          "fundamento": "3. SOLICITUD Y CDP.pdf",
+          "catalogoId": null,
+          "expide": null,
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Parece solicitud de contratación y certificado de disponibilidad presupuestal."
+        },
+        {
+          "nombre": "2. BPIN",
+          "base": "nombre_de_anexo",
+          "fundamento": "2. BPIN.pdf",
+          "catalogoId": null,
+          "expide": null,
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Sugiere ficha o registro del Banco de Programas y Proyectos de Inversión."
+        },
+        {
+          "nombre": "7. Proyecto pliego de condiciones subasta inversa",
+          "base": "nombre_de_anexo",
+          "fundamento": "7. Proyecto pliego de condiciones subasta inversa.pdf",
+          "catalogoId": null,
+          "expide": null,
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Proyecto o borrador del pliego de condiciones de la subasta."
+        },
+        {
+          "nombre": "8. FORMATOS Y ANEXO",
+          "base": "nombre_de_anexo",
+          "fundamento": "8. FORMATOS Y ANEXO.zip",
+          "catalogoId": null,
+          "expide": null,
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Paquete comprimido que, por el nombre, reúne formatos y anexos."
+        },
+        {
+          "nombre": "5. ANALISIS DEL SECTOR",
+          "base": "nombre_de_anexo",
+          "fundamento": "5. ANALISIS DEL SECTOR.pdf",
+          "catalogoId": null,
+          "expide": null,
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Análisis del sector económico vinculado a la compraventa."
+        },
+        {
+          "nombre": "1. PROYECTO",
+          "base": "nombre_de_anexo",
+          "fundamento": "1. PROYECTO.pdf",
+          "catalogoId": null,
+          "expide": null,
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Documento del proyecto o iniciativa que origina la compra."
+        },
+        {
+          "nombre": "4. ESTUDIO PREVIO",
+          "base": "nombre_de_anexo",
+          "fundamento": "4. ESTUDIO PREVIO.pdf",
+          "catalogoId": null,
+          "expide": null,
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Estudio previo que suele describir la necesidad de contratar."
+        },
+        {
+          "nombre": "6. GA GC FR 037 Aviso a convocatoria Ley 80 docx",
+          "base": "nombre_de_anexo",
+          "fundamento": "6. GA-GC-FR-037 Aviso a convocatoria Ley 80 docx.pdf",
+          "catalogoId": null,
+          "expide": null,
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Aviso de convocatoria en formato institucional de la entidad."
+        },
+        {
+          "nombre": "0. MEMORANDO INICIO",
+          "base": "nombre_de_anexo",
+          "fundamento": "0. MEMORANDO INICIO.pdf",
+          "catalogoId": null,
+          "expide": null,
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Memorando interno que sugiere el inicio del trámite contractual."
+        },
+        {
+          "nombre": "Registro Único Tributario (RUT)",
+          "base": "catalogo_con_emisor",
+          "fundamento": "https://www.dian.gov.co/",
+          "catalogoId": "rut",
+          "expide": "Dirección de Impuestos y Aduanas Nacionales (DIAN)",
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Documento del catálogo general de referencia; confirme en el pliego oficial."
+        },
+        {
+          "nombre": "Certificado de existencia y representación legal o matrícula mercantil",
+          "base": "catalogo_con_emisor",
+          "fundamento": "https://www.rues.org.co/",
+          "catalogoId": "existencia_representacion",
+          "expide": "Cámaras de Comercio (Registro Único Empresarial y Social - RUES)",
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Documento del catálogo general de referencia; confirme en el pliego oficial."
+        },
+        {
+          "nombre": "Documento de identidad del representante legal o persona natural proponente",
+          "base": "catalogo_sin_emisor",
+          "fundamento": "Catálogo general (sin emisor oficial enlazado; confirme en pliego)",
+          "catalogoId": "cedula_representante",
+          "expide": "Registraduría Nacional del Estado Civil o autoridad migratoria",
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Documento del catálogo general de referencia; confirme en el pliego oficial."
+        },
+        {
+          "nombre": "Certificación de pago de aportes a seguridad social y parafiscales",
+          "base": "catalogo_sin_emisor",
+          "fundamento": "Catálogo general (sin emisor oficial enlazado; confirme en pliego)",
+          "catalogoId": "seguridad_social",
+          "expide": "Revisor fiscal o Representante legal",
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Documento del catálogo general de referencia; confirme en el pliego oficial."
+        },
+        {
+          "nombre": "Certificado de antecedentes disciplinarios",
+          "base": "catalogo_con_emisor",
+          "fundamento": "https://www.procuraduria.gov.co/",
+          "catalogoId": "antecedentes_disciplinarios",
+          "expide": "Procuraduría General de la Nación",
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Documento del catálogo general de referencia; confirme en el pliego oficial."
+        },
+        {
+          "nombre": "Certificado de antecedentes fiscales (Boletín de Responsables Fiscales)",
+          "base": "catalogo_sin_emisor",
+          "fundamento": "Catálogo general (sin emisor oficial enlazado; confirme en pliego)",
+          "catalogoId": "antecedentes_fiscales",
+          "expide": "Contraloría General de la República",
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Documento del catálogo general de referencia; confirme en el pliego oficial."
+        },
+        {
+          "nombre": "Certificado de antecedentes judiciales y medidas correctivas",
+          "base": "catalogo_con_emisor",
+          "fundamento": "https://www.policia.gov.co/",
+          "catalogoId": "antecedentes_judiciales",
+          "expide": "Policía Nacional",
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Documento del catálogo general de referencia; confirme en el pliego oficial."
+        },
+        {
+          "nombre": "Certificado del Registro Único de Proponentes (RUP)",
+          "base": "catalogo_con_emisor",
+          "fundamento": "https://www.rues.org.co/",
+          "catalogoId": "rup",
+          "expide": "Cámaras de Comercio (RUES)",
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Documento del catálogo general de referencia; confirme en el pliego oficial."
+        },
+        {
+          "nombre": "Garantía de seriedad de la oferta",
+          "base": "catalogo_sin_emisor",
+          "fundamento": "Catálogo general (sin emisor oficial enlazado; confirme en pliego)",
+          "catalogoId": "garantia_seriedad",
+          "expide": "Compañía de seguros o entidad bancaria",
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Documento del catálogo general de referencia; confirme en el pliego oficial."
+        },
+        {
+          "nombre": "Carta de presentación de la oferta y formatos anexos del pliego",
+          "base": "catalogo_sin_emisor",
+          "fundamento": "Catálogo general (sin emisor oficial enlazado; confirme en pliego)",
+          "catalogoId": "carta_presentacion",
+          "expide": "El proponente (según formatos del pliego en SECOP II)",
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Documento del catálogo general de referencia; confirme en el pliego oficial."
+        },
+        {
+          "nombre": "Certificaciones de experiencia previa",
+          "base": "catalogo_sin_emisor",
+          "fundamento": "Catálogo general (sin emisor oficial enlazado; confirme en pliego)",
+          "catalogoId": "certificaciones_experiencia",
+          "expide": "Contratantes anteriores públicos o privados",
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Documento del catálogo general de referencia; confirme en el pliego oficial."
+        },
+        {
+          "nombre": "Estados financieros con notas contables y certificación",
+          "base": "catalogo_sin_emisor",
+          "fundamento": "Catálogo general (sin emisor oficial enlazado; confirme en pliego)",
+          "catalogoId": "estados_financieros",
+          "expide": "Contador público y Revisor fiscal o Representante legal",
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Documento del catálogo general de referencia; confirme en el pliego oficial."
+        }
+      ],
+      "observacionGeneralDoc": "Nadie ha leído el pliego oficial: solo él define qué presentar. Use estos anexos como pista y descargue el pliego vigente en SECOP II. Verifique allí requisitos, formatos y plazos. Nada de lo anterior es obligatorio por sí mismo. Consulte a la entidad ante dudas.",
+      "advertenciasDoc": [
+        "Lista orientativa: confirme siempre en el pliego oficial",
+        "Nadie ha leído el pliego oficial de condiciones: la lista es orientativa y el pliego oficial manda."
+      ]
+    },
+    {
+      "id": "CO1.REQ.11205650",
+      "diasRestantes": 14,
+      "ficha": {
+        "nombre": "INTERVENTORÍA TÉCNICA; ADMINISTRATIVA; FINANCIERA; JURÍDICA Y CONTABLE A LA CONSULTORÍA PARA LA ELABORACIÓN DE LOS ESTUDIOS Y DISEÑOS PARA LA CONSTRUCCIÓN DE UNA NUEVA ESTACIÓN DEL CUERPO OFICIAL DE B",
+        "entidad": "BOMBEROS DE BUCARAMANGA",
+        "departamento": "Santander",
+        "ciudad": "Bucaramanga",
+        "modalidad": "Concurso de méritos abierto",
+        "tipoDeContrato": "Interventoría",
+        "valorCOP": 130321141,
+        "fechaLimiteOfertas": "2026-10-29T00:00:00.000",
+        "duracion": {
+          "cantidad": 2,
+          "unidad": "Mes(es)"
+        },
+        "lotes": 0,
+        "urlProceso": "https://community.secop.gov.co/Public/Tendering/OpportunityDetail/Index?noticeUID=CO1.NTC.11071540"
+      },
+      "anexosUrls": [
+        {
+          "nombre": "343. CertificadoBPIN_202500000035882_6616_BOMBEROS.pdf",
+          "urlDescarga": "https://community.secop.gov.co/Public/Archive/RetrieveFile/Index?DocumentId=874632052&InCommunity=False&InPaymentGateway=False&DocUniqueIdentifier="
+        },
+        {
+          "nombre": "CDP INTERVENTORIA ESTUDIOS Y DISEÑOS.pdf",
+          "urlDescarga": "https://community.secop.gov.co/Public/Archive/RetrieveFile/Index?DocumentId=874632054&InCommunity=False&InPaymentGateway=False&DocUniqueIdentifier="
+        },
+        {
+          "nombre": "PROYECTO DE PLIEGO CMA-003-2026 INTERVENTORIA1.pdf",
+          "urlDescarga": "https://community.secop.gov.co/Public/Archive/RetrieveFile/Index?DocumentId=874632061&InCommunity=False&InPaymentGateway=False&DocUniqueIdentifier="
+        },
+        {
+          "nombre": "VF -PPTO INTERVENTORIA - ESTACION DE BOMBEROS-REUNION OCT 5- Admon .pdf",
+          "urlDescarga": "https://community.secop.gov.co/Public/Archive/RetrieveFile/Index?DocumentId=874632058&InCommunity=False&InPaymentGateway=False&DocUniqueIdentifier="
+        },
+        {
+          "nombre": "Formatos, anexos y matrices.zip",
+          "urlDescarga": "https://community.secop.gov.co/Public/Archive/RetrieveFile/Index?DocumentId=874632056&InCommunity=False&InPaymentGateway=False&DocUniqueIdentifier="
+        },
+        {
+          "nombre": "A1_Tecnico_Interventoria -OCT 1 INTERVENTORIA firma (1).pdf",
+          "urlDescarga": "https://community.secop.gov.co/Public/Archive/RetrieveFile/Index?DocumentId=874632053&InCommunity=False&InPaymentGateway=False&DocUniqueIdentifier="
+        },
+        {
+          "nombre": "VF -PPTO INTERVENTORIA - ESTACION DE BOMBEROS-REUNION OCT 5 Factor multiplicardor .pdf",
+          "urlDescarga": "https://community.secop.gov.co/Public/Archive/RetrieveFile/Index?DocumentId=874632059&InCommunity=False&InPaymentGateway=False&DocUniqueIdentifier="
+        },
+        {
+          "nombre": "AVISO DE CONVOCATORIA CMA-003-2026.pdf",
+          "urlDescarga": "https://community.secop.gov.co/Public/Archive/RetrieveFile/Index?DocumentId=874632062&InCommunity=False&InPaymentGateway=False&DocUniqueIdentifier="
+        },
+        {
+          "nombre": "VF -PPTO INTERVENTORIA - ESTACION DE BOMBEROS-REUNION OCT 5-.pdf",
+          "urlDescarga": "https://community.secop.gov.co/Public/Archive/RetrieveFile/Index?DocumentId=874632057&InCommunity=False&InPaymentGateway=False&DocUniqueIdentifier="
+        },
+        {
+          "nombre": "Analisis del sector  INTERVENTORIA.pdf",
+          "urlDescarga": "https://community.secop.gov.co/Public/Archive/RetrieveFile/Index?DocumentId=874632055&InCommunity=False&InPaymentGateway=False&DocUniqueIdentifier="
+        },
+        {
+          "nombre": "ESTUDIOS PREVIOS CMA-003-2026 INTERVENTORIA (2)-1.pdf",
+          "urlDescarga": "https://community.secop.gov.co/Public/Archive/RetrieveFile/Index?DocumentId=874632060&InCommunity=False&InPaymentGateway=False&DocUniqueIdentifier="
+        }
+      ],
+      "resumen": "La entidad busca contratar la interventoría técnica, administrativa, financiera, jurídica y contable sobre la consultoría que elaborará los estudios y diseños para construir una nueva estación del cuerpo oficial de bomberos en el municipio de Bucaramanga.",
+      "alertasParaPyme": [
+        {
+          "alerta": "El plazo para presentar oferta es relativamente corto; conviene revisar ya el cronograma y preparar observaciones a tiempo.",
+          "basadoEn": "diasRestantes"
+        },
+        {
+          "alerta": "El proceso sigue en fase de observaciones, no de cierre de ofertas: hay ventana para comentar el proyecto de pliego, pero el tiempo hasta el límite de ofertas no es holgado.",
+          "basadoEn": "fase"
+        },
+        {
+          "alerta": "El valor estimado no es menor y puede exigir capacidad operativa y financiera acorde; no se infieren indicadores ni experiencia mínima desde esta ficha.",
+          "basadoEn": "valorCOP"
+        },
+        {
+          "alerta": "La duración contractual es breve, lo que implica carga de trabajo concentrada y equipo disponible de inmediato.",
+          "basadoEn": "duracion"
+        },
+        {
+          "alerta": "No hay división por lotes: se trata de un único contrato de interventoría, no de fracciones menores.",
+          "basadoEn": "lotes"
+        },
+        {
+          "alerta": "Es concurso de méritos abierto, modalidad que suele privilegiar calidad, equipo y experiencia sobre el precio; los criterios exactos solo están en el pliego.",
+          "basadoEn": "modalidad"
+        },
+        {
+          "alerta": "El objeto es interventoría (no la consultoría de diseños en sí): suele exigir perfil interdisciplinario técnico, administrativo, financiero, jurídico y contable.",
+          "basadoEn": "tipoDeContrato"
+        }
+      ],
+      "verificarEnElPliego": [
+        "Requisitos habilitantes de experiencia específica (interventoría, consultoría o estudios y diseños) y si se acepta experiencia del proponente o del equipo.",
+        "Capacidad financiera e indicadores (patrimonio, liquidez, endeudamiento u otros) y si hay umbrales mínimos.",
+        "Garantías de seriedad, cumplimiento, calidad, salarios y prestaciones, y si hay anticipo y póliza de buen manejo.",
+        "Criterios de evaluación del concurso de méritos (puntajes de equipo, metodología, experiencia vs. factor económico).",
+        "Equipo mínimo, dedicaciones, tarjetas profesionales y posibles inhabilidades por conflicto con el consultor intervenido.",
+        "Visita técnica o audiencia de aclaraciones: si son obligatorias y cómo acreditarse.",
+        "Forma de pago, anticipo, cronograma de actividades y si la duración cubre todo el contrato de consultoría o solo una fase.",
+        "Condiciones de consorcio o unión temporal y documentos de la propuesta (formatos, matrices y anexos a diligenciar)."
+      ],
+      "documentos": [
+        {
+          "nombre": "343. CertificadoBPIN 202500000035882 6616 BOMBEROS",
+          "base": "nombre_de_anexo",
+          "fundamento": "343. CertificadoBPIN_202500000035882_6616_BOMBEROS.pdf",
+          "catalogoId": null,
+          "expide": null,
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Certificado BPIN del proyecto de inversión asociado a Bomberos."
+        },
+        {
+          "nombre": "CDP INTERVENTORIA ESTUDIOS Y DISEÑOS",
+          "base": "nombre_de_anexo",
+          "fundamento": "CDP INTERVENTORIA ESTUDIOS Y DISEÑOS.pdf",
+          "catalogoId": null,
+          "expide": null,
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Certificado de disponibilidad presupuestal para la interventoría."
+        },
+        {
+          "nombre": "PROYECTO DE PLIEGO CMA 003 2026 INTERVENTORIA1",
+          "base": "nombre_de_anexo",
+          "fundamento": "PROYECTO DE PLIEGO CMA-003-2026 INTERVENTORIA1.pdf",
+          "catalogoId": null,
+          "expide": null,
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Borrador o proyecto de pliego del concurso de méritos."
+        },
+        {
+          "nombre": "VF PPTO INTERVENTORIA ESTACION DE BOMBEROS REUNION OCT 5 Admon",
+          "base": "nombre_de_anexo",
+          "fundamento": "VF -PPTO INTERVENTORIA - ESTACION DE BOMBEROS-REUNION OCT 5- Admon .pdf",
+          "catalogoId": null,
+          "expide": null,
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Presupuesto de interventoría, componente administrativo, reunión de octubre."
+        },
+        {
+          "nombre": "Formatos, anexos y matrices",
+          "base": "nombre_de_anexo",
+          "fundamento": "Formatos, anexos y matrices.zip",
+          "catalogoId": null,
+          "expide": null,
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Paquete comprimido con formatos, anexos y matrices del proceso."
+        },
+        {
+          "nombre": "A1 Tecnico Interventoria OCT 1 INTERVENTORIA firma (1)",
+          "base": "nombre_de_anexo",
+          "fundamento": "A1_Tecnico_Interventoria -OCT 1 INTERVENTORIA firma (1).pdf",
+          "catalogoId": null,
+          "expide": null,
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Anexo técnico de interventoría con firma, versión de octubre."
+        },
+        {
+          "nombre": "VF PPTO INTERVENTORIA ESTACION DE BOMBEROS REUNION OCT 5 Factor multiplicardor",
+          "base": "nombre_de_anexo",
+          "fundamento": "VF -PPTO INTERVENTORIA - ESTACION DE BOMBEROS-REUNION OCT 5 Factor multiplicardor .pdf",
+          "catalogoId": null,
+          "expide": null,
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Presupuesto de interventoría con factor multiplicador, reunión de octubre."
+        },
+        {
+          "nombre": "AVISO DE CONVOCATORIA CMA 003 2026",
+          "base": "nombre_de_anexo",
+          "fundamento": "AVISO DE CONVOCATORIA CMA-003-2026.pdf",
+          "catalogoId": null,
+          "expide": null,
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Aviso público de convocatoria del concurso CMA-003-2026."
+        },
+        {
+          "nombre": "VF PPTO INTERVENTORIA ESTACION DE BOMBEROS REUNION OCT 5",
+          "base": "nombre_de_anexo",
+          "fundamento": "VF -PPTO INTERVENTORIA - ESTACION DE BOMBEROS-REUNION OCT 5-.pdf",
+          "catalogoId": null,
+          "expide": null,
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Presupuesto de interventoría de la estación de bomberos."
+        },
+        {
+          "nombre": "Analisis del sector INTERVENTORIA",
+          "base": "nombre_de_anexo",
+          "fundamento": "Analisis del sector  INTERVENTORIA.pdf",
+          "catalogoId": null,
+          "expide": null,
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Análisis del sector económico para la contratación de interventoría."
+        },
+        {
+          "nombre": "ESTUDIOS PREVIOS CMA 003 2026 INTERVENTORIA (2) 1",
+          "base": "nombre_de_anexo",
+          "fundamento": "ESTUDIOS PREVIOS CMA-003-2026 INTERVENTORIA (2)-1.pdf",
+          "catalogoId": null,
+          "expide": null,
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Estudios previos del concurso de méritos de interventoría."
+        },
+        {
+          "nombre": "Registro Único Tributario (RUT)",
+          "base": "catalogo_con_emisor",
+          "fundamento": "https://www.dian.gov.co/",
+          "catalogoId": "rut",
+          "expide": "Dirección de Impuestos y Aduanas Nacionales (DIAN)",
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Documento del catálogo general de referencia; confirme en el pliego oficial."
+        },
+        {
+          "nombre": "Certificado de existencia y representación legal o matrícula mercantil",
+          "base": "catalogo_con_emisor",
+          "fundamento": "https://www.rues.org.co/",
+          "catalogoId": "existencia_representacion",
+          "expide": "Cámaras de Comercio (Registro Único Empresarial y Social - RUES)",
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Documento del catálogo general de referencia; confirme en el pliego oficial."
+        },
+        {
+          "nombre": "Documento de identidad del representante legal o persona natural proponente",
+          "base": "catalogo_sin_emisor",
+          "fundamento": "Catálogo general (sin emisor oficial enlazado; confirme en pliego)",
+          "catalogoId": "cedula_representante",
+          "expide": "Registraduría Nacional del Estado Civil o autoridad migratoria",
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Documento del catálogo general de referencia; confirme en el pliego oficial."
+        },
+        {
+          "nombre": "Certificación de pago de aportes a seguridad social y parafiscales",
+          "base": "catalogo_sin_emisor",
+          "fundamento": "Catálogo general (sin emisor oficial enlazado; confirme en pliego)",
+          "catalogoId": "seguridad_social",
+          "expide": "Revisor fiscal o Representante legal",
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Documento del catálogo general de referencia; confirme en el pliego oficial."
+        },
+        {
+          "nombre": "Certificado de antecedentes disciplinarios",
+          "base": "catalogo_con_emisor",
+          "fundamento": "https://www.procuraduria.gov.co/",
+          "catalogoId": "antecedentes_disciplinarios",
+          "expide": "Procuraduría General de la Nación",
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Documento del catálogo general de referencia; confirme en el pliego oficial."
+        },
+        {
+          "nombre": "Certificado de antecedentes fiscales (Boletín de Responsables Fiscales)",
+          "base": "catalogo_sin_emisor",
+          "fundamento": "Catálogo general (sin emisor oficial enlazado; confirme en pliego)",
+          "catalogoId": "antecedentes_fiscales",
+          "expide": "Contraloría General de la República",
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Documento del catálogo general de referencia; confirme en el pliego oficial."
+        },
+        {
+          "nombre": "Certificado de antecedentes judiciales y medidas correctivas",
+          "base": "catalogo_con_emisor",
+          "fundamento": "https://www.policia.gov.co/",
+          "catalogoId": "antecedentes_judiciales",
+          "expide": "Policía Nacional",
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Documento del catálogo general de referencia; confirme en el pliego oficial."
+        },
+        {
+          "nombre": "Certificado del Registro Único de Proponentes (RUP)",
+          "base": "catalogo_con_emisor",
+          "fundamento": "https://www.rues.org.co/",
+          "catalogoId": "rup",
+          "expide": "Cámaras de Comercio (RUES)",
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Documento del catálogo general de referencia; confirme en el pliego oficial."
+        },
+        {
+          "nombre": "Garantía de seriedad de la oferta",
+          "base": "catalogo_sin_emisor",
+          "fundamento": "Catálogo general (sin emisor oficial enlazado; confirme en pliego)",
+          "catalogoId": "garantia_seriedad",
+          "expide": "Compañía de seguros o entidad bancaria",
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Documento del catálogo general de referencia; confirme en el pliego oficial."
+        },
+        {
+          "nombre": "Carta de presentación de la oferta y formatos anexos del pliego",
+          "base": "catalogo_sin_emisor",
+          "fundamento": "Catálogo general (sin emisor oficial enlazado; confirme en pliego)",
+          "catalogoId": "carta_presentacion",
+          "expide": "El proponente (según formatos del pliego en SECOP II)",
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Documento del catálogo general de referencia; confirme en el pliego oficial."
+        },
+        {
+          "nombre": "Certificaciones de experiencia previa",
+          "base": "catalogo_sin_emisor",
+          "fundamento": "Catálogo general (sin emisor oficial enlazado; confirme en pliego)",
+          "catalogoId": "certificaciones_experiencia",
+          "expide": "Contratantes anteriores públicos o privados",
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Documento del catálogo general de referencia; confirme en el pliego oficial."
+        },
+        {
+          "nombre": "Estados financieros con notas contables y certificación",
+          "base": "catalogo_sin_emisor",
+          "fundamento": "Catálogo general (sin emisor oficial enlazado; confirme en pliego)",
+          "catalogoId": "estados_financieros",
+          "expide": "Contador público y Revisor fiscal o Representante legal",
+          "condicion": "Puede exigirse según el pliego; verificar.",
+          "observaciones": "Documento del catálogo general de referencia; confirme en el pliego oficial."
+        }
+      ],
+      "observacionGeneralDoc": "Revise el pliego oficial en SECOP II: es lo que manda. Estos anexos solo orientan (presupuesto, estudios previos, formatos). No asuma requisitos ni plazos hasta leer el documento definitivo y confirmar fechas, experiencia y formularios vigentes.",
+      "advertenciasDoc": [
+        "Lista orientativa: confirme siempre en el pliego oficial",
+        "Nadie ha leído el pliego oficial de condiciones: la lista es orientativa y el pliego oficial manda."
+      ]
+    }
+  ]
+}

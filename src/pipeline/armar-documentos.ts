@@ -17,7 +17,7 @@ import path from "node:path";
 import { AIMessage } from "@langchain/core/messages";
 import { leerFechaPrueba, type ModoEjecucion } from "../config/entorno.js";
 import { fechaHoy } from "../datos/socrata.js";
-import { registrarCosto } from "../cost.js";
+import { registrarCosto, ejecutarConContextoTokens } from "../cost.js";
 import { MODEL_NAME } from "../llm.js";
 import type { RunnableConfig } from "@langchain/core/runnables";
 import { configEjecucion } from "../trazas.js";
@@ -153,7 +153,8 @@ export async function armarDocumentosParaProcesos(
     resumenItem: ItemResumenEntrega,
   ): Promise<{ item: ProcesoConDocumentos; tokens: { entrada: number; salida: number; total: number } }> {
     const id = resumenItem.id;
-    const tokensItem = { entrada: 0, salida: 0, total: 0 };
+    return ejecutarConContextoTokens({ procesoId: id, agente: NOMBRE_AGENTE_DOCUMENTOS }, async () => {
+      const tokensItem = { entrada: 0, salida: 0, total: 0 };
 
     const modalidad = resumenItem.ficha?.modalidad ?? "Desconocida";
     const tipoDeContrato = resumenItem.ficha?.tipoDeContrato ?? "Desconocido";
@@ -287,7 +288,8 @@ export async function armarDocumentosParaProcesos(
       },
     };
 
-    return { item: procesoFinal, tokens: tokensItem };
+      return { item: procesoFinal, tokens: tokensItem };
+    });
   }
 
   const resultados = await ejecutarConConcurrencia(aProcesar, concurrencia, (item) =>
