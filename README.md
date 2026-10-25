@@ -141,12 +141,16 @@ Los costos se calculan a partir de la contabilidad estricta de tokens en `logs/t
 
 El sistema mantiene un libro mayor inmutable y committeable en [`data/pruebas-reto/ejecuciones/registro.jsonl`](data/pruebas-reto/ejecuciones/registro.jsonl) y su consolidado en [`data/pruebas-reto/ejecuciones/RESUMEN.md`](data/pruebas-reto/ejecuciones/RESUMEN.md).
 
-### Últimas Ejecuciones Registradas
+### Últimas 10 Ejecuciones Registradas
 
 | ID Ejecución | Inicio (UTC) | Tipo | Modo | Candidatos | Aptos | Resúmenes | Documentos | Tokens Facturados | Costo USD | Estado |
 |---|---|:---:|:---:|---:|---:|---:|---:|---:|:---:|:---:|
+| [`20261024-232626_1169`](data/pruebas-reto/ejecuciones/20261024-232626_1169/) | 2026-10-25 04:26:26 | normal | prueba | 150 | 20 | 20 | 20 | 1.281.398 | $2.3495 | ✅ ok |
+| [`20261024-230522_fbff`](data/pruebas-reto/ejecuciones/20261024-230522_fbff/) | 2026-10-25 04:05:22 | normal | prueba | 150 | 19 | 19 | 19 | 980.593 | $1.7782 | ✅ ok |
+| [`20261024-224303_544b`](data/pruebas-reto/ejecuciones/20261024-224303_544b/) | 2026-10-25 03:43:03 | normal | prueba | 423 | 22 | 2 | 2 | 692.689 | $1.2326 | ✅ ok |
 | [`20261024-205244_ae97`](data/pruebas-reto/evaluacion/resultados/20261025-015244-agentes/) | 2026-10-25 01:52:44 | evaluacion | evaluacion | 0 | 0 | 10 | 10 | 202.123 | $0.3640 | ✅ ok |
 | [`20261024-203627_2c6e`](data/pruebas-reto/evaluacion/resultados/20261025-013627-agentes/) | 2026-10-25 01:36:27 | evaluacion | evaluacion | 0 | 0 | 10 | 10 | 208.019 | $0.3651 | ✅ ok |
+| [`20261024-201537_2b3d`](data/pruebas-reto/ejecuciones/20261024-201537_2b3d/) | 2026-10-25 01:15:37 | evaluacion | evaluacion | 0 | 0 | 0 | 0 | 205.317 | $0.3665 | ✅ ok |
 | [`20261024-193537_55e6`](data/pruebas-reto/ejecuciones/20261024-193537_55e6/) | 2026-10-25 00:35:37 | evaluacion | evaluacion | 40 | 31 | 0 | 0 | 31.172 | $0.0527 | ✅ ok |
 | [`20261020-223545_89fd`](data/pruebas-reto/ejecuciones/20261020-223545_89fd/) | 2026-10-21 03:35:45 | normal | prueba | 423 | 20 | 20 | 20 | 313.970 | $0.5781 | ✅ ok |
 | [`20261020-172456_dec9`](data/pruebas-reto/ejecuciones/RESUMEN.md) | 2026-10-20 22:24:56 | normal | prueba | 423 | 23 | 5 | 5 | 90.371 | n/c | ✅ ok |
