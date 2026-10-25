@@ -151,19 +151,30 @@ export const schemaFiltroBasico = z.object({
   pagina: z.number().int().min(1).describe("Número de página a consultar (comenzando en 1)."),
 });
 
+/** Tipo de función proveedora de candidatos por página. */
+export type FuenteCandidatos = (pagina: number) => Promise<RespuestaFiltroBasico>;
+
 /**
- * Tool LangChain `filtro_basico`.
- * Devuelve un string JSON para el modelo.
+ * Factory para crear la herramienta `filtro_basico` inyectando una fuente de datos.
+ * Por defecto utiliza `obtenerPaginaFiltroBasico` (datos de HOY para producción).
  */
-export const filtroBasico = tool(
-  async ({ pagina }): Promise<string> => {
-    const respuesta = await obtenerPaginaFiltroBasico(pagina);
-    return JSON.stringify(respuesta);
-  },
-  {
-    name: "filtro_basico",
-    description:
-      "Devuelve una página de 25 procesos de SECOP II publicados HOY que ya pasaron el filtro básico por código. Úsala una vez con el número de página indicado.",
-    schema: schemaFiltroBasico,
-  },
-);
+export function crearHerramientaFiltroBasico(fuente: FuenteCandidatos = obtenerPaginaFiltroBasico) {
+  return tool(
+    async ({ pagina }): Promise<string> => {
+      const respuesta = await fuente(pagina);
+      return JSON.stringify(respuesta);
+    },
+    {
+      name: "filtro_basico",
+      description:
+        "Devuelve una página de 25 procesos de SECOP II publicados HOY que ya pasaron el filtro básico por código. Úsala una vez con el número de página indicado.",
+      schema: schemaFiltroBasico,
+    },
+  );
+}
+
+/**
+ * Tool LangChain `filtro_basico` estándar de producción (HOY memoizado).
+ */
+export const filtroBasico = crearHerramientaFiltroBasico(obtenerPaginaFiltroBasico);
+

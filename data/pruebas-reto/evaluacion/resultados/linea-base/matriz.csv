@@ -1,0 +1,5 @@
+humano,modelo_si,modelo_no,modelo_dudoso,total_humano
+si,25,0,0,25
+no,3,9,0,12
+dudoso,3,0,0,3
+total_modelo,31,9,0,40

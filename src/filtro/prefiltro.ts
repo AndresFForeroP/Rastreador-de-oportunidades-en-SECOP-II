@@ -82,6 +82,15 @@ export interface ResultadoPrefiltro {
   candidatos: Candidato[];
 }
 
+export interface DescarteDetalle {
+  fila: FilaSecop;
+  regla: ReglaDescarte;
+}
+
+export interface ResultadoPrefiltroDetalle extends ResultadoPrefiltro {
+  descartados: DescarteDetalle[];
+}
+
 const modalidades = new Set<string>(MODALIDADES_COMPETITIVAS);
 const estadosDescartados = new Set(ESTADOS_DESCARTADOS);
 const tiposExcluidos = new Set(TIPOS_CONTRATO_EXCLUIDOS);
@@ -143,7 +152,11 @@ export function estaOfertaVencida(
 }
 
 /** Devuelve la regla que descarta la fila, o null si se conserva. */
-function reglaQueDescarta(fila: FilaSecop, idsVistos: Set<string>): ReglaDescarte | null {
+function reglaQueDescarta(
+  fila: FilaSecop,
+  idsVistos: Set<string>,
+  instanteReferencia?: Date,
+): ReglaDescarte | null {
   const id = texto(fila.id_del_proceso);
   const yaVisto = id !== "" && idsVistos.has(id);
   if (id) idsVistos.add(id);
@@ -153,12 +166,13 @@ function reglaQueDescarta(fila: FilaSecop, idsVistos: Set<string>): ReglaDescart
   if (tiposExcluidos.has(texto(fila.tipo_de_contrato))) return "tipo_contrato_excluido";
   const valor = parsearValor(fila.precio_base);
   if (valor !== null && valor > VALOR_MAXIMO) return "valor_supera_maximo";
-  if (DESCARTAR_OFERTA_VENCIDA && estaOfertaVencida(fila.fecha_de_recepcion_de)) return "oferta_vencida";
+  if (DESCARTAR_OFERTA_VENCIDA && estaOfertaVencida(fila.fecha_de_recepcion_de, instanteReferencia))
+    return "oferta_vencida";
   if (yaVisto) return "id_duplicado";
   return null;
 }
 
-function aCandidato(fila: FilaSecop): Candidato {
+export function aCandidato(fila: FilaSecop): Candidato {
   const fecha = texto(fila.fecha_de_publicacion_del);
   return {
     id: texto(fila.id_del_proceso),
@@ -184,21 +198,39 @@ function aCandidato(fila: FilaSecop): Candidato {
   };
 }
 
-function prefiltrarInterno(filas: FilaSecop[]): ResultadoPrefiltro {
+function prefiltrarConReferencia(
+  filas: FilaSecop[],
+  instanteReferencia?: Date | string,
+): ResultadoPrefiltroDetalle {
   const descartadosPorRegla = Object.fromEntries(REGLAS_DESCARTE.map((r) => [r, 0])) as Record<
     ReglaDescarte,
     number
   >;
   const idsVistos = new Set<string>();
   const candidatos: Candidato[] = [];
+  const descartados: DescarteDetalle[] = [];
+  const refDate = instanteReferencia
+    ? obtenerInstanteReferencia(instanteReferencia)
+    : obtenerInstanteReferencia();
 
   for (const fila of filas) {
-    const regla = reglaQueDescarta(fila, idsVistos);
-    if (regla) descartadosPorRegla[regla]++;
-    else candidatos.push(aCandidato(fila));
+    const regla = reglaQueDescarta(fila, idsVistos, refDate);
+    if (regla) {
+      descartadosPorRegla[regla]++;
+      descartados.push({ fila, regla });
+    } else {
+      candidatos.push(aCandidato(fila));
+    }
   }
-  return { total: filas.length, descartadosPorRegla, candidatos };
+  return { total: filas.length, descartadosPorRegla, candidatos, descartados };
 }
+
+function prefiltrarInterno(filas: FilaSecop[]): ResultadoPrefiltroDetalle {
+  return prefiltrarConReferencia(filas);
+}
+
+/** Ejecuta el prefiltro retornando candidatos y procesos descartados detallados con fecha de referencia opcional. */
+export const prefiltrarDetallado = prefiltrarConReferencia;
 
 /**
  * Aplica el pre-filtro básico. Trazado en LangSmith como "prefiltro_basico"

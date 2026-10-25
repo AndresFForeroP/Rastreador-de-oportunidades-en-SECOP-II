@@ -15,6 +15,11 @@
     "tokens": "tsx src/tools/costos.ts",
     "costos": "tsx src/tools/costos.ts",
     "tokens:resumen": "tsx src/tools/costos.ts",
+    "evaluar:preparar": "tsx src/tools/evaluacion-preparar.ts",
+    "evaluar:validar": "tsx src/tools/evaluacion-validar.ts",
+    "evaluar": "tsx src/tools/evaluar.ts",
+    "evaluar:agentes": "tsx src/tools/evaluar-agentes.ts",
+    "evaluar:hoja": "tsx src/tools/evaluar-hoja.ts",
     "auditar:catalogo": "tsx src/tools/auditar-catalogo.ts",
     "typecheck": "tsc --noEmit"
   },

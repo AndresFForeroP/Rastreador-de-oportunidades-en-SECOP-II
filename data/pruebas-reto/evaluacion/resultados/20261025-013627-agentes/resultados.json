@@ -1,0 +1,927 @@
+{
+  "ejecucionId": "20261024-203627_2c6e",
+  "timestamp": "2026-10-25T01:36:27.314Z",
+  "parametros": {
+    "n": 10,
+    "semilla": 42,
+    "casosSeleccionados": [
+      52,
+      41,
+      4,
+      49,
+      53,
+      19,
+      35,
+      55,
+      45,
+      2
+    ]
+  },
+  "costos": {
+    "tokensEntrada": 114058,
+    "tokensSalida": 22827,
+    "tokensTotal": 208019,
+    "costoUSD": 0.365078,
+    "costoFormateado": "$ 0.3651 USD"
+  },
+  "agente2": {
+    "resumenEjecucion": {
+      "totalProcesados": 10,
+      "tokens": {
+        "entrada": 44332,
+        "salida": 9340,
+        "total": 77262
+      }
+    },
+    "invariantes": {
+      "fichaVsDataset": {
+        "total": 10,
+        "pasan": 10,
+        "tasa": 100,
+        "fallos": []
+      },
+      "cifras6Digitos": {
+        "total": 10,
+        "pasan": 10,
+        "tasa": 100,
+        "fallos": []
+      },
+      "basadoEnClavesReales": {
+        "total": 10,
+        "pasan": 10,
+        "tasa": 100,
+        "fallos": []
+      },
+      "verificarEnPliegoNoVacio": {
+        "total": 10,
+        "pasan": 10,
+        "tasa": 100,
+        "fallos": []
+      },
+      "nuncaAfirmaLeerPliego": {
+        "total": 10,
+        "pasan": 8,
+        "tasa": 80,
+        "fallos": [
+          {
+            "id": "CO1.REQ.11166802",
+            "evidencia": "El texto parece sugerir lectura del pliego: \"La fase actual es presentación de observaciones: aún puede haber espacio para pr...\""
+          },
+          {
+            "id": "CO1.REQ.11190680",
+            "evidencia": "El texto parece sugerir lectura del pliego: \"Hay anexos indexados. Por los nombres, parecen estudio del sector, estudios prev...\""
+          }
+        ]
+      },
+      "senaladosRevisionHumana": {
+        "total": 0,
+        "casos": []
+      }
+    },
+    "casos": [
+      {
+        "casoNumero": 52,
+        "id": "CO1.REQ.11171503",
+        "invariantes": {
+          "fichaVsDataset": {
+            "invariante": "ficha_igual_al_dataset",
+            "pasa": true
+          },
+          "cifras6Digitos": {
+            "invariante": "cifras_6_digitos_respaldadas",
+            "pasa": true
+          },
+          "basadoEnClavesReales": {
+            "invariante": "basado_en_claves_reales",
+            "pasa": true
+          },
+          "sinAfirmarRequisitosHabilitantes": {
+            "invariante": "sin_afirmar_requisitos_habilitantes",
+            "pasa": true,
+            "flagRevisionHumana": false
+          },
+          "verificarEnPliegoNoVacio": {
+            "invariante": "verificar_en_pliego_no_vacio",
+            "pasa": true
+          },
+          "nuncaAfirmaLeerPliego": {
+            "invariante": "nunca_afirma_leer_pliego",
+            "pasa": true
+          }
+        }
+      },
+      {
+        "casoNumero": 41,
+        "id": "CO1.REQ.11180160",
+        "invariantes": {
+          "fichaVsDataset": {
+            "invariante": "ficha_igual_al_dataset",
+            "pasa": true
+          },
+          "cifras6Digitos": {
+            "invariante": "cifras_6_digitos_respaldadas",
+            "pasa": true
+          },
+          "basadoEnClavesReales": {
+            "invariante": "basado_en_claves_reales",
+            "pasa": true
+          },
+          "sinAfirmarRequisitosHabilitantes": {
+            "invariante": "sin_afirmar_requisitos_habilitantes",
+            "pasa": true,
+            "flagRevisionHumana": false
+          },
+          "verificarEnPliegoNoVacio": {
+            "invariante": "verificar_en_pliego_no_vacio",
+            "pasa": true
+          },
+          "nuncaAfirmaLeerPliego": {
+            "invariante": "nunca_afirma_leer_pliego",
+            "pasa": true
+          }
+        }
+      },
+      {
+        "casoNumero": 4,
+        "id": "CO1.REQ.11166802",
+        "invariantes": {
+          "fichaVsDataset": {
+            "invariante": "ficha_igual_al_dataset",
+            "pasa": true
+          },
+          "cifras6Digitos": {
+            "invariante": "cifras_6_digitos_respaldadas",
+            "pasa": true
+          },
+          "basadoEnClavesReales": {
+            "invariante": "basado_en_claves_reales",
+            "pasa": true
+          },
+          "sinAfirmarRequisitosHabilitantes": {
+            "invariante": "sin_afirmar_requisitos_habilitantes",
+            "pasa": true,
+            "flagRevisionHumana": false
+          },
+          "verificarEnPliegoNoVacio": {
+            "invariante": "verificar_en_pliego_no_vacio",
+            "pasa": true
+          },
+          "nuncaAfirmaLeerPliego": {
+            "invariante": "nunca_afirma_leer_pliego",
+            "pasa": false,
+            "evidencia": "El texto parece sugerir lectura del pliego: \"La fase actual es presentación de observaciones: aún puede haber espacio para pr...\""
+          }
+        }
+      },
+      {
+        "casoNumero": 49,
+        "id": "CO1.REQ.11189547",
+        "invariantes": {
+          "fichaVsDataset": {
+            "invariante": "ficha_igual_al_dataset",
+            "pasa": true
+          },
+          "cifras6Digitos": {
+            "invariante": "cifras_6_digitos_respaldadas",
+            "pasa": true
+          },
+          "basadoEnClavesReales": {
+            "invariante": "basado_en_claves_reales",
+            "pasa": true
+          },
+          "sinAfirmarRequisitosHabilitantes": {
+            "invariante": "sin_afirmar_requisitos_habilitantes",
+            "pasa": true,
+            "flagRevisionHumana": false
+          },
+          "verificarEnPliegoNoVacio": {
+            "invariante": "verificar_en_pliego_no_vacio",
+            "pasa": true
+          },
+          "nuncaAfirmaLeerPliego": {
+            "invariante": "nunca_afirma_leer_pliego",
+            "pasa": true
+          }
+        }
+      },
+      {
+        "casoNumero": 53,
+        "id": "CO1.REQ.11158747",
+        "invariantes": {
+          "fichaVsDataset": {
+            "invariante": "ficha_igual_al_dataset",
+            "pasa": true
+          },
+          "cifras6Digitos": {
+            "invariante": "cifras_6_digitos_respaldadas",
+            "pasa": true
+          },
+          "basadoEnClavesReales": {
+            "invariante": "basado_en_claves_reales",
+            "pasa": true
+          },
+          "sinAfirmarRequisitosHabilitantes": {
+            "invariante": "sin_afirmar_requisitos_habilitantes",
+            "pasa": true,
+            "flagRevisionHumana": false
+          },
+          "verificarEnPliegoNoVacio": {
+            "invariante": "verificar_en_pliego_no_vacio",
+            "pasa": true
+          },
+          "nuncaAfirmaLeerPliego": {
+            "invariante": "nunca_afirma_leer_pliego",
+            "pasa": true
+          }
+        }
+      },
+      {
+        "casoNumero": 19,
+        "id": "CO1.REQ.11159170",
+        "invariantes": {
+          "fichaVsDataset": {
+            "invariante": "ficha_igual_al_dataset",
+            "pasa": true
+          },
+          "cifras6Digitos": {
+            "invariante": "cifras_6_digitos_respaldadas",
+            "pasa": true
+          },
+          "basadoEnClavesReales": {
+            "invariante": "basado_en_claves_reales",
+            "pasa": true
+          },
+          "sinAfirmarRequisitosHabilitantes": {
+            "invariante": "sin_afirmar_requisitos_habilitantes",
+            "pasa": true,
+            "flagRevisionHumana": false
+          },
+          "verificarEnPliegoNoVacio": {
+            "invariante": "verificar_en_pliego_no_vacio",
+            "pasa": true
+          },
+          "nuncaAfirmaLeerPliego": {
+            "invariante": "nunca_afirma_leer_pliego",
+            "pasa": true
+          }
+        }
+      },
+      {
+        "casoNumero": 35,
+        "id": "CO1.REQ.11155472",
+        "invariantes": {
+          "fichaVsDataset": {
+            "invariante": "ficha_igual_al_dataset",
+            "pasa": true
+          },
+          "cifras6Digitos": {
+            "invariante": "cifras_6_digitos_respaldadas",
+            "pasa": true
+          },
+          "basadoEnClavesReales": {
+            "invariante": "basado_en_claves_reales",
+            "pasa": true
+          },
+          "sinAfirmarRequisitosHabilitantes": {
+            "invariante": "sin_afirmar_requisitos_habilitantes",
+            "pasa": true,
+            "flagRevisionHumana": false
+          },
+          "verificarEnPliegoNoVacio": {
+            "invariante": "verificar_en_pliego_no_vacio",
+            "pasa": true
+          },
+          "nuncaAfirmaLeerPliego": {
+            "invariante": "nunca_afirma_leer_pliego",
+            "pasa": true
+          }
+        }
+      },
+      {
+        "casoNumero": 55,
+        "id": "CO1.REQ.11190680",
+        "invariantes": {
+          "fichaVsDataset": {
+            "invariante": "ficha_igual_al_dataset",
+            "pasa": true
+          },
+          "cifras6Digitos": {
+            "invariante": "cifras_6_digitos_respaldadas",
+            "pasa": true
+          },
+          "basadoEnClavesReales": {
+            "invariante": "basado_en_claves_reales",
+            "pasa": true
+          },
+          "sinAfirmarRequisitosHabilitantes": {
+            "invariante": "sin_afirmar_requisitos_habilitantes",
+            "pasa": true,
+            "flagRevisionHumana": false
+          },
+          "verificarEnPliegoNoVacio": {
+            "invariante": "verificar_en_pliego_no_vacio",
+            "pasa": true
+          },
+          "nuncaAfirmaLeerPliego": {
+            "invariante": "nunca_afirma_leer_pliego",
+            "pasa": false,
+            "evidencia": "El texto parece sugerir lectura del pliego: \"Hay anexos indexados. Por los nombres, parecen estudio del sector, estudios prev...\""
+          }
+        }
+      },
+      {
+        "casoNumero": 45,
+        "id": "CO1.REQ.11176401",
+        "invariantes": {
+          "fichaVsDataset": {
+            "invariante": "ficha_igual_al_dataset",
+            "pasa": true
+          },
+          "cifras6Digitos": {
+            "invariante": "cifras_6_digitos_respaldadas",
+            "pasa": true
+          },
+          "basadoEnClavesReales": {
+            "invariante": "basado_en_claves_reales",
+            "pasa": true
+          },
+          "sinAfirmarRequisitosHabilitantes": {
+            "invariante": "sin_afirmar_requisitos_habilitantes",
+            "pasa": true,
+            "flagRevisionHumana": false
+          },
+          "verificarEnPliegoNoVacio": {
+            "invariante": "verificar_en_pliego_no_vacio",
+            "pasa": true
+          },
+          "nuncaAfirmaLeerPliego": {
+            "invariante": "nunca_afirma_leer_pliego",
+            "pasa": true
+          }
+        }
+      },
+      {
+        "casoNumero": 2,
+        "id": "CO1.REQ.11154222",
+        "invariantes": {
+          "fichaVsDataset": {
+            "invariante": "ficha_igual_al_dataset",
+            "pasa": true
+          },
+          "cifras6Digitos": {
+            "invariante": "cifras_6_digitos_respaldadas",
+            "pasa": true
+          },
+          "basadoEnClavesReales": {
+            "invariante": "basado_en_claves_reales",
+            "pasa": true
+          },
+          "sinAfirmarRequisitosHabilitantes": {
+            "invariante": "sin_afirmar_requisitos_habilitantes",
+            "pasa": true,
+            "flagRevisionHumana": false
+          },
+          "verificarEnPliegoNoVacio": {
+            "invariante": "verificar_en_pliego_no_vacio",
+            "pasa": true
+          },
+          "nuncaAfirmaLeerPliego": {
+            "invariante": "nunca_afirma_leer_pliego",
+            "pasa": true
+          }
+        }
+      }
+    ]
+  },
+  "agente3": {
+    "resumenEjecucion": {
+      "totalProcesados": 10,
+      "tokens": {
+        "entrada": 53685,
+        "salida": 9889,
+        "total": 101134
+      }
+    },
+    "invariantes": {
+      "itemsCatalogoOAnexos": {
+        "total": 10,
+        "pasan": 10,
+        "tasa": 100,
+        "fallos": []
+      },
+      "sinDuplicados": {
+        "total": 10,
+        "pasan": 1,
+        "tasa": 10,
+        "fallos": [
+          {
+            "id": "CO1.REQ.11171503",
+            "evidencia": "Nombre duplicado: \"ACTA DE EVALUACION DEFINITIVA MC 045 2026 RENDICION DE CUENTAS\"; Nombre duplicado: \"ESTUDIO Y DOCUMENTO PREVIO MC 045 2026 RENDICION DE CUENTAS\"; Nombre duplicado: \"CDP MC 041 2026 RENDICION DE CUENTAS\"; Nombre duplicado: \"CDP MC 041 2026 RENDICION DE CUENTAS\"; Nombre duplicado: \"BPIN MC 041 2026 RENDICION DE CUENTAS\"; Nombre duplicado: \"ACTA DE EVALUACION PRELIMINAR N°02 PROCESO MC 045 2026\"; Nombre duplicado: \"BPIN MC 041 2026 RENDICION DE CUENTAS\"; Nombre duplicado: \"ACTA DE EVALUACION PRELIMINAR PROCESO MC 045 2026\"; Nombre duplicado: \"ESTUDIO Y DOCUMENTO PREVIO MC 045 2026 RENDICION DE CUENTAS\"; Nombre duplicado: \"1 ACEPTACION DE LA OFERTA CPS 268 2026 HERNANDEZ PYD SOLUCIONES\"; Nombre duplicado: \"1 ACEPTACION DE LA OFERTA CPS 268 2026 HERNANDEZ PYD SOLUCIONES\""
+          },
+          {
+            "id": "CO1.REQ.11166802",
+            "evidencia": "Nombre duplicado: \"4. AIU DESGLOSE\"; Nombre duplicado: \"3. ANALISIS DEL SECTOR PH 2026\"; Nombre duplicado: \"6. CCE EICP GI 02 Documento Base V3 30 07 2024 SAMC 00 MT 2026 V.2\"; Nombre duplicado: \"6. CCE EICP GI 02 Documento Base V3 30 07 2024 SAMC 00 MT 2026 V.2\"; Nombre duplicado: \"1.4. PAA PLACA HUELLA 2026\""
+          },
+          {
+            "id": "CO1.REQ.11189547",
+            "evidencia": "Nombre duplicado: \"16. Matriz 2 Indicadores Financieros y Organizacionales CCE EICP FM 98 Consultoria\"; Nombre duplicado: \"11. Formato 11 Factores de desempate CCE EICP FM 102 Consultoria\"; Nombre duplicado: \"10. Formato 10 Factor de sostenibilidad CCE EICP FM 101\"; Nombre duplicado: \"06. Formato 6 Vinculacion de personas con discapacidad CCE EICP FM 92\"; Nombre duplicado: \"CRONOGRAMA PROYECTO CME 003 2026\"; Nombre duplicado: \"VIABILIDAD CME 003 2026\"; Nombre duplicado: \"15. Matriz 1 Experiencia Cultura, recreacion y deporte\"; Nombre duplicado: \"12. Formato 12 Autorizacion para el tratamiento de datos personales CCE EICP FM 103 Consultoria\"; Nombre duplicado: \"03. Formato 3 Experiencia CCE EICP FM 89 Consultoria de estudios\""
+          },
+          {
+            "id": "CO1.REQ.11158747",
+            "evidencia": "Nombre duplicado: \"ESTUDIO PREVIO PAÑALES\"; Nombre duplicado: \"PLIEGO BORRADOR PAÑALES\"; Nombre duplicado: \"REQUERIMIENTO PAÑALES20261005\"; Nombre duplicado: \"AVISO DE CONVOCATORIA PAÑALES\""
+          },
+          {
+            "id": "CO1.REQ.11159170",
+            "evidencia": "Nombre duplicado: \"2. AVISO DE CONVOCATORIA\"; Nombre duplicado: \"RESOLUCION DE APERTURA\"; Nombre duplicado: \"1. CDP\"; Nombre duplicado: \"4. PROYECTO PLIEGO DE CONDICIONES 2 (F)\"; Nombre duplicado: \"9. ANALISIS DE PRECIOS\"; Nombre duplicado: \"8. ANEXO COTIZACIONES ESTUDIOS DEL SECTOR\"; Nombre duplicado: \"1. CDP\"; Nombre duplicado: \"0. REQUERIMIENTO\"; Nombre duplicado: \"7. ESTUDIO DEL SECTOR BIENESTAR 2\"; Nombre duplicado: \"3. ESTUDIOS PREVIOS\"; Nombre duplicado: \"3. ESTUDIOS PREVIOS\"; Nombre duplicado: \"PLIEGO DE CONDICIONES\"; Nombre duplicado: \"8. ANEXO COTIZACIONES ESTUDIOS DEL SECTOR\"; Nombre duplicado: \"2. AVISO DE CONVOCATORIA\"; Nombre duplicado: \"7. ESTUDIO DEL SECTOR BIENESTAR 2\"; Nombre duplicado: \"ANEXO 1 FORMATOS\"; Nombre duplicado: \"6. ANEXO MATRIZ DE RIESGOS\"; Nombre duplicado: \"9. ANALISIS DE PRECIOS\""
+          },
+          {
+            "id": "CO1.REQ.11155472",
+            "evidencia": "Nombre duplicado: \"5. ANEXO PROYECTO PLIEGO\"; Nombre duplicado: \"RESOLUCION DE APERTURA No. 76 08626\"; Nombre duplicado: \"3. CERTIFICADO PAA 106\"; Nombre duplicado: \"5. ANEXO PROYECTO PLIEGO\"; Nombre duplicado: \"6. AVISO DE CONVOCATORIA\"; Nombre duplicado: \"ESTUDIO PREVIO DEFINITIVO\"; Nombre duplicado: \"1.1. ANEXO ANALISIS DEL SECTOR\"; Nombre duplicado: \"4. ANEXO EP MATRIZ DE RIESGOS SAMC005\"; Nombre duplicado: \"ANEXOS PROVEEDOR\""
+          },
+          {
+            "id": "CO1.REQ.11190680",
+            "evidencia": "Nombre duplicado: \"4.ESTUDIO DEL SECTOR CONDOR REV\"; Nombre duplicado: \"CDP MIRADOR TURISTICO\"; Nombre duplicado: \"5.ESTUDIOS PREVIOS REV\"; Nombre duplicado: \"6.PRE PLIEGOS DE CONDICIONES rev\"; Nombre duplicado: \"2.AVISO DE CONVOCATORIA SAMC SILOS 03 2026\"; Nombre duplicado: \"banco de proyectos\""
+          },
+          {
+            "id": "CO1.REQ.11176401",
+            "evidencia": "Nombre duplicado: \"17.OFERTA ECONOMICA INTER REVERDECIMIENTO PROVENZA\"; Nombre duplicado: \"15.FORMULARIO 1 PPTO OFICIAL INTER REVERDECIMIENTO PROVENZA\"; Nombre duplicado: \"7.CERTIFICADO BANCO DE PROYECTOS\"; Nombre duplicado: \"21. MATRIZ 4 LINEAMIENTOS DE PERSONAL\"; Nombre duplicado: \"0.SOLICITUD VIABILIDAD SI SI CMA 010 2026\"; Nombre duplicado: \"1.AVISO DE CONVOCATORIA PUBLICA SI SI CMA 010 2026\"; Nombre duplicado: \"2.ESTUDIO DEL SECTOR SI SI CMA 010 2026\""
+          },
+          {
+            "id": "CO1.REQ.11154222",
+            "evidencia": "Nombre duplicado: \"F6 PagoSS Aportes ISocialMenCV1\"; Nombre duplicado: \"1. ESTUDIO DEL SECTOR SAMC 002 2026\"; Nombre duplicado: \"F6 PagoSS Aportes ISocialMenCV1\"; Nombre duplicado: \"A5 MinutaContrato ISocialMenCV1\"; Nombre duplicado: \". F10 ManifestInteres ISocialMenCV1\"; Nombre duplicado: \"2. ESTUDIOS PREVIOS SAMC 002 2026\"; Nombre duplicado: \". F8 FactoresDesemp ISocialMenCV1\"; Nombre duplicado: \". Form PropEconomica ISocialMenCV1\"; Nombre duplicado: \"2. ESTUDIOS PREVIOS SAMC 002 2026\""
+          }
+        ]
+      },
+      "nadaObligatorioSinNegacion": {
+        "total": 10,
+        "pasan": 10,
+        "tasa": 100,
+        "fallos": []
+      },
+      "avisoFijoPresente": {
+        "total": 10,
+        "pasan": 10,
+        "tasa": 100,
+        "fallos": []
+      },
+      "respaldoLegalSoloNoNull": {
+        "total": 10,
+        "pasan": 10,
+        "tasa": 100,
+        "fallos": []
+      },
+      "sinAnexosFraseExacta": {
+        "total": 10,
+        "pasan": 10,
+        "tasa": 100,
+        "fallos": []
+      }
+    },
+    "casos": [
+      {
+        "casoNumero": 52,
+        "id": "CO1.REQ.11171503",
+        "invariantes": {
+          "itemsCatalogoOAnexos": {
+            "invariante": "items_solo_catalogo_o_anexos",
+            "pasa": true
+          },
+          "sinDuplicados": {
+            "invariante": "sin_duplicados",
+            "pasa": false,
+            "evidencia": "Nombre duplicado: \"ACTA DE EVALUACION DEFINITIVA MC 045 2026 RENDICION DE CUENTAS\"; Nombre duplicado: \"ESTUDIO Y DOCUMENTO PREVIO MC 045 2026 RENDICION DE CUENTAS\"; Nombre duplicado: \"CDP MC 041 2026 RENDICION DE CUENTAS\"; Nombre duplicado: \"CDP MC 041 2026 RENDICION DE CUENTAS\"; Nombre duplicado: \"BPIN MC 041 2026 RENDICION DE CUENTAS\"; Nombre duplicado: \"ACTA DE EVALUACION PRELIMINAR N°02 PROCESO MC 045 2026\"; Nombre duplicado: \"BPIN MC 041 2026 RENDICION DE CUENTAS\"; Nombre duplicado: \"ACTA DE EVALUACION PRELIMINAR PROCESO MC 045 2026\"; Nombre duplicado: \"ESTUDIO Y DOCUMENTO PREVIO MC 045 2026 RENDICION DE CUENTAS\"; Nombre duplicado: \"1 ACEPTACION DE LA OFERTA CPS 268 2026 HERNANDEZ PYD SOLUCIONES\"; Nombre duplicado: \"1 ACEPTACION DE LA OFERTA CPS 268 2026 HERNANDEZ PYD SOLUCIONES\""
+          },
+          "nadaObligatorioSinNegacion": {
+            "invariante": "nada_marcado_obligatorio_sin_negacion",
+            "pasa": true
+          },
+          "avisoFijoPresente": {
+            "invariante": "aviso_fijo_presente",
+            "pasa": true
+          },
+          "respaldoLegalSoloNoNull": {
+            "invariante": "respaldo_legal_solo_cuando_no_es_null",
+            "pasa": true
+          },
+          "sinAnexosFraseExacta": {
+            "invariante": "sin_anexos_frase_exacta",
+            "pasa": true
+          }
+        }
+      },
+      {
+        "casoNumero": 41,
+        "id": "CO1.REQ.11180160",
+        "invariantes": {
+          "itemsCatalogoOAnexos": {
+            "invariante": "items_solo_catalogo_o_anexos",
+            "pasa": true
+          },
+          "sinDuplicados": {
+            "invariante": "sin_duplicados",
+            "pasa": true
+          },
+          "nadaObligatorioSinNegacion": {
+            "invariante": "nada_marcado_obligatorio_sin_negacion",
+            "pasa": true
+          },
+          "avisoFijoPresente": {
+            "invariante": "aviso_fijo_presente",
+            "pasa": true
+          },
+          "respaldoLegalSoloNoNull": {
+            "invariante": "respaldo_legal_solo_cuando_no_es_null",
+            "pasa": true
+          },
+          "sinAnexosFraseExacta": {
+            "invariante": "sin_anexos_frase_exacta",
+            "pasa": true
+          }
+        }
+      },
+      {
+        "casoNumero": 4,
+        "id": "CO1.REQ.11166802",
+        "invariantes": {
+          "itemsCatalogoOAnexos": {
+            "invariante": "items_solo_catalogo_o_anexos",
+            "pasa": true
+          },
+          "sinDuplicados": {
+            "invariante": "sin_duplicados",
+            "pasa": false,
+            "evidencia": "Nombre duplicado: \"4. AIU DESGLOSE\"; Nombre duplicado: \"3. ANALISIS DEL SECTOR PH 2026\"; Nombre duplicado: \"6. CCE EICP GI 02 Documento Base V3 30 07 2024 SAMC 00 MT 2026 V.2\"; Nombre duplicado: \"6. CCE EICP GI 02 Documento Base V3 30 07 2024 SAMC 00 MT 2026 V.2\"; Nombre duplicado: \"1.4. PAA PLACA HUELLA 2026\""
+          },
+          "nadaObligatorioSinNegacion": {
+            "invariante": "nada_marcado_obligatorio_sin_negacion",
+            "pasa": true
+          },
+          "avisoFijoPresente": {
+            "invariante": "aviso_fijo_presente",
+            "pasa": true
+          },
+          "respaldoLegalSoloNoNull": {
+            "invariante": "respaldo_legal_solo_cuando_no_es_null",
+            "pasa": true
+          },
+          "sinAnexosFraseExacta": {
+            "invariante": "sin_anexos_frase_exacta",
+            "pasa": true
+          }
+        }
+      },
+      {
+        "casoNumero": 49,
+        "id": "CO1.REQ.11189547",
+        "invariantes": {
+          "itemsCatalogoOAnexos": {
+            "invariante": "items_solo_catalogo_o_anexos",
+            "pasa": true
+          },
+          "sinDuplicados": {
+            "invariante": "sin_duplicados",
+            "pasa": false,
+            "evidencia": "Nombre duplicado: \"16. Matriz 2 Indicadores Financieros y Organizacionales CCE EICP FM 98 Consultoria\"; Nombre duplicado: \"11. Formato 11 Factores de desempate CCE EICP FM 102 Consultoria\"; Nombre duplicado: \"10. Formato 10 Factor de sostenibilidad CCE EICP FM 101\"; Nombre duplicado: \"06. Formato 6 Vinculacion de personas con discapacidad CCE EICP FM 92\"; Nombre duplicado: \"CRONOGRAMA PROYECTO CME 003 2026\"; Nombre duplicado: \"VIABILIDAD CME 003 2026\"; Nombre duplicado: \"15. Matriz 1 Experiencia Cultura, recreacion y deporte\"; Nombre duplicado: \"12. Formato 12 Autorizacion para el tratamiento de datos personales CCE EICP FM 103 Consultoria\"; Nombre duplicado: \"03. Formato 3 Experiencia CCE EICP FM 89 Consultoria de estudios\""
+          },
+          "nadaObligatorioSinNegacion": {
+            "invariante": "nada_marcado_obligatorio_sin_negacion",
+            "pasa": true
+          },
+          "avisoFijoPresente": {
+            "invariante": "aviso_fijo_presente",
+            "pasa": true
+          },
+          "respaldoLegalSoloNoNull": {
+            "invariante": "respaldo_legal_solo_cuando_no_es_null",
+            "pasa": true
+          },
+          "sinAnexosFraseExacta": {
+            "invariante": "sin_anexos_frase_exacta",
+            "pasa": true
+          }
+        }
+      },
+      {
+        "casoNumero": 53,
+        "id": "CO1.REQ.11158747",
+        "invariantes": {
+          "itemsCatalogoOAnexos": {
+            "invariante": "items_solo_catalogo_o_anexos",
+            "pasa": true
+          },
+          "sinDuplicados": {
+            "invariante": "sin_duplicados",
+            "pasa": false,
+            "evidencia": "Nombre duplicado: \"ESTUDIO PREVIO PAÑALES\"; Nombre duplicado: \"PLIEGO BORRADOR PAÑALES\"; Nombre duplicado: \"REQUERIMIENTO PAÑALES20261005\"; Nombre duplicado: \"AVISO DE CONVOCATORIA PAÑALES\""
+          },
+          "nadaObligatorioSinNegacion": {
+            "invariante": "nada_marcado_obligatorio_sin_negacion",
+            "pasa": true
+          },
+          "avisoFijoPresente": {
+            "invariante": "aviso_fijo_presente",
+            "pasa": true
+          },
+          "respaldoLegalSoloNoNull": {
+            "invariante": "respaldo_legal_solo_cuando_no_es_null",
+            "pasa": true
+          },
+          "sinAnexosFraseExacta": {
+            "invariante": "sin_anexos_frase_exacta",
+            "pasa": true
+          }
+        }
+      },
+      {
+        "casoNumero": 19,
+        "id": "CO1.REQ.11159170",
+        "invariantes": {
+          "itemsCatalogoOAnexos": {
+            "invariante": "items_solo_catalogo_o_anexos",
+            "pasa": true
+          },
+          "sinDuplicados": {
+            "invariante": "sin_duplicados",
+            "pasa": false,
+            "evidencia": "Nombre duplicado: \"2. AVISO DE CONVOCATORIA\"; Nombre duplicado: \"RESOLUCION DE APERTURA\"; Nombre duplicado: \"1. CDP\"; Nombre duplicado: \"4. PROYECTO PLIEGO DE CONDICIONES 2 (F)\"; Nombre duplicado: \"9. ANALISIS DE PRECIOS\"; Nombre duplicado: \"8. ANEXO COTIZACIONES ESTUDIOS DEL SECTOR\"; Nombre duplicado: \"1. CDP\"; Nombre duplicado: \"0. REQUERIMIENTO\"; Nombre duplicado: \"7. ESTUDIO DEL SECTOR BIENESTAR 2\"; Nombre duplicado: \"3. ESTUDIOS PREVIOS\"; Nombre duplicado: \"3. ESTUDIOS PREVIOS\"; Nombre duplicado: \"PLIEGO DE CONDICIONES\"; Nombre duplicado: \"8. ANEXO COTIZACIONES ESTUDIOS DEL SECTOR\"; Nombre duplicado: \"2. AVISO DE CONVOCATORIA\"; Nombre duplicado: \"7. ESTUDIO DEL SECTOR BIENESTAR 2\"; Nombre duplicado: \"ANEXO 1 FORMATOS\"; Nombre duplicado: \"6. ANEXO MATRIZ DE RIESGOS\"; Nombre duplicado: \"9. ANALISIS DE PRECIOS\""
+          },
+          "nadaObligatorioSinNegacion": {
+            "invariante": "nada_marcado_obligatorio_sin_negacion",
+            "pasa": true
+          },
+          "avisoFijoPresente": {
+            "invariante": "aviso_fijo_presente",
+            "pasa": true
+          },
+          "respaldoLegalSoloNoNull": {
+            "invariante": "respaldo_legal_solo_cuando_no_es_null",
+            "pasa": true
+          },
+          "sinAnexosFraseExacta": {
+            "invariante": "sin_anexos_frase_exacta",
+            "pasa": true
+          }
+        }
+      },
+      {
+        "casoNumero": 35,
+        "id": "CO1.REQ.11155472",
+        "invariantes": {
+          "itemsCatalogoOAnexos": {
+            "invariante": "items_solo_catalogo_o_anexos",
+            "pasa": true
+          },
+          "sinDuplicados": {
+            "invariante": "sin_duplicados",
+            "pasa": false,
+            "evidencia": "Nombre duplicado: \"5. ANEXO PROYECTO PLIEGO\"; Nombre duplicado: \"RESOLUCION DE APERTURA No. 76 08626\"; Nombre duplicado: \"3. CERTIFICADO PAA 106\"; Nombre duplicado: \"5. ANEXO PROYECTO PLIEGO\"; Nombre duplicado: \"6. AVISO DE CONVOCATORIA\"; Nombre duplicado: \"ESTUDIO PREVIO DEFINITIVO\"; Nombre duplicado: \"1.1. ANEXO ANALISIS DEL SECTOR\"; Nombre duplicado: \"4. ANEXO EP MATRIZ DE RIESGOS SAMC005\"; Nombre duplicado: \"ANEXOS PROVEEDOR\""
+          },
+          "nadaObligatorioSinNegacion": {
+            "invariante": "nada_marcado_obligatorio_sin_negacion",
+            "pasa": true
+          },
+          "avisoFijoPresente": {
+            "invariante": "aviso_fijo_presente",
+            "pasa": true
+          },
+          "respaldoLegalSoloNoNull": {
+            "invariante": "respaldo_legal_solo_cuando_no_es_null",
+            "pasa": true
+          },
+          "sinAnexosFraseExacta": {
+            "invariante": "sin_anexos_frase_exacta",
+            "pasa": true
+          }
+        }
+      },
+      {
+        "casoNumero": 55,
+        "id": "CO1.REQ.11190680",
+        "invariantes": {
+          "itemsCatalogoOAnexos": {
+            "invariante": "items_solo_catalogo_o_anexos",
+            "pasa": true
+          },
+          "sinDuplicados": {
+            "invariante": "sin_duplicados",
+            "pasa": false,
+            "evidencia": "Nombre duplicado: \"4.ESTUDIO DEL SECTOR CONDOR REV\"; Nombre duplicado: \"CDP MIRADOR TURISTICO\"; Nombre duplicado: \"5.ESTUDIOS PREVIOS REV\"; Nombre duplicado: \"6.PRE PLIEGOS DE CONDICIONES rev\"; Nombre duplicado: \"2.AVISO DE CONVOCATORIA SAMC SILOS 03 2026\"; Nombre duplicado: \"banco de proyectos\""
+          },
+          "nadaObligatorioSinNegacion": {
+            "invariante": "nada_marcado_obligatorio_sin_negacion",
+            "pasa": true
+          },
+          "avisoFijoPresente": {
+            "invariante": "aviso_fijo_presente",
+            "pasa": true
+          },
+          "respaldoLegalSoloNoNull": {
+            "invariante": "respaldo_legal_solo_cuando_no_es_null",
+            "pasa": true
+          },
+          "sinAnexosFraseExacta": {
+            "invariante": "sin_anexos_frase_exacta",
+            "pasa": true
+          }
+        }
+      },
+      {
+        "casoNumero": 45,
+        "id": "CO1.REQ.11176401",
+        "invariantes": {
+          "itemsCatalogoOAnexos": {
+            "invariante": "items_solo_catalogo_o_anexos",
+            "pasa": true
+          },
+          "sinDuplicados": {
+            "invariante": "sin_duplicados",
+            "pasa": false,
+            "evidencia": "Nombre duplicado: \"17.OFERTA ECONOMICA INTER REVERDECIMIENTO PROVENZA\"; Nombre duplicado: \"15.FORMULARIO 1 PPTO OFICIAL INTER REVERDECIMIENTO PROVENZA\"; Nombre duplicado: \"7.CERTIFICADO BANCO DE PROYECTOS\"; Nombre duplicado: \"21. MATRIZ 4 LINEAMIENTOS DE PERSONAL\"; Nombre duplicado: \"0.SOLICITUD VIABILIDAD SI SI CMA 010 2026\"; Nombre duplicado: \"1.AVISO DE CONVOCATORIA PUBLICA SI SI CMA 010 2026\"; Nombre duplicado: \"2.ESTUDIO DEL SECTOR SI SI CMA 010 2026\""
+          },
+          "nadaObligatorioSinNegacion": {
+            "invariante": "nada_marcado_obligatorio_sin_negacion",
+            "pasa": true
+          },
+          "avisoFijoPresente": {
+            "invariante": "aviso_fijo_presente",
+            "pasa": true
+          },
+          "respaldoLegalSoloNoNull": {
+            "invariante": "respaldo_legal_solo_cuando_no_es_null",
+            "pasa": true
+          },
+          "sinAnexosFraseExacta": {
+            "invariante": "sin_anexos_frase_exacta",
+            "pasa": true
+          }
+        }
+      },
+      {
+        "casoNumero": 2,
+        "id": "CO1.REQ.11154222",
+        "invariantes": {
+          "itemsCatalogoOAnexos": {
+            "invariante": "items_solo_catalogo_o_anexos",
+            "pasa": true
+          },
+          "sinDuplicados": {
+            "invariante": "sin_duplicados",
+            "pasa": false,
+            "evidencia": "Nombre duplicado: \"F6 PagoSS Aportes ISocialMenCV1\"; Nombre duplicado: \"1. ESTUDIO DEL SECTOR SAMC 002 2026\"; Nombre duplicado: \"F6 PagoSS Aportes ISocialMenCV1\"; Nombre duplicado: \"A5 MinutaContrato ISocialMenCV1\"; Nombre duplicado: \". F10 ManifestInteres ISocialMenCV1\"; Nombre duplicado: \"2. ESTUDIOS PREVIOS SAMC 002 2026\"; Nombre duplicado: \". F8 FactoresDesemp ISocialMenCV1\"; Nombre duplicado: \". Form PropEconomica ISocialMenCV1\"; Nombre duplicado: \"2. ESTUDIOS PREVIOS SAMC 002 2026\""
+          },
+          "nadaObligatorioSinNegacion": {
+            "invariante": "nada_marcado_obligatorio_sin_negacion",
+            "pasa": true
+          },
+          "avisoFijoPresente": {
+            "invariante": "aviso_fijo_presente",
+            "pasa": true
+          },
+          "respaldoLegalSoloNoNull": {
+            "invariante": "respaldo_legal_solo_cuando_no_es_null",
+            "pasa": true
+          },
+          "sinAnexosFraseExacta": {
+            "invariante": "sin_anexos_frase_exacta",
+            "pasa": true
+          }
+        }
+      }
+    ],
+    "siempreAgente3Casos": {
+      "tokens": {
+        "entrada": 16041,
+        "salida": 3598,
+        "total": 29623
+      },
+      "invariantes": {
+        "itemsCatalogoOAnexos": {
+          "total": 3,
+          "pasan": 3,
+          "tasa": 100,
+          "fallos": []
+        },
+        "sinDuplicados": {
+          "total": 3,
+          "pasan": 0,
+          "tasa": 0,
+          "fallos": [
+            {
+              "id": "CO1.REQ.11171503",
+              "evidencia": "Nombre duplicado: \"ACTA DE EVALUACION DEFINITIVA MC 045 2026 RENDICION DE CUENTAS\"; Nombre duplicado: \"ESTUDIO Y DOCUMENTO PREVIO MC 045 2026 RENDICION DE CUENTAS\"; Nombre duplicado: \"CDP MC 041 2026 RENDICION DE CUENTAS\"; Nombre duplicado: \"CDP MC 041 2026 RENDICION DE CUENTAS\"; Nombre duplicado: \"BPIN MC 041 2026 RENDICION DE CUENTAS\"; Nombre duplicado: \"ACTA DE EVALUACION PRELIMINAR N°02 PROCESO MC 045 2026\"; Nombre duplicado: \"BPIN MC 041 2026 RENDICION DE CUENTAS\"; Nombre duplicado: \"ACTA DE EVALUACION PRELIMINAR PROCESO MC 045 2026\"; Nombre duplicado: \"ESTUDIO Y DOCUMENTO PREVIO MC 045 2026 RENDICION DE CUENTAS\"; Nombre duplicado: \"1 ACEPTACION DE LA OFERTA CPS 268 2026 HERNANDEZ PYD SOLUCIONES\"; Nombre duplicado: \"1 ACEPTACION DE LA OFERTA CPS 268 2026 HERNANDEZ PYD SOLUCIONES\""
+            },
+            {
+              "id": "CO1.REQ.11154222",
+              "evidencia": "Nombre duplicado: \"F6 PagoSS Aportes ISocialMenCV1\"; Nombre duplicado: \"1. ESTUDIO DEL SECTOR SAMC 002 2026\"; Nombre duplicado: \"F6 PagoSS Aportes ISocialMenCV1\"; Nombre duplicado: \"A5 MinutaContrato ISocialMenCV1\"; Nombre duplicado: \". F10 ManifestInteres ISocialMenCV1\"; Nombre duplicado: \"2. ESTUDIOS PREVIOS SAMC 002 2026\"; Nombre duplicado: \". F8 FactoresDesemp ISocialMenCV1\"; Nombre duplicado: \". Form PropEconomica ISocialMenCV1\"; Nombre duplicado: \"2. ESTUDIOS PREVIOS SAMC 002 2026\""
+            },
+            {
+              "id": "CO1.REQ.11155472",
+              "evidencia": "Nombre duplicado: \"5. ANEXO PROYECTO PLIEGO\"; Nombre duplicado: \"RESOLUCION DE APERTURA No. 76 08626\"; Nombre duplicado: \"3. CERTIFICADO PAA 106\"; Nombre duplicado: \"5. ANEXO PROYECTO PLIEGO\"; Nombre duplicado: \"6. AVISO DE CONVOCATORIA\"; Nombre duplicado: \"ESTUDIO PREVIO DEFINITIVO\"; Nombre duplicado: \"1.1. ANEXO ANALISIS DEL SECTOR\"; Nombre duplicado: \"4. ANEXO EP MATRIZ DE RIESGOS SAMC005\"; Nombre duplicado: \"ANEXOS PROVEEDOR\""
+            }
+          ]
+        },
+        "nadaObligatorioSinNegacion": {
+          "total": 3,
+          "pasan": 3,
+          "tasa": 100,
+          "fallos": []
+        }
+      },
+      "casos": [
+        {
+          "casoNumero": 52,
+          "id": "CO1.REQ.11171503",
+          "invariantes": {
+            "itemsCatalogoOAnexos": {
+              "invariante": "items_solo_catalogo_o_anexos",
+              "pasa": true
+            },
+            "sinDuplicados": {
+              "invariante": "sin_duplicados",
+              "pasa": false,
+              "evidencia": "Nombre duplicado: \"ACTA DE EVALUACION DEFINITIVA MC 045 2026 RENDICION DE CUENTAS\"; Nombre duplicado: \"ESTUDIO Y DOCUMENTO PREVIO MC 045 2026 RENDICION DE CUENTAS\"; Nombre duplicado: \"CDP MC 041 2026 RENDICION DE CUENTAS\"; Nombre duplicado: \"CDP MC 041 2026 RENDICION DE CUENTAS\"; Nombre duplicado: \"BPIN MC 041 2026 RENDICION DE CUENTAS\"; Nombre duplicado: \"ACTA DE EVALUACION PRELIMINAR N°02 PROCESO MC 045 2026\"; Nombre duplicado: \"BPIN MC 041 2026 RENDICION DE CUENTAS\"; Nombre duplicado: \"ACTA DE EVALUACION PRELIMINAR PROCESO MC 045 2026\"; Nombre duplicado: \"ESTUDIO Y DOCUMENTO PREVIO MC 045 2026 RENDICION DE CUENTAS\"; Nombre duplicado: \"1 ACEPTACION DE LA OFERTA CPS 268 2026 HERNANDEZ PYD SOLUCIONES\"; Nombre duplicado: \"1 ACEPTACION DE LA OFERTA CPS 268 2026 HERNANDEZ PYD SOLUCIONES\""
+            },
+            "nadaObligatorioSinNegacion": {
+              "invariante": "nada_marcado_obligatorio_sin_negacion",
+              "pasa": true
+            },
+            "avisoFijoPresente": {
+              "invariante": "aviso_fijo_presente",
+              "pasa": true
+            },
+            "respaldoLegalSoloNoNull": {
+              "invariante": "respaldo_legal_solo_cuando_no_es_null",
+              "pasa": true
+            },
+            "sinAnexosFraseExacta": {
+              "invariante": "sin_anexos_frase_exacta",
+              "pasa": true
+            }
+          }
+        },
+        {
+          "casoNumero": 2,
+          "id": "CO1.REQ.11154222",
+          "invariantes": {
+            "itemsCatalogoOAnexos": {
+              "invariante": "items_solo_catalogo_o_anexos",
+              "pasa": true
+            },
+            "sinDuplicados": {
+              "invariante": "sin_duplicados",
+              "pasa": false,
+              "evidencia": "Nombre duplicado: \"F6 PagoSS Aportes ISocialMenCV1\"; Nombre duplicado: \"1. ESTUDIO DEL SECTOR SAMC 002 2026\"; Nombre duplicado: \"F6 PagoSS Aportes ISocialMenCV1\"; Nombre duplicado: \"A5 MinutaContrato ISocialMenCV1\"; Nombre duplicado: \". F10 ManifestInteres ISocialMenCV1\"; Nombre duplicado: \"2. ESTUDIOS PREVIOS SAMC 002 2026\"; Nombre duplicado: \". F8 FactoresDesemp ISocialMenCV1\"; Nombre duplicado: \". Form PropEconomica ISocialMenCV1\"; Nombre duplicado: \"2. ESTUDIOS PREVIOS SAMC 002 2026\""
+            },
+            "nadaObligatorioSinNegacion": {
+              "invariante": "nada_marcado_obligatorio_sin_negacion",
+              "pasa": true
+            },
+            "avisoFijoPresente": {
+              "invariante": "aviso_fijo_presente",
+              "pasa": true
+            },
+            "respaldoLegalSoloNoNull": {
+              "invariante": "respaldo_legal_solo_cuando_no_es_null",
+              "pasa": true
+            },
+            "sinAnexosFraseExacta": {
+              "invariante": "sin_anexos_frase_exacta",
+              "pasa": true
+            }
+          }
+        },
+        {
+          "casoNumero": 35,
+          "id": "CO1.REQ.11155472",
+          "invariantes": {
+            "itemsCatalogoOAnexos": {
+              "invariante": "items_solo_catalogo_o_anexos",
+              "pasa": true
+            },
+            "sinDuplicados": {
+              "invariante": "sin_duplicados",
+              "pasa": false,
+              "evidencia": "Nombre duplicado: \"5. ANEXO PROYECTO PLIEGO\"; Nombre duplicado: \"RESOLUCION DE APERTURA No. 76 08626\"; Nombre duplicado: \"3. CERTIFICADO PAA 106\"; Nombre duplicado: \"5. ANEXO PROYECTO PLIEGO\"; Nombre duplicado: \"6. AVISO DE CONVOCATORIA\"; Nombre duplicado: \"ESTUDIO PREVIO DEFINITIVO\"; Nombre duplicado: \"1.1. ANEXO ANALISIS DEL SECTOR\"; Nombre duplicado: \"4. ANEXO EP MATRIZ DE RIESGOS SAMC005\"; Nombre duplicado: \"ANEXOS PROVEEDOR\""
+            },
+            "nadaObligatorioSinNegacion": {
+              "invariante": "nada_marcado_obligatorio_sin_negacion",
+              "pasa": true
+            },
+            "avisoFijoPresente": {
+              "invariante": "aviso_fijo_presente",
+              "pasa": true
+            },
+            "respaldoLegalSoloNoNull": {
+              "invariante": "respaldo_legal_solo_cuando_no_es_null",
+              "pasa": true
+            },
+            "sinAnexosFraseExacta": {
+              "invariante": "sin_anexos_frase_exacta",
+              "pasa": true
+            }
+          }
+        }
+      ]
+    }
+  }
+}

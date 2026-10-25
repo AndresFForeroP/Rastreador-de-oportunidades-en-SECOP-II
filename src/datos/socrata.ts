@@ -155,6 +155,24 @@ function avisoModoPrueba(fecha: string, hoy: string): void {
   );
 }
 
+/**
+ * Obtiene los procesos competitivos de una fecha específica (YYYY-MM-DD).
+ * Utiliza la caché en data/dias/<fecha>.json si existe, o descarga de Socrata y la guarda.
+ */
+export async function obtenerProcesosFecha(
+  fecha: string,
+  opciones?: { ignorarCache?: boolean },
+): Promise<{ fecha: string; filas: FilaSecop[]; desdeCache: boolean }> {
+  const usarCache = !opciones?.ignorarCache;
+  let filas = usarCache ? await leerCache(fecha) : null;
+  const desdeCache = filas !== null;
+  if (!filas) {
+    filas = await descargarFecha(fecha);
+    if (usarCache) await guardarCache(fecha, filas);
+  }
+  return { fecha, filas, desdeCache };
+}
+
 async function descargarHoyInterno(): Promise<ResultadoDescarga> {
   const hoy = fechaHoy();
   const fechaPrueba = leerFechaPrueba();

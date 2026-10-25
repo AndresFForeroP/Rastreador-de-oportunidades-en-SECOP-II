@@ -49,16 +49,17 @@ export type ResultadoPagina = z.infer<typeof ResultadoPagina>;
 
 /**
  * Crea una instancia del agente filtrador con herramientas y formato de salida estructurado.
+ * Permite inyectar una herramienta `filtro_basico` personalizada para entornos de evaluación.
  */
-export function crearAgenteFiltrador() {
+export function crearAgenteFiltrador(herramientaFiltro = filtroBasico) {
   return createAgent({
     name: NOMBRE_AGENTE_FILTRADOR,
     model: llm,
-    tools: [filtroBasico],
+    tools: [herramientaFiltro],
     systemPrompt: PROMPT_SISTEMA_FILTRADOR,
     responseFormat: ResultadoPagina,
   });
 }
 
-/** Instancia compartida del agente filtrador. */
+/** Instancia compartida del agente filtrador para producción. */
 export const agenteFiltrador = crearAgenteFiltrador();

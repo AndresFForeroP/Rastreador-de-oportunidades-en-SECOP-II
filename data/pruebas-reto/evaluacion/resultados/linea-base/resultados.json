@@ -1,0 +1,230 @@
+{
+  "ejecucionId": "20261024-193537_55e6",
+  "timestamp": "2026-10-25T00:38:48.501Z",
+  "tipoCorrida": "linea_base",
+  "hashPrompt": "c9671b7458",
+  "repeticiones": 1,
+  "sinBloqueB": false,
+  "costos": {
+    "tokensEntrada": 14170,
+    "tokensSalida": 4065,
+    "tokensTotal": 31172,
+    "costoUSD": 0.05273
+  },
+  "metricasBloqueA": {
+    "totalCasos": 40,
+    "exactitud": 0.85,
+    "precisionSi": 0.8064516129032258,
+    "recallSi": 1,
+    "usefulRecall": 1,
+    "shareDudosoModelo": 0,
+    "shareDudosoHumano": 0.075,
+    "matrizConfusion": {
+      "si": {
+        "si": 25,
+        "no": 0,
+        "dudoso": 0
+      },
+      "no": {
+        "si": 3,
+        "no": 9,
+        "dudoso": 0
+      },
+      "dudoso": {
+        "si": 3,
+        "no": 0,
+        "dudoso": 0
+      }
+    },
+    "totalFalsosPositivosGraves": 3,
+    "totalOportunidadesPerdidas": 0,
+    "inestabilidadesRepeticiones": 0
+  },
+  "auditoriaBloqueB": [
+    {
+      "regla": "estado_cerrado",
+      "totalDescartados": 9,
+      "etiquetadosSi": 9,
+      "etiquetadosDudoso": 0,
+      "etiquetadosNo": 0,
+      "tasaFalsosDescartes": 1,
+      "casosAfectados": [
+        {
+          "caso": 2,
+          "id": "CO1.REQ.11154222",
+          "nombre": "CONSTRUCCIÓN DE UNIDADES SANITARIAS COMPLETAS CON POZOS SÉPTICOS EN EL SECTOR RURAL DEL MUNICIPIO DE DUITAMA (Manifestación de interés (Menor Cuantía))",
+          "etiquetaHumana": "si",
+          "notaHumana": "Obra civil menor en zona rural con valor y alcance razonables."
+        },
+        {
+          "caso": 15,
+          "id": "CO1.REQ.11186571",
+          "nombre": "Suministro de banderas y accesorios para las sedes UAECOB-SGC",
+          "etiquetaHumana": "si",
+          "notaHumana": "Suministro estándar con presupuesto y alcance totalmente viables para una pyme"
+        },
+        {
+          "caso": 28,
+          "id": "CO1.REQ.11169578",
+          "nombre": "ALQUILER DE MAQUINARIA PARA EL RETIRO DE DERUMBES Y ARREGLO DE VIAS",
+          "etiquetaHumana": "si",
+          "notaHumana": "Servicio operativo común realizable por pequeñas empresas especializadas."
+        },
+        {
+          "caso": 34,
+          "id": "CO1.REQ.11148048",
+          "nombre": "EL CONTRATISTA SE OBLIGA PARA CON EL DEPARTAMENTO DEL CAUCA A SUMINISTRAR PIEZAS DE DIVULGACIÓN; IMPRESOS Y MATERIAL PROMOCIONAL (POP) NECESARIOS PARA LA EJECUCIÓN DE LAS ACTIVIDADES DE LOS PROYECTOS",
+          "etiquetaHumana": "si",
+          "notaHumana": "Suministro estándar con presupuesto y alcance totalmente viables para una pyme."
+        },
+        {
+          "caso": 35,
+          "id": "CO1.REQ.11155472",
+          "nombre": "CONTRATAR LA ADQUISICIÓN DE MOBILIARIO PARA DOTACIÓN EN LOS AMBIENTES DE FORMACIÓN CONVENCIONALES Y OFICINAS DEL SISTEMA DE ASEGURAMIENTO DE LA CALIDAD ENTRE OTROS ESPACIOS DEL CENTRO Y SUS SEDES",
+          "etiquetaHumana": "si",
+          "notaHumana": "Objeto claro, acotado y proporcional a la capacidad operativa de una pyme."
+        },
+        {
+          "caso": 36,
+          "id": "CO1.REQ.11180829",
+          "nombre": "CONTRATAR EL SERVICIO DE MANTENIMIENTO PREVENTIVO Y CORRECTIVO PARA EL ASCENSOR; UBICADO EN LA REGIONAL ANDINA; CARRERA 19 NO. 92 - 65 DE LA CIUDAD DE BOGOTÁ",
+          "etiquetaHumana": "si",
+          "notaHumana": "Servicio operativo común realizable por pequeñas empresas especializadas."
+        },
+        {
+          "caso": 38,
+          "id": "CO1.REQ.11155769",
+          "nombre": "CONTRATAR SERVICIOS LOGÍSTICOS;  SUMINISTRO DE BIENES Y PÓLIZAS;   PARA APOYAR A LA LIGA DE LEVANTAMIENTO PESAS DE CASANARE A PARTICIPAR EN EL EVENTO LOS CAMPEONATOS NACIONALES SUB-13; SUB-15; SUB-17",
+          "etiquetaHumana": "si",
+          "notaHumana": "Objeto claro, acotado y proporcional a la capacidad operativa de una pyme."
+        },
+        {
+          "caso": 40,
+          "id": "CO1.REQ.11153633",
+          "nombre": "SUMINISTRO DE REFRESCOS CARBONATADOS (GASEOSAS)",
+          "etiquetaHumana": "si",
+          "notaHumana": "Suministro estándar con presupuesto y alcance totalmente viables para una pyme."
+        },
+        {
+          "caso": 52,
+          "id": "CO1.REQ.11171503",
+          "nombre": "PROMOCION DE LA RENDICION DE CUENTAS Y DEL ACCESO A LA INFORMACION PUBLICA MEDIANTE EL DISEÑO; LA DIAGRAMACION Y LA IMPRESION DEL PERIODICO INSTITUACIONAL DEL MUNICIPIO DE CHIGORODO; EN DESARROLLO",
+          "etiquetaHumana": "si",
+          "notaHumana": "Consultoría técnica o de diseño accesible para pequeñas firmas consultoras."
+        }
+      ]
+    },
+    {
+      "regla": "tipo_contrato_excluido",
+      "totalDescartados": 2,
+      "etiquetadosSi": 1,
+      "etiquetadosDudoso": 0,
+      "etiquetadosNo": 1,
+      "tasaFalsosDescartes": 0.5,
+      "casosAfectados": [
+        {
+          "caso": 24,
+          "id": "CO1.REQ.11168529",
+          "nombre": "ADMINISTRACIÓN; OPERACIÓN Y FUNCIONAMIENTO DE LA PLATAFORMA DE RODAMIENTO DEL TERMINAL DE TRANSPORTES DEL MUNICIPIO DE GARAGOA  (Presentación de oferta)",
+          "etiquetaHumana": "si",
+          "notaHumana": "Objeto claro, acotado y proporcional a la capacidad operativa de una pyme."
+        }
+      ]
+    },
+    {
+      "regla": "id_duplicado",
+      "totalDescartados": 2,
+      "etiquetadosSi": 1,
+      "etiquetadosDudoso": 1,
+      "etiquetadosNo": 0,
+      "tasaFalsosDescartes": 1,
+      "casosAfectados": [
+        {
+          "caso": 16,
+          "id": "CO1.REQ.11159529",
+          "nombre": "COMPRA DE MENAJE E INSUMOS DE COCINA NECESARIOS PARA PARA LA DOTACIÓN",
+          "etiquetaHumana": "si",
+          "notaHumana": "Suministro comercial de dotación y menaje con presupuesto y modalidad viables para una pyme."
+        },
+        {
+          "caso": 18,
+          "id": "CO1.REQ.11118279",
+          "nombre": "SUMINISTRO DE DOTACIÓN; UNIFORMES Y PRENDAS DE REPRESENTACIÓN PARA LAS DIFERENTES DEPENDENCIAS DE LA ADMINISTRACIÓN MUNICIPAL",
+          "etiquetaHumana": "dudoso",
+          "notaHumana": "Dotación textil viable en objeto, pero con presupuesto elevado que exige alta capacidad industrial."
+        }
+      ]
+    },
+    {
+      "regla": "valor_supera_maximo",
+      "totalDescartados": 2,
+      "etiquetadosSi": 0,
+      "etiquetadosDudoso": 0,
+      "etiquetadosNo": 2,
+      "tasaFalsosDescartes": 0,
+      "casosAfectados": []
+    }
+  ],
+  "discrepancias": [
+    {
+      "caso": 5,
+      "id": "CO1.REQ.11189805",
+      "nombre": "PRESTACIÓN DE SERVICIOS DE CONECTIVIDAD PARA EL HOSPITAL MILITAR CENTRAL VIGENCIA FUTURA 2027 - 2030",
+      "valorCOP": 665302130,
+      "etiquetaHumana": "no",
+      "notaHumana": "Servicio de conectividad plurianual reservado a grandes operadores de telecomunicaciones.",
+      "etiquetaModelo": "si",
+      "razonModelo": "Subasta de conectividad por 665 millones es abordable para un proveedor pyme de telecomunicaciones."
+    },
+    {
+      "caso": 14,
+      "id": "CO1.REQ.11128437",
+      "nombre": "CUBIERTA PARA POLIDEPORTIVO EN LA VEREDA BAJO GETZÉN",
+      "valorCOP": 801136470,
+      "etiquetaHumana": "no",
+      "notaHumana": "Licitación pública de obra con presupuesto elevado que exige respaldo financiero mayor.",
+      "etiquetaModelo": "si",
+      "razonModelo": "Obra municipal acotada de una cubierta; valor y alcance viables para constructora pyme."
+    },
+    {
+      "caso": 17,
+      "id": "CO1.REQ.11165299",
+      "nombre": "Suscripcon WAF Web (Presentación de oferta)",
+      "valorCOP": 848109062,
+      "etiquetaHumana": "dudoso",
+      "notaHumana": "Contrato de ciberseguridad con presupuesto alto que requiere certificación de fabricante.",
+      "etiquetaModelo": "si",
+      "razonModelo": "Licenciamiento y soporte de WAF; integrador TI pyme con canal Fortinet puede ofertarlo."
+    },
+    {
+      "caso": 33,
+      "id": "CO1.REQ.11186280",
+      "nombre": "MANTENIMIENTO PREVENTIVO Y CORRECTIVO DE LA INFRAESTRUCTURA TECNOLOGICA DE LOS CENTROS DE COMPUTO DE LA FAC DE ACUERDO CON ANEXO TECNICO",
+      "valorCOP": 664000,
+      "etiquetaHumana": "dudoso",
+      "notaHumana": "Presupuesto incongruente con el objeto y la modalidad; posible error de digitación de la entidad.",
+      "etiquetaModelo": "si",
+      "razonModelo": "Mantenimiento TI de menor cuantía y valor muy bajo es accesible para una pyme."
+    },
+    {
+      "caso": 39,
+      "id": "CO1.REQ.11159951",
+      "nombre": "CONTRATO DE OBRA PÚBLICA PARA REMODELACION PARQUE LA VIRGEN  (Fase de Selección (Presentación de ofertas))",
+      "valorCOP": 1212902615,
+      "etiquetaHumana": "no",
+      "notaHumana": "Presupuesto multimillonario que exige respaldo financiero de gran empresa o consorcio",
+      "etiquetaModelo": "si",
+      "razonModelo": "Obra acotada de un parque; constructora mediana puede ejecutarlo y respaldarlo."
+    },
+    {
+      "caso": 44,
+      "id": "CO1.REQ.11164297",
+      "nombre": "CORREDOR DE SEGUROS",
+      "valorCOP": null,
+      "etiquetaHumana": "dudoso",
+      "notaHumana": "Falta información de cantidades y el valor no permite deducir la escala.",
+      "etiquetaModelo": "si",
+      "razonModelo": "Intermediación de seguros es servicio profesional que un corredor pyme autorizado puede prestar."
+    }
+  ]
+}

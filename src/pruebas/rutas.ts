@@ -34,6 +34,26 @@ export function dirResultadosEvaluacion(): string {
   return path.join(DIR_EVALUACION, "resultados");
 }
 
+export function rutaCasosSinEtiquetar(): string {
+  return path.join(DIR_EVALUACION, "casos-sin-etiquetar.json");
+}
+
+export function rutaClavesPrivadas(): string {
+  return path.join(DIR_EVALUACION, "claves-privadas.json");
+}
+
+export function dirResultadoEvaluacionTimestamp(timestamp: string): string {
+  return path.join(dirResultadosEvaluacion(), timestamp);
+}
+
+export function dirResultadoEvaluacionLineaBase(): string {
+  return path.join(dirResultadosEvaluacion(), "linea-base");
+}
+
+export function dirResultadoEvaluacionAgentes(timestamp: string): string {
+  return path.join(dirResultadosEvaluacion(), `${timestamp}-agentes`);
+}
+
 /** Rutas para carga desatendida (S4) */
 export function dirCargaSubcarpetas(): {
   state: string;
