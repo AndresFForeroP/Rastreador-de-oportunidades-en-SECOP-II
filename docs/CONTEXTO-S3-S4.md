@@ -58,27 +58,31 @@ Estas reglas aplican estrictamente a todas las etapas de desarrollo, evaluación
 
 ---
 
-## 2. Requerimientos de Hitos (S3 & S4)
+## 2. Requerimientos de Hitos y Estado de Avance
 
-### Hito S3: Datos reales
-- **Set de evaluación propio**: Construcción de un benchmark representativo con **30+ casos reales** de contratación pública en Colombia, con etiquetas humanas (*Ground Truth*).
-- **Reporte de costo por tarea**: Desglose financiero y de consumo de tokens por agente/tarea, soportado por la contabilidad del sistema y `config/precios.json`.
+### Hito S3: Datos reales y Evaluación [COMPLETO]
+- **Set de evaluación propio**: Construcción de un benchmark representativo con **55 casos reales** de contratación pública en Colombia, con etiquetas humanas (*Ground Truth* redactado exclusivamente por el usuario) ([`data/pruebas-reto/evaluacion/casos-sin-etiquetar.json`](../data/pruebas-reto/evaluacion/casos-sin-etiquetar.json) y [`claves-privadas.json`](../data/pruebas-reto/evaluacion/claves-privadas.json)).
+- **Línea base Agente 1**: Evaluación con inyección de dependencias ([`src/tools/evaluar.ts`](../src/tools/evaluar.ts)), registrando 85.0% de exactitud, 80.6% de precisión y 100.0% de recall ([`data/pruebas-reto/evaluacion/resultados/linea-base/`](../data/pruebas-reto/evaluacion/resultados/linea-base/)).
+- **Chequeo de invariantes Agentes 2 y 3**: Evaluación de invariantes lógicas y hoja de revisión humana de fidelidad ([`src/tools/evaluar-agentes.ts`](../src/tools/evaluar-agentes.ts), [`src/tools/evaluar-hoja.ts`](../src/tools/evaluar-hoja.ts)).
+- **Reporte de costo por tarea**: Calibración en `config/precios.json` ($2.00 / 1M entrada, $6.00 / 1M salida) y comando CLI `pnpm costos`.
+- **Libro mayor de ejecuciones**: Trazabilidad histórica en `data/pruebas-reto/ejecuciones/registro.jsonl` y `RESUMEN.md` (7 corridas registradas).
+- **Auditoría de afirmaciones**: Documentado en `docs/AUDITORIA-README.md`.
 
-### Hito S4: Semana de carga
-- **1.000 unidades de trabajo**: Procesamiento a escala de 1.000 unidades.
-- **12 horas desatendido**: Ejecución continua y autónoma en modo daemon / scheduler durante 12 horas seguidas.
-- **Bitácora completa**: Registro exhaustivo y continuo del ciclo de vida, eventos, consumo de recursos y fallas recuperadas.
+### Hito S4: Semana de carga [PENDIENTE]
+- **1.000 unidades de trabajo**: Procesamiento a escala de 1.000 unidades (pendiente de ejecución).
+- **12 horas desatendido**: Ejecución continua y autónoma en modo daemon / scheduler durante 12 horas seguidas (pendiente de ejecución).
+- **Bitácora completa**: Registro continuo del ciclo de vida, eventos, consumo de recursos y fallas recuperadas bajo `data/pruebas-reto/carga/` (estructura preparada, pendiente de corrida).
 
 ---
 
-## 3. Ítems Abiertos (Pendientes de Confirmación Oficial)
+## 3. Ítems Abiertos (Pendientes de Confirmación Oficial para S4)
 
 > [!WARNING]
-> **Definiciones y Criterios Oficiales No Confirmados**:
+> **Definiciones y Criterios Oficiales No Confirmados para S4**:
 > 1. **Definición de "Unidad de Trabajo"**: No se ha confirmado formalmente si 1 unidad de trabajo equivale a 1 proceso descargado de SECOP II, 1 candidato pre-filtrado, 1 proceso clasificado por el Agente 1, o 1 proceso completamente estructurado con ficha y documentos (Agentes 2 y 3).
-> 2. **Criterios exactos de aprobación para S3 y S4**: No se cuenta con la rúbrica oficial detallada de evaluación para el set de 30 casos (p. ej. umbral mínimo de precisión/recall requerido) ni el formato específico de la bitácora de 12 horas.
+> 2. **Criterios exactos de aprobación para la bitácora de 12 horas**: Formato específico de la telemetría operativa y métricas de recursos requeridas por la rúbrica oficial.
 > 
-> *Estrategia*: Diseñar la arquitectura con la mayor granularidad y trazabilidad posible para que cualquier interpretación oficial de la métrica quede soportada por los registros en `data/pruebas-reto/`.
+> *Estrategia*: Mantener la arquitectura granular bajo `data/pruebas-reto/carga/` (`state/`, `events/`, `log/`, `resources/`, `reports/`) para que cualquier interpretación oficial quede soportada.
 
 ---
 
@@ -89,12 +93,16 @@ data/pruebas-reto/
   README.md            # Índice maestro y explicación de contenidos
   ejecuciones/         # Registro histórico y corridas individuales
     registro.jsonl     # Libro mayor (ledger) con 1 línea JSON por ejecución
-    RESUMEN.md         # Tabla Markdown de las últimas 20 ejecuciones y acumulados
+    RESUMEN.md         # Tabla Markdown de las últimas ejecuciones y acumulados
     <ejecucionId>/     # Carpeta por corrida (reporte.json, reporte.md, tokens.jsonl, trazas.json)
   costos/              # Reportes consolidados de costos y precios
-  evaluacion/          # Set de 30+ casos, guías y resultados/benchmarks
-    resultados/        # Resultados por timestamp (<timestamp>/)
-  carga/               # Telemetría de la prueba de carga
+  evaluacion/          # Set de 55 casos, guías y resultados/benchmarks
+    casos-sin-etiquetar.json  # Dataset con etiquetas Ground Truth humanas
+    claves-privadas.json      # Metadatos completos y partición A/B
+    resultados/
+      linea-base/             # Evaluación del Agente 1
+      <timestamp>-agentes/    # Evaluación de invariantes Agentes 2 y 3
+  carga/               # Telemetría de la semana de carga (S4) [PENDIENTE]
     state/             # Estado persistente del daemon
     events/            # Eventos operativos
     log/               # Log continuo de la prueba

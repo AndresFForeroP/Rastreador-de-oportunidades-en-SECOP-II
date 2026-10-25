@@ -1,6 +1,6 @@
 # Directorio de Evidencias Técnicas — Reto Agente 2026
 
-Este directorio (`data/pruebas-reto/`) contiene toda la evidencia documental, registros de ejecución, benchmarks de evaluación y telemetría de pruebas de carga requeridas para la validación y auditoría de los hitos **S1, S2, S3 y S4**.
+Este directorio (`data/pruebas-reto/`) contiene toda la evidencia documental, registros de ejecución, benchmarks de evaluación y telemetría de pruebas requeridas para la validación y auditoría de los hitos **S1, S2, S3 y S4**.
 
 > ⚠️ **Regla de Commits**:
 > A diferencia de los volcados crudos de la API (`data/dias/`), todos los archivos bajo `data/pruebas-reto/` **son committeables y deben mantenerse en el repositorio Git**.
@@ -8,25 +8,27 @@ Este directorio (`data/pruebas-reto/`) contiene toda la evidencia documental, re
 
 ---
 
-## Estructura del Directorio
+## 1. Estructura Real del Directorio
 
 ```text
 data/pruebas-reto/
-  README.md            # Este archivo de índice
-  ejecuciones/         # Libro mayor y evidencias de corridas
-    registro.jsonl     # Ledger histórico (1 línea JSON por corrida)
-    RESUMEN.md         # Tabla Markdown de las últimas 20 corridas y métricas acumuladas
-    <ejecucionId>/     # Subcarpeta por corrida individual con sus artefactos
+  README.md            # Este archivo de índice y documentación de evidencias
+  ejecuciones/         # Libro mayor y evidencias de corridas históricas
+    registro.jsonl     # Ledger histórico (1 línea JSON por corrida, 7 corridas registradas)
+    RESUMEN.md         # Tabla Markdown de corridas y métricas financieras/tokens acumuladas
+    <ejecucionId>/     # Subcarpeta por corrida individual con sus artefactos inmutables
       reporte.json     # Reporte consolidado de la corrida en JSON
       reporte.md       # Reporte consolidado de la corrida en Markdown
-      tokens.jsonl     # Desglose de tokens consumidos en la corrida
-      trazas.json      # Árbol compacto de trazas de LangSmith (si está disponible)
-  costos/              # Reportes de costos financieros por tarea (S3)
-  evaluacion/          # Set propio de 30+ casos y resultados de benchmark (S3)
-    casos.json         # Dataset curado con etiquetas Ground Truth (solo redactadas por el autor)
-    guia-anotacion.md  # Criterios humanos de etiquetado
-    resultados/        # Salidas de evaluaciones automatizadas por marca de tiempo (<timestamp>/)
-  carga/               # Telemetría de la semana de carga (S4: 12h desatendido / 1.000 unidades)
+      tokens.jsonl     # Desglose de tokens consumidos por invocación
+      trazas.json      # Árbol compacto de trazas de LangSmith (cuando está disponible)
+  costos/              # Historial y reportes de costos financieros (S3-2)
+  evaluacion/          # Set propio de 55 casos y resultados de benchmark (S3-3 a S3-5)
+    casos-sin-etiquetar.json  # 55 casos con etiquetas Ground Truth del usuario humano
+    claves-privadas.json      # Metadatos completos de los 55 casos y claves privadas (Bloques A y B)
+    resultados/
+      linea-base/             # Evaluación del Agente 1 (resumen.md, resultados.json, matriz.csv)
+      <timestamp>-agentes/    # Invariantes Agentes 2 y 3 (resumen.md, resultados.json, hoja-revision-humana.md)
+  carga/               # Telemetría de la semana de carga (S4: 12h desatendido / 1.000 unidades) [PENDIENTE]
     state/             # Estado persistente del daemon y marcas de reanudación
     events/            # Registro cronológico de eventos operativos y fallas recuperadas
     log/               # Registro continuo de ejecución del runner
@@ -36,26 +38,39 @@ data/pruebas-reto/
 
 ---
 
-## Contenido de las Subcarpetas
+## 2. Detalle de Componentes Implementados (Hito S3)
 
-### 1. `ejecuciones/`
-- **`registro.jsonl`**: Libro mayor central donde cada ejecución del sistema (`src/index.ts`, evaluación o carga) registra automáticamente una línea con: ID de ejecución, fecha/hora, duración, tipo, modo, parámetros, procesos procesados en cada etapa, tokens (entrada, salida, razonamiento, total), costo en USD (si aplica), estado y hash corto del commit.
-- **`RESUMEN.md`**: Vista en tabla Markdown generada automáticamente con las últimas 20 corridas y métricas totales acumuladas.
-- **`<ejecucionId>/`**: Copia aislada e inmutable de los reportes y registros de tokens generados en dicha corrida, evitando la pérdida de evidencia local tras el vencimiento de la retención de 14 días de LangSmith.
+### A. Libro Mayor de Ejecuciones (`ejecuciones/`)
+- **`registro.jsonl`**: Ledger inmutable en formato JSON Lines. Cada ejecución del sistema (`src/index.ts`, evaluación o carga) registra automáticamente: `ejecucionId`, fecha/hora UTC, duración en segundos, tipo (`"normal"` | `"evaluacion"` | `"carga"`), modo (`"produccion"` | `"prueba"` | `"evaluacion"`), candidatos pre-filtrados, clasificados aptos, resúmenes generados, documentos estructurados, tokens de entrada, salida, razonamiento y total, costo en USD y commit hash.
+- **`RESUMEN.md`**: Tabla Markdown generada automáticamente por `src/pruebas/registro-ejecuciones.ts`. Registra actualmente 7 ejecuciones (100% exitosas) con un gasto acumulado de **$ 1.7263 USD** y **1.050.972 tokens facturados**.
 
-### 2. `costos/`
-- Historial de reportes financieros generados por `src/tools/resumen-tokens.ts` cruzados contra `config/precios.json`.
-- Si `config/precios.json` no está definido, los reportes indican `"precio no configurado"` respetando la regla inmutable de no inventar tarifas.
+### B. Gestión de Precios y Costos (`costos/`)
+- Calibración de tarifas oficiales en `config/precios.json`: $2.00 / 1M entrada, $6.00 / 1M salida para `grok-4.6`.
+- Comando CLI `pnpm costos` para auditoría y proyección de costos financieros en USD.
+- Procedimiento empírico de calibración documentado en `docs/PRECIOS.md`.
 
-### 3. `evaluacion/`
-- Benchmark con **30+ casos representativos** de SECOP II.
-- Las etiquetas de verdad de terreno (*Ground Truth*) son definidas exclusivamente por el autor del proyecto y nunca alteradas por agentes de IA.
-- Resultados de precisión, recall y matrices de confusión almacenados bajo `resultados/<timestamp>/`.
-
-### 4. `carga/`
-- Evidencia de soporte para el hito **S4** (ejecución desatendida durante 12 horas consecutivas y procesamiento de 1.000 unidades de trabajo).
-- Almacena bitácoras de recuperación de caídas de red, reinicios de ciclo y curvas de uso de recursos en Docker.
+### C. Benchmark de Evaluación Humana (`evaluacion/`)
+- **55 casos reales** de contratación pública en Colombia distribuidos en:
+  - **Bloque A (40 casos viables)**: Candidatos pre-filtrados para medir clasificación del Agente 1.
+  - **Bloque B (15 casos de control)**: Procesos descartados por código para medir la tasa de falso descarte.
+- **Línea Base del Agente 1 (`resultados/linea-base/`)**:
+  - Exactitud: 85.0%
+  - Precisión: 80.6%
+  - Recall: 100.0% (25 de 25 oportunidades detectadas, 0 falsos negativos)
+  - Falsos positivos graves: 3 (7.5%)
+- **Chequeo de Invariantes de Agentes 2 y 3 (`resultados/<timestamp>-agentes/`)**:
+  - Evaluación sobre 10 casos deterministas y 3 casos con invocación forzada de LLM (`--siempre-agente`).
+  - Agente 2: 100% de cumplimiento en datos oficiales, números respaldados, claves reales y no atribución de lectura de pliegos.
+  - Agente 3: 100% en origen de ítems, aviso oficial y respaldo legal; detección de fallo de duplicación de nombres de anexos provenientes de `dmgg-8hin`.
+  - Hoja de revisión humana de fidelidad (`hoja-revision-humana.md`) y agregador CLI (`pnpm evaluar:hoja`).
 
 ---
 
-*Cualquier cifra o afirmación cuantitativa expuesta en el `README.md` principal del repositorio debe estar respaldada por un archivo verificable dentro de esta carpeta.*
+## 3. Estado de Hitos
+
+| Hito | Estado | Evidencias Principales |
+|---|:---:|---|
+| **Hito S1 (Pipeline y Grafo)** | **COMPLETO** | Grafo LangGraph de 5 nodos, `data/entregas/`, reportes JSON/MD |
+| **Hito S2 (Agentes y Herramientas)** | **COMPLETO** | Herramientas `filtro_basico`, `obtener_ficha_proceso`, `armar_lista_documentos`, catálogo auditado |
+| **Hito S3 (Benchmark y Costos)** | **COMPLETO** | Benchmark de 55 casos, matriz de confusión, invariantes Agentes 2 y 3, calibración de precios USD |
+| **Hito S4 (Semana de Carga: 12h / 1.000 unidades)** | **PENDIENTE** | Estructura en `data/pruebas-reto/carga/` preparada; pendiente de ejecución en hito S4 |
