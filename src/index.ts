@@ -38,6 +38,7 @@ function parsearArgumentos(): CapsEjecucion {
   let completo = false;
   let reanudar = false;
   let siempreAgente = false;
+  let concurrencia = 3;
 
   for (const arg of args) {
     if (arg.startsWith("--max=")) {
@@ -46,6 +47,9 @@ function parsearArgumentos(): CapsEjecucion {
     } else if (arg.startsWith("--max-aptos=")) {
       const val = Number.parseInt(arg.slice(12), 10);
       if (!Number.isNaN(val) && val > 0) maxAptos = val;
+    } else if (arg.startsWith("--concurrencia=")) {
+      const val = Number.parseInt(arg.slice(15), 10);
+      if (!Number.isNaN(val) && val > 0) concurrencia = val;
     } else if (arg === "--incluir-dudosos") {
       incluirDudosos = true;
     } else if (arg === "--completo") {
@@ -64,6 +68,7 @@ function parsearArgumentos(): CapsEjecucion {
     completo,
     reanudar,
     siempreAgente,
+    concurrencia,
   };
 }
 
@@ -124,6 +129,7 @@ async function main(): Promise<void> {
     modo,
     fechaReferencia,
     caps,
+    idsExcluidos: [],
     totalDescargados: 0,
     descartadosPorRegla: {},
     totalCandidatos: 0,

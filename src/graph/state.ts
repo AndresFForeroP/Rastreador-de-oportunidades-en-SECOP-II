@@ -24,6 +24,8 @@ export const CapsEjecucionSchema = z.object({
   siempreAgente: z.boolean().optional(),
   /** Si es true, reutiliza entregas previas en disco para no gastar créditos. */
   reanudar: z.boolean().optional(),
+  /** Concurrencia de llamadas concurrentes (por defecto 3). */
+  concurrencia: z.number().default(3),
 });
 
 export type CapsEjecucion = z.infer<typeof CapsEjecucionSchema>;
@@ -31,12 +33,18 @@ export type CapsEjecucion = z.infer<typeof CapsEjecucionSchema>;
 export const EsquemaEstadoGrafo = z.object({
   /** Fecha en formato YYYY-MM-DD. */
   fecha: z.string(),
-  /** Modo de ejecución: "hoy" (producción) o "prueba" (histórico). */
-  modo: z.enum(["hoy", "prueba"]),
+  /** Modo de ejecución: "hoy" (producción), "prueba" (histórico), "carga" (semana de carga S4) o "evaluacion". */
+  modo: z.enum(["hoy", "prueba", "carga", "evaluacion"]),
   /** Instante ISO de referencia para evaluar fechas límites. */
   fechaReferencia: z.string(),
   /** Configuración de topes y banderas de ejecución. */
   caps: CapsEjecucionSchema,
+
+  /** Lista opcional de identificadores de procesos a excluir (ya procesados en ciclos previos). */
+  idsExcluidos: withLangGraph(z.custom<string[]>(), {
+    reducer: { fn: (_a: string[], b: string[]) => b },
+    default: () => [],
+  }),
 
   /** Métricas de descarga y prefiltro */
   totalDescargados: z.number().default(0),

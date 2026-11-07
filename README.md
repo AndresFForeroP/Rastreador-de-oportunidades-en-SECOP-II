@@ -320,3 +320,55 @@ La entidad busca contratar un servicio de infraestructura en la nube para desple
   - **Expide**: Registraduría Nacional del Estado Civil o autoridad migratoria
   - **Observación**: Documento del catálogo general de referencia; confirme en el pliego oficial.
 ```
+
+---
+
+## 13. Prueba de Carga Desatendida (Hito S4)
+
+> ⏳ **Estado**: **PENDIENTE (En preparación para la corrida desatendida final de 12 horas)**.  
+> Los datos expuestos a continuación reflejan los resultados auditables del ensayo general de 15 minutos en contenedor Docker y la verificación pre-vuelo (**DICTAMEN: GO**). Las cifras definitivas se actualizarán al finalizar la corrida ininterrumpida.
+
+### 13.1. Métricas Obtenidas en el Ensayo de Carga
+
+Conforme a los criterios oficiales del Reto Agente 2026 y la auditoría registrada en [`data/pruebas-reto/carga/REPORTE-FINAL.md`](data/pruebas-reto/carga/REPORTE-FINAL.md):
+
+| Métrica Oficial | Criterio Requerido | Valor Obtenido en Ensayo | Estado |
+|---|---|---:|:---:|
+| **Unidades de Trabajo (Fin a Fin)** | $\ge 1.000$ unidades resueltas end-to-end | **42 unidades oficiales** (100% exitosas) | ⏳ Pendiente corrida final |
+| • *Veredictos emitidos Agente 1 (Secundaria 1)* | Informativo | 46 procesos evaluados | — |
+| • *Completados Agentes 1, 2 y 3 (Secundaria 2)* | Informativo | 0 procesos clasificados "sí" | — |
+| **Duración Desatendida** | $\ge 12$ horas consecutivas sin intervención | **14.49 horas acumuladas** (telemetría de ensayo y calibración) | ⏳ Pendiente ventana 12h |
+| **Unicidad e Idempotencia** | 0 IDs duplicados en libro mayor por tarea | **42 tareaId únicos de 42 filas** (0 duplicados) | ✅ **PASS** |
+| **Consistencia Cruzada** | CSV == estado.json == progreso.jsonl == ledger | CSV (42) = Estado (42) = Progreso (42) | ✅ **PASS** |
+| **Tokens Facturados Totales** | Contabilidad rigurosa guiada por tokens facturados | **683.058 tokens totales** (182 llamadas) | ✅ **PASS** |
+| **Costo Financiero en USD** | Tarifas oficiales según config/precios.json | *Tarifas en null en config/precios.json ($0.00 USD)* | ✅ **PASS** |
+| **Estabilidad de Contenedor Docker** | 0 caídas anómalas no programadas | **0 reinicios anómalos** (5 muestras en recursos.csv) | ✅ **PASS** |
+
+### 13.2. Metodología Operativa y Resiliencia
+
+1. **Modo y Fuente de Datos**:
+   - Ejecución bajo modo `carga` sobre fechas históricas de SECOP II en orden cronológico inverso (`data/dias/`), utilizando la caché local inmutable.
+   - **Omisión preventiva honesta**: Días con menos de 150 procesos representativos (por ejemplo `2026-10-20`) son omitidos automáticamente por código determinista (`dia_omitido`), avanzando al siguiente día en la cola sin desperdicio de tokens.
+2. **Definición Oficial de Unidad de Trabajo (`oficialFinAFin`)**:
+   - Equivale estrictamente a un proceso de SECOP II analizado de principio a fin (veredicto estructurado del Agente 1 y, en caso de ser apto `"si"`, el resumen del Agente 2 y los documentos del Agente 3). Los descartados por el pre-filtro de código determinista **NO se computan** como unidades de trabajo.
+3. **Prorrateo Financiero por Tarea**:
+   - **Agente 1 (Triaje)**: Las llamadas evalúan páginas de hasta 25 procesos. El costo de la página se divide en partes iguales entre los procesos evaluados (`costoAsignadoUSD`).
+   - **Agentes 2 y 3 (Fichas y Documentos)**: Costo directo íntegro asignado individualmente al proceso (`costoDirectoUSD`).
+   - **Total por proceso** = `costoDirectoUSD + costoAsignadoUSD`.
+4. **Verificación de Contingencias y Recuperación**:
+   - **Parada limpia (`docker stop`)**: El contenedor concluye el ciclo en vuelo dentro del margen `stop_grace_period: 60s`, persiste atómicamente `estado.json` y sale con código 0/143.
+   - **Simulación de fallo abrupto (`docker kill`)**: Se forzó la terminación con `SIGKILL` (código 137) a mitad de ciclo. Al reiniciar el contenedor, el Gestor de Estado excluyó automáticamente las 42 tareas previas mediante `idsExcluidos`, retomando el procesamiento en el proceso 43 sin duplicación ni sobreconteo.
+   - **Guarda de Presupuesto**: Emitió evento preventivo de alerta al alcanzar el 80% (`presupuesto_advertencia_80`) y detuvo ordenadamente el trabajo al alcanzar el límite configurado (`presupuesto_limite_alcanzado`).
+
+### 13.3. Evidencias Auditables
+
+Todos los artefactos de telemetría y ejecución son de acceso público en el repositorio:
+- [`data/pruebas-reto/carga/bitacora-tareas.csv`](data/pruebas-reto/carga/bitacora-tareas.csv): Bitácora oficial por tarea en tiempo real (RFC 4180).
+- [`data/pruebas-reto/carga/bitacora-tareas.jsonl`](data/pruebas-reto/carga/bitacora-tareas.jsonl): Bitácora oficial en formato JSON Lines.
+- [`data/pruebas-reto/carga/bitacora-carga.md`](data/pruebas-reto/carga/bitacora-carga.md): Bitácora consolidada con desglose horario de rendimiento, latencias P90 e incidentes.
+- [`data/pruebas-reto/carga/REPORTE-FINAL.md`](data/pruebas-reto/carga/REPORTE-FINAL.md): Reporte oficial de evaluación con tabla PASS/FAIL por criterio.
+- [`data/pruebas-reto/carga/recursos.csv`](data/pruebas-reto/carga/recursos.csv): Telemetría periódica de CPU, memoria y reinicios del contenedor Docker.
+- [`data/pruebas-reto/carga/estado.json`](data/pruebas-reto/carga/estado.json): Estado persistente atómico e índices de idempotencia.
+- [`docs/RESUMEN-S4.md`](docs/RESUMEN-S4.md): Resumen ejecutivo preparado para entrega en plataforma.
+- [`docs/RUNBOOK-12H.md`](docs/RUNBOOK-12H.md): Manual operativo paso a paso para la corrida de 12 horas.
+

@@ -7,6 +7,30 @@ services:
       # Logs and persistent run deliverables stay on the host
       - ./logs:/app/logs
       - ./data:/app/data
-    # No restart policy yet: the script runs once, and a restart policy would
-    # re-run it forever (burning credits). Enable only for the future long run:
-    # restart: unless-stopped
+      - ./config:/app/config:ro
+    # No restart policy for agent: the script runs once
+
+  daemon:
+    build: .
+    command: ["pnpm", "daemon"]
+    env_file: .env
+    restart: unless-stopped
+    init: true
+    stop_grace_period: 60s
+    volumes:
+      # Logs, persistent state and task ledgers stay on the host
+      - ./logs:/app/logs
+      - ./data:/app/data
+      - ./docs:/app/docs
+      - ./config:/app/config:ro
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "5"
+    healthcheck:
+      test: ["CMD", "node", "scripts/healthcheck.js"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s

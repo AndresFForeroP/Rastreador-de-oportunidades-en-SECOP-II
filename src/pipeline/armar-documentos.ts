@@ -31,6 +31,7 @@ import {
 } from "../agentes/documentos.js";
 import { filtrarDocumentosCatalogo } from "../herramientas/armar-lista-documentos.js";
 import type { EntregaResumenes, ItemResumenEntrega } from "./resumir-procesos.js";
+import { resolverMetaContextoBitacora } from "../carga/bitacora-tareas.js";
 
 export interface OpcionesDocumentos {
   maxProcesos?: number;
@@ -140,7 +141,25 @@ export async function armarDocumentosParaProcesos(
   let limite = opciones.completo ? totalResumenesDisponibles : (opciones.maxProcesos ?? 5);
   limite = Math.min(limite, totalResumenesDisponibles);
   const aProcesar = itemsResumen.slice(0, limite);
+  const estacionados = itemsResumen.slice(limite);
   const concurrencia = opciones.concurrencia ?? 2;
+  const metaBitacora = resolverMetaContextoBitacora(fecha);
+
+  // Registrar inmediatamente en la bitácora cualquier resumen estacionado antes de Agente 3
+  for (const itemEst of estacionados) {
+    await metaBitacora.gestor.registrarProcesoEstacionadoOFallido({
+      idProceso: itemEst.id,
+      nombreProceso: itemEst.ficha?.nombre || itemEst.ficha?.descripcion || itemEst.id,
+      aptoPyme: "si",
+      ejecucionId: metaBitacora.ejecucionId,
+      ciclo: metaBitacora.ciclo,
+      fuente: metaBitacora.fuente,
+      fechaDatos: metaBitacora.fechaDatos,
+      motivoTipo: "estacionado_tope_documentos",
+      motivoMensaje: `Proceso estacionado por límite de lote en Agente 3 (maxProcesos=${limite} de ${totalResumenesDisponibles})`,
+      recuperacion: "estacionado antes de Agente 3",
+    });
+  }
 
   console.log(
     `[documentos] Iniciando estructuración de documentos para fecha ${fecha} (${modo}): ` +
@@ -154,7 +173,9 @@ export async function armarDocumentosParaProcesos(
   ): Promise<{ item: ProcesoConDocumentos; tokens: { entrada: number; salida: number; total: number } }> {
     const id = resumenItem.id;
     return ejecutarConContextoTokens({ procesoId: id, agente: NOMBRE_AGENTE_DOCUMENTOS }, async () => {
+      const horaInicioA3 = new Date().toISOString();
       const tokensItem = { entrada: 0, salida: 0, total: 0 };
+      let intentosRealizados = 0;
 
     const modalidad = resumenItem.ficha?.modalidad ?? "Desconocida";
     const tipoDeContrato = resumenItem.ficha?.tipoDeContrato ?? "Desconocido";
@@ -190,6 +211,21 @@ export async function armarDocumentosParaProcesos(
         },
       };
 
+      await metaBitacora.gestor.finalizarProcesoEnAgente3({
+        idProceso: id,
+        nombreProceso: resumenItem.ficha?.nombre || resumenItem.ficha?.descripcion || id,
+        ejecucionId: metaBitacora.ejecucionId,
+        ciclo: metaBitacora.ciclo,
+        fuente: metaBitacora.fuente,
+        fechaDatos: metaBitacora.fechaDatos,
+        horaInicio: horaInicioA3,
+        horaFin: new Date().toISOString(),
+        intentosAgente3: 1,
+        tokensAgente3: tokensItem,
+        documentosOk: lista.items.length > 0,
+        errorMensaje: null,
+      });
+
       return { item: procesoFinal, tokens: tokensItem };
     }
 
@@ -216,6 +252,7 @@ export async function armarDocumentosParaProcesos(
     let ultimoError: unknown = null;
 
     for (let intento = 1; intento <= 3; intento++) {
+      intentosRealizados = intento;
       try {
         const config = configEjecucion(
           {
@@ -261,8 +298,9 @@ export async function armarDocumentosParaProcesos(
       }
     }
 
+    const msgErrorA3 = ultimoError ? (ultimoError instanceof Error ? ultimoError.message : String(ultimoError)) : null;
     if (!notasModelo) {
-      console.warn(`[documentos:${id}] Fallaron los intentos del modelo (${ultimoError instanceof Error ? ultimoError.message : String(ultimoError)}). Resolviendo determinísticamente.`);
+      console.warn(`[documentos:${id}] Fallaron los intentos del modelo (${msgErrorA3}). Resolviendo determinísticamente.`);
     }
 
     // Construcción determinista combinando catálogo, deduplicación y notas del modelo
@@ -287,6 +325,21 @@ export async function armarDocumentosParaProcesos(
         urlProceso: resumenItem.urlProceso,
       },
     };
+
+    await metaBitacora.gestor.finalizarProcesoEnAgente3({
+      idProceso: id,
+      nombreProceso: resumenItem.ficha?.nombre || resumenItem.ficha?.descripcion || id,
+      ejecucionId: metaBitacora.ejecucionId,
+      ciclo: metaBitacora.ciclo,
+      fuente: metaBitacora.fuente,
+      fechaDatos: metaBitacora.fechaDatos,
+      horaInicio: horaInicioA3,
+      horaFin: new Date().toISOString(),
+      intentosAgente3: Math.max(1, intentosRealizados),
+      tokensAgente3: tokensItem,
+      documentosOk: notasModelo !== null && listaFinal.items.length > 0,
+      errorMensaje: notasModelo === null ? msgErrorA3 : null,
+    });
 
       return { item: procesoFinal, tokens: tokensItem };
     });

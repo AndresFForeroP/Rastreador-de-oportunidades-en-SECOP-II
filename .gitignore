@@ -12,6 +12,7 @@ node_modules/
 .env
 .env.*
 !.env.example
+!.env.carga.example
 
 # Logs (cost log, runtime logs)
 logs/
@@ -23,6 +24,10 @@ pnpm-debug.log*
 data/dias/
 data/entregas/
 data/reportes/
+data/pruebas-reto/carga/
+data/pruebas-reto/costos/
+data/pruebas-reto/ejecuciones/daemon-*/
+data/pruebas-reto/evaluacion/resultados/
 
 # Build output / tooling
 dist/

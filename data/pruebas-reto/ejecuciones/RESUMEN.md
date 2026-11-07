@@ -1,26 +1,30 @@
 # Resumen de Ejecuciones — Reto Agente 2026
 
 > **Libro Mayor de Corridas**: Registro histórico committeable generado a partir de `registro.jsonl`.
-> **Última actualización**: 2026-10-25T04:39:34.235Z | **Total registradas**: 10
+> **Última actualización**: 2026-11-07T12:41:05.661Z | **Total registradas**: 14
 
 ## 1. Totales Acumulados
 
 | Métrica | Valor Acumulado |
 |---|---:|
-| **Corridas Totales** | 10 (✅ 10 ok, ⚠️ 0 parcial, ❌ 0 error) |
-| **Candidatos Pre-filtrados** | 2.032 |
-| **Clasificados Aptos (Agente 1)** | 135 |
-| **Fichas y Resúmenes (Agente 2)** | 66 |
-| **Documentos Estructurados (Agente 3)** | 66 |
-| **Tokens de Entrada** | 2.287.877 |
-| **Tokens de Salida** | 447.309 |
-| **Tokens Facturados (Total)** | **4.005.652** |
-| **Costo Total Estimado (USD)** | $ 7.0866 |
+| **Corridas Totales** | 14 (✅ 14 ok, ⚠️ 0 parcial, ❌ 0 error) |
+| **Candidatos Pre-filtrados** | 2.109 |
+| **Clasificados Aptos (Agente 1)** | 197 |
+| **Fichas y Resúmenes (Agente 2)** | 127 |
+| **Documentos Estructurados (Agente 3)** | 127 |
+| **Tokens de Entrada** | 3.175.697 |
+| **Tokens de Salida** | 597.096 |
+| **Tokens Facturados (Total)** | **5.469.824** |
+| **Costo Total Estimado (USD)** | $ 8.4735 |
 
-## 2. Últimas 10 Ejecuciones
+## 2. Últimas 14 Ejecuciones
 
 | ID Ejecución | Inicio | Tipo | Modo | Fecha Datos | Dur. | Cand. | Aptos | Res. | Docs | Tokens Total | Costo USD | Estado | Commit |
 |---|---|:---:|:---:|:---:|---:|---:|---:|---:|---:|---:|:---:|:---:|:---:|
+| [`daemon-1794054226756`](./daemon-1794054226756) | 2026-11-07 12:23:47 | daemon | carga | 2026-10-23 | 1038s | 30 | 24 | 24 | 24 | 405.282 | $1.0217 | ✅ ok | `n/a` |
+| [`daemon-1794010493293`](./daemon-1794010493293) | 2026-11-07 00:14:54 | daemon | carga | 2026-10-23 | 747s | 15 | 13 | 0 | 0 | 251.186 | n/c | ✅ ok | `11763b1` |
+| [`daemon-1793935338535`](./daemon-1793935338535) | 2026-11-06 03:39:09 | daemon | carga | 2026-10-23 | 0s | 32 | 25 | 37 | 37 | 600.611 | n/c | ✅ ok | `11763b1` |
+| [`20261025-000932_4576`](./20261025-000932_4576) | 2026-10-25 05:09:32 | evaluacion | evaluacion | benchmark-humano-s3-5 | 487s | 0 | 0 | 0 | 0 | 207.093 | $0.3653 | ✅ ok | `11763b1` |
 | [`20261024-232626_1169`](./20261024-232626_1169) | 2026-10-25 04:26:26 | normal | prueba | 2026-10-23 | 788s | 150 | 20 | 20 | 20 | 1.281.398 | $2.3495 | ✅ ok | `e56ff12` |
 | [`20261024-230522_fbff`](./20261024-230522_fbff) | 2026-10-25 04:05:22 | normal | prueba | 2026-10-23 | 836s | 150 | 19 | 19 | 19 | 980.593 | $1.7782 | ✅ ok | `e56ff12` |
 | [`20261024-224303_544b`](./20261024-224303_544b) | 2026-10-25 03:43:03 | normal | prueba | 2026-10-15 | 178s | 423 | 22 | 2 | 2 | 692.689 | $1.2326 | ✅ ok | `e56ff12` |

@@ -19,7 +19,7 @@ import type { RunnableConfig } from "@langchain/core/runnables";
 import { EsquemaEstadoGrafo, type EstadoGrafo } from "./state.js";
 import { descargarHoy } from "../datos/socrata.js";
 import { prefiltrar } from "../filtro/prefiltro.js";
-import { cargarDatosMemoizados } from "../herramientas/filtro-basico.js";
+import { cargarDatosMemoizados, limpiarCacheFiltroBasico } from "../herramientas/filtro-basico.js";
 import {
   filtrarPymes,
   type ResumenAptos,
@@ -37,6 +37,7 @@ import {
   type DatosReporte,
 } from "../reporte/generar-reporte.js";
 import { leerRegistrosTokens } from "../cost.js";
+import { resolverMetaContextoBitacora } from "../carga/bitacora-tareas.js";
 
 /**
  * 1. Nodo: descargar_y_prefiltrar (Código)
@@ -51,20 +52,29 @@ async function nodoDescargarYPrefiltrar(
   const descarga = await descargarHoy();
   const resPrefiltro = await prefiltrar(descarga.filas);
 
-  // Asegura la inicialización de la caché de filtro básico para el Agente 1
-  await cargarDatosMemoizados();
+  const topeMax = state.caps.completo ? undefined : state.caps.max;
+
+  // Asegura la inicialización de la caché de filtro básico para el Agente 1, respetando ids a excluir y tope de lote
+  limpiarCacheFiltroBasico();
+  await cargarDatosMemoizados(state.idsExcluidos, topeMax);
+
+  const idsExcluidosSet = new Set(state.idsExcluidos ?? []);
+  let candidatosViables = resPrefiltro.candidatos.filter((c) => !idsExcluidosSet.has(c.id));
+  if (typeof topeMax === "number" && topeMax > 0) {
+    candidatosViables = candidatosViables.slice(0, topeMax);
+  }
 
   console.log(
     `[grafo:descargar_y_prefiltrar] Descargados: ${descarga.filas.length} | Descartados: ${
       descarga.filas.length - resPrefiltro.candidatos.length
-    } | Candidatos viables: ${resPrefiltro.candidatos.length}`,
+    } | Excluidos por estado previo: ${resPrefiltro.candidatos.length - (resPrefiltro.candidatos.filter((c) => !idsExcluidosSet.has(c.id))).length} | Candidatos para este ciclo: ${candidatosViables.length}`,
   );
 
   return {
     totalDescargados: descarga.filas.length,
     descartadosPorRegla: resPrefiltro.descartadosPorRegla,
-    totalCandidatos: resPrefiltro.candidatos.length,
-    candidatos: resPrefiltro.candidatos,
+    totalCandidatos: candidatosViables.length,
+    candidatos: candidatosViables,
   };
 }
 
@@ -114,7 +124,8 @@ async function nodoFiltrarPymes(
   try {
     const entrega = await filtrarPymes({
       maxPaginas,
-      concurrencia: 2,
+      concurrencia: state.caps.concurrencia ?? 3,
+      incluirDudosos: state.caps.incluirDudosos,
       parentConfig: config,
     });
 
@@ -180,7 +191,7 @@ async function nodoResumirProcesos(
       maxProcesos: state.caps.maxAptos ?? 5,
       completo: state.caps.completo,
       incluirDudosos: state.caps.incluirDudosos,
-      concurrencia: 2,
+      concurrencia: state.caps.concurrencia ?? 3,
       parentConfig: config,
     });
 
@@ -235,7 +246,7 @@ async function nodoArmarDocumentos(
       fecha: state.fecha,
       maxProcesos: state.caps.maxAptos ?? 5,
       completo: state.caps.completo,
-      concurrencia: 2,
+      concurrencia: state.caps.concurrencia ?? 3,
       siempreAgente: state.caps.siempreAgente,
       parentConfig: config,
     });
@@ -327,6 +338,27 @@ async function nodoEnsamblarReporte(
     tokensTotales: tokensJornada,
     procesos: procesosReporte,
   };
+
+  // Cerrar en bitácora cualquier proceso "si" que haya quedado en vuelo sin finalizar por error de etapa
+  const metaBitacora = resolverMetaContextoBitacora(state.fecha, state.caps.incluirDudosos);
+  for (const item of state.clasificacionAptos) {
+    const yaRegistrado = await metaBitacora.gestor.esTareaRegistrada(item.id);
+    if (!yaRegistrado) {
+      await metaBitacora.gestor.registrarProcesoEstacionadoOFallido({
+        idProceso: item.id,
+        nombreProceso: item.proceso?.nombre || item.proceso?.descripcion || item.id,
+        aptoPyme: item.aptoPyme,
+        categoriaObjeto: item.categoriaObjeto,
+        ejecucionId: metaBitacora.ejecucionId,
+        ciclo: metaBitacora.ciclo,
+        fuente: metaBitacora.fuente,
+        fechaDatos: metaBitacora.fechaDatos,
+        motivoTipo: "incompleto_en_pipeline",
+        motivoMensaje: "El proceso no completó todas las etapas requeridas en la ejecución del grafo",
+        recuperacion: "marcado fallido al cierre del grafo",
+      });
+    }
+  }
 
   const rutas = await guardarReportes(datosReporte);
 

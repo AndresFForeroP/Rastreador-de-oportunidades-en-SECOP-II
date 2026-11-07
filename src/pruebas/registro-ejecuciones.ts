@@ -23,6 +23,7 @@ export type TipoEjecucion = "normal" | "evaluacion" | "carga" | "daemon";
 export type EstadoEjecucion = "ok" | "parcial" | "error";
 
 export interface MetaInicioEjecucion {
+  ejecucionId?: string;
   tipo?: TipoEjecucion;
   modo?: string;
   fechaDatos?: string;
@@ -178,7 +179,7 @@ export async function calcularCostoEstimado(
  */
 export async function iniciarEjecucion(meta: MetaInicioEjecucion = {}): Promise<string> {
   await asegurarEstructuraPruebas();
-  const ejecucionId = generarIdEjecucion();
+  const ejecucionId = meta.ejecucionId ?? generarIdEjecucion();
   const inicio = new Date().toISOString();
 
   mapaEjecucionesEnVuelo.set(ejecucionId, {

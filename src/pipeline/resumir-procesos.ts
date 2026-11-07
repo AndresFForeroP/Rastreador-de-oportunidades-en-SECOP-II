@@ -36,6 +36,7 @@ import {
 } from "../herramientas/obtener-ficha-proceso.js";
 import { obtenerCandidatoPorId } from "../herramientas/filtro-basico.js";
 import type { Candidato } from "../filtro/prefiltro.js";
+import { resolverMetaContextoBitacora } from "../carga/bitacora-tareas.js";
 
 export interface OpcionesResumidor {
   maxProcesos?: number;
@@ -140,7 +141,26 @@ export async function resumirProcesosAptos(
   let limite = opciones.completo ? totalAptosEncontrados : (opciones.maxProcesos ?? 5);
   limite = Math.min(limite, totalAptosEncontrados);
   const aProcesar = seleccionados.slice(0, limite);
+  const estacionados = seleccionados.slice(limite);
   const concurrencia = opciones.concurrencia ?? 2;
+  const metaBitacora = resolverMetaContextoBitacora(fecha, opciones.incluirDudosos);
+
+  // Registrar inmediatamente en la bitácora cualquier proceso estacionado por tope maxAptos
+  for (const itemEst of estacionados) {
+    await metaBitacora.gestor.registrarProcesoEstacionadoOFallido({
+      idProceso: itemEst.id,
+      nombreProceso: itemEst.proceso?.nombre || itemEst.proceso?.descripcion || itemEst.id,
+      aptoPyme: itemEst.aptoPyme ?? "si",
+      categoriaObjeto: itemEst.categoriaObjeto ?? null,
+      ejecucionId: metaBitacora.ejecucionId,
+      ciclo: metaBitacora.ciclo,
+      fuente: metaBitacora.fuente,
+      fechaDatos: metaBitacora.fechaDatos,
+      motivoTipo: "estacionado_tope_aptos",
+      motivoMensaje: `Proceso estacionado por límite de lote (maxProcesos=${limite} de ${totalAptosEncontrados})`,
+      recuperacion: "estacionado (pendiente de etapas 2 y 3)",
+    });
+  }
 
   console.log(
     `[resumidor] Iniciando resúmenes para fecha ${fecha} (${modo}): ` +
@@ -154,7 +174,9 @@ export async function resumirProcesosAptos(
   ): Promise<{ item: ItemResumenEntrega; tokens: { entrada: number; salida: number; total: number } }> {
     const id: string = itemApto.id;
     return ejecutarConContextoTokens({ procesoId: id, agente: NOMBRE_AGENTE_RESUMIDOR }, async () => {
+      const horaInicioA2 = new Date().toISOString();
       const tokensItem = { entrada: 0, salida: 0, total: 0 };
+      let intentosRealizados = 0;
 
     // 1. Obtener candidato completo (desde caché de Socrata o del registro de aptos)
     let candidato: Candidato | undefined = await obtenerCandidatoPorId(id);
@@ -176,6 +198,7 @@ export async function resumirProcesosAptos(
     let ultimoError: unknown = null;
 
     for (let intento = 1; intento <= 3; intento++) {
+      intentosRealizados = intento;
       try {
         const config = configEjecucion(
           {
@@ -228,12 +251,11 @@ export async function resumirProcesosAptos(
 
     if (!respuestaAgente) {
       console.error(`[resumidor] Fallaron todos los intentos para el proceso ${id}. Generando fallback seguro.`);
+      const msgError = ultimoError instanceof Error ? ultimoError.message : String(ultimoError);
       const fallback: ItemResumenEntrega = {
         id,
         ficha,
-        resumen: `No fue posible generar el resumen automatizado por error de comunicación con el modelo: ${
-          ultimoError instanceof Error ? ultimoError.message : String(ultimoError)
-        }`,
+        resumen: `No fue posible generar el resumen automatizado por error de comunicación con el modelo: ${msgError}`,
         alertasParaPyme: [
           {
             alerta: "Resumen automático no disponible temporalmente",
@@ -246,6 +268,22 @@ export async function resumirProcesosAptos(
         diasRestantes: ficha.diasRestantes,
         urlProceso: candidato.url,
       };
+
+      await metaBitacora.gestor.registrarAvanceAgente2({
+        idProceso: id,
+        nombreProceso: ficha.nombre || ficha.descripcion || id,
+        ejecucionId: metaBitacora.ejecucionId,
+        ciclo: metaBitacora.ciclo,
+        fuente: metaBitacora.fuente,
+        fechaDatos: metaBitacora.fechaDatos,
+        horaInicio: horaInicioA2,
+        horaFin: new Date().toISOString(),
+        intentosAgente2: Math.max(1, intentosRealizados),
+        tokensAgente2: tokensItem,
+        resumenOk: false,
+        errorMensaje: msgError,
+      });
+
       return { item: fallback, tokens: tokensItem };
     }
 
@@ -263,6 +301,21 @@ export async function resumirProcesosAptos(
       urlProceso: candidato.url,
       anexosUrls: anexosUrls.length > 0 ? anexosUrls : undefined,
     };
+
+    await metaBitacora.gestor.registrarAvanceAgente2({
+      idProceso: id,
+      nombreProceso: ficha.nombre || ficha.descripcion || id,
+      ejecucionId: metaBitacora.ejecucionId,
+      ciclo: metaBitacora.ciclo,
+      fuente: metaBitacora.fuente,
+      fechaDatos: metaBitacora.fechaDatos,
+      horaInicio: horaInicioA2,
+      horaFin: new Date().toISOString(),
+      intentosAgente2: Math.max(1, intentosRealizados),
+      tokensAgente2: tokensItem,
+      resumenOk: true,
+      errorMensaje: null,
+    });
 
       return { item: itemFinal, tokens: tokensItem };
     });

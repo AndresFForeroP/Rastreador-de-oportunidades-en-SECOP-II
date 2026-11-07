@@ -1,5 +1,6 @@
 import { config } from "dotenv";
 import { ChatOpenAI } from "@langchain/openai";
+import { envolverModeloConPresupuesto } from "./carga/presupuesto.js";
 
 // Load .env when running locally. In Docker, variables come from `env_file`
 // and there is no .env inside the image, so this is a silent no-op.
@@ -21,21 +22,27 @@ if (!MODEL_NAME) {
 }
 
 if (!process.env.RETO_KEY) {
-  throw new Error(
-    "RETO_KEY is not set. Copy .env.example to .env and add your key (never commit it).",
-  );
+  if (process.argv.includes("--help") || process.argv.includes("-h")) {
+    process.env.RETO_KEY = "dummy-help-placeholder";
+  } else {
+    throw new Error(
+      "RETO_KEY is not set. Copy .env.example to .env and add your key (never commit it).",
+    );
+  }
 }
 
-/** Single shared chat model instance (Grok through the Reto gateway). */
-export const llm = new ChatOpenAI({
-  model: MODEL_NAME,
-  apiKey: process.env.RETO_KEY,
-  // Custom base URL goes inside `configuration` (OpenAI SDK ClientOptions),
-  // per https://docs.langchain.com/oss/javascript/integrations/chat/openai
-  configuration: {
-    baseURL: RETO_BASE_URL,
-  },
-  // Force the Chat Completions API: an OpenAI-compatible gateway is not
-  // guaranteed to implement OpenAI's Responses API.
-  useResponsesApi: false,
-});
+/** Single shared chat model instance (Grok through the Reto gateway), wrapped with hard budget guard. */
+export const llm = envolverModeloConPresupuesto(
+  new ChatOpenAI({
+    model: MODEL_NAME,
+    apiKey: process.env.RETO_KEY,
+    // Custom base URL goes inside `configuration` (OpenAI SDK ClientOptions),
+    // per https://docs.langchain.com/oss/javascript/integrations/chat/openai
+    configuration: {
+      baseURL: RETO_BASE_URL,
+    },
+    // Force the Chat Completions API: an OpenAI-compatible gateway is not
+    // guaranteed to implement OpenAI's Responses API.
+    useResponsesApi: false,
+  }),
+);

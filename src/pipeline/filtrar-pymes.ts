@@ -31,6 +31,8 @@ import {
 } from "../herramientas/filtro-basico.js";
 import type { RunnableConfig } from "@langchain/core/runnables";
 import { configEjecucion, opcionesTraceable } from "../trazas.js";
+import { resolverMetaContextoBitacora } from "../carga/bitacora-tareas.js";
+import { obtenerGestorEstado } from "../carga/estado.js";
 
 export interface ResultadoProcesoApto extends ClasificacionPyme {
   proceso?: CandidatoHerramienta;
@@ -61,6 +63,8 @@ export interface OpcionesFiltrarPymes {
   maxPaginas?: number;
   /** Concurrencia de llamadas al agente (por defecto 2). */
   concurrencia?: number;
+  /** Si es true, los procesos "dudoso" continuarán a Agentes 2 y 3. */
+  incluirDudosos?: boolean;
   /** Configuración de ejecución padre (para anidar trazas en LangSmith). */
   parentConfig?: RunnableConfig;
 }
@@ -132,13 +136,17 @@ async function procesarPaginaConReintentos(
   numeroPagina: number,
   fecha: string,
   parentConfig?: RunnableConfig,
+  incluirDudosos?: boolean,
 ): Promise<{ resultados: ResultadoProcesoApto[]; tokens: { entrada: number; salida: number; total: number } }> {
+  const horaInicioPagina = new Date().toISOString();
   const paginaDatos = await obtenerPaginaFiltroBasico(numeroPagina);
   const esperados = paginaDatos.candidatos;
 
   const tokensAcumulados = { entrada: 0, salida: 0, total: 0 };
+  let intentosRealizados = 0;
 
   async function invocar(mensajePrompt: string, intento: number): Promise<ResultadoPagina> {
+    intentosRealizados = Math.max(intentosRealizados, intento);
     const config = configEjecucion(
       {
         runName: `filtrador:pagina-${numeroPagina}${intento > 1 ? `:reintento-${intento}` : ""}`,
@@ -193,6 +201,8 @@ async function procesarPaginaConReintentos(
     }
   }
 
+  const metaBitacora = resolverMetaContextoBitacora(fecha, incluirDudosos);
+
   if (!respuesta) {
     // Si los 3 intentos fallaron a nivel red/modelo, se registran como dudosos para no perderlos
     console.error(`[filtrador] Fallaron todos los intentos para la página ${numeroPagina}. Registrando como dudosos.`);
@@ -204,6 +214,28 @@ async function procesarPaginaConReintentos(
       senales: ["error_modelo"],
       proceso: c,
     }));
+
+    const horaFinPagina = new Date().toISOString();
+    await metaBitacora.gestor.registrarResultadoPaginaAgente1({
+      ejecucionId: metaBitacora.ejecucionId,
+      ciclo: metaBitacora.ciclo,
+      fuente: metaBitacora.fuente,
+      fechaDatos: metaBitacora.fechaDatos,
+      horaInicio: horaInicioPagina,
+      horaFin: horaFinPagina,
+      intentosPagina: Math.max(1, intentosRealizados),
+      tokensPagina: tokensAcumulados,
+      incluirDudosos: metaBitacora.incluirDudosos,
+      resultados: fallbacks.map((f) => ({
+        id: f.id,
+        nombreProceso: f.proceso?.nombre || f.proceso?.descripcion || f.id,
+        aptoPyme: f.aptoPyme,
+        categoriaObjeto: f.categoriaObjeto,
+        razon: f.razon,
+        senales: f.senales,
+      })),
+    });
+
     return { resultados: fallbacks, tokens: tokensAcumulados };
   }
 
@@ -248,6 +280,36 @@ async function procesarPaginaConReintentos(
     }
   }
 
+  const horaFinPagina = new Date().toISOString();
+  await metaBitacora.gestor.registrarResultadoPaginaAgente1({
+    ejecucionId: metaBitacora.ejecucionId,
+    ciclo: metaBitacora.ciclo,
+    fuente: metaBitacora.fuente,
+    fechaDatos: metaBitacora.fechaDatos,
+    horaInicio: horaInicioPagina,
+    horaFin: horaFinPagina,
+    intentosPagina: Math.max(1, intentosRealizados),
+    tokensPagina: tokensAcumulados,
+    incluirDudosos: metaBitacora.incluirDudosos,
+    resultados: validos.map((v) => ({
+      id: v.id,
+      nombreProceso: v.proceso?.nombre || v.proceso?.descripcion || v.id,
+      aptoPyme: v.aptoPyme,
+      categoriaObjeto: v.categoriaObjeto,
+      razon: v.razon,
+      senales: v.senales,
+    })),
+  });
+
+  const gestorEstado = obtenerGestorEstado();
+  for (const v of validos) {
+    await gestorEstado.marcar(v.id, "agente1", {
+      ciclo: metaBitacora.ciclo,
+      ejecucionId: metaBitacora.ejecucionId,
+      aptoPyme: v.aptoPyme,
+    });
+  }
+
   return { resultados: validos, tokens: tokensAcumulados };
 }
 
@@ -290,7 +352,7 @@ async function filtrarPymesInterno(opciones: OpcionesFiltrarPymes = {}): Promise
   const listaPaginas = Array.from({ length: paginasAProcesar }, (_, i) => i + 1);
 
   const resultadosPorPagina = await ejecutarConConcurrencia(listaPaginas, concurrencia, (numPagina) =>
-    procesarPaginaConReintentos(numPagina, fecha, opciones.parentConfig),
+    procesarPaginaConReintentos(numPagina, fecha, opciones.parentConfig, opciones.incluirDudosos),
   );
 
   const todosResultados: ResultadoProcesoApto[] = [];

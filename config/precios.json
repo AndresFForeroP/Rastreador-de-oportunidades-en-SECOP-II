@@ -1,11 +1,11 @@
 {
   "moneda": "USD",
-  "actualizado": "2026-10-20",
-  "fuente": "panel del reto (calibración empírica con 15 llamadas)",
+  "actualizado": "2026-11-06",
+  "fuente": "precio efectivo por token_total calibrado con el panel el 2026-11-06 (no es tarifa oficial)",
   "modelos": {
     "grok-4.6": {
-      "porMillonEntrada": 2.0,
-      "porMillonSalida": 6.0
+      "porMillonEntrada": 3.507,
+      "porMillonSalida": 3.507
     }
   }
 }

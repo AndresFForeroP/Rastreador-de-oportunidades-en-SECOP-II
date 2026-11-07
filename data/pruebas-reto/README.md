@@ -28,7 +28,15 @@ data/pruebas-reto/
     resultados/
       linea-base/             # Evaluación del Agente 1 (resumen.md, resultados.json, matriz.csv)
       <timestamp>-agentes/    # Invariantes Agentes 2 y 3 (resumen.md, resultados.json, hoja-revision-humana.md)
-  carga/               # Telemetría de la semana de carga (S4: 12h desatendido / 1.000 unidades) [PENDIENTE]
+  carga/               # Telemetría de la semana de carga (S4: 12h desatendido / 1.000 unidades)
+    bitacora-tareas.csv    # Bitácora oficial por tarea en tiempo real (RFC 4180, append continuo)
+    bitacora-tareas.jsonl  # Bitácora oficial por tarea en formato JSON Lines
+    progreso.jsonl         # Réplica síncrona JSON Lines de progreso
+    estado.json            # Estado persistente atómico e índices de idempotencia
+    heartbeat.json         # Heartbeat periódico con estado, métricas y límites
+    recursos.csv           # Telemetría periódica de CPU, memoria y reinicios de Docker
+    bitacora-carga.md      # Bitácora consolidada con desglose horario de rendimiento
+    REPORTE-FINAL.md       # Reporte final con evaluación PASS/FAIL por criterio oficial
     state/             # Estado persistente del daemon y marcas de reanudación
     events/            # Registro cronológico de eventos operativos y fallas recuperadas
     log/               # Registro continuo de ejecución del runner
@@ -64,6 +72,14 @@ data/pruebas-reto/
   - Agente 3: 100% en origen de ítems, aviso oficial y respaldo legal; detección de fallo de duplicación de nombres de anexos provenientes de `dmgg-8hin`.
   - Hoja de revisión humana de fidelidad (`hoja-revision-humana.md`) y agregador CLI (`pnpm evaluar:hoja`).
 
+### D. Semana de Carga y Resiliencia (`carga/`) — Hito S4
+- **`bitacora-tareas.csv` y `.jsonl`**: Bitácora por tarea escrita en tiempo real (modo append con sync a disco) con timestamp, entrada, resultado estructurado, estado de éxito, recuperación, tokens y costo prorrateado.
+- **`estado.json` y `heartbeat.json`**: Persistencia atómica (`.tmp.<pid>.<ts>.<hex>` + rename) e idempotencia mediante `idsExcluidos` para evitar reprocesamiento o sobreconteo ante reinicios.
+- **`recursos.csv`**: Telemetría periódica de uso de CPU, memoria y reinicios del contenedor Docker (`scripts/muestrear-docker.ps1`).
+- **`bitacora-carga.md`**: Bitácora integral generada 100% desde datos de máquina con tabla horaria de rendimiento, percentiles $P_{90}$ de latencia, incidentes y telemetría de Docker.
+- **`REPORTE-FINAL.md`**: Reporte oficial de evaluación técnica con dictamen **PASS / FAIL** por criterio oficial del reto (`pnpm reporte:carga`).
+- **Herramienta Pre-vuelo (`pnpm preflight`)**: Comprobación integral de 12 puntos de infraestructura emitiendo dictamen **GO / NO-GO**.
+
 ---
 
 ## 3. Estado de Hitos
@@ -73,4 +89,4 @@ data/pruebas-reto/
 | **Hito S1 (Pipeline y Grafo)** | **COMPLETO** | Grafo LangGraph de 5 nodos, `data/entregas/`, reportes JSON/MD |
 | **Hito S2 (Agentes y Herramientas)** | **COMPLETO** | Herramientas `filtro_basico`, `obtener_ficha_proceso`, `armar_lista_documentos`, catálogo auditado |
 | **Hito S3 (Benchmark y Costos)** | **COMPLETO** | Benchmark de 55 casos, matriz de confusión, invariantes Agentes 2 y 3, calibración de precios USD |
-| **Hito S4 (Semana de Carga: 12h / 1.000 unidades)** | **PENDIENTE** | Estructura en `data/pruebas-reto/carga/` preparada; pendiente de ejecución en hito S4 |
+| **Hito S4 (Semana de Carga: 12h / 1.000 unidades)** | **PREPARADO (GO)** | Infraestructura y telemetría completas (ensayo de 42 unidades con 100% éxito); listo para corrida final |

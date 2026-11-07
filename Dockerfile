@@ -26,9 +26,11 @@ RUN corepack install
 COPY --chown=node:node pnpm-lock.yaml pnpm-workspace.yaml ./
 RUN pnpm install --frozen-lockfile
 
-# Source code, static catalogs and LangGraph configuration
+# Source code, static catalogs, scripts, and configuration
 COPY --chown=node:node tsconfig.json langgraph.json ./
 COPY --chown=node:node data/catalogos ./data/catalogos
+COPY --chown=node:node config ./config
+COPY --chown=node:node scripts ./scripts
 COPY --chown=node:node src ./src
 
 CMD ["pnpm", "exec", "tsx", "src/index.ts"]

@@ -55,6 +55,42 @@ export function dirResultadoEvaluacionAgentes(timestamp: string): string {
 }
 
 /** Rutas para carga desatendida (S4) */
+export function rutaBitacoraTareasCsv(): string {
+  return path.join(DIR_CARGA, "bitacora-tareas.csv");
+}
+
+export function rutaBitacoraTareasJsonl(): string {
+  return path.join(DIR_CARGA, "bitacora-tareas.jsonl");
+}
+
+export function rutaEstadoCarga(): string {
+  return path.join(DIR_CARGA, "estado.json");
+}
+
+export function rutaEventosCarga(): string {
+  return path.join(DIR_CARGA, "eventos.jsonl");
+}
+
+export function rutaHeartbeatCarga(): string {
+  return path.join(DIR_CARGA, "heartbeat.json");
+}
+
+export function rutaProgresoCarga(): string {
+  return path.join(DIR_CARGA, "progreso.jsonl");
+}
+
+export function rutaRecursosCarga(): string {
+  return path.join(DIR_CARGA, "recursos.csv");
+}
+
+export function rutaBitacoraCargaMd(): string {
+  return path.join(DIR_CARGA, "bitacora-carga.md");
+}
+
+export function rutaResumenS4Md(): string {
+  return path.resolve(process.cwd(), "docs", "RESUMEN-S4.md");
+}
+
 export function dirCargaSubcarpetas(): {
   state: string;
   events: string;

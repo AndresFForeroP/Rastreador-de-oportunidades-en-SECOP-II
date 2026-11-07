@@ -18,6 +18,7 @@
  */
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
+import { fileURLToPath } from "node:url";
 import { leerRegistrosTokens, type RegistroTokens } from "../cost.js";
 import { leerRegistrosEjecuciones } from "../pruebas/registro-ejecuciones.js";
 import { DIR_COSTOS, verificarTamanoArchivo } from "../pruebas/rutas.js";
@@ -46,6 +47,7 @@ export interface OpcionesCLI {
   gastoPanelUSD?: number;
   proyectarN?: number;
   rutaConfig?: string;
+  sinGuardarArchivos?: boolean;
 }
 
 export interface ResumenAgente {
@@ -497,6 +499,10 @@ export async function generarReporteCostos(opciones: OpcionesCLI = {}): Promise<
     };
   }
 
+  if (opciones.sinGuardarArchivos) {
+    return reporte;
+  }
+
   // Guardar evidencias en data/pruebas-reto/costos/
   await mkdir(DIR_COSTOS, { recursive: true });
   const rutaJson = path.join(DIR_COSTOS, `reporte-${timestamp}.json`);
@@ -763,7 +769,10 @@ async function main(): Promise<void> {
 }
 
 // Ejecución directa por CLI
-main().catch((err) => {
-  console.error("Error al calcular costos y tokens:", err);
-  process.exit(1);
-});
+const rutaActualCostos = fileURLToPath(import.meta.url);
+if (process.argv[1] && path.resolve(process.argv[1]) === path.resolve(rutaActualCostos)) {
+  main().catch((err) => {
+    console.error("Error al calcular costos y tokens:", err);
+    process.exit(1);
+  });
+}

@@ -54,18 +54,27 @@ function recortar(s: string, max: number): string {
  * Carga y pre-filtra los datos de hoy UNA SOLA VEZ por ejecución del proceso
  * (memoizado en memoria). Ordena los candidatos por `id_del_proceso`.
  */
-export async function cargarDatosMemoizados(): Promise<CacheDatos> {
+export async function cargarDatosMemoizados(
+  idsExcluidos?: string[],
+  maxCandidatos?: number,
+): Promise<CacheDatos> {
   promesaCache ??= (async () => {
     const descarga = await descargarHoy();
     const resultado = await prefiltrar(descarga.filas);
 
+    const idsSet = new Set(idsExcluidos ?? []);
+    let candidatosValidos = resultado.candidatos.filter((c) => !idsSet.has(c.id));
+    if (typeof maxCandidatos === "number" && maxCandidatos > 0) {
+      candidatosValidos = candidatosValidos.slice(0, maxCandidatos);
+    }
+
     const candidatosCompletos = new Map<string, Candidato>();
-    for (const c of resultado.candidatos) {
+    for (const c of candidatosValidos) {
       candidatosCompletos.set(c.id, c);
     }
 
     // Ordenamiento estable por id ascendente
-    const candidatosOrdenados: CandidatoHerramienta[] = resultado.candidatos
+    const candidatosOrdenados: CandidatoHerramienta[] = candidatosValidos
       .slice()
       .sort((a, b) => a.id.localeCompare(b.id))
       .map((c) => ({

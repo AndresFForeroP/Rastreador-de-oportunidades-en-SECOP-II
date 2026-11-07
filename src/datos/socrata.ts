@@ -132,7 +132,7 @@ async function descargarFecha(fecha: string): Promise<FilaSecop[]> {
   throw new Error(`Se superó el tope de ${MAX_PAGINAS} páginas; revisa la consulta.`);
 }
 
-async function leerCache(fecha: string): Promise<FilaSecop[] | null> {
+export async function leerCache(fecha: string): Promise<FilaSecop[] | null> {
   try {
     return JSON.parse(await readFile(path.join(DIR_CACHE, `${fecha}.json`), "utf8")) as FilaSecop[];
   } catch {

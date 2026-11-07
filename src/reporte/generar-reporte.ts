@@ -16,7 +16,7 @@ import type { ProcesoConDocumentos } from "../pipeline/armar-documentos.js";
 
 export interface DatosReporte {
   fecha: string;
-  modo: "hoy" | "prueba";
+  modo: "hoy" | "prueba" | "carga" | "evaluacion";
   fechaReferencia: string;
   totalDescargados: number;
   descartadosPorRegla: Record<string, number>;
@@ -76,7 +76,11 @@ export function construirMarkdownReporte(datos: DatosReporte): string {
   // 1. Título y encabezado
   lineas.push(`# Reporte Diario de Oportunidades SECOP II — ${datos.fecha}\n`);
 
-  if (datos.modo === "prueba") {
+  if (datos.modo === "carga") {
+    lineas.push(
+      `> ⚠️ **MODO CARGA (SEMANA DE CARGA S4)**: Ejecución sobre cola histórica de procesos (\`${datos.fecha}\`). Instante de referencia temporal: \`${datos.fechaReferencia}\`. Los datos provienen de la cola de pruebas para validación de carga y resistencia desatendida.\n`,
+    );
+  } else if (datos.modo === "prueba") {
     lineas.push(
       `> ⚠️ **MODO PRUEBA (HISTÓRICO)**: Ejecución sobre la fecha de prueba \`${datos.fecha}\`. Instante de referencia temporal: \`${datos.fechaReferencia}\` (inicio del día a las 00:00:00 UTC-5). Los datos provienen de la caché local para no consumir créditos de descarga.\n`,
     );
