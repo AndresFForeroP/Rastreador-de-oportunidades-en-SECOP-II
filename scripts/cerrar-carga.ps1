@@ -1,4 +1,4 @@
-# ==============================================================================
+﻿# ==============================================================================
 # CIERRE OPERATIVO Y CONCILIACION FINANCIERA - CORRIDA DE CARGA (S4)
 # Script: scripts/cerrar-carga.ps1
 #
@@ -25,7 +25,7 @@ param(
     [switch]$Force = $false
 )
 
-$ErrorActionPreference = "Stop"
+$ErrorActionPreference = "Continue"
 
 Write-Host "================================================================================" -ForegroundColor Cyan
 Write-Host "🏁 SECOP II - CIERRE OPERATIVO Y CONCILIACION FINANCIERA (S4)" -ForegroundColor Cyan

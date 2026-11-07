@@ -1,4 +1,4 @@
-# ==============================================================================
+﻿# ==============================================================================
 # LANZADOR OFICIAL DE LA CORRIDA DE CARGA DE 12 HORAS (S4)
 # Script: scripts/lanzar-carga.ps1
 #
@@ -22,7 +22,7 @@ param(
     [switch]$NoConfirm = $false
 )
 
-$ErrorActionPreference = "Stop"
+$ErrorActionPreference = "Continue"
 
 Write-Host "================================================================================" -ForegroundColor Cyan
 Write-Host "SECOP II - LANZAMIENTO DE LA CORRIDA DESATENDIDA DE 12 HORAS (S4)" -ForegroundColor Cyan
@@ -34,21 +34,20 @@ Write-Host ""
 # ------------------------------------------------------------------------------
 Write-Host "[1/6] Ejecutando comprobacion pre-vuelo (pnpm preflight)..." -ForegroundColor Yellow
 Write-Host "  (La llamada de prueba al modelo ocurre ANTES de fijar la linea base del panel)" -ForegroundColor DarkGray
+Write-Host ""
 
-$preflightOutput = pnpm preflight 2>&1
+pnpm preflight
 $preflightExitCode = $LASTEXITCODE
 
 if ($preflightExitCode -ne 0) {
     Write-Host ""
     Write-Host "[NO-GO] PRE-FLIGHT RECHAZADO" -ForegroundColor Red
     Write-Host "   El sistema detecto inconsistencias que impiden el lanzamiento seguro." -ForegroundColor Yellow
-    Write-Host "   Detalle de la salida:" -ForegroundColor DarkGray
-    $preflightOutput | ForEach-Object { Write-Host "   $_" -ForegroundColor DarkGray }
-    Write-Host ""
     Write-Host "Corrija los puntos senalados antes de intentar un nuevo lanzamiento." -ForegroundColor Red
     exit 1
 }
 
+Write-Host ""
 Write-Host "[OK] Pre-flight superado con exito [VEREDICTO: GO]." -ForegroundColor Green
 Write-Host ""
 
