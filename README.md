@@ -325,24 +325,24 @@ La entidad busca contratar un servicio de infraestructura en la nube para desple
 
 ## 13. Prueba de Carga Desatendida (Hito S4)
 
-> ⏳ **Estado**: **PENDIENTE (En preparación para la corrida desatendida final de 12 horas)**.  
-> Los datos expuestos a continuación reflejan los resultados auditables del ensayo general de 15 minutos en contenedor Docker y la verificación pre-vuelo (**DICTAMEN: GO**). Las cifras definitivas se actualizarán al finalizar la corrida ininterrumpida.
+> ✅ **Estado**: **COMPLETO / SUPERADO (Corrida desatendida de 12 horas concluida con éxito)**.  
+> Los datos expuestos a continuación reflejan los resultados auditables de la corrida desatendida oficial de 12.57 horas continuas en contenedor Docker y la verificación del reporte final ([`data/pruebas-reto/carga/REPORTE-FINAL.md`](data/pruebas-reto/carga/REPORTE-FINAL.md)).
 
-### 13.1. Métricas Obtenidas en el Ensayo de Carga
+### 13.1. Métricas Obtenidas en la Corrida de Carga Oficial
 
-Conforme a los criterios oficiales del Reto Agente 2026 y la auditoría registrada en [`data/pruebas-reto/carga/REPORTE-FINAL.md`](data/pruebas-reto/carga/REPORTE-FINAL.md):
+Conforme a los criterios oficiales del Reto Agente 2026 y la auditoría registrada en [`data/pruebas-reto/carga/REPORTE-FINAL.md`](data/pruebas-reto/carga/REPORTE-FINAL.md) y [`docs/RESUMEN-S4.md`](docs/RESUMEN-S4.md):
 
-| Métrica Oficial | Criterio Requerido | Valor Obtenido en Ensayo | Estado |
+| Métrica Oficial | Criterio Requerido | Valor Obtenido en Corrida | Estado |
 |---|---|---:|:---:|
-| **Unidades de Trabajo (Fin a Fin)** | $\ge 1.000$ unidades resueltas end-to-end | **42 unidades oficiales** (100% exitosas) | ⏳ Pendiente corrida final |
-| • *Veredictos emitidos Agente 1 (Secundaria 1)* | Informativo | 46 procesos evaluados | — |
-| • *Completados Agentes 1, 2 y 3 (Secundaria 2)* | Informativo | 0 procesos clasificados "sí" | — |
-| **Duración Desatendida** | $\ge 12$ horas consecutivas sin intervención | **14.49 horas acumuladas** (telemetría de ensayo y calibración) | ⏳ Pendiente ventana 12h |
-| **Unicidad e Idempotencia** | 0 IDs duplicados en libro mayor por tarea | **42 tareaId únicos de 42 filas** (0 duplicados) | ✅ **PASS** |
-| **Consistencia Cruzada** | CSV == estado.json == progreso.jsonl == ledger | CSV (42) = Estado (42) = Progreso (42) | ✅ **PASS** |
-| **Tokens Facturados Totales** | Contabilidad rigurosa guiada por tokens facturados | **683.058 tokens totales** (182 llamadas) | ✅ **PASS** |
-| **Costo Financiero en USD** | Tarifas oficiales según config/precios.json | *Tarifas en null en config/precios.json ($0.00 USD)* | ✅ **PASS** |
-| **Estabilidad de Contenedor Docker** | 0 caídas anómalas no programadas | **0 reinicios anómalos** (5 muestras en recursos.csv) | ✅ **PASS** |
+| **Unidades de Trabajo (Fin a Fin)** | $\ge 1.000$ unidades resueltas end-to-end | **1.035 unidades oficiales** (100% exitosas) | ✅ **PASS** |
+| • *Veredictos emitidos Agente 1 (Secundaria 1)* | Informativo | 1.035 procesos evaluados | — |
+| • *Completados Agentes 1, 2 y 3 (Secundaria 2)* | Informativo | 924 procesos clasificados "sí" (ficha + docs) | — |
+| **Duración Desatendida** | $\ge 12$ horas consecutivas sin intervención | **12.57 horas acumuladas** (45.265 segundos) | ✅ **PASS** |
+| **Unicidad e Idempotencia** | 0 IDs duplicados en libro mayor por tarea | **1.035 tareaId únicos de 1.035 filas** (0 duplicados) | ✅ **PASS** |
+| **Consistencia Cruzada** | CSV == estado.json == progreso.jsonl | CSV (1.035) = Estado (1.035) = Progreso (1.035) | ✅ **PASS** |
+| **Tokens Facturados Totales** | Contabilidad rigurosa guiada por tokens facturados | **17.100.206 tokens totales** (10.22M entrada / 1.68M salida) | ✅ **PASS** |
+| **Costo Financiero en USD** | Tarifas oficiales según config/precios.json | **$59.97 USD** (promedio: $0.0579 USD / unidad) | ✅ **PASS** |
+| **Estabilidad de Contenedor Docker** | Recuperación limpia ante ciclo de reinicios | **1.035 tareas preservadas**, 0 datos perdidos | ✅ **PASS** |
 
 ### 13.2. Metodología Operativa y Resiliencia
 

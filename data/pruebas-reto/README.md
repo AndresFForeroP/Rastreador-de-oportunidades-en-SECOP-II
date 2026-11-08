@@ -89,4 +89,4 @@ data/pruebas-reto/
 | **Hito S1 (Pipeline y Grafo)** | **COMPLETO** | Grafo LangGraph de 5 nodos, `data/entregas/`, reportes JSON/MD |
 | **Hito S2 (Agentes y Herramientas)** | **COMPLETO** | Herramientas `filtro_basico`, `obtener_ficha_proceso`, `armar_lista_documentos`, catálogo auditado |
 | **Hito S3 (Benchmark y Costos)** | **COMPLETO** | Benchmark de 55 casos, matriz de confusión, invariantes Agentes 2 y 3, calibración de precios USD |
-| **Hito S4 (Semana de Carga: 12h / 1.000 unidades)** | **PREPARADO (GO)** | Infraestructura y telemetría completas (ensayo de 42 unidades con 100% éxito); listo para corrida final |
+| **Hito S4 (Semana de Carga: 12h / 1.000 unidades)** | **COMPLETO** | Corrida oficial de 12.57h desatendida en Docker; 1.035 unidades procesadas (100% éxito); evidencias completas en `carga/` |
